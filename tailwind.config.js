@@ -4,9 +4,22 @@ const plugin = require('tailwindcss/plugin');
 module.exports = {
   content: ['./app/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   theme: {
+    fontSize: {
+      12: "12px",
+      13: "13px",
+      15: "15px",
+      17: "17px",
+      19: "19px",
+      20: "20px",
+      26: "26px",
+      32: "32px",
+      48: "48px",
+      70: "70px",
+    },
     extend: {
       fontFamily: {
-        sans: ['var(--font-geist-sans)']
+        sans: ['var(--font-geist-sans)'],
+        mono: ['var(--font-geist-mono)'],
       },
       keyframes: {
         fadeIn: {

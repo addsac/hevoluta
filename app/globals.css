@@ -14,8 +14,29 @@
   }
 }
 
-a,
+/* a,
 input,
 button {
   @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-50 dark:focus-visible:ring-neutral-600 dark:focus-visible:ring-offset-neutral-900;
+} */
+
+html, body{
+  @apply text-15 bg-white text-black selection:bg-teal-300 tracking-[0.2px] leading-[140%];
+}
+
+/* button */
+button{
+  @apply active:outline-none focus:outline-none active:scale-95;
+}
+.button-text{
+  @apply border-b border-transparent hover:border-black leading-['auto'] cursor-pointer;
+}
+.button-menu-cart{
+  @apply rounded-full text-15 bg-gray-100 text-13 text-black hover:bg-gray-200 tracking-[0.2px] px-4 py-2.5 flex items-center justify-center gap-2;
+}
+.button-menu{
+  @apply rounded-full text-15 bg-white text-black hover:bg-gray-100 tracking-[0.2px] px-4 py-2.5 flex items-center justify-center gap-2;
+}
+.button-ball{
+  @apply w-1.5 h-1.5 rounded-full bg-black;
 }
