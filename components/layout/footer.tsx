@@ -1,69 +1,102 @@
-import Link from 'next/link';
-
-import FooterMenu from 'components/layout/footer-menu';
-import LogoSquare from 'components/logo-square';
-import { getMenu } from 'lib/shopify';
-import { Suspense } from 'react';
-
-const { COMPANY_NAME, SITE_NAME } = process.env;
+import Link from 'next/link'
+import MaxWidthLayout from 'components/layout/max-width-layout'
 
 export default async function Footer() {
-  const currentYear = new Date().getFullYear();
-  const copyrightDate = 2023 + (currentYear > 2023 ? `-${currentYear}` : '');
-  const skeleton = 'w-full h-6 animate-pulse rounded bg-neutral-200 dark:bg-neutral-700';
-  const menu = await getMenu('next-js-frontend-footer-menu');
-  const copyrightName = COMPANY_NAME || SITE_NAME || '';
+  // const menu = await getMenu('next-js-frontend-footer-menu');
 
   return (
-    <footer className="text-sm text-neutral-500 dark:text-neutral-400">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 border-t border-neutral-200 px-6 py-12 text-sm dark:border-neutral-700 md:flex-row md:gap-12 md:px-4 min-[1320px]:px-0">
-        <div>
-          <Link className="flex items-center gap-2 text-black dark:text-white md:pt-1" href="/">
-            <LogoSquare size="sm" />
-            <span className="uppercase">{SITE_NAME}</span>
-          </Link>
-        </div>
-        <Suspense
-          fallback={
-            <div className="flex h-[188px] w-[200px] flex-col gap-2">
-              <div className={skeleton} />
-              <div className={skeleton} />
-              <div className={skeleton} />
-              <div className={skeleton} />
-              <div className={skeleton} />
-              <div className={skeleton} />
+    <MaxWidthLayout>
+      <footer className="w-screen px-5 flex flex-col">
+
+        <div className="w-full bg-gray-100 grid grid-cols-12 gap-2.5 px-5 py-16">
+          <div className="col-span-4">
+            {/* logo */}
+            <img 
+              src="/img/logo.png"
+              alt="logo"
+              className="h-5 w-auto"
+            />
+          </div>
+          <div className="col-span-8 flex items-start gap-2.5">
+            <div className="flex flex-col gap-10 w-full">
+              <p>
+                Pagine
+              </p>
+
+              <div className="flex flex-col gap-[28px]">
+                <p> Home </p>
+                <p> Prodotti </p>
+                <p> Blog </p>
+                <p> Chatta con noi </p>
+                <p> Chi siamo </p>
+                <p> Accedi </p>
+              </div>
             </div>
-          }
-        >
-          <FooterMenu menu={menu} />
-        </Suspense>
-        <div className="md:ml-auto">
-          <a
-            className="flex h-8 w-max flex-none items-center justify-center rounded-md border border-neutral-200 bg-white text-xs text-black dark:border-neutral-700 dark:bg-black dark:text-white"
-            aria-label="Deploy on Vercel"
-            href="https://vercel.com/templates/next.js/nextjs-commerce"
-          >
-            <span className="px-3">▲</span>
-            <hr className="h-full border-r border-neutral-200 dark:border-neutral-700" />
-            <span className="px-3">Deploy</span>
-          </a>
+            
+            <div className="flex flex-col gap-10 w-full">
+              <p>
+                Prodotti
+              </p>
+
+              <div className="flex flex-col gap-[28px]">
+                <p> Crema corpo </p>
+                <p> Olio viso </p>
+                <p> Crema notte </p>
+                <p> Acido ialuronico </p>
+                <p> Crema anti luce blu </p>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-10 w-full">
+              <p>
+                Contatti
+              </p>
+
+              <div className="flex flex-col gap-[28px]">
+                <p> support@hevoluta.com </p>
+                <p> Siamo a tua disposizione in chat dal lunedì al venerdi (CET), dalle 9:00 alle 12:00 e dalle 15:00 alle 18:00. </p>
+                <div className="flex gap-5">
+                  <Link 
+                    href="https://instagram.com/hevoluta"
+                    target='_blank'
+                    rel='noreferrer noopener'
+                    className="bg-black w-8 h-8 flex items-center justify-center"
+                  >
+                    <img src="/img/social/social-tiktok.png" alt="" className="w-auto h-5" />
+                  </Link>
+                  <Link 
+                    href="https://instagram.com/hevoluta"
+                    target='_blank'
+                    rel='noreferrer noopener'
+                    className="bg-black w-8 h-8 flex items-center justify-center"
+                  >
+                    <img src="/img/social/social-instagram.png" alt="" className="w-auto h-5" />
+                  </Link>
+                  <Link 
+                    href="https://instagram.com/hevoluta"
+                    target='_blank'
+                    rel='noreferrer noopener'
+                    className="bg-black w-8 h-8 flex items-center justify-center"
+                  >
+                    <img src="/img/social/social-facebook.png" alt="" className="w-auto h-5" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div className="border-t border-neutral-200 py-6 text-sm dark:border-neutral-700">
-        <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-1 px-4 md:flex-row md:gap-0 md:px-4 min-[1320px]:px-0">
+
+        <div className="w-full text-center bg-gray-100 px-5 py-10 flex flex-col gap-5 border-t border-gray-300">
           <p>
-            &copy; {copyrightDate} {copyrightName}
-            {copyrightName.length && !copyrightName.endsWith('.') ? '.' : ''} All rights reserved.
+            © 2023 Mia Burton S.r.l.  |  Partita IVA: 06760920824  |  Via XII Gennaio 16 - 90141 Palermo - Italia  |  Privacy policy  |  Cookie policy  |  Gestione cookie
           </p>
-          <hr className="mx-4 hidden h-4 w-[1px] border-l border-neutral-400 md:inline-block" />
-          <p>Designed in California</p>
-          <p className="md:ml-auto">
-            <a href="https://vercel.com" className="text-black dark:text-white">
-              Crafted by ▲ Vercel
-            </a>
+
+          <p>
+            Il nome MIA BURTON® è un marchio registrato di Mia Burton S.r.l. Il logo AUO™ e il logo MIA BURTON™ sono marchi di Mia Burton S.r.l.
           </p>
         </div>
-      </div>
-    </footer>
+
+      </footer>
+    </MaxWidthLayout>
   );
 }
