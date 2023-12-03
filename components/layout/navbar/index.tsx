@@ -1,12 +1,8 @@
+import Cart from 'components/cart';
+import OpenCart from 'components/cart/open-cart';
 import { getMenu } from 'lib/shopify';
 import Link from 'next/link';
-import MobileMenu from './mobile-menu';
-import LogoSquare from 'components/logo-square';
-import Search from './search';
 import { Suspense } from 'react';
-import OpenCart from 'components/cart/open-cart';
-import Cart from 'components/cart';
-import { Menu } from 'lib/shopify/types';
 
 
 const { SITE_NAME } = process.env;
@@ -60,21 +56,14 @@ export default async function Navbar() {
             <div className="hidden lg:block">
               <button className="button-menu"> Accedi </button>
             </div>
-            <button className="button-menu-cart"> 
-              <img 
-                src="/img/icon/cart.svg"
-                alt=""
-                className="w-5 h-auto"
-              />
-              <p>
-                0
-              </p>
-            </button>
+            <Suspense fallback={<OpenCart />}>
+              <Cart />
+            </Suspense>
           </div>
         </nav>
       </div>
       
-      <nav className="relative flex items-center justify-between p-4 lg:px-6">
+      {/* <nav className="relative flex items-center justify-between p-4 lg:px-6">
         <div className="block flex-none md:hidden">
           <MobileMenu menu={menu} />
         </div>
@@ -110,7 +99,7 @@ export default async function Navbar() {
             </Suspense>
           </div>
         </div>
-      </nav>
+      </nav> */}
     </>
   );
 }

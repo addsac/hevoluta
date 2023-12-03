@@ -1,18 +1,8 @@
 'use client';
 
-import { Dialog, Transition } from '@headlessui/react';
-import { ShoppingCartIcon } from '@heroicons/react/24/outline';
-import Price from 'components/price';
-import { DEFAULT_OPTION } from 'lib/constants';
+import Modal from 'components/ui/modal';
 import type { Cart } from 'lib/shopify/types';
-import { createUrl } from 'lib/utils';
-import Image from 'next/image';
-import Link from 'next/link';
-import { Fragment, useEffect, useRef, useState } from 'react';
-import CloseCart from './close-cart';
-import { DeleteItemButton } from './delete-item-button';
-import { EditItemQuantityButton } from './edit-item-quantity-button';
-import OpenCart from './open-cart';
+import { useEffect, useRef, useState } from 'react';
 
 type MerchandiseSearchParams = {
   [key: string]: string;
@@ -39,10 +29,35 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
 
   return (
     <>
-      <button aria-label="Open cart" onClick={openCart}>
-        <OpenCart quantity={cart?.totalQuantity} />
+      <button 
+        onClick={openCart}
+        className="button-menu-cart"
+        aria-label="Open cart" 
+      > 
+        <img 
+          src="/img/icon/cart.svg"
+          alt=""
+          className="w-5 h-auto"
+        />
+        <p>
+          {cart?.totalQuantity}
+        </p>
       </button>
-      <Transition show={isOpen}>
+
+      {/* <button aria-label="Open cart" onClick={openCart}>
+        <OpenCart quantity={cart?.totalQuantity} />
+      </button> */}
+
+      {isOpen && (
+        <Modal
+          position='right'
+          closeModal={closeCart}
+        >
+          1
+        </Modal>
+      )}
+
+      {/* <Transition show={isOpen}>
         <Dialog onClose={closeCart} className="relative z-50">
           <Transition.Child
             as={Fragment}
@@ -185,7 +200,7 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
             </Dialog.Panel>
           </Transition.Child>
         </Dialog>
-      </Transition>
+      </Transition> */}
     </>
   );
 }
