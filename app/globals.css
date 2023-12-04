@@ -40,3 +40,11 @@ button{
 .button-ball{
   @apply w-1.5 h-1.5 rounded-full bg-black;
 }
+.button-close-modal{
+  @apply flex items-center justify-center p-2 hover:bg-gray-100 h-10 w-10;
+}
+
+/* font */
+.text-title-4{
+  @apply text-26 font-light font-tiempos;
+}
