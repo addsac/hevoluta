@@ -43,7 +43,7 @@ export const metadata = {
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="it" className={`${GeistSans.variable} ${GeistMono.variable} tiempos-font`}>
+    <html lang="it" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <body>
         <Navbar />
         <Suspense>

@@ -3,7 +3,7 @@ import React from 'react'
 
 const Modal = ({ children = <></>, position = 'right', closeModal = null }: { children: React.ReactNode, position: string, closeModal: any }) => {
     return (
-        <div>
+        <>
             {/* background */}
             <motion.div 
                 initial={{ opacity: 0 }}
@@ -19,15 +19,18 @@ const Modal = ({ children = <></>, position = 'right', closeModal = null }: { ch
                 initial={{ x: position === 'right' ? '100%' : '-100%' }}
                 animate={{ x: 0 }}
                 exit={{ x: position === 'right' ? '100%' : '-100%' }}
-                transition={{ ease: 'easeOut', duration: 0.15, delay: 0.1 }}
+                transition={{ ease: 'easeOut', duration: 0.15 }}
                 className={`
-                    fixed top-0 bottom-0 bg-white w-[400px] flex flex-col gap-20 p-5 z-20
+                    fixed top-0 bottom-0 bg-white 
+                    w-[calc(100vw-20px)] lg:w-[400px] h-screen max-h-screen
+                    flex flex-col gap-10 p-5 pb-10 z-20
+                    overflow-y-auto
                     ${position === 'right' ? 'right-0' : 'left-0'}
                 `}
             >
                 {children}
             </motion.div>
-        </div>
+        </>
     )
 }
 

@@ -18,6 +18,8 @@ module.exports = {
       {
         case: 'kebabCase'
       }
-    ]
+    ],
+    "semi": "off",
+    "@typescript-eslint/semi": ["error"]
   }
 };

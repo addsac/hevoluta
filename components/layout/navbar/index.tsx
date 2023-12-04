@@ -1,9 +1,14 @@
+// 'use client'
+
 import Cart from 'components/cart';
 import OpenCart from 'components/cart/open-cart';
+import Accedi from 'components/ui/accedi';
+import Menu from 'components/ui/menu';
+import Profilo from 'components/ui/profilo';
+import Cookie from 'components/ui/cookie';
 import { getMenu } from 'lib/shopify';
 import Link from 'next/link';
 import { Suspense } from 'react';
-
 
 const { SITE_NAME } = process.env;
 
@@ -12,6 +17,9 @@ export default async function Navbar() {
 
   return (
     <>
+      {/* modal */}
+      <Cookie />
+
       <div className="w-screen flex flex-col">
         {/* black stripe */}
         <div className="w-full max-w-full overflow-x-auto flex flex-nowrap items-center gap-10 justify-between bg-black text-white px-5 py-1.5">
@@ -30,15 +38,21 @@ export default async function Navbar() {
         <nav className="w-full px-5 py-5 flex items-center justify-between bg-white border-b border-gray-200">
           {/* left buttons */}
           <div className="flex items-center w-full">
-            <button className="button-menu"> Menu </button>
+            <Menu />
             <div className="hidden lg:block">
-              <button className="button-menu"> Prodotti </button>
+              <Link href="/products"> 
+                <button className="button-menu">
+                  Prodotti
+                </button>
+              </Link>
             </div>
             <div className="hidden lg:block">
-              <button className="button-menu"> 
-                <div className="button-ball"></div>
-                Chatta con noi 
-              </button>
+              <Link href="/chat"> 
+                <button className="button-menu"> 
+                  <div className="button-ball"></div>
+                  Chatta con noi 
+                </button>
+              </Link>
             </div>
           </div>
 
@@ -54,7 +68,8 @@ export default async function Navbar() {
           {/* right buttons */}
           <div className="flex items-center justify-end w-full">
             <div className="hidden lg:block">
-              <button className="button-menu"> Accedi </button>
+              {/* <Accedi /> */}
+              <Profilo />
             </div>
             <Suspense fallback={<OpenCart />}>
               <Cart />
