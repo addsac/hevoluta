@@ -17,7 +17,8 @@ export default function LastLink(){
                     alt=""
                     width={400}
                     height={400}
-                    className="absolute right-0 top-0 bottom-0 w-auto"
+                    className="absolute right-0 top-0 bottom-0 w-auto select-none"
+                    draggable={false}
                 />
                 <div className="absolute bottom-5 left-5 right-5 flex flex-col items-start gap-5">
                     <p className="text-title-4">
@@ -64,7 +65,8 @@ export default function LastLink(){
                     alt=""
                     width={400}
                     height={400}
-                    className="w-full h-full object-cover opacity-60"
+                    className="w-full h-full object-cover opacity-60 select-none"
+                    draggable={false}
                 />
 
                 <div className="absolute bottom-5 left-5 right-5 flex flex-col gap-5">
