@@ -3,33 +3,35 @@ import React from 'react'
 
 const ModalCenter = ({ children = <></>, closeModal = null }: { children: React.ReactNode, closeModal: any }) => {
     return (
-        <>
-            {/* background */}
-            <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ ease: 'easeOut', duration: 0.15 }}
-                className="fixed inset-0 w-screen h-screen bg-black/[0.26] backdrop-blur-md z-40" 
+        <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ ease: 'easeOut', duration: 0.15 }}
+            className="fixed inset-0 flex flex-col min-h-scren min-w-screen max-h-screen max-w-screen overflow-auto z-40 bg-black/[0.26] backdrop-blur-md"
+        >
+            {/* top */}
+            <div 
+                className="w-screen min-h-[64px]"
                 onClick={() => closeModal()}
             />
-
-            {/* dialog */}
-            <motion.div 
-                initial={{ y: -20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -20, opacity: 0 }}
-                transition={{ ease: 'easeOut', duration: 0.15 }}
-                className="
-                    fixed top-0 left-0 right-0
-                    w-[500px] h-auto 
-                    bg-white border border-black p-10 flex flex-col gap-10 
-                    mx-auto mt-10 z-50
-                "
-            >
-                {children}
-            </motion.div>
-        </>
+            {/* center */}
+            <div className="w-screen h-auto flex">
+                {/* left */}
+                <div className="w-5 lg:w-full" onClick={() => closeModal()} />
+                {/* center */}
+                <div className="w-full lg:min-w-[500px] h-auto bg-white border border-black p-10 flex flex-col gap-10">
+                    {children}
+                </div>
+                {/* right */}
+                <div className="w-5 lg:w-full" onClick={() => closeModal()} />
+            </div>
+            {/* bottom */}
+            <div 
+                className="w-screen h-full min-h-[64px]" 
+                onClick={() => closeModal()}
+            />
+        </motion.div>
     )
 }
 

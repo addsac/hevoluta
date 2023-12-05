@@ -2,10 +2,9 @@
 
 import Cart from 'components/cart';
 import OpenCart from 'components/cart/open-cart';
-import Accedi from 'components/ui/accedi';
+import Cookie from 'components/ui/cookie';
 import Menu from 'components/ui/menu';
 import Profilo from 'components/ui/profilo';
-import Cookie from 'components/ui/cookie';
 import { getMenu } from 'lib/shopify';
 import Link from 'next/link';
 import { Suspense } from 'react';

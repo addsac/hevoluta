@@ -45,7 +45,7 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
           className="w-5 h-auto"
         />
         <p>
-          {cart?.totalQuantity}
+          {cart?.totalQuantity || 0}
         </p>
       </button>
 
@@ -245,7 +245,10 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                 <div className="w-full h-px bg-gray-100"></div> 
                 <div className="flex items-center justify-between gap-2.5">
                   <p> Subtotale: </p>
-                  <p> {Number(cart.cost.totalAmount.amount).toFixed(2)}€ </p>
+                  <p> 
+                    {/* {cart.cost.totalAmount.amount}€ */}
+                    0.00€
+                  </p>
                 </div>
             </div>
             
