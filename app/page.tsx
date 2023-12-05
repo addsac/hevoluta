@@ -1,7 +1,11 @@
 // import { Carousel } from 'components/carousel';
 // import { ThreeItemGrid } from 'components/grid/three-items';
 import Footer from 'components/layout/footer';
-import ProductRow from 'components/ui/product/product-row';
+import BlogCard from 'components/ui/blog/blog-card';
+import Divider from 'components/ui/divider';
+import ImageDescription from 'components/ui/image-description';
+import ProductRows from 'components/ui/product/product-rows';
+import { getCollectionProducts } from 'lib/shopify';
 import Image from 'next/image';
 import { Suspense } from 'react';
 import { Balancer } from 'react-wrap-balancer';
@@ -16,6 +20,10 @@ export const metadata = {
 };
 
 export default async function HomePage() {
+  const collections = await getCollectionProducts({
+    'collection': "homepage-featured-items",
+  });
+
   return (
     <>
       {/* Hero */}
@@ -89,9 +97,35 @@ export default async function HomePage() {
           </div>
 
           {/* row 2 prodcucts */}
-          <ProductRow items={[1, 2]} />
-          <ProductRow items={[3, 4]} />
-          <ProductRow items={[5, 6]} />
+          <ProductRows items={collections} />
+        </div>
+      </div>
+
+      {/* Image description */}
+      <ImageDescription 
+        title={"Il processo di formulazione dei nostri prodotti"} 
+        description={"nasce da una qualità superiore delle materie prime, unita ad un’attenzione per i bisogni e l’esperienza delle persone."} 
+        src="/img/background/background-2.jpg"
+        href="/prodotti" 
+      />
+
+      {/* divider */}
+      <Divider />
+
+      {/* Blog */}
+      <div className="flex flex-col gap-20 px-5 py-[120px]">
+        <div className="w-full flex flex-col items-center justify-center gap-20">
+          {/* title */}
+          <p className="text-title-4 text-center">
+            Ultime ricerche
+          </p>
+
+          {/* 3 articles */}
+          <div className="w-full flex flex-col lg:flex-row gap-16 lg:gap-2.5">
+            <BlogCard />
+            <BlogCard />
+            <BlogCard />
+          </div>
         </div>
       </div>
 

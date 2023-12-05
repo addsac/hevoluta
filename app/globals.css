@@ -25,7 +25,7 @@ html, body{
 }
 
 p{
-  letter-spacing: 0.3px;
+  letter-spacing: 0.4px;
   line-height: 140%;
 }
 
@@ -78,9 +78,20 @@ button{
   letter-spacing: 0.8px;
   line-height: 120% !important;
 }
+.text-title-3{
+  @apply text-32 font-light tiempos-font;
+  letter-spacing: 0.8px;
+  line-height: 150% !important;
+}
 .text-title-4{
   @apply text-26 font-light tiempos-font;
+  line-height: 150% !important;
   letter-spacing: 0.8px;
+}
+.text-title-5{
+  @apply text-20 font-light tiempos-font;
+  line-height: 170% !important;
+  letter-spacing: 0.6px;
 }
 
 /* gradient */
