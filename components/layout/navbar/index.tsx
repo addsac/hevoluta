@@ -2,9 +2,9 @@
 
 import Cart from 'components/cart';
 import OpenCart from 'components/cart/open-cart';
+import Accedi from 'components/ui/accedi';
 import Cookie from 'components/ui/cookie';
 import Menu from 'components/ui/menu';
-import Profilo from 'components/ui/profilo';
 import { getMenu } from 'lib/shopify';
 import Link from 'next/link';
 import { Suspense } from 'react';
@@ -67,8 +67,8 @@ export default async function Navbar() {
           {/* right buttons */}
           <div className="flex items-center justify-end w-full">
             <div className="hidden lg:block">
-              {/* <Accedi /> */}
-              <Profilo />
+              <Accedi />
+              {/* <Profilo /> */}
             </div>
             <Suspense fallback={<OpenCart />}>
               <Cart />

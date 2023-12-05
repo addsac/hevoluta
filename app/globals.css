@@ -24,14 +24,14 @@ html, body{
   @apply text-15 bg-white text-black selection:bg-sky-300;
 }
 
-p, span, a, button, input, label, h1, h2, h3, h4, h5, h6, li, ul, ol, figure, figcaption, blockquote, cite, hr, dl, dt, dd, table, th, td, form, fieldset, legend, caption, details, summary {
-  letter-spacing: 0.2px;
+p{
+  letter-spacing: 0.3px;
   line-height: 140%;
 }
 
 /* button */
 button{
-  @apply active:outline-none focus:outline-none active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed;
+  @apply active:outline-none focus:outline-none active:scale-[0.97] disabled:opacity-50 disabled:cursor-not-allowed;
 }
 .button-text{
   @apply border-b border-transparent hover:border-black leading-['auto'] cursor-pointer;
@@ -41,6 +41,9 @@ button{
 }
 .button-primary-base{
   @apply bg-black text-white px-4 py-[12px];
+}
+.button-secondary-lg{
+  @apply bg-white text-black font-medium px-8 py-[18px];
 }
 .button-secondary-base{
   @apply bg-white text-black border border-black px-4 py-[12px];
@@ -70,6 +73,11 @@ button{
 }
 
 /* texts */
+.text-title-1{
+  @apply text-70 tiempos-font;
+  letter-spacing: 0.8px;
+  line-height: 120% !important;
+}
 .text-title-4{
   @apply text-26 font-light tiempos-font;
   letter-spacing: 0.8px;
