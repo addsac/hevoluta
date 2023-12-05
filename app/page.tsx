@@ -4,6 +4,7 @@ import Footer from 'components/layout/footer';
 import BlogCard from 'components/ui/blog/blog-card';
 import Divider from 'components/ui/divider';
 import ImageDescription from 'components/ui/image-description';
+import LastLink from 'components/ui/last-link';
 import ProductRows from 'components/ui/product/product-rows';
 import { getCollectionProducts } from 'lib/shopify';
 import Image from 'next/image';
@@ -129,12 +130,24 @@ export default async function HomePage() {
         </div>
       </div>
 
-      {/* <ThreeItemGrid /> */}
+      {/* divider */}
+      <Divider />
+
+      {/* Last links */}
       <Suspense>
-        {/* <Carousel /> */}
+        <LastLink />
+      </Suspense>
+
+      {/* <ThreeItemGrid />
+      <Suspense>
+        <Carousel />
         <Suspense>
           <Footer />
         </Suspense>
+      </Suspense> */}
+
+      <Suspense>
+        <Footer />
       </Suspense>
     </>
   );
