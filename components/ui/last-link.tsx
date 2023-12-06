@@ -11,13 +11,13 @@ export default function LastLink(){
     return (
         <div className="grid grid-cols-12 gap-5 px-5 py-[120px]">
             {/* newsletter */}
-            <div className="relative col-span-8 h-[400px] border border-black bg-gradient-gray overflow-clip">
+            <div className="relative col-span-12 lg:col-span-8 h-[400px] border border-black bg-gradient-gray overflow-clip">
                 <Image
                     src="/img/background/background-3.png"
                     alt=""
                     width={400}
                     height={400}
-                    className="absolute right-0 top-0 bottom-0 w-auto select-none"
+                    className="absolute right-0 top-0 bottom-0 w-auto select-none opacity-50 lg:opacity-100"
                     draggable={false}
                 />
                 <div className="absolute bottom-5 left-5 right-5 flex flex-col items-start gap-5">
@@ -59,7 +59,7 @@ export default function LastLink(){
             </div>
             
             {/* social */}
-            <div className="relative col-span-4 h-[400px] bg-black">
+            <div className="relative col-span-12 lg:col-span-4 h-[400px] bg-black">
                 <Image
                     src="/img/background/background-2.jpg"
                     alt=""

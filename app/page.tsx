@@ -62,7 +62,7 @@ export default async function HomePage() {
             className="w-12 h-12 opacity-50"
           />
           <p> Spedizione gratuita </p>
-          <p className='opacity-70'> goditi la spedizione super veloce, gratis in UE </p>
+          <p className='opacity-50'> goditi la spedizione super veloce, gratis in UE </p>
         </div>
         <div className="w-full flex flex-col items-center justify-center gap-5">
           <img 
@@ -71,7 +71,7 @@ export default async function HomePage() {
             className="w-12 h-12 opacity-50"
           />
           <p> Rimborso assistito </p>
-          <p className='opacity-70'> in UE, per tutti i prodotti disponibili </p>
+          <p className='opacity-50'> in UE, per tutti i prodotti disponibili </p>
         </div>
         <div className="w-full flex flex-col items-center justify-center gap-5">
           <img 
@@ -80,7 +80,7 @@ export default async function HomePage() {
             className="w-12 h-12 opacity-50"
           />
           <p> Hai dei dubbi? </p>
-          <p className='opacity-70'> Apri qui la chat per ogni domanda sui prodotti </p>
+          <p className='opacity-50'> Apri qui la chat per ogni domanda sui prodotti </p>
         </div>
       </div>
 
@@ -109,6 +109,81 @@ export default async function HomePage() {
         src="/img/background/background-2.jpg"
         href="/prodotti" 
       />
+
+      {/* About our products */}
+      <div className="flex flex-col gap-16 px-5 py-[120px]">
+        <div className="w-full lg:w-1/2 flex flex-col gap-8">
+          <p className="text-title-2">
+            Riguardo ai nostri prodotti
+          </p>
+          <p className="text-body-2 opacity-80">
+            Consideriamo l'innovazione di fondamentale importanza e ci impegniamo costantemente a costruire formule cosmetiche di alta qualità, e che abbiano un impatto reale sulla vita delle persone. Unisciti a noi nell'abbracciare questi principi.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-12 gap-2.5 bg-gray-50 border-y border-gray-200 divide-y lg:divide-x lg:divide-y-0 divide-gray-200">
+          <div className="col-span-12 lg:col-span-3 flex flex-col justify-center items-center gap-4 pb-8 lg:pb-10 py-10">
+            <p className="text-title-4">
+              Fondati nel
+            </p>
+            <p className="text-body-1 opacity-80">
+              Marzo 2021
+            </p>
+          </div>
+          <div className="col-span-12 lg:col-span-3 flex flex-col justify-center items-center gap-4 pb-8 lg:pb-10 py-10">
+            <p className="text-title-4">
+              10.000+
+            </p>
+            <p className="text-body-1 opacity-80">
+              Clienti soddisfatti
+            </p>
+          </div>
+          <div className="col-span-12 lg:col-span-3 flex flex-col justify-center items-center gap-4 pb-8 lg:pb-10 py-10">
+            <p className="text-title-4">
+              100+
+            </p>
+            <p className="text-body-1 opacity-80">
+              Prodotti sviluppati
+            </p>
+          </div>
+          <div className="col-span-12 lg:col-span-3 flex flex-col justify-center items-center gap-4 pb-8 lg:pb-10 py-10">
+            <p className="text-title-4">
+              100% Italiano
+            </p>
+            <p className="text-body-1 opacity-80">
+              Progettato, formulato e prodottto
+            </p>
+          </div>
+        </div>
+
+        <div className="flex flex-col lg:flex-row gap-5">
+          <div className="w-full lg:w-1/2 pr-12">
+            <p className="text-title-6">
+              Dedizione e passione nel formulare  prodotti di altissima qualità
+            </p>
+          </div>
+          <div className="w-full lg:w-1/2">
+            <p className="text-body-1 opacity-80" style={{ lineHeight: '170% !important' }}>
+              Le nostre convinzioni vanno oltre l'estetica, riconoscendo che una formula eccezionale comprende funzionalità, esperienza della persona e attenzione meticolosa agli ingredienti. Con profonda cura e impegno inflessibile per l'eccellenza, il nostro team di esperti crea prodotti che sono funzionali allo scopo specifico prefissato.
+            </p>
+          </div>
+        </div>
+
+        <div className="flex flex-col lg:flex-row gap-5">
+          <div className="w-full lg:w-1/2">
+            <p className="text-title-6">
+              Scrivono di noi
+            </p>
+          </div>
+          <div className="w-full lg:w-1/2 flex items-center gap-5">
+            <div className="h-12 w-24 bg-gray-100"></div>
+            <div className="h-12 w-24 bg-gray-100"></div>
+            <div className="h-12 w-24 bg-gray-100"></div>
+            <div className="h-12 w-24 bg-gray-100"></div>
+            <div className="h-12 w-24 bg-gray-100"></div>
+          </div>
+        </div>
+      </div>
 
       {/* divider */}
       <Divider />

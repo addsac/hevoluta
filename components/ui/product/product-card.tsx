@@ -27,7 +27,7 @@ export default function ProductCard({ item = null } : { item: any }) {
                 <p> {item.title} </p>
                 <p className="font-mono font-normal"> 
                     {Number(item.priceRange.minVariantPrice.amount).toFixed(0)} 
-                    &nbsp;{item.priceRange.minVariantPrice.currencyCode == 'EUR' ? '€' : ''} 
+                    {item.priceRange.minVariantPrice.currencyCode == 'EUR' ? '€' : ''} 
                 </p>
             </div>
         </Link>

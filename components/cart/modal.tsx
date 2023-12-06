@@ -2,6 +2,7 @@
 
 import Modal from 'components/ui/modal';
 import { AnimatePresence } from 'framer-motion';
+import { DEFAULT_OPTION } from 'lib/constants';
 import type { Cart } from 'lib/shopify/types';
 import { createUrl } from 'lib/utils';
 import Image from 'next/image';
