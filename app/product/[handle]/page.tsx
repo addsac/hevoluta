@@ -1,15 +1,19 @@
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { Suspense } from 'react';
-
+import { AddToCart } from 'components/cart/add-to-cart';
 import { GridTileImage } from 'components/grid/tile';
 import Footer from 'components/layout/footer';
+import Price from 'components/price';
 import { Gallery } from 'components/product/gallery';
-import { ProductDescription } from 'components/product/product-description';
+import ProductAccrodion from 'components/product/product-accordion';
+import { VariantSelector } from 'components/product/variant-selector';
+import Divider from 'components/ui/divider';
+import LastLink from 'components/ui/last-link';
 import { HIDDEN_PRODUCT_TAG } from 'lib/constants';
 import { getProduct, getProductRecommendations } from 'lib/shopify';
 import { Image } from 'lib/shopify/types';
+import type { Metadata } from 'next';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import { Suspense } from 'react';
 
 export const runtime = 'edge';
 
@@ -81,7 +85,7 @@ export default async function ProductPage({ params }: { params: { handle: string
           __html: JSON.stringify(productJsonLd)
         }}
       />
-      <div className="mx-auto max-w-screen-2xl px-4">
+      {/* <div className="mx-auto max-w-screen-2xl px-4">
         <div className="flex flex-col rounded-lg border border-neutral-200 bg-white p-8 dark:border-neutral-800 dark:bg-black md:p-12 lg:flex-row lg:gap-8">
           <div className="h-full w-full basis-full lg:basis-4/6">
             <Gallery
@@ -99,7 +103,91 @@ export default async function ProductPage({ params }: { params: { handle: string
         <Suspense>
           <RelatedProducts id={product.id} />
         </Suspense>
+      </div> */}
+
+      <div className="w-screen max-w-screen grid grid-cols-12 gap-2.5 px-5 pt-20 pb-[120px]">
+        {/* photos */}
+        <Gallery
+          images={product.images.map((image: Image) => ({
+            src: image.url,
+            altText: image.altText
+          }))}
+        />
+
+        <div className="col-span-6 flex flex-col gap-20 px-10">
+          {/* title and ctas */}
+          <div className="flex flex-col gap-8">
+            <h1 className="text-title-3 !leading-[140%]">
+              {product.title}
+            </h1>
+            <Price
+              amount={product.priceRange.maxVariantPrice.amount}
+              currencyCode={product.priceRange.maxVariantPrice.currencyCode}
+            />
+            <p className="opacity-50">
+              {product.description}
+            </p>
+            {product.options.length > 1 && (
+              <div className="flex flex-col gap-2.5">
+                <p>
+                  Formato ml:
+                </p>
+                <VariantSelector options={product.options} variants={product.variants} />
+              </div>
+            )}
+            {/* cta and reviews */}
+            <div className="flex flex-col gap-3 mt-3">
+              <AddToCart variants={product.variants} availableForSale={product.availableForSale} />
+              <div className="flex items-center p-2 gap-2.5">
+                <div className="flex">
+                  <img  
+                    src="/img/icon/star.svg"
+                    alt=""
+                    className="w-6 h-6"
+                  />
+                  <img  
+                    src="/img/icon/star.svg"
+                    alt=""
+                    className="w-6 h-6 -ml-1"
+                  />
+                  <img  
+                    src="/img/icon/star.svg"
+                    alt=""
+                    className="w-6 h-6 -ml-1"
+                  />
+                  <img  
+                    src="/img/icon/star.svg"
+                    alt=""
+                    className="w-6 h-6 -ml-1"
+                  />
+                  <img  
+                    src="/img/icon/star.svg"
+                    alt=""
+                    className="w-6 h-6 -ml-1"
+                  />
+                </div>
+                <button className="button-text">
+                  Leggi 16 recensioni
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* accordion - decirptions of the product */}
+          <Suspense>
+            <ProductAccrodion />
+          </Suspense>
+        </div>
       </div>
+      
+      {/* divider */}
+      <Divider />
+
+      {/* Last links */}
+      <Suspense>
+        <LastLink />
+      </Suspense>
+
       <Suspense>
         <Footer />
       </Suspense>

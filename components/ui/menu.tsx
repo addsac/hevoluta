@@ -42,18 +42,18 @@ export default function Menu(): any {
               {/* pagine */}
               <div className="flex flex-col items-start gap-5">
                 <p className="opacity-50"> Pagine </p>
-                <Link href="/" className="button-text"> Home </Link>
-                <Link href="/products" className="button-text"> Prodotti </Link>
-                <Link href="/blog" className="button-text"> Blog </Link>
-                <Link href="/chat" className="button-text"> Chatta con noi </Link>
-                <Link href="/about" className="button-text"> Chi siamo </Link>
-                <Link href="/login" className="button-text"> Accedi </Link>
+                <Link href="/" onClick={() => closeMenu()} className="button-text"> Home </Link>
+                <Link href="/products" onClick={() => closeMenu()} className="button-text"> Prodotti </Link>
+                <Link href="/blog" onClick={() => closeMenu()} className="button-text"> Blog </Link>
+                <Link href="/chat" onClick={() => closeMenu()} className="button-text"> Chatta con noi </Link>
+                <Link href="/about" onClick={() => closeMenu()} className="button-text"> Chi siamo </Link>
+                <Link href="/login" onClick={() => closeMenu()} className="button-text"> Accedi </Link>
               </div>
 
               {/* contatti */}
               <div className="flex flex-col items-start gap-5">
                 <p className="opacity-50"> Contatti </p>
-                <Link href="mailto:support@hevoluta.com" className="button-text"> support@hevoluta.com </Link>
+                <Link href="mailto:support@hevoluta.com" onClick={() => closeMenu()} className="button-text"> support@hevoluta.com </Link>
                 <p> Siamo a tua disposizione in chat dal lunedì al venerdi (CET), dalle 9:00 alle 12:00 e dalle 15:00 alle 18:00. </p>
               </div>
 
@@ -63,6 +63,7 @@ export default function Menu(): any {
                 <div className="flex gap-5">
                   <Link 
                     href="https://instagram.com/hevoluta"
+                    onClick={() => closeMenu()}
                     target='_blank'
                     rel='noreferrer noopener'
                     className="bg-black w-8 h-8 flex items-center justify-center"
@@ -71,6 +72,7 @@ export default function Menu(): any {
                   </Link>
                   <Link 
                     href="https://instagram.com/hevoluta"
+                    onClick={() => closeMenu()}
                     target='_blank'
                     rel='noreferrer noopener'
                     className="bg-black w-8 h-8 flex items-center justify-center"
@@ -79,6 +81,7 @@ export default function Menu(): any {
                   </Link>
                   <Link 
                     href="https://instagram.com/hevoluta"
+                    onClick={() => closeMenu()}
                     target='_blank'
                     rel='noreferrer noopener'
                     className="bg-black w-8 h-8 flex items-center justify-center"

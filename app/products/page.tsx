@@ -23,7 +23,7 @@ export default async function ProductPage() {
   return (
     <>
       {/* Hero */}
-      <div className="w-screen px-5">
+      <div className="w-screen px-5 mt-5">
         <div className="relative w-full h-[400px] bg-black text-center flex flex-col items-center justify-center gap-6 overflow-clip">
             <h1 className="text-title-1 text-white z-[1]">
                 I Prodotti

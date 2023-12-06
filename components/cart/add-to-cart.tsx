@@ -17,13 +17,13 @@ function SubmitButton({
 }) {
   const { pending } = useFormStatus();
   const buttonClasses =
-    'relative flex w-full items-center justify-center rounded-full bg-blue-600 p-4 tracking-wide text-white';
-  const disabledClasses = 'cursor-not-allowed opacity-60 hover:opacity-60';
+    'relative flex items-center justify-center gap-4 w-full button-primary-lg';
+  const disabledClasses = 'cursor-not-allowed';
 
   if (!availableForSale) {
     return (
       <button aria-disabled className={clsx(buttonClasses, disabledClasses)}>
-        Out Of Stock
+        Il prodotto è sold out.
       </button>
     );
   }
@@ -38,7 +38,7 @@ function SubmitButton({
         <div className="absolute left-0 ml-4">
           <PlusIcon className="h-5" />
         </div>
-        Add To Cart
+        Aggiungi al carrello
       </button>
     );
   }
@@ -51,14 +51,14 @@ function SubmitButton({
       aria-label="Add to cart"
       aria-disabled={pending}
       className={clsx(buttonClasses, {
-        'hover:opacity-90': true,
         disabledClasses: pending
       })}
+      disabled={pending}
     >
       <div className="absolute left-0 ml-4">
-        {pending ? <LoadingDots className="mb-3 bg-white" /> : <PlusIcon className="h-5" />}
+        {pending ? <LoadingDots className="mb-3 bg-white" /> : <PlusIcon className="hidden h-5" />}
       </div>
-      Add To Cart
+      Aggiungi al carrello
     </button>
   );
 }
