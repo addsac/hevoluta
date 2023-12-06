@@ -33,6 +33,10 @@ p{
 button{
   @apply active:outline-none focus:outline-none active:scale-[0.97] disabled:opacity-50 disabled:cursor-not-allowed;
 }
+/* no scale */
+.button-no-scale{
+  @apply active:scale-100;
+}
 .button-text{
   @apply border-b border-transparent hover:border-black leading-['auto'] cursor-pointer;
 }

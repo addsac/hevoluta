@@ -34,10 +34,11 @@ function SubmitButton({
         aria-label="Please select an option"
         aria-disabled
         className={clsx(buttonClasses, disabledClasses)}
+        disabled
       >
-        <div className="absolute left-0 ml-4">
+        {/* <div className="absolute left-0 ml-4">
           <PlusIcon className="h-5" />
-        </div>
+        </div> */}
         Aggiungi al carrello
       </button>
     );
@@ -56,7 +57,7 @@ function SubmitButton({
       disabled={pending}
     >
       <div className="absolute left-0 ml-4">
-        {pending ? <LoadingDots className="mb-3 bg-white" /> : <PlusIcon className="hidden h-5" />}
+        {pending ? <LoadingDots className="mb-3 bg-white" /> : <></>}
       </div>
       Aggiungi al carrello
     </button>

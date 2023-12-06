@@ -1,9 +1,9 @@
-// import clsx from 'clsx';
+import clsx from 'clsx';
 
 const Price = ({
   amount,
   className,
-  currencyCode = 'EUR',
+  currencyCode = 'USD',
   currencyCodeClassName
 }: {
   amount: string;
@@ -17,7 +17,7 @@ const Price = ({
       currency: currencyCode,
       currencyDisplay: 'narrowSymbol'
     }).format(parseFloat(amount))}`}
-    {/* <span className={clsx('ml-1 inline', currencyCodeClassName)}>{`${currencyCode}`}</span> */}
+    <span className={clsx('ml-1 inline', currencyCodeClassName)}>{`${currencyCode}`}</span>
   </p>
 );
 

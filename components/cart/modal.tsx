@@ -177,14 +177,16 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                 );
 
                 return (
-                  <Link 
+                  <div 
                     key={i}
-                    href={merchandiseUrl}
-                    onClick={closeCart}
                     className="w-full flex gap-4 p-2.5 border border-gray-200"
                   >
                     {/* img */}
-                    <div className="w-20 h-20 bg-gradient-gray">
+                    <Link 
+                      href={merchandiseUrl}
+                      onClick={closeCart}
+                      className="w-20 h-20 bg-gradient-gray"
+                    >
                       <Image
                         className="h-full w-full object-cover"
                         width={64}
@@ -195,7 +197,7 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                         }
                         src={item.merchandise.product.featuredImage.url}
                       />
-                    </div>
+                    </Link>
     
                     {/* texts */}
                     <div className="flex flex-col gap-5">
@@ -219,19 +221,13 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                       <div className="flex justify-between items-center gap-4">
                         {/* ctas */}
                         <div className="flex justify-between items-center gap-2.5">
-                          {/* <button className="button-quantity">
-                            <img src="/img/icon/minus.svg" alt="" className="h-2.5 w-2.5" />
-                          </button> */}
-                          {/* <button className="button-quantity">
-                            <img src="/img/icon/add.svg" alt="" className="h-2.5 w-2.5" />
-                          </button> */}
                           <EditItemQuantityButton item={item} type="minus" />
                           <p> {item.quantity} </p>
                           <EditItemQuantityButton item={item} type="plus" />
                         </div>
                       </div>
                     </div>
-                  </Link>
+                  </div>
                 )
               })}
               </div>
@@ -247,8 +243,7 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                 <div className="flex items-center justify-between gap-2.5">
                   <p> Subtotale: </p>
                   <p> 
-                    {/* {cart.cost.totalAmount.amount}€ */}
-                    0.00€
+                    {Number(cart.cost.totalAmount.amount).toFixed(2)}€
                   </p>
                 </div>
             </div>

@@ -19,10 +19,10 @@ export default function ProductCard({ item = null } : { item: any }) {
                 {isHovered && (
                     <motion.div 
                         className="absolute top-5 right-5 left-5 p-5 bg-black text-white z-5 font"
-                        initial={{ opacity: 0, y: 10 }}
+                        initial={{ opacity: 0, y: 5 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.15, ease: 'easeInOut' }}
+                        exit={{ opacity: 0, y: -5 }}
+                        transition={{ duration: 0.10, ease: 'easeInOut' }}
                     >
                         {item?.description}
                     </motion.div>
