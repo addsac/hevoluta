@@ -1,15 +1,33 @@
+'use client'
+
+import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'
+import { useState } from 'react'
 
 export default function ProductCard({ item = null } : { item: any }) {
+    const [isHovered, setIsHovered] = useState(false)
+
     return (
         <Link 
             href={`/product/${item.handle}`}
             className="relative w-full lg:w-1/2 flex flex-col gap-6 cursor-pointer group"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
         >
             {/* black description visible on hover */}
-            <div className="absolute top-5 right-5 left-5 opacity-0 group-hover:opacity-100 p-5 bg-black text-white z-5 font">
-                {item?.description}
-            </div>
+            <AnimatePresence>
+                {isHovered && (
+                    <motion.div 
+                        className="absolute top-5 right-5 left-5 p-5 bg-black text-white z-5 font"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.15, ease: 'easeInOut' }}
+                    >
+                        {item?.description}
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
             <div className="flex items-center justify-center py-5 bg-gradient-to-b from-gray-100 to-gray-100/0 group-hover:ring-1 group-hover:ring-black">
                 <img 
