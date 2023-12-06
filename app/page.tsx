@@ -97,7 +97,7 @@ export default async function HomePage() {
             </p>
           </div>
 
-          {/* row 2 prodcucts */}
+          {/* rows prodcucts */}
           <ProductRows items={collections} />
         </div>
       </div>
