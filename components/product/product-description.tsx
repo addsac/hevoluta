@@ -49,7 +49,7 @@ export function ProductDescription({ product }: { product: Product }) {
 
         {/* accordion - decirptions of the product */}
         <Suspense>
-          <ProductAccrodion />
+          <ProductAccrodion product={product} />
         </Suspense>
       </div>
     </>

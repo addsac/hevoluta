@@ -21,7 +21,7 @@ button {
 } */
 
 html, body{
-  @apply text-15 bg-white text-black selection:bg-sky-300;
+  @apply overflow-x-hidden text-15 bg-white text-black selection:bg-sky-300;
 }
 
 p{

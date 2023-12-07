@@ -33,8 +33,8 @@ export default function ProductReviews({ product }: { product: any }) {
             marginRight: 'auto'
           }}
         >
-          {[1, 2, 3, 4, 5].map(() => (
-            <SwiperSlide>
+          {[1, 2, 3, 4, 5].map((value, index) => (
+            <SwiperSlide key={'review-card-desktop-' + index}>
               <div className="flex flex-col items-center justify-center gap-6 bg-white p-10">
                 {/* author */}
                 <p className="text-title-6 opacity-60">Claudia M.</p>
@@ -80,8 +80,8 @@ export default function ProductReviews({ product }: { product: any }) {
             marginRight: 'auto'
           }}
         >
-          {[1, 2, 3, 4, 5].map(() => (
-            <SwiperSlide>
+          {[1, 2, 3, 4, 5].map((value, index) => (
+            <SwiperSlide key={'review-card-mobile-' + index}>
               <div className="flex flex-col items-center justify-center gap-6 bg-white p-10">
                 {/* author */}
                 <p className="text-title-6 opacity-60">Claudia M.</p>

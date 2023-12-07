@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
 
-export default function ProductAccordion() {
+export default function ProductAccordion({ product = null } : { product: any }) {
   const [isOpenChev1, setIsOpenChev1] = useState(false);
   const [isOpenChev2, setIsOpenChev2] = useState(false);
   const [isOpenChev3, setIsOpenChev3] = useState(false);
@@ -26,9 +26,7 @@ export default function ProductAccordion() {
                     transition={{ ease: 'easeOut', duration: 0.1 }}
                     className="text-13 leading-[170%]"
                 >
-                    Necessary cookies help make a website usable by enabling basic functions like page
-                    navigation and access to secure areas of the website. The website cannot function
-                    properly without these cookies.
+                    {product.metafields.benefici_del_prodotto}
                 </motion.p>
             )}
           </AnimatePresence>
@@ -67,9 +65,7 @@ export default function ProductAccordion() {
                     transition={{ ease: 'easeOut', duration: 0.1 }}
                     className="text-13 leading-[170%]"
                 >
-                    Necessary cookies help make a website usable by enabling basic functions like page
-                    navigation and access to secure areas of the website. The website cannot function
-                    properly without these cookies.
+                    {product.metafields.ingredienti}
                 </motion.p>
             )}
           </AnimatePresence>
@@ -108,9 +104,7 @@ export default function ProductAccordion() {
                     transition={{ ease: 'easeOut', duration: 0.1 }}
                     className="text-13 leading-[170%]"
                 >
-                    Necessary cookies help make a website usable by enabling basic functions like page
-                    navigation and access to secure areas of the website. The website cannot function
-                    properly without these cookies.
+                    {product.metafields.modalita_uso}
                 </motion.p>
             )}
           </AnimatePresence>
