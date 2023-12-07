@@ -15,7 +15,7 @@ export default function ProductAccordion() {
         onClick={() => setIsOpenChev1(!isOpenChev1)}
       >
         <div className="flex w-full flex-col items-start gap-5 selection:bg-transparent">
-          <p className="group-hover:underline group-hover:underline-offset-4"> Benefici del prodotto </p>
+          <p className="border-b border-transparent group-hover:border-black"> Benefici del prodotto </p>
 
           <AnimatePresence>
             {isOpenChev1 && (
@@ -56,7 +56,7 @@ export default function ProductAccordion() {
         onClick={() => setIsOpenChev2(!isOpenChev2)}
       >
         <div className="flex w-full flex-col items-start gap-5 selection:bg-transparent">
-          <p className="group-hover:underline group-hover:underline-offset-4"> Ingredienti </p>
+          <p className="border-b border-transparent group-hover:border-black"> Ingredienti </p>
 
           <AnimatePresence>
             {isOpenChev2 && (
@@ -97,7 +97,7 @@ export default function ProductAccordion() {
         onClick={() => setIsOpenChev3(!isOpenChev3)}
       >
         <div className="flex w-full flex-col items-start gap-5 selection:bg-transparent">
-          <p className="group-hover:underline group-hover:underline-offset-4"> Modalità d'uso </p>
+          <p className="border-b border-transparent group-hover:border-black"> Modalità d'uso </p>
 
           <AnimatePresence>
             {isOpenChev3 && (

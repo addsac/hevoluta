@@ -52,6 +52,12 @@ button{
 .button-secondary-base{
   @apply bg-white text-black border border-black px-4 py-[12px];
 }
+.button-cips-product-inactive{
+  @apply text-body-1 font-mono border-b border-transparent hover:border-white leading-['auto'] cursor-pointer text-white opacity-50;
+}
+.button-cips-product-active{
+  @apply text-body-1 font-mono border-b border-white leading-['auto'] cursor-pointer text-white;
+}
 .button-menu-cart{
   @apply rounded-full bg-gray-100 text-13 text-black hover:bg-gray-200 tracking-[0.2px] px-4 py-2.5 flex items-center justify-center gap-2;
 }
@@ -104,7 +110,12 @@ button{
 .text-title-6{
   @apply text-17 font-light tiempos-font;
   line-height: 140% !important;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.5px;
+}
+.text-title-7{
+  @apply text-15 font-light tiempos-font;
+  line-height: 140% !important;
+  letter-spacing: 0.5px;
 }
 .text-body-1_3{
   @apply text-12;
@@ -117,6 +128,10 @@ button{
 .text-body-1{
   @apply text-15;
   line-height: 140% !important;
+}
+.text-body-1_170{
+  @apply text-15;
+  line-height: 170% !important;
 }
 .text-body-2{
   @apply text-17;

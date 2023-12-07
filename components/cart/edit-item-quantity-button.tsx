@@ -21,9 +21,11 @@ function SubmitButton({ type }: { type: 'plus' | 'minus' }) {
         'button-quantity',
         {
           'cursor-not-allowed': pending,
+          'opacity-60': pending,
           'ml-auto': type === 'minus'
         }
       )}
+      disabled={pending}
     >
       {pending ? (
         <LoadingDots className="bg-black dark:bg-white" />

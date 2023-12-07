@@ -26,12 +26,12 @@ export function Gallery({ images }: { images: { src: string; altText: string }[]
 
   return (
     <>
-      <div className="col-span-6 flex flex-col gap-10">
+      <div className="w-full lg:w-1/2">
         {/* main photo */}
         {images[imageIndex] && (
-          <div className="w-full h-[500px] flex items-center justify-center py-10 bg-gradient-gray">
+          <div className="flex items-center justify-center bg-gradient-gray p-10">
             <Image
-              className="h-full w-auto"
+              className="h-auto w-auto max-h-[500px] bg-gradient-gray"
               width={800}
               height={800}
               alt={images[imageIndex]?.altText as string}
@@ -39,11 +39,11 @@ export function Gallery({ images }: { images: { src: string; altText: string }[]
               priority={true}
             />
           </div>
-        )}
+          )}
           
         {/* other photos */}
         {images.length > 1 ? (
-          <ul className="grid grid-cols-6 gap-2.5">
+          <ul className="grid grid-cols-5 lg:grid-cols-6 gap-2.5">
             {images.map((image, index) => {
               const isActive = index === imageIndex;
               const imageSearchParams = new URLSearchParams(searchParams.toString());

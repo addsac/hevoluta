@@ -9,7 +9,7 @@ import { VariantSelector } from './variant-selector';
 export function ProductDescription({ product }: { product: Product }) {
   return (
     <>
-      <div className="col-span-6 flex flex-col gap-20 px-10">
+      <div className="w-full lg:w-1/2 flex flex-col gap-20 lg:px-10">
         {/* title and ctas */}
         <div className="flex flex-col gap-8">
           <h1 className="text-title-3 !leading-[140%]">{product.title}</h1>
@@ -21,7 +21,7 @@ export function ProductDescription({ product }: { product: Product }) {
           
           {product.descriptionHtml ? (
             <Prose
-            className="text-body-1 opacity-50"
+              className="text-body-1 opacity-50"
               html={product.descriptionHtml}
             />
           ) : null}

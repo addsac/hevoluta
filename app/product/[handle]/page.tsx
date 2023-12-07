@@ -1,14 +1,15 @@
-import { GridTileImage } from 'components/grid/tile';
 import Footer from 'components/layout/footer';
 import { Gallery } from 'components/product/gallery';
 import { ProductDescription } from 'components/product/product-description';
+import ProductDetails from 'components/product/product-details';
+import ProductReviews from 'components/product/product-reviews';
 import Divider from 'components/ui/divider';
 import LastLink from 'components/ui/last-link';
+import ProductRows from 'components/ui/product/product-rows';
 import { HIDDEN_PRODUCT_TAG } from 'lib/constants';
 import { getProduct, getProductRecommendations } from 'lib/shopify';
 import { Image } from 'lib/shopify/types';
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 
@@ -102,7 +103,7 @@ export default async function ProductPage({ params }: { params: { handle: string
         </Suspense>
       </div> */}
 
-      <div className="w-screen max-w-screen grid grid-cols-12 gap-2.5 px-5 pt-20 pb-[120px]">
+      <div className="w-screen flex flex-col lg:flex-row items-start gap-16 lg:gap-2.5 px-5 pt-20 pb-[120px]">
         {/* photos */}
         <Gallery
           images={product.images.map((image: Image) => ({
@@ -113,6 +114,15 @@ export default async function ProductPage({ params }: { params: { handle: string
 
         <ProductDescription product={product} />
       </div>
+
+      <ProductDetails product={product} />
+
+      <ProductReviews product={product} />
+
+      {/* Products */}
+      <RelatedProducts 
+        id={product.id}
+      />
       
       {/* divider */}
       <Divider />
@@ -135,30 +145,21 @@ async function RelatedProducts({ id }: { id: string }) {
   if (!relatedProducts.length) return null;
 
   return (
-    <div className="py-8">
-      <h2 className="mb-4 text-2xl font-bold">Related Products</h2>
-      <ul className="flex w-full gap-4 overflow-x-auto pt-1">
-        {relatedProducts.map((product) => (
-          <li
-            key={product.handle}
-            className="aspect-square w-full flex-none min-[475px]:w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5"
-          >
-            <Link className="relative h-full w-full" href={`/product/${product.handle}`}>
-              <GridTileImage
-                alt={product.title}
-                label={{
-                  title: product.title,
-                  amount: product.priceRange.maxVariantPrice.amount,
-                  currencyCode: product.priceRange.maxVariantPrice.currencyCode
-                }}
-                src={product.featuredImage?.url}
-                fill
-                sizes="(min-width: 1024px) 20vw, (min-width: 768px) 25vw, (min-width: 640px) 33vw, (min-width: 475px) 50vw, 100vw"
-              />
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <div className="flex flex-col gap-20 px-5 py-[120px]">
+        <div className="w-full flex flex-col items-center justify-center gap-20">
+          {/* title */}
+          <div className="flex flex-col gap-6 text-center">
+            <p className="text-title-4">
+              Scopri altri prodotti:
+            </p>
+            <p className="opacity-70">
+              Acquista i nostri prodotti più amati
+            </p>
+          </div>
+
+          {/* rows prodcucts */}
+          <ProductRows items={relatedProducts} />
+        </div>
+      </div>
   );
 }

@@ -1,5 +1,6 @@
 'use client';
 
+import Price from 'components/price';
 import Modal from 'components/ui/modal';
 import { AnimatePresence } from 'framer-motion';
 import { DEFAULT_OPTION } from 'lib/constants';
@@ -91,145 +92,74 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
             ) : (
               <div className="flex flex-col gap-2.5">
                 {/* product */}
-                {/* {cart.lines.map((item, i) => {
-                const merchandiseSearchParams = {} as MerchandiseSearchParams;
+                {cart.lines.map((item, i) => {
+                  const merchandiseSearchParams = {} as MerchandiseSearchParams;
 
-                item.merchandise.selectedOptions.forEach(({ name, value }) => {
-                  if (value !== DEFAULT_OPTION) {
-                    merchandiseSearchParams[name.toLowerCase()] = value;
-                  }
-                });
+                  item.merchandise.selectedOptions.forEach(({ name, value }) => {
+                    if (value !== DEFAULT_OPTION) {
+                      merchandiseSearchParams[name.toLowerCase()] = value;
+                    }
+                  });
 
-                const merchandiseUrl = createUrl(
-                  `/product/${item.merchandise.product.handle}`,
-                  new URLSearchParams(merchandiseSearchParams)
-                );
+                  const merchandiseUrl = createUrl(
+                    `/product/${item.merchandise.product.handle}`,
+                    new URLSearchParams(merchandiseSearchParams)
+                  );
 
-                return (
-                  <li
-                    key={i}
-                    className="flex w-full flex-col border-b border-neutral-300 dark:border-neutral-700"
-                  >
-                    <div className="relative flex w-full flex-row justify-between px-1 py-4">
-                      <div className="absolute z-40 -mt-2 ml-[55px]">
-                        <DeleteItemButton item={item} />
-                      </div>
-                      <Link
+                  return (
+                    <div 
+                      key={i}
+                      className="w-full flex gap-4 p-2.5 border border-gray-200"
+                    >
+                      {/* img */}
+                      <Link 
                         href={merchandiseUrl}
                         onClick={closeCart}
-                        className="z-30 flex flex-row space-x-4"
+                        className="w-20 h-20 bg-gradient-gray"
                       >
-                        <div className="relative h-16 w-16 cursor-pointer overflow-hidden rounded-md border border-neutral-300 bg-neutral-300 dark:border-neutral-700 dark:bg-neutral-900 dark:hover:bg-neutral-800">
-                          <Image
-                            className="h-full w-full object-cover"
-                            width={64}
-                            height={64}
-                            alt={
-                              item.merchandise.product.featuredImage.altText ||
-                              item.merchandise.product.title
-                            }
-                            src={item.merchandise.product.featuredImage.url}
+                        <Image
+                          className="h-full w-full object-cover"
+                          width={64}
+                          height={64}
+                          alt={
+                            item.merchandise.product.featuredImage.altText ||
+                            item.merchandise.product.title
+                          }
+                          src={item.merchandise.product.featuredImage.url}
+                        />
+                      </Link>
+      
+                      {/* texts */}
+                      <div className="w-full flex flex-col gap-5">
+                        <div className="flex flex-col gap-2.5">
+                          <p className="line-clamp-1">
+                            {item.merchandise.product.title}
+                          </p>
+                          {item.merchandise.title !== DEFAULT_OPTION ? (
+                            <p className="opacity-50 line-clamp-1">
+                              {item.merchandise.title}
+                            </p>
+                          ) : null}
+                        </div>
+      
+                        {/* ctas and price */}
+                        <div className="flex justify-between items-center gap-4">
+                          {/* ctas */}
+                          <div className="w-full flex justify-start items-center gap-2.5">
+                            <EditItemQuantityButton item={item} type="minus" />
+                            <p> {item.quantity} </p>
+                            <EditItemQuantityButton item={item} type="plus" />
+                          </div>
+
+                          <Price
+                            amount={item.cost.totalAmount.amount}
+                            currencyCode={item.cost.totalAmount.currencyCode}
                           />
                         </div>
-
-                        <div className="flex flex-1 flex-col text-base">
-                          <span className="leading-tight">
-                            {item.merchandise.product.title}
-                          </span>
-                          {item.merchandise.title !== DEFAULT_OPTION ? (
-                            <p className="text-sm text-neutral-500 dark:text-neutral-400">
-                              {item.merchandise.title}
-                            </p>
-                          ) : null}
-                        </div>
-                      </Link>
-                      <div className="flex h-16 flex-col justify-between">
-                        <Price
-                          className="flex justify-end space-y-2 text-right text-sm"
-                          amount={item.cost.totalAmount.amount}
-                          currencyCode={item.cost.totalAmount.currencyCode}
-                        />
-                        <div className="ml-auto flex h-9 flex-row items-center rounded-full border border-neutral-200 dark:border-neutral-700">
-                          <EditItemQuantityButton item={item} type="minus" />
-                          <p className="w-6 text-center">
-                            <span className="w-full text-sm">{item.quantity}</span>
-                          </p>
-                          <EditItemQuantityButton item={item} type="plus" />
-                        </div>
                       </div>
                     </div>
-                  </li>
-                );
-              })} */}
-
-              {cart.lines.map((item, i) => {
-                const merchandiseSearchParams = {} as MerchandiseSearchParams;
-
-                item.merchandise.selectedOptions.forEach(({ name, value }) => {
-                  if (value !== DEFAULT_OPTION) {
-                    merchandiseSearchParams[name.toLowerCase()] = value;
-                  }
-                });
-
-                const merchandiseUrl = createUrl(
-                  `/product/${item.merchandise.product.handle}`,
-                  new URLSearchParams(merchandiseSearchParams)
-                );
-
-                return (
-                  <div 
-                    key={i}
-                    className="w-full flex gap-4 p-2.5 border border-gray-200"
-                  >
-                    {/* img */}
-                    <Link 
-                      href={merchandiseUrl}
-                      onClick={closeCart}
-                      className="w-20 h-20 bg-gradient-gray"
-                    >
-                      <Image
-                        className="h-full w-full object-cover"
-                        width={64}
-                        height={64}
-                        alt={
-                          item.merchandise.product.featuredImage.altText ||
-                          item.merchandise.product.title
-                        }
-                        src={item.merchandise.product.featuredImage.url}
-                      />
-                    </Link>
-    
-                    {/* texts */}
-                    <div className="flex flex-col gap-5">
-                      <div className="flex flex-col gap-2.5">
-                        <div className="flex flex-1 flex-col">
-                          <span className="line-clamp-1">
-                            {item.merchandise.product.title}
-                          </span>
-                          {item.merchandise.title !== DEFAULT_OPTION ? (
-                            <p className="line-clamp-1">
-                              {item.merchandise.title}
-                            </p>
-                          ) : null}
-                        </div>
-                        <p className="opacity-50">
-                          100ml
-                        </p>
-                      </div>
-    
-                      {/* ctas and price */}
-                      <div className="flex justify-between items-center gap-4">
-                        {/* ctas */}
-                        <div className="flex justify-between items-center gap-2.5">
-                          <EditItemQuantityButton item={item} type="minus" />
-                          <p> {item.quantity} </p>
-                          <EditItemQuantityButton item={item} type="plus" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )
-              })}
+                  )
+                })}
               </div>
             )}
 
