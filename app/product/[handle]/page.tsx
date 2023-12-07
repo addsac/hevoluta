@@ -115,9 +115,13 @@ export default async function ProductPage({ params }: { params: { handle: string
         <ProductDescription product={product} />
       </div>
 
-      <ProductDetails product={product} />
+      <Suspense>
+        <ProductDetails product={product} />
+      </Suspense>
 
-      <ProductReviews product={product} />
+      <Suspense>
+        <ProductReviews product={product} />
+      </Suspense>
 
       {/* Products */}
       <RelatedProducts 

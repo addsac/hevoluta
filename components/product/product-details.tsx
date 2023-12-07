@@ -47,16 +47,7 @@ export default function ProductDetails({ product = null }: { product: any }) {
               className="text-body-1_170 lg:text-body-2 text-white lg:pr-20"
             >
               <Balancer>
-                Our first product and still the most popular, the Cotton T-Shirt is the cornerstone
-                of any man’s wardrobe. Made from the world’s highest quality cotton for extra
-                softness and durability. Made to Order in Portugal. Our first product and still the
-                most popular, the Cotton T-Shirt is the cornerstone of any man’s wardrobe. Made from
-                the world’s highest quality cotton for extra softness and durability.
-                <br />
-                <br />
-                Made to Order in Portugal. Our first product and still the most popular, the Cotton
-                T-Shirt is the cornerstone of any man’s wardrobe. Made from the world’s highest
-                quality cotton for extra softness and durability. Made to Order in Portugal.
+                {product.metafields.find((metafield: any) => metafield.key == 'storia')?.value}
               </Balancer>
             </motion.p>
           )}
@@ -72,16 +63,7 @@ export default function ProductDetails({ product = null }: { product: any }) {
               className="text-body-1_170 lg:text-body-2 text-white lg:pr-20"
             >
               <Balancer>
-                Our first product and still the most popular, the Cotton T-Shirt is the cornerstone
-                of any man’s wardrobe. Made from the world’s highest quality cotton for extra
-                softness and durability. Made to Order in Portugal.
-                <br />
-                <br />
-                Our first product and still the most popular, the Cotton T-Shirt is the cornerstone
-                of any man’s wardrobe. Made from the world’s highest quality cotton for extra
-                softness and durability. Made to Order in Portugal. Our first product and still the
-                most popular, the Cotton T-Shirt is the cornerstone of any man’s wardrobe. Made from
-                the world’s highest quality cotton for extra softness and durability.
+                {product.metafields.find((metafield: any) => metafield.key == 'indicazioni')?.value}
               </Balancer>
             </motion.p>
           )}
@@ -97,14 +79,7 @@ export default function ProductDetails({ product = null }: { product: any }) {
               className="text-body-1_170 lg:text-body-2 text-white lg:pr-20"
             >
               <Balancer>
-                Our first product and still the most popular, the Cotton T-Shirt is the cornerstone
-                of any man’s wardrobe. Made from the world’s highest quality cotton for extra
-                softness and durability. Made to Order in Portugal.
-                <br />
-                <br />
-                Made to Order in Portugal. Our first product and still the most popular, the Cotton
-                T-Shirt is the cornerstone of any man’s wardrobe. Made from the world’s highest
-                quality cotton for extra softness and durability. Made to Order in Portugal.
+                {product.metafields.find((metafield: any) => metafield.key == 'mantenimento')?.value}
               </Balancer>
             </motion.p>
           )}
