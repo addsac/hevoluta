@@ -3,13 +3,10 @@ import Link from 'next/link';
 import { ShopifyArticle } from '../../../lib/shopify/types';
 
 export default function BlogCardMax({
-    article = null
+    article
 } : {
     article: ShopifyArticle
 }){
-
-    console.log(article)
-
     return (
         <Link 
             className="w-full flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-2.5 cursor-pointer group"

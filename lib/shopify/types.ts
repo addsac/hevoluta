@@ -264,6 +264,13 @@ export type ShopifyBlogOperation = {
   };
 }
 
+export type ShopifyArticles = {
+  pageInfo: PageInfo;
+  edges: {
+    node: ShopifyArticle;
+  }[];
+}
+
 export type ShopifyArticle = {
   id: string;
   title: string;

@@ -35,7 +35,7 @@ import {
   // Post,
   Product,
   ShopifyAddToCartOperation,
-  ShopifyArticle,
+  ShopifyArticles,
   ShopifyArticlesOperation,
   ShopifyBlog,
   ShopifyBlogOperation,
@@ -533,7 +533,7 @@ export async function getArticles({
   title: string,
   sortKey: string,
   reverse: boolean
-}): Promise<ShopifyArticle[]> {
+}): Promise<ShopifyArticles> {
   const res = await shopifyFetch<ShopifyArticlesOperation>({
     query: getArticlesQuery,
     variables: {
