@@ -2,10 +2,18 @@ export type Maybe<T> = T | null;
 
 export type Connection<T> = {
   edges: Array<Edge<T>>;
+  pageInfo?: PageInfo;
 };
 
 export type Edge<T> = {
   node: T;
+};
+
+export type PageInfo = {
+  endCursor?: string;
+  hasNextPage: boolean;
+  hasPreviousPage: boolean;
+  startCursor?: string;
 };
 
 export type Cart = Omit<ShopifyCart, 'lines'> & {
@@ -248,12 +256,41 @@ export type ShopifyBlog = {
     lastName: string;
     email: string;
   }[];
-  // articles: Connection<Post>;
 };
 
 export type ShopifyBlogOperation = {
   data: {
     blogs: Connection<ShopifyBlog>;
+  };
+}
+
+export type ShopifyArticle = {
+  id: string;
+  title: string;
+  image: Image;
+  handle: string;
+  tags: string[];
+  authorV2: {
+    email: string,
+    name: string
+  }
+  content: string,
+  contentHtml: HTMLElement,
+  exerp: string,
+  excerptHtml: HTMLElement,
+  seo: SEO;
+  publishedAt: Date;
+}
+
+export type ShopifyArticlesOperation = {
+  data: {
+    articles: Connection<ShopifyArticle>;
+  };
+  variables: {
+    first: number;
+    query: string;
+    reverse?: boolean;
+    sortKey?: string;
   };
 }
 

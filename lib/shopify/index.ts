@@ -10,6 +10,7 @@ import {
   editCartItemsMutation,
   removeFromCartMutation
 } from './mutations/cart';
+import { getArticlesQuery } from './queries/articles';
 import { getBlogQuery } from './queries/blog';
 import { getCartQuery } from './queries/cart';
 import {
@@ -34,6 +35,8 @@ import {
   // Post,
   Product,
   ShopifyAddToCartOperation,
+  ShopifyArticle,
+  ShopifyArticlesOperation,
   ShopifyBlog,
   ShopifyBlogOperation,
   ShopifyCart,
@@ -122,6 +125,13 @@ const removeEdgesAndNodes = (array: Connection<any>) => {
   return array.edges.map((edge) => edge?.node);
 };
 
+const removeEdgesAndNodesWithPagination = (array: Connection<any>) => {
+  return {
+    pageInfo: array.pageInfo,
+    edges: array.edges.map((edge) => edge?.node)
+  };
+}
+
 /**
  * Reshapes
  */
@@ -130,9 +140,15 @@ const reshapeBlogs = (blogs: any): any => {
     return undefined;
   }
 
-  return {
-    blogs: removeEdgesAndNodes(blogs)
-  };
+  return removeEdgesAndNodes(blogs);
+}
+
+const reshapeArticles = (articles: any): any => {
+  if (!articles) {
+    return undefined;
+  }
+
+  return removeEdgesAndNodesWithPagination(articles);
 }
 
 const reshapeCart = (cart: ShopifyCart): Cart => {
@@ -505,4 +521,28 @@ export async function getBlogs(): Promise<ShopifyBlog[]> {
   });
 
   return reshapeBlogs(res.body.data.blogs);
+}
+
+export async function getArticles({
+  first,
+  title,
+  sortKey,
+  reverse,
+} : {
+  first: number,
+  title: string,
+  sortKey: string,
+  reverse: boolean
+}): Promise<ShopifyArticle[]> {
+  const res = await shopifyFetch<ShopifyArticlesOperation>({
+    query: getArticlesQuery,
+    variables: {
+      first: first,
+      query: title,
+      reverse: reverse,
+      sortKey: sortKey === 'CREATED_AT' ? 'CREATED' : sortKey
+    }
+  });
+
+  return reshapeArticles(res.body.data.articles);
 }

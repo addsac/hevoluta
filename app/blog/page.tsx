@@ -3,7 +3,7 @@ import BlogCard from 'components/ui/blog/blog-card';
 import BlogCardMax from 'components/ui/blog/blog-card-max';
 import Divider from 'components/ui/divider';
 import LastLink from 'components/ui/last-link';
-import { getBlogs } from 'lib/shopify';
+import { getArticles } from 'lib/shopify';
 import Image from 'next/image';
 import { Suspense } from 'react';
 
@@ -17,8 +17,13 @@ export const metadata = {
 };
 
 export default async function BlogPage() {
-  // const posts = await getBlogPosts();
-  const blogs = await getBlogs();
+  // const blogs = await getBlogs();
+  const articles = await getArticles({
+    'first': 100,
+    'title': `title:${process.env.BLOG_TITLE}`,
+    'sortKey': 'PUBLISHED_AT',
+    'reverse': true
+  });
 
   return (
     <>
@@ -53,7 +58,9 @@ export default async function BlogPage() {
             </p>
 
           {/* first blog article */}
-            <BlogCardMax blogs={blogs} />
+          <Suspense>
+            <BlogCardMax article={articles.edges[0]} />
+          </Suspense>
           
           {/* rows blog articles */}
           <div className="mt-10 w-full flex flex-col lg:flex-row gap-16 lg:gap-2.5">

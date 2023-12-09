@@ -1,27 +1,27 @@
-'use client'
-
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { ShopifyArticle } from '../../../lib/shopify/types';
 
-export default function BlogCardMax({ blogs = null } : { blogs: any }){
-    
-    useEffect(() => {
-        console.log(blogs);
-    }, [])
+export default function BlogCardMax({
+    article = null
+} : {
+    article: ShopifyArticle
+}){
+
+    console.log(article)
 
     return (
         <Link 
             className="w-full flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-2.5 cursor-pointer group"
-            href="/blog/1"
+            href={`/blog/${article.handle}`}
         >
             {/* texts */}
             <div className="flex flex-col items-start gap-6 lg:pr-20">
                 <p className="opacity-50">
-                    Bellezza
+                    {article.tags.map((tag: string) => `${tag} `)}
                 </p>
                 <p className="text-title-3 group-hover:underline">
-                    Occhiali a maschera, Il trend inaspettato dell’autunno/inverno 2023
+                    {article.title}
                 </p>
                 <button className="button-primary-base">
                     Leggi l'articolo
@@ -31,7 +31,7 @@ export default function BlogCardMax({ blogs = null } : { blogs: any }){
             {/* image */}
             <div className="w-full h-[400px] flex flex-col items-start bg-black">
                 <Image
-                    src={'/img/blog/background-1.jpg'}
+                    src={article.image ? article.image.url : '/img/background/background-1.jpg'}
                     alt=""
                     width={1200}
                     height={800}
