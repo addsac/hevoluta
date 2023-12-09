@@ -17,7 +17,7 @@ export default function ProductReviews({ product }: { product: any }) {
       </div>
 
       {/* desktop */}
-      <div className="hidden w-full lg:block">
+      <div className="hidden w-full lg:block cursor-grab">
         <Swiper
           slidesPerView={3}
           grid={{
@@ -64,7 +64,7 @@ export default function ProductReviews({ product }: { product: any }) {
       </div>
 
       {/* mobile */}
-      <div className="w-full lg:hidden">
+      <div className="w-full lg:hidden cursor-grab">
         <Swiper
           slidesPerView={1}
           grid={{

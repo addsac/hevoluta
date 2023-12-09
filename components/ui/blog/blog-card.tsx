@@ -28,7 +28,7 @@ export default function BlogCard(){
                     Occhiali a maschera, Il trend inaspettato dell’autunno/inverno 2023
                 </p>
                 <button className="button-primary-base">
-                    Leggi di più
+                    Leggi l'articolo
                 </button>
             </div>
         </Link>

@@ -45,6 +45,17 @@ export type Menu = {
   path: string;
 };
 
+export type Post = {
+  id: string;
+  title: string;
+  handle: string;
+  body: string;
+  bodySummary: string;
+  seo?: SEO;
+  createdAt: string;
+  updatedAt: string;
+}
+
 export type Money = {
   amount: string;
   currencyCode: string;
@@ -225,6 +236,25 @@ export type ShopifyMenuOperation = {
     handle: string;
   };
 };
+
+export type ShopifyBlog = {
+  title: string;
+  handle: string;
+  articles: Connection<Post>;
+};
+
+export type ShopifyBlogOperation = {
+  data: {
+    blog: {
+      title: string;
+      handle: string;
+      articles: Connection<Post>;
+    };
+  };
+  variables: {
+    handle: string;
+  };
+}
 
 export type ShopifyPageOperation = {
   data: { pageByHandle: Page };

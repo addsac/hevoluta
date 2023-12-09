@@ -10,6 +10,7 @@ import {
   editCartItemsMutation,
   removeFromCartMutation
 } from './mutations/cart';
+import { getPostsQuery } from './queries/blog';
 import { getCartQuery } from './queries/cart';
 import {
   getCollectionProductsQuery,
@@ -30,8 +31,11 @@ import {
   Image,
   Menu,
   Page,
+  Post,
   Product,
   ShopifyAddToCartOperation,
+  ShopifyBlog,
+  ShopifyBlogOperation,
   ShopifyCart,
   ShopifyCartOperation,
   ShopifyCollection,
@@ -117,6 +121,14 @@ export async function shopifyFetch<T>({
 const removeEdgesAndNodes = (array: Connection<any>) => {
   return array.edges.map((edge) => edge?.node);
 };
+
+const reshapePosts = (blog: ShopifyBlog): Post[] => {
+  if (!blog) {
+    return [];
+  }
+
+  return removeEdgesAndNodes(blog.articles);
+}
 
 const reshapeCart = (cart: ShopifyCart): Cart => {
   if (!cart.cost?.totalTaxAmount) {
@@ -447,4 +459,16 @@ export async function revalidate(req: NextRequest): Promise<NextResponse> {
   }
 
   return NextResponse.json({ status: 200, revalidated: true, now: Date.now() });
+}
+
+export async function getBlogPosts(handle: string): Promise<Post[]> {
+  const res = await shopifyFetch<ShopifyBlogOperation>({
+    query: getPostsQuery,
+    // tags: [TAGS.blog],
+    variables: {
+      handle
+    }
+  });
+
+  return reshapePosts(res.body.data.blog);
 }
