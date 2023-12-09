@@ -7,7 +7,7 @@ export default function TypingAnimaitonWords({ words = '' } : { words : string }
                 key={index}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.08, ease: 'linear', delay: index * 0.008 }}
+                transition={{ duration: 0.08, ease: 'linear', delay: index * 0.005 }}
             >
                 {word}
             </motion.span>

@@ -238,21 +238,22 @@ export type ShopifyMenuOperation = {
 };
 
 export type ShopifyBlog = {
+  id: string;
   title: string;
   handle: string;
-  articles: Connection<Post>;
+  seo: SEO;
+  authors: {
+    name: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+  }[];
+  // articles: Connection<Post>;
 };
 
 export type ShopifyBlogOperation = {
   data: {
-    blog: {
-      title: string;
-      handle: string;
-      articles: Connection<Post>;
-    };
-  };
-  variables: {
-    handle: string;
+    blogs: Connection<ShopifyBlog>;
   };
 }
 

@@ -14,9 +14,11 @@ type Combination = {
 export function VariantSelector({
   options,
   variants,
+  setRightPriceBasedOnChoosenVariant = null // func to set the right price based on the variaint choosed
 }: {
   options: ProductOption[];
   variants: ProductVariant[];
+  setRightPriceBasedOnChoosenVariant: any;
 }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -86,6 +88,7 @@ export function VariantSelector({
               disabled={!isAvailableForSale}
               onClick={() => {
                 router.replace(optionUrl, { scroll: false });
+                setRightPriceBasedOnChoosenVariant(String(value));
               }}
               title={`${option.name} ${value}${!isAvailableForSale ? ' (Out of Stock)' : ''}`}
               className={clsx(

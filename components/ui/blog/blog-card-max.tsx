@@ -1,7 +1,15 @@
-import Image from 'next/image'
-import Link from 'next/link'
+'use client'
 
-export default function BlogCardMax(){
+import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect } from 'react';
+
+export default function BlogCardMax({ blogs = null } : { blogs: any }){
+    
+    useEffect(() => {
+        console.log(blogs);
+    }, [])
+
     return (
         <Link 
             className="w-full flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-2.5 cursor-pointer group"

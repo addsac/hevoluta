@@ -3,7 +3,7 @@ import BlogCard from 'components/ui/blog/blog-card';
 import BlogCardMax from 'components/ui/blog/blog-card-max';
 import Divider from 'components/ui/divider';
 import LastLink from 'components/ui/last-link';
-import { getBlogPosts } from 'lib/shopify';
+import { getBlogs } from 'lib/shopify';
 import Image from 'next/image';
 import { Suspense } from 'react';
 
@@ -18,6 +18,7 @@ export const metadata = {
 
 export default async function BlogPage() {
   // const posts = await getBlogPosts();
+  const blogs = await getBlogs();
 
   return (
     <>
@@ -28,7 +29,7 @@ export default async function BlogPage() {
                 Il Blog
             </h1>
             <p className="text-17 text-white z-[1]">
-                Leggi le ultime ricerche e articoli 
+                Le ultime ricerche nel campo di cosmetici, benessere e salute.
             </p>
 
             {/* background img */}
@@ -52,7 +53,7 @@ export default async function BlogPage() {
             </p>
 
           {/* first blog article */}
-            <BlogCardMax />
+            <BlogCardMax blogs={blogs} />
           
           {/* rows blog articles */}
           <div className="mt-10 w-full flex flex-col lg:flex-row gap-16 lg:gap-2.5">

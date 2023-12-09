@@ -1,12 +1,31 @@
+'use client'
+
 import { AddToCart } from 'components/cart/add-to-cart';
 import Price from 'components/price';
 import Prose from 'components/prose';
 import { Product } from 'lib/shopify/types';
-import { Suspense } from 'react';
+import { Suspense, useState } from 'react';
 import ProductAccrodion from './product-accordion';
 import { VariantSelector } from './variant-selector';
 
 export function ProductDescription({ product }: { product: Product }) {
+  const [rightPrice, setRightPrice] = useState({
+    amount: product.priceRange.minVariantPrice.amount,
+    currencyCode: product.priceRange.minVariantPrice.currencyCode
+  });
+
+  const setRightPriceBasedOnChoosenVariant = (variant: string) => {
+    // find the right pirce based on the variant
+    product.variants.map((item) => {
+      if(item.title === variant){
+        setRightPrice({
+          amount: item.price.amount,
+          currencyCode: item.price.currencyCode
+        })
+      }
+    })
+  }
+
   return (
     <>
       <div className="w-full lg:w-1/2 flex flex-col gap-20 lg:px-10">
@@ -15,8 +34,8 @@ export function ProductDescription({ product }: { product: Product }) {
           <h1 className="text-title-3 !leading-[140%]">{product.title}</h1>
 
           <Price
-            amount={product.priceRange.maxVariantPrice.amount}
-            currencyCode={product.priceRange.maxVariantPrice.currencyCode}
+            amount={rightPrice.amount}
+            currencyCode={rightPrice.currencyCode}
           />
           
           {product.descriptionHtml ? (
@@ -29,6 +48,7 @@ export function ProductDescription({ product }: { product: Product }) {
           <VariantSelector 
             options={product.options} 
             variants={product.variants} 
+            setRightPriceBasedOnChoosenVariant={setRightPriceBasedOnChoosenVariant}
           />
 
           {/* cta and reviews */}

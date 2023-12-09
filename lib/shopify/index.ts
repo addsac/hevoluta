@@ -10,7 +10,7 @@ import {
   editCartItemsMutation,
   removeFromCartMutation
 } from './mutations/cart';
-import { getPostsQuery } from './queries/blog';
+import { getBlogQuery } from './queries/blog';
 import { getCartQuery } from './queries/cart';
 import {
   getCollectionProductsQuery,
@@ -31,7 +31,7 @@ import {
   Image,
   Menu,
   Page,
-  Post,
+  // Post,
   Product,
   ShopifyAddToCartOperation,
   ShopifyBlog,
@@ -122,12 +122,17 @@ const removeEdgesAndNodes = (array: Connection<any>) => {
   return array.edges.map((edge) => edge?.node);
 };
 
-const reshapePosts = (blog: ShopifyBlog): Post[] => {
-  if (!blog) {
-    return [];
+/**
+ * Reshapes
+ */
+const reshapeBlogs = (blogs: any): any => {
+  if (!blogs) {
+    return undefined;
   }
 
-  return removeEdgesAndNodes(blog.articles);
+  return {
+    blogs: removeEdgesAndNodes(blogs)
+  };
 }
 
 const reshapeCart = (cart: ShopifyCart): Cart => {
@@ -213,6 +218,9 @@ const reshapeProducts = (products: ShopifyProduct[]) => {
   return reshapedProducts;
 };
 
+/**
+  * Cart API
+  */
 export async function createCart(): Promise<Cart> {
   const res = await shopifyFetch<ShopifyCreateCartOperation>({
     query: createCartMutation,
@@ -282,6 +290,9 @@ export async function getCart(cartId: string): Promise<Cart | undefined> {
   return reshapeCart(res.body.data.cart);
 }
 
+/**
+ * Products API
+ */
 export async function getCollection(handle: string): Promise<Collection | undefined> {
   const res = await shopifyFetch<ShopifyCollectionOperation>({
     query: getCollectionQuery,
@@ -349,6 +360,9 @@ export async function getCollections(): Promise<Collection[]> {
   return collections;
 }
 
+/**
+ * Page API
+ */
 export async function getMenu(handle: string): Promise<Menu[]> {
   const res = await shopifyFetch<ShopifyMenuOperation>({
     query: getMenuQuery,
@@ -383,6 +397,9 @@ export async function getPages(): Promise<Page[]> {
   return removeEdgesAndNodes(res.body.data.pages);
 }
 
+/**
+ * Product API
+ */
 export async function getProduct(handle: string): Promise<Product | undefined> {
   const res = await shopifyFetch<ShopifyProductOperation>({
     query: getProductQuery,
@@ -435,17 +452,19 @@ export async function revalidate(req: NextRequest): Promise<NextResponse> {
   // otherwise it will continue to retry the request.
   const collectionWebhooks = ['collections/create', 'collections/delete', 'collections/update'];
   const productWebhooks = ['products/create', 'products/delete', 'products/update'];
+  const blogWebhooks = ['blogs/create', 'blogs/delete', 'blogs/update'];
   const topic = headers().get('x-shopify-topic') || 'unknown';
   const secret = req.nextUrl.searchParams.get('secret');
   const isCollectionUpdate = collectionWebhooks.includes(topic);
   const isProductUpdate = productWebhooks.includes(topic);
+  const isArticleUpdate = blogWebhooks.includes(topic);
 
   if (!secret || secret !== process.env.SHOPIFY_REVALIDATION_SECRET) {
     console.error('Invalid revalidation secret.');
     return NextResponse.json({ status: 200 });
   }
 
-  if (!isCollectionUpdate && !isProductUpdate) {
+  if (!isCollectionUpdate && !isProductUpdate && !isArticleUpdate) {
     // We don't need to revalidate anything for any other topics.
     return NextResponse.json({ status: 200 });
   }
@@ -458,10 +477,17 @@ export async function revalidate(req: NextRequest): Promise<NextResponse> {
     revalidateTag(TAGS.products);
   }
 
+  if (isArticleUpdate) {
+    revalidateTag(TAGS.blog);
+  }
+
   return NextResponse.json({ status: 200, revalidated: true, now: Date.now() });
 }
 
-export async function getBlogPosts(handle: string): Promise<Post[]> {
+/**
+ * Blog API
+ */
+/* export async function getBlogPosts(handle: string): Promise<Post[]> {
   const res = await shopifyFetch<ShopifyBlogOperation>({
     query: getPostsQuery,
     // tags: [TAGS.blog],
@@ -471,4 +497,12 @@ export async function getBlogPosts(handle: string): Promise<Post[]> {
   });
 
   return reshapePosts(res.body.data.blog);
+} */
+
+export async function getBlogs(): Promise<ShopifyBlog[]> {
+  const res = await shopifyFetch<ShopifyBlogOperation>({
+    query: getBlogQuery
+  });
+
+  return reshapeBlogs(res.body.data.blogs);
 }
