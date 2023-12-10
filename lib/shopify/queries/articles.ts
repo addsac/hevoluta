@@ -40,3 +40,32 @@ export const getArticlesQuery = /* GraphQL */ `
     }
   }
 `;
+
+
+export const getArticleQuery = /* GraphQL */ `
+  query getArticle($id: ID!) {
+    article($id) {
+      id
+      title
+      image {
+        url
+        altText
+      }
+      handle
+      tags
+      authorV2 {
+        email
+        name
+      }
+      content
+      contentHtml
+      excerpt
+      excerptHtml
+      seo {
+        title
+        description
+      }
+      publishedAt
+    }
+  }
+}`;

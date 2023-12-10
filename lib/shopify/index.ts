@@ -10,7 +10,7 @@ import {
   editCartItemsMutation,
   removeFromCartMutation
 } from './mutations/cart';
-import { getArticlesQuery } from './queries/articles';
+import { getArticleQuery, getArticlesQuery } from './queries/articles';
 import { getBlogQuery } from './queries/blog';
 import { getCartQuery } from './queries/cart';
 import {
@@ -35,6 +35,7 @@ import {
   // Post,
   Product,
   ShopifyAddToCartOperation,
+  ShopifyArticleOperation,
   ShopifyArticles,
   ShopifyArticlesOperation,
   ShopifyBlog,
@@ -149,6 +150,14 @@ const reshapeArticles = (articles: any): any => {
   }
 
   return removeEdgesAndNodesWithPagination(articles);
+}
+
+const reshapeArticle = (article: any): any => {
+  if (!article) {
+    return undefined;
+  }
+
+  return removeEdgesAndNodes(article);
 }
 
 const reshapeCart = (cart: ShopifyCart): Cart => {
@@ -545,4 +554,15 @@ export async function getArticles({
   });
 
   return reshapeArticles(res.body.data.articles);
+}
+
+export async function getArticle(id : string): Promise<ShopifyArticles> {
+  const res = await shopifyFetch<ShopifyArticleOperation>({
+    query: getArticleQuery,
+    variables: {
+      id: id
+    }
+  });
+
+  return reshapeArticle(res.body.data.article);
 }

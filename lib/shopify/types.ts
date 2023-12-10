@@ -266,9 +266,7 @@ export type ShopifyBlogOperation = {
 
 export type ShopifyArticles = {
   pageInfo: PageInfo;
-  edges: {
-    node: ShopifyArticle;
-  }[];
+  edges: ShopifyArticle[];
 }
 
 export type ShopifyArticle = {
@@ -298,6 +296,15 @@ export type ShopifyArticlesOperation = {
     query: string;
     reverse?: boolean;
     sortKey?: string;
+  };
+}
+
+export type ShopifyArticleOperation = {
+  data: {
+    article: ShopifyArticle;
+  };
+  variables: {
+    id: string;
   };
 }
 
