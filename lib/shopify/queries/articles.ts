@@ -4,8 +4,9 @@ export const getArticlesQuery = /* GraphQL */ `
     $query: String!
     $sortKey: ArticleSortKeys
     $reverse: Boolean
+    $after: String
   ) {
-    articles(first: $first, sortKey: $sortKey, reverse: $reverse, query: $query) {
+    articles(first: $first, sortKey: $sortKey, reverse: $reverse, query: $query, after: $after) {
       pageInfo {
         endCursor
         hasNextPage

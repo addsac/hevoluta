@@ -49,8 +49,6 @@ export async function generateMetadata({
 export default async function ArticlePage({ params }: { params: { handle: string } }) {
   const article = await getArticle(params.handle);
 
-  console.log(article)
-
   if (!article) return notFound();
 
   const articleJsonLd = {

@@ -537,11 +537,13 @@ export async function getArticles({
   title,
   sortKey,
   reverse,
+  after,
 } : {
   first: number,
   title: string,
   sortKey: string,
-  reverse: boolean
+  reverse: boolean,
+  after?: string,
 }): Promise<ShopifyArticles> {
   const res = await shopifyFetch<ShopifyArticlesOperation>({
     query: getArticlesQuery,
@@ -549,7 +551,8 @@ export async function getArticles({
       first: first,
       query: title,
       reverse: reverse,
-      sortKey: sortKey === 'CREATED_AT' ? 'CREATED' : sortKey
+      sortKey: sortKey === 'CREATED_AT' ? 'CREATED' : sortKey,
+      after: after
     }
   });
 

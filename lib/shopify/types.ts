@@ -294,6 +294,7 @@ export type ShopifyArticlesOperation = {
   variables: {
     first: number;
     query: string;
+    after?: string;
     reverse?: boolean;
     sortKey?: string;
   };

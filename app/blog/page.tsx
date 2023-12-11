@@ -1,9 +1,7 @@
 import Footer from 'components/layout/footer';
-import BlogCard from 'components/ui/blog/blog-card';
-import BlogCardMax from 'components/ui/blog/blog-card-max';
+import BlogArticles from 'components/ui/blog/blog-articles';
 import Divider from 'components/ui/divider';
 import LastLink from 'components/ui/last-link';
-import { getArticles } from 'lib/shopify';
 import Image from 'next/image';
 import { Suspense } from 'react';
 
@@ -18,12 +16,6 @@ export const metadata = {
 
 export default async function BlogPage() {
   // const blogs = await getBlogs();
-  const articles = await getArticles({
-    'first': 100,
-    'title': `title:${process.env.BLOG_TITLE}`,
-    'sortKey': 'PUBLISHED_AT',
-    'reverse': true
-  });
 
   return (
     <>
@@ -50,38 +42,9 @@ export default async function BlogPage() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-20 px-5 py-[120px]">
-        <div className="w-full flex flex-col items-center justify-center gap-20">
-            {/* title */}
-            <p className="text-title-4 text-center">
-                Ultime ricerche:
-            </p>
-
-          {/* first blog article */}
-          <Suspense>
-            <BlogCardMax article={articles.edges[0]} />
-          </Suspense>
-          
-          {/* rows blog articles */}
-          <div className="mt-10 w-full flex flex-col lg:flex-row gap-16 lg:gap-2.5">
-            <BlogCard />
-            <BlogCard />
-            <BlogCard />
-          </div>
-
-          <div className="mt-10 w-full flex flex-col lg:flex-row gap-16 lg:gap-2.5">
-            <BlogCard />
-            <BlogCard />
-            <BlogCard />
-          </div>
-
-          <div className="mt-10 w-full flex flex-col lg:flex-row gap-16 lg:gap-2.5">
-            <BlogCard />
-            <BlogCard />
-            <BlogCard />
-          </div>
-        </div>
-      </div>
+      <Suspense>
+        <BlogArticles />
+      </Suspense>
 
       {/* divider */}
       <Divider />
