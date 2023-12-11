@@ -37,3 +37,12 @@ export const validateEnvironmentVariables = () => {
     );
   }
 };
+
+// Function to divide the remaining articles by 3 articles (after the first to be maxed)
+export const divideArrayIntoGroups = (arr, groupSize) => {
+  const groups = [];
+  for (let i = 0; i < arr.length; i += groupSize) {
+    groups.push(arr.slice(i, i + groupSize));
+  }
+  return groups;
+}

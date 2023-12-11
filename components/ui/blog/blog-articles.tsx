@@ -2,6 +2,7 @@ import BlogCardMax from 'components/ui/blog/blog-card-max';
 import BlogCards from 'components/ui/blog/blog-cards';
 import { getArticles } from 'lib/shopify';
 import { ShopifyArticle } from 'lib/shopify/types';
+import { divideArrayIntoGroups } from 'lib/utils';
 import { Suspense } from 'react';
 
 export default async function BlogArticles() {
@@ -43,13 +44,4 @@ export default async function BlogArticles() {
       </div>
     </div>
   );
-}
-
-// Function to divide the remaining articles by 3 articles (after the first to be maxed)
-function divideArrayIntoGroups(arr, groupSize) {
-  const groups = [];
-  for (let i = 0; i < arr.length; i += groupSize) {
-    groups.push(arr.slice(i, i + groupSize));
-  }
-  return groups;
 }

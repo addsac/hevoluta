@@ -1,12 +1,13 @@
 // import { Carousel } from 'components/carousel';
 // import { ThreeItemGrid } from 'components/grid/three-items';
 import Footer from 'components/layout/footer';
-import BlogCard from 'components/ui/blog/blog-card';
+import BlogCards from 'components/ui/blog/blog-cards';
 import Divider from 'components/ui/divider';
 import ImageDescription from 'components/ui/image-description';
 import LastLink from 'components/ui/last-link';
 import ProductRows from 'components/ui/product/product-rows';
-import { getCollectionProducts } from 'lib/shopify';
+import { getArticles, getCollectionProducts } from 'lib/shopify';
+import { divideArrayIntoGroups } from 'lib/utils';
 import Image from 'next/image';
 import { Suspense } from 'react';
 import { Balancer } from 'react-wrap-balancer';
@@ -24,6 +25,14 @@ export default async function HomePage() {
   const collections = await getCollectionProducts({
     'collection': "homepage-featured-items",
   });
+
+  let articles = await getArticles({
+    first: 3,
+    title: `title:${process.env.BLOG_TITLE}`,
+    sortKey: 'PUBLISHED_AT',
+    reverse: true,
+  });
+  let arrayOfArticlesdividedBy3: any = divideArrayIntoGroups(articles.edges, 3);
 
   return (
     <>
@@ -198,9 +207,9 @@ export default async function HomePage() {
 
           {/* 3 articles */}
           <div className="w-full flex flex-col lg:flex-row gap-16 lg:gap-2.5">
-            <BlogCard />
-            <BlogCard />
-            <BlogCard />
+            <BlogCards 
+              arrayOfArticlesdividedBy3={arrayOfArticlesdividedBy3}
+            />
           </div>
         </div>
       </div>
