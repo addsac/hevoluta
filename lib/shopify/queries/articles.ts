@@ -1,3 +1,5 @@
+import articleFragment from "../fragments/article";
+
 export const getArticlesQuery = /* GraphQL */ `
   query getArticles(
     $first: Int!
@@ -15,58 +17,23 @@ export const getArticlesQuery = /* GraphQL */ `
       }
       edges {
         node {
-          id
-          title
-          image {
-            url
-            altText
-          }
-          handle
-          tags
-          authorV2 {
-            email
-            name
-          }
-          content
-          contentHtml
-          excerpt
-          excerptHtml
-          seo {
-            title
-            description
-          }
-          publishedAt
+          ...article
         }
       }
     }
   }
+  ${articleFragment}
 `;
 
-
 export const getArticleQuery = /* GraphQL */ `
-  query getArticle($id: ID!) {
-    article($id) {
-      id
-      title
-      image {
-        url
-        altText
+  query GetArticle(
+    $id: ID!
+  ) { 
+    node(id: $id) {
+      ... on Article {
+        ...article
       }
-      handle
-      tags
-      authorV2 {
-        email
-        name
-      }
-      content
-      contentHtml
-      excerpt
-      excerptHtml
-      seo {
-        title
-        description
-      }
-      publishedAt
     }
   }
-}`;
+  ${articleFragment}
+`;

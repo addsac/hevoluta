@@ -265,8 +265,10 @@ export type ShopifyBlogOperation = {
 }
 
 export type ShopifyArticles = {
-  pageInfo: PageInfo;
-  edges: ShopifyArticle[];
+  data: {
+    pageInfo: PageInfo;
+    edges: Connection<ShopifyArticle>;
+  };
 }
 
 export type ShopifyArticle = {
@@ -301,12 +303,8 @@ export type ShopifyArticlesOperation = {
 }
 
 export type ShopifyArticleOperation = {
-  data: {
-    article: ShopifyArticle;
-  };
-  variables: {
-    id: string;
-  };
+  data: { node: ShopifyArticle };
+  variables: { id: string };
 }
 
 export type ShopifyPageOperation = {

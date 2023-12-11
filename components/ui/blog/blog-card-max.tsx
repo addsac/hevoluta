@@ -10,7 +10,7 @@ export default function BlogCardMax({
     return (
         <Link 
             className="w-full flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-2.5 cursor-pointer group"
-            href={`/blog/${article.handle}`}
+            href={`/blog/${article.handle}/${article.id.replace('gid://shopify/Article/', '')}`}
         >
             {/* texts */}
             <div className="flex flex-col items-start gap-6 lg:pr-20">

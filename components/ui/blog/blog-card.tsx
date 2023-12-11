@@ -6,7 +6,7 @@ export default function BlogCard({ article } : { article: ShopifyArticle }){
     return (
         <Link 
             className="w-full lg:w-1/3 flex flex-col gap-6 cursor-pointer group"
-            href={`/blog/${article.handle}`}
+            href={`/blog/${article.handle}/${article.id.replace('gid://shopify/Article/', '')}`}
         >
             {/* image */}
             <div className="w-full h-[240px] flex flex-col items-start bg-black">

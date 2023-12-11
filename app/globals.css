@@ -154,3 +154,15 @@ button{
 .checkbox-base{
   @apply w-5 h-5;
 }
+
+/* BLOG */
+.blog-content-wrapper {
+  @apply flex flex-col gap-20;
+}
+.blog-content-wrapper p{
+  @apply text-17;
+  line-height: 220% !important;
+}
+.blog-content-wrapper img{
+  @apply w-full lg:w-1/2 h-auto;
+}

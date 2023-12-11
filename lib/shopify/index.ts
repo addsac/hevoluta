@@ -35,6 +35,7 @@ import {
   // Post,
   Product,
   ShopifyAddToCartOperation,
+  ShopifyArticle,
   ShopifyArticleOperation,
   ShopifyArticles,
   ShopifyArticlesOperation,
@@ -157,7 +158,7 @@ const reshapeArticle = (article: any): any => {
     return undefined;
   }
 
-  return removeEdgesAndNodes(article);
+  return article;
 }
 
 const reshapeCart = (cart: ShopifyCart): Cart => {
@@ -559,13 +560,13 @@ export async function getArticles({
   return reshapeArticles(res.body.data.articles);
 }
 
-export async function getArticle(id : string): Promise<ShopifyArticles> {
+export async function getArticle(id : string): Promise<ShopifyArticle | undefined> {
   const res = await shopifyFetch<ShopifyArticleOperation>({
     query: getArticleQuery,
     variables: {
-      id: id
+      id
     }
   });
 
-  return reshapeArticle(res.body.data.article);
+  return reshapeArticle(res.body.data.node);
 }
