@@ -1,9 +1,9 @@
 'use client'
 
 import { AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 import { useState } from 'react';
 import Modal from './modal';
-import Link from 'next/link';
 import ForgotPassword from './nav/forgot-password';
 
 export default function Profilo(){
@@ -50,8 +50,9 @@ export default function Profilo(){
 
                     {/* links */}
                     <div className="flex flex-col items-start gap-5">
-                        <Link href="/" className="button-text"> Ordini </Link>
-                        <Link href="/" className="button-text"> Indirizzo </Link>
+                        <Link href="/profile" onClick={() => closeModal()} className="button-text"> Profilo </Link>
+                        <Link href="/profile" onClick={() => closeModal()} className="button-text"> Ordini </Link>
+                        <button className="button-text"> Log out </button>
                         <button 
                             className="button-text"
                             onClick={() => openModalForgotPassword()}

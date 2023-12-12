@@ -58,6 +58,12 @@ button{
 .button-cips-product-active{
   @apply text-body-1 font-mono border-b border-white leading-['auto'] cursor-pointer text-white;
 }
+.button-cips-menu-inactive{
+  @apply hover:bg-gray-100 rounded-full  px-4 py-[12px];
+}
+.button-cips-menu-active{
+  @apply bg-gray-100 rounded-full px-4 py-[12px];
+}
 .button-menu-cart{
   @apply rounded-full bg-gray-100 text-13 text-black hover:bg-gray-200 tracking-[0.2px] px-4 py-2.5 flex items-center justify-center gap-2;
 }

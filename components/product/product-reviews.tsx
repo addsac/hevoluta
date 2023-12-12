@@ -9,7 +9,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 export default function ProductReviews({ product }: { product: any }) {
   return (
-    <div className="flex w-screen flex-col items-center justify-center gap-20 bg-gray-100 px-5 py-20">
+    <div id="reviews-wrapper" className="flex w-screen flex-col items-center justify-center gap-20 bg-gray-100 px-5 py-20">
       {/* title */}
       <div className="flex flex-col gap-6 text-center">
         <p className="text-title-4">Recensioni del prodotto</p>

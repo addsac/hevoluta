@@ -87,9 +87,9 @@ export default async function ArticlePage({ params }: { params: { handle: string
         }}
       />
       
-      <div className="w-screen grid grid-cols-12 gap-16 lg:gap-2.5 px-5 pt-20 pb-[120px]">
-        <div className="hidden lg:block col-span-1"></div> {/* margin */}
-        <div className="col-span-12 lg:col-span-10 flex flex-col gap-20">
+      <div className="w-screen flex lg:gap-2.5 px-5 pt-20 pb-[120px]">
+        <div className="hidden lg:block w-1/12"></div> {/* margin */}
+        <div className="w-full lg:w-10/12 flex flex-col gap-20">
             {/* header text */}
             <div className="flex flex-col gap-8">
                 <p className="text-body-2 opacity-50">
@@ -141,7 +141,7 @@ export default async function ArticlePage({ params }: { params: { handle: string
                 </button>
             </Link>
         </div>
-        <div className="hidden lg:block col-span-1"></div> {/* margin */}
+        <div className="hidden lg:block w-1/12"></div> {/* margin */}
       </div>
       
       {/* divider */}

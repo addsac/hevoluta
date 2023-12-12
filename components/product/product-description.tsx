@@ -62,7 +62,14 @@ export function ProductDescription({ product }: { product: Product }) {
                 <img src="/img/icon/star.svg" alt="" className="-ml-1 h-6 w-6" />
                 <img src="/img/icon/star.svg" alt="" className="-ml-1 h-6 w-6" />
               </div>
-              <button className="button-text">Leggi 16 recensioni</button>
+              <button 
+                className="button-text"
+                onClick={() => {
+                  // scroll to reviews-wrapper id
+                  const element = document.getElementById('reviews-wrapper');
+                  element?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >Leggi 16 recensioni</button>
             </div>
           </div>
         </div>
