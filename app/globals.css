@@ -157,6 +157,9 @@ button{
 .input-base{
   @apply bg-gray-50 border border-black h-11 indent-5 placeholder:opacity-50 focus:outline-none;
 }
+.textarea-base{
+  @apply bg-gray-50 border border-black p-5 min-h-[150px] placeholder:opacity-50 focus:outline-none;
+}
 .checkbox-base{
   @apply w-5 h-5;
 }

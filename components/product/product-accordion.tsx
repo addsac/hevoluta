@@ -37,7 +37,7 @@ export default function ProductAccordion({ product = null } : { product: any }) 
           height="24"
           fill="none"
           viewBox="0 0 24 24"
-          className={`${isOpenChev1 ? 'rotate-180' : '0'} transorm duration-200 ease-out`}
+          className={`${isOpenChev1 ? 'rotate-180' : '0'} transorm duration-200 ease-out opacity-40`}
         >
           <path
             stroke="black"
@@ -76,7 +76,7 @@ export default function ProductAccordion({ product = null } : { product: any }) 
           height="24"
           fill="none"
           viewBox="0 0 24 24"
-          className={`${isOpenChev2 ? 'rotate-180' : '0'} transorm duration-200 ease-out`}
+          className={`${isOpenChev2 ? 'rotate-180' : '0'} transorm duration-200 ease-out opacity-40`}
         >
           <path
             stroke="black"
@@ -115,7 +115,7 @@ export default function ProductAccordion({ product = null } : { product: any }) 
           height="24"
           fill="none"
           viewBox="0 0 24 24"
-          className={`${isOpenChev3 ? 'rotate-180' : '0'} transorm duration-200 ease-out`}
+          className={`${isOpenChev3 ? 'rotate-180' : '0'} transorm duration-200 ease-out opacity-40`}
         >
           <path
             stroke="black"

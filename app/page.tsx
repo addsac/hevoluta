@@ -172,7 +172,7 @@ export default async function HomePage() {
             </p>
           </div>
           <div className="w-full lg:w-1/2">
-            <p className="text-body-1 opacity-80" style={{ lineHeight: '170% !important' }}>
+            <p className="text-body-1_170 opacity-80">
               Le nostre convinzioni vanno oltre l'estetica, riconoscendo che una formula eccezionale comprende funzionalità, esperienza della persona e attenzione meticolosa agli ingredienti. Con profonda cura e impegno inflessibile per l'eccellenza, il nostro team di esperti crea prodotti che sono funzionali allo scopo specifico prefissato.
             </p>
           </div>
