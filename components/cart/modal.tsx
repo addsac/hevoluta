@@ -1,5 +1,6 @@
 'use client';
 
+import { removeItem } from 'components/cart/actions';
 import Price from 'components/price';
 import Modal from 'components/ui/modal';
 import { AnimatePresence } from 'framer-motion';
@@ -130,7 +131,7 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                       </Link>
       
                       {/* texts */}
-                      <div className="w-full flex flex-col gap-5">
+                      <div className="w-full flex flex-col items-start gap-5">
                         <div className="flex flex-col gap-2.5">
                           <p className="line-clamp-1">
                             {item.merchandise.product.title}
@@ -156,6 +157,14 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                             currencyCode={item.cost.totalAmount.currencyCode}
                           />
                         </div>
+
+                        {/* remove product */}
+                        <button
+                          className="button-text opacity-50"
+                          onClick={() => removeItem(null, item.id)}
+                        >
+                          Rimuovi
+                        </button>
                       </div>
                     </div>
                   )
