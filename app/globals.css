@@ -108,9 +108,19 @@ button{
   line-height: 150% !important;
   letter-spacing: 0.8px;
 }
+.text-title-4_170{
+  @apply text-26 font-light tiempos-font;
+  line-height: 170% !important;
+  letter-spacing: 0.8px;
+}
 .text-title-5{
   @apply text-20 font-light tiempos-font;
   line-height: 170% !important;
+  letter-spacing: 0.6px;
+}
+.text-title-5_190{
+  @apply text-20 font-light tiempos-font;
+  line-height: 190% !important;
   letter-spacing: 0.6px;
 }
 .text-title-6{
@@ -143,6 +153,10 @@ button{
   @apply text-17;
   line-height: 170% !important;
 }
+.text-body-2_190{
+  @apply text-17;
+  line-height: 190% !important;
+}
 .text-body-3{
   @apply text-19;
   line-height: 140% !important;
@@ -151,6 +165,9 @@ button{
 /* gradient */
 .bg-gradient-gray{
   @apply bg-gradient-to-b from-gray-100 to-transparent;
+}
+.bg-citation{
+  background: linear-gradient(270deg, rgba(241, 241, 242, 0.00) 0%, rgba(241, 241, 242, 0.80) 48.71%, rgba(241, 241, 242, 0.00) 100%);
 }
 
 /* input */

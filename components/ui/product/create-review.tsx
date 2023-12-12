@@ -60,7 +60,7 @@ export default function CreateReview({
               </div>
 
               <div className="flex w-full flex-col items-start gap-2.5">
-                <p> Nome </p>
+                <p> Il tuo nome: </p>
                 <input
                   type="text"
                   name="name"

@@ -23,7 +23,7 @@ export default async function BlogArticles() {
     <div className="flex flex-col gap-20 px-5 py-[120px]">
       <div className="flex w-full flex-col items-center justify-center gap-20">
         {/* title */}
-        <p className="text-title-4 text-center">Ultime ricerche:</p>
+        {/* <p className="text-title-4 text-center">Ultime ricerche:</p> */}
 
         {/* first blog article */}
         <Suspense>
