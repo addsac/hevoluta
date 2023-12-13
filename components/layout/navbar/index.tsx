@@ -22,11 +22,7 @@ export default async function Navbar() {
       password,
     });
 
-    // if(res.data.customerUserErrors[0].message) alert(res.data.customerUserErrors[0].message) // errror exists
-
-    console.log(res)
-
-    if(res) alert('ok')
+    if(res.
   }
 
   return (

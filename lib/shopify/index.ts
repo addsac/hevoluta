@@ -31,6 +31,7 @@ import {
   Cart,
   Collection,
   Connection,
+  Customer,
   Image,
   Menu,
   Page,
@@ -530,7 +531,7 @@ export async function getCustomer({
   customerAccessToken
 } : {
   customerAccessToken: string
-}): Promise<ShopifyCustomer> {
+}): Promise<Customer> {
   const res = await shopifyFetch<ShopifyCustomerOperation>({
     query: getCustomerQuery,
     variables: { 
@@ -538,7 +539,7 @@ export async function getCustomer({
     }
   });
 
-  return reshapeCustomer(res.body.data.customer);
+  return reshapeCustomer(res.body.data.customerCreate)
 }
 
 export async function registerCustomer({

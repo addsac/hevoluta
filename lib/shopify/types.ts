@@ -245,6 +245,20 @@ export type ShopifyMenuOperation = {
   };
 };
 
+/**
+ * Customer
+ */
+
+export type customerUserErrors = {
+  message: string;
+  field: string[];
+}[];
+
+export type Customer = {
+  customer: ShopifyCustomer;
+  customerUserErrors: customerUserErrors[];
+}
+
 export type ShopifyCustomer = {
   id: string;
   firstName: string;
@@ -254,7 +268,10 @@ export type ShopifyCustomer = {
 
 export type ShopifyCustomerOperation = {
   data: {
-    customer: ShopifyCustomer;
+    customerCreate: {
+      customer: ShopifyCustomer;
+      customerUserErrors: customerUserErrors[];
+    }
   };
   variables: {
     customerAccessToken: string;
