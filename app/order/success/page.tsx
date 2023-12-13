@@ -1,4 +1,3 @@
-import Footer from 'components/layout/footer';
 import Divider from 'components/ui/divider';
 import LastLink from 'components/ui/last-link';
 import OrderSuccessTable from 'components/ui/order/order-success-table';
@@ -32,9 +31,7 @@ export default async function OrderSuccessPage() {
           </div>
 
           {/* data */}
-          <Suspense>
-            <OrderSuccessTable />
-          </Suspense>
+          <OrderSuccessTable />
 
           <Link href="/" className="button-primary-base">
             Torna alla home
@@ -48,10 +45,6 @@ export default async function OrderSuccessPage() {
       {/* Last links */}
       <Suspense>
         <LastLink />
-      </Suspense>
-
-      <Suspense>
-        <Footer />
       </Suspense>
     </>
   );

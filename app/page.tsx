@@ -1,6 +1,5 @@
 // import { Carousel } from 'components/carousel';
 // import { ThreeItemGrid } from 'components/grid/three-items';
-import Footer from 'components/layout/footer';
 import BlogCards from 'components/ui/blog/blog-cards';
 import Divider from 'components/ui/divider';
 import ImageDescription from 'components/ui/image-description';
@@ -220,18 +219,6 @@ export default async function HomePage() {
       {/* Last links */}
       <Suspense>
         <LastLink />
-      </Suspense>
-
-      {/* <ThreeItemGrid />
-      <Suspense>
-        <Carousel />
-        <Suspense>
-          <Footer />
-        </Suspense>
-      </Suspense> */}
-
-      <Suspense>
-        <Footer />
       </Suspense>
     </>
   );

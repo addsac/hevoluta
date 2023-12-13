@@ -5,6 +5,8 @@ import { ensureStartsWith } from 'lib/utils';
 import localFont from 'next/font/local';
 import { ReactNode, Suspense } from 'react';
 import './globals.css';
+import Footer from 'components/layout/footer';
+import { getCollectionProducts } from 'lib/shopify';
 
 // Tiempos font
 const tiempos_light = localFont({ 
@@ -42,12 +44,19 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
+  const products = await getCollectionProducts({
+    'collection': "homepage-featured-items",
+  });
+
   return (
     <html lang="it" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <body>
         <Navbar />
         <Suspense>
           <main>{children}</main>
+        </Suspense>
+        <Suspense>
+          <Footer products={products} />
         </Suspense>
       </body>
     </html>

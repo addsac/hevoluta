@@ -1,4 +1,4 @@
-'use client'
+import Link from "next/link";
 
 export default function OrderSuccessTable(){
     return (
@@ -10,6 +10,7 @@ export default function OrderSuccessTable(){
                         <th className="px-3 py-5 uppercase font-normal whitespace-nowrap">Numero d'ordine</th>
                         <th className="px-3 py-5 uppercase font-normal whitespace-nowrap">Totale</th>
                         <th className="px-3 py-5 uppercase font-normal whitespace-nowrap">Stato</th>
+                        <th className="px-3 py-5 uppercase font-normal whitespace-nowrap">Etichette di spedizione</th>
                         <th className="px-3 py-5 uppercase font-normal whitespace-nowrap">Reso</th>
                     </tr>
                 </thead>
@@ -19,6 +20,17 @@ export default function OrderSuccessTable(){
                         <td className="px-3 py-5 whitespace-nowrap">1403G618723022</td>
                         <td className="px-3 py-5 whitespace-nowrap">eur 462,00</td>
                         <td className="px-3 py-5 whitespace-nowrap">in attesa di conferma</td>
+                        <td className="px-3 py-5 whitespace-nowrap">
+                            {/* button to download the shipping label */}
+                            <Link 
+                                href=""
+                                download
+                                target="_blank"
+                                className="button-text-visible-underline"
+                            >
+                                Scarica
+                            </Link>
+                        </td>
                         <td className="px-3 py-5 whitespace-nowrap"></td>
                     </tr>
                 </tbody>

@@ -48,10 +48,6 @@ export default async function ProfilePage() {
       <Suspense>
         <LastLink />
       </Suspense>
-
-      <Suspense>
-        <Footer />
-      </Suspense>
     </>
   );
 }

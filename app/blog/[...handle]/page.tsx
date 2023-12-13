@@ -151,10 +151,6 @@ export default async function ArticlePage({ params }: { params: { handle: string
       <Suspense>
         <LastLink />
       </Suspense>
-
-      <Suspense>
-        <Footer />
-      </Suspense>
     </>
   );
 }

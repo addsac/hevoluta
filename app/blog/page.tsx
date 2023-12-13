@@ -53,10 +53,6 @@ export default async function BlogPage() {
       <Suspense>
         <LastLink />
       </Suspense>
-
-      <Suspense>
-        <Footer />
-      </Suspense>
     </>
   );
 }

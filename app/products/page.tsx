@@ -70,10 +70,6 @@ export default async function ProductPage() {
       <Suspense>
         <LastLink />
       </Suspense>
-
-      <Suspense>
-        <Footer />
-      </Suspense>
     </>
   );
 }

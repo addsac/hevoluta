@@ -181,10 +181,6 @@ export default async function AbotuPage() {
       <Suspense>
         <LastLink />
       </Suspense>
-
-      <Suspense>
-        <Footer />
-      </Suspense>
     </>
   );
 }

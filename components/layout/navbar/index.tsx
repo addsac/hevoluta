@@ -1,11 +1,9 @@
-// 'use client'
-
+import BlackStripe from 'components/layout/navbar/black-stripe';
 import Cart from 'components/cart';
 import OpenCart from 'components/cart/open-cart';
 import Accedi from 'components/ui/accedi';
 import Cookie from 'components/ui/cookie';
 import Menu from 'components/ui/menu';
-import Profilo from 'components/ui/profilo';
 import { getMenu } from 'lib/shopify';
 import Link from 'next/link';
 import { Suspense } from 'react';
@@ -21,18 +19,9 @@ export default async function Navbar() {
       <Cookie />
 
       <div className="w-screen flex flex-col">
-        {/* black stripe */}
-        <div className="w-full max-w-full overflow-x-auto flex flex-nowrap items-center gap-10 justify-between bg-black text-white px-5 py-1.5">
-          <p className="text-12 font-medium font-mono whitespace-nowrap">
-            Spedizione gratuita da 65€
-          </p>
-          <p className="text-12 font-medium font-mono whitespace-nowrap">
-            Progettato e fabbricato in Italia
-          </p>
-          <Link href="/" className="text-12 font-medium font-mono whitespace-nowrap hover:underline">
-            Dubbi? Chatta con noi gratis
-          </Link>
-        </div>
+        <Suspense>
+          <BlackStripe />
+        </Suspense>
 
         {/* navigation menu */}
         <nav className="w-full px-5 py-5 flex items-center justify-between bg-white border-b border-gray-200">
@@ -68,8 +57,8 @@ export default async function Navbar() {
           {/* right buttons */}
           <div className="flex items-center justify-end w-full">
             <div className="hidden lg:block">
-              {/* <Accedi /> */}
-              <Profilo />
+              <Accedi />
+              {/* <Profilo /> */}
             </div>
             <Suspense fallback={<OpenCart />}>
               <Cart />

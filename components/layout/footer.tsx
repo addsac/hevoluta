@@ -1,7 +1,12 @@
 import MaxWidthLayout from 'components/layout/max-width-layout';
+import { Product } from 'lib/shopify/types';
 import Link from 'next/link';
 
-export default async function Footer() {
+export default async function Footer({
+  products = []
+} : {
+  products: Product[]
+}) {
   // const menu = await getMenu('next-js-frontend-footer-menu');
 
   return (
@@ -39,12 +44,16 @@ export default async function Footer() {
               </p>
 
               <div className="flex flex-col items-start gap-[20px] lg:gap-[28px]">
-                <Link href="/" className="button-text"> Crema solare corpo </Link>
-                <Link href="/" className="button-text"> Crema anti luce blu </Link>
-                <Link href="/" className="button-text"> Siero acido ialuronico </Link>
-                <Link href="/" className="button-text"> Siero ai peptidi </Link>
-                <Link href="/" className="button-text"> Olio viso notte </Link>
-                <Link href="/" className="button-text"> Crema viso notte </Link>
+                {products.map((item, index) => (
+                  <Link 
+                    key={'footer-product'+index}
+                    href={`/product/${item.handle}`}
+                    className="button-text"
+                  >
+                    {item.title}
+                  </Link>
+                ))}
+
               </div>
             </div>
 

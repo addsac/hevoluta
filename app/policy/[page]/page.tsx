@@ -120,10 +120,6 @@ export default async function PolicyPage({ params } : { params: { page: string }
             )}
         </div>
       </div>
-
-      <Suspense>
-        <Footer />
-      </Suspense>
     </>
   );
 }
