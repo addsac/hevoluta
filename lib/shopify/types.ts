@@ -256,7 +256,7 @@ export type customerUserErrors = {
 
 export type Customer = {
   customer: ShopifyCustomer;
-  customerUserErrors: customerUserErrors[];
+  customerUserErrors: customerUserErrors;
 }
 
 export type ShopifyCustomer = {
@@ -270,7 +270,7 @@ export type ShopifyCustomerOperation = {
   data: {
     customerCreate: {
       customer: ShopifyCustomer;
-      customerUserErrors: customerUserErrors[];
+      customerUserErrors: customerUserErrors;
     }
   };
   variables: {
@@ -280,11 +280,10 @@ export type ShopifyCustomerOperation = {
 
 export type ShopifyCustomerCreateOperation = {
   data: {
-    customer: ShopifyCustomer;
-    customerUserErrors: {
-      message: string;
-      field: string[];
-    }[];
+    customerCreate: {
+      customer: ShopifyCustomer;
+      customerUserErrors: customerUserErrors;
+    }
   };
   variables: {
     input: {

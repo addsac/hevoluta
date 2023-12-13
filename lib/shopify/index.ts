@@ -51,7 +51,6 @@ import {
   ShopifyCollectionProductsOperation,
   ShopifyCollectionsOperation,
   ShopifyCreateCartOperation,
-  ShopifyCustomer,
   ShopifyCustomerCreateOperation,
   ShopifyCustomerOperation,
   ShopifyMenuOperation,
@@ -556,7 +555,7 @@ export async function registerCustomer({
   lastName?: string,
   phone?: string,
   acceptsMarketing?: boolean,
-}): Promise<ShopifyCustomer> {
+}): Promise<Customer> {
   const res = await shopifyFetch<ShopifyCustomerCreateOperation>({
     query: createCustomerQuery,
     variables: { 
@@ -571,9 +570,7 @@ export async function registerCustomer({
     }
   });
 
-  console.log(res.body)
-
-  return reshapeCustomer(res.body.data.customer);
+  return reshapeCustomer(res.body.data.customerCreate)
 }
 
 /**
