@@ -50,7 +50,6 @@ export default function Profilo(){
 
                     {/* links */}
                     <div className="flex flex-col items-start gap-5">
-                        <Link href="/profile" onClick={() => closeModal()} className="button-text"> Profilo </Link>
                         <Link href="/profile" onClick={() => closeModal()} className="button-text"> Ordini </Link>
                         <button className="button-text"> Log out </button>
                         <button 

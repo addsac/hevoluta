@@ -1,12 +1,12 @@
+import Footer from 'components/layout/footer';
 import Navbar from 'components/layout/navbar';
 import { GeistMono } from 'geist/font/mono';
 import { GeistSans } from 'geist/font/sans';
+import { getCollectionProducts } from 'lib/shopify';
 import { ensureStartsWith } from 'lib/utils';
 import localFont from 'next/font/local';
 import { ReactNode, Suspense } from 'react';
 import './globals.css';
-import Footer from 'components/layout/footer';
-import { getCollectionProducts } from 'lib/shopify';
 
 // Tiempos font
 const tiempos_light = localFont({ 

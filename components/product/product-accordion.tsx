@@ -15,7 +15,7 @@ export default function ProductAccordion({ product = null } : { product: any }) 
         onClick={() => setIsOpenChev1(!isOpenChev1)}
       >
         <div className="flex w-full flex-col items-start gap-5 selection:bg-transparent">
-          <p className="border-b border-transparent group-hover:border-black"> Benefici del prodotto </p>
+          <p className="border-b border-transparent group-hover:border-black"> Benefici </p>
 
           <AnimatePresence>
             {isOpenChev1 && (
