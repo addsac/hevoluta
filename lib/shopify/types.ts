@@ -245,6 +245,42 @@ export type ShopifyMenuOperation = {
   };
 };
 
+export type ShopifyCustomer = {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+};
+
+export type ShopifyCustomerOperation = {
+  data: {
+    customer: ShopifyCustomer;
+  };
+  variables: {
+    customerAccessToken: string;
+  };
+};
+
+export type ShopifyCustomerCreateOperation = {
+  data: {
+    customer: ShopifyCustomer;
+    customerUserErrors: {
+      message: string;
+      field: string[];
+    }[];
+  };
+  variables: {
+    input: {
+      email: string;
+      password: string;
+      firstName?: string;
+      lastName?: string;
+      phone?: string;
+      acceptsMarketing?: boolean;
+    };
+  };
+};
+
 export type ShopifyBlog = {
   id: string;
   title: string;
@@ -344,3 +380,5 @@ export type ShopifyProductsOperation = {
     sortKey?: string;
   };
 };
+
+export type RegisterLoginType = 'login' | 'register'

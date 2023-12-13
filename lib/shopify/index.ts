@@ -10,6 +10,7 @@ import {
   editCartItemsMutation,
   removeFromCartMutation
 } from './mutations/cart';
+import { createCustomerQuery } from './mutations/customer';
 import { getArticleQuery, getArticlesQuery } from './queries/articles';
 import { getBlogQuery } from './queries/blog';
 import { getCartQuery } from './queries/cart';
@@ -18,6 +19,7 @@ import {
   getCollectionQuery,
   getCollectionsQuery
 } from './queries/collection';
+import { getCustomerQuery } from './queries/customer';
 import { getMenuQuery } from './queries/menu';
 import { getPageQuery, getPagesQuery } from './queries/page';
 import {
@@ -48,6 +50,9 @@ import {
   ShopifyCollectionProductsOperation,
   ShopifyCollectionsOperation,
   ShopifyCreateCartOperation,
+  ShopifyCustomer,
+  ShopifyCustomerCreateOperation,
+  ShopifyCustomerOperation,
   ShopifyMenuOperation,
   ShopifyPageOperation,
   ShopifyPagesOperation,
@@ -137,6 +142,14 @@ const removeEdgesAndNodesWithPagination = (array: Connection<any>) => {
 /**
  * Reshapes
  */
+const reshapeCustomer = (customer: any): any => {
+  if (!customer) {
+    return undefined;
+  }
+
+  return customer;
+}
+
 const reshapeBlogs = (blogs: any): any => {
   if (!blogs) {
     return undefined;
@@ -511,20 +524,60 @@ export async function revalidate(req: NextRequest): Promise<NextResponse> {
 }
 
 /**
- * Blog API
+ * Customer API
  */
-/* export async function getBlogPosts(handle: string): Promise<Post[]> {
-  const res = await shopifyFetch<ShopifyBlogOperation>({
-    query: getPostsQuery,
-    // tags: [TAGS.blog],
-    variables: {
-      handle
+export async function getCustomer({
+  customerAccessToken
+} : {
+  customerAccessToken: string
+}): Promise<ShopifyCustomer> {
+  const res = await shopifyFetch<ShopifyCustomerOperation>({
+    query: getCustomerQuery,
+    variables: { 
+      customerAccessToken: customerAccessToken
     }
   });
 
-  return reshapePosts(res.body.data.blog);
-} */
+  return reshapeCustomer(res.body.data.customer);
+}
 
+export async function registerCustomer({
+  email,
+  password,
+  firstName,
+  lastName,
+  phone,
+  acceptsMarketing
+} : {
+  email: string,
+  password: string,
+  firstName?: string,
+  lastName?: string,
+  phone?: string,
+  acceptsMarketing?: boolean,
+}): Promise<ShopifyCustomer> {
+  const res = await shopifyFetch<ShopifyCustomerCreateOperation>({
+    query: createCustomerQuery,
+    variables: { 
+      input: {
+        email: email,
+        password: password,
+        firstName: firstName,
+        lastName: lastName,
+        phone: phone,
+        acceptsMarketing: acceptsMarketing
+      }
+    }
+  });
+
+  console.log(res.body)
+
+  return reshapeCustomer(res.body.data.customer);
+}
+
+/**
+ * Blog API
+ */
 export async function getBlogs(): Promise<ShopifyBlog[]> {
   const res = await shopifyFetch<ShopifyBlogOperation>({
     query: getBlogQuery

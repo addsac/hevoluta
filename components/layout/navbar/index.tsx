@@ -1,10 +1,10 @@
-import BlackStripe from 'components/layout/navbar/black-stripe';
 import Cart from 'components/cart';
 import OpenCart from 'components/cart/open-cart';
+import BlackStripe from 'components/layout/navbar/black-stripe';
 import Accedi from 'components/ui/accedi';
 import Cookie from 'components/ui/cookie';
 import Menu from 'components/ui/menu';
-import { getMenu } from 'lib/shopify';
+import { getMenu, registerCustomer } from 'lib/shopify';
 import Link from 'next/link';
 import { Suspense } from 'react';
 
@@ -12,6 +12,22 @@ const { SITE_NAME } = process.env;
 
 export default async function Navbar() {
   const menu = await getMenu('next-js-frontend-header-menu');
+
+  // register api function
+  const register = async ({ email, password }) => {
+    'use server'
+    
+    const res = await registerCustomer({
+      email,
+      password,
+    });
+
+    // if(res.data.customerUserErrors[0].message) alert(res.data.customerUserErrors[0].message) // errror exists
+
+    console.log(res)
+
+    if(res) alert('ok')
+  }
 
   return (
     <>
@@ -57,8 +73,14 @@ export default async function Navbar() {
           {/* right buttons */}
           <div className="flex items-center justify-end w-full">
             <div className="hidden lg:block">
-              <Accedi />
-              {/* <Profilo /> */}
+              <Suspense>
+                <Accedi 
+                  flag="register"
+                  register={register}
+                  login={register}
+                />
+                {/* <Profilo /> */}
+              </Suspense>
             </div>
             <Suspense fallback={<OpenCart />}>
               <Cart />
