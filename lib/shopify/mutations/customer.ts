@@ -34,6 +34,17 @@ export const loginCustomerQuery = /* GraphQL */ `
   ${customerUserErrorFragment}
 `;
 
+export const sendEmailPasswordRecoveryQuery = /* GraphQL */ `
+  mutation customerRecover($email: String!) {
+    customerRecover(email: $email) {
+      customerUserErrors {
+        ...customerUserError
+      }
+    }
+  }
+  ${customerUserErrorFragment}
+`;
+
 export const customerAccessTokenDeleteMutation = /* GraphQL */ `
   mutation customerAccessTokenDelete($customerAccessToken: String!) {
     customerAccessTokenDelete(customerAccessToken: $customerAccessToken) {

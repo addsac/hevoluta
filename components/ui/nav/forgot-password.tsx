@@ -7,11 +7,24 @@ import ModalCenter from '../modal-center';
 export default function ForgotPassword({
     isOpen = false,
     closeModal = null,
+    sendEmailPasswordRecovery = null,
 }: {
     isOpen: boolean;
-    closeModal: () => void;
+    closeModal: any;
+    sendEmailPasswordRecovery: any;
 }) {
   const [email, setEmail] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const send = async () => {
+    setLoading(true)
+
+    await sendEmailPasswordRecovery({ 
+      email: email
+    })
+
+    setLoading(false)
+  }
 
   return (
     <>
@@ -47,7 +60,7 @@ export default function ForgotPassword({
                 <p> Email </p>
                 <input 
                   type="email"
-                  name="email-forgot-password"
+                  name="email"
                   placeholder="nome@esempio.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -55,8 +68,12 @@ export default function ForgotPassword({
                 />
               </div>
 
-              <button className="button-primary-base">
-                Invia link di recupero
+              <button 
+                className="button-primary-base"
+                onClick={() => send()}
+                disabled={loading}
+              >
+                {loading ? 'Caricamento...' : 'Invia link di recupero'}
               </button>
             </div>
           </ModalCenter>

@@ -4,7 +4,7 @@ import BlackStripe from 'components/layout/navbar/black-stripe';
 import Accedi from 'components/ui/accedi';
 import Cookie from 'components/ui/cookie';
 import Menu from 'components/ui/menu';
-import { getMenu, loginCustomer, registerCustomer } from 'lib/shopify';
+import { getMenu, loginCustomer, registerCustomer, resetPassword } from 'lib/shopify';
 import Link from 'next/link';
 import { Suspense } from 'react';
 
@@ -34,6 +34,21 @@ export default async function Navbar() {
     });
 
     if(res.customerUserErrors[0].message) console.log(res.customerUserErrors[0].message)
+  }
+
+  const sendEmailPasswordRecovery = async ({ email }) => {
+    'use server'
+    
+    const res = await resetPassword({
+      email,
+    });
+
+    console.log(res)
+
+    /* 
+      - se l'email non è stata inviata mostrare un messaggio di errore, 
+      - altrimenti mostrare un messaggio di successo 
+    */
   }
 
   return (
@@ -85,6 +100,7 @@ export default async function Navbar() {
                   flag="login"
                   register={register}
                   login={login}
+                  sendEmailPasswordRecovery={sendEmailPasswordRecovery}
                 />
                 {/* <Profilo /> */}
               </Suspense>

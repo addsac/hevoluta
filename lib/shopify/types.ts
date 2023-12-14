@@ -321,6 +321,15 @@ export type ShopifyCustomerLoginOperation = {
   };
 };
 
+export type ShopifyCustomerSendEmailPasswordRecoveryOperation = {
+  data: {
+    customerUserErrors: CustomerUserErrors;
+  };
+  variables: {
+    email: string;
+  };
+};
+
 export type ShopifyBlog = {
   id: string;
   title: string;

@@ -12,10 +12,12 @@ export default function Accedi({
   flag = 'login',
   register,
   login,
+  sendEmailPasswordRecovery,
 }: {
   flag: RegisterLoginType;
   register: any;
   login: any;
+  sendEmailPasswordRecovery: any;
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => setIsModalOpen(true);
@@ -31,7 +33,11 @@ export default function Accedi({
   return (
     <>
       {/* modals */}
-      <ForgotPassword isOpen={isOpenModalForgotPassword} closeModal={closeModalForgotPassword} />
+      <ForgotPassword 
+        isOpen={isOpenModalForgotPassword} 
+        closeModal={closeModalForgotPassword} 
+        sendEmailPasswordRecovery={sendEmailPasswordRecovery}
+      />
 
       <AnimatePresence>
         {isModalOpen && (
