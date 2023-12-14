@@ -73,7 +73,7 @@ export default function ForgotPassword({
                 onClick={() => send()}
                 disabled={loading}
               >
-                {loading ? 'Caricamento...' : 'Invia link di recupero'}
+                {loading ? 'Invio in corso...' : 'Invia link di recupero'}
               </button>
             </div>
           </ModalCenter>
