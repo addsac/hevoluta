@@ -1,4 +1,3 @@
-import Footer from 'components/layout/footer';
 import { Gallery } from 'components/product/gallery';
 import { ProductDescription } from 'components/product/product-description';
 import ProductDetails from 'components/product/product-details';
@@ -58,6 +57,17 @@ export default async function ProductPage({ params }: { params: { handle: string
 
   if (!product) return notFound();
 
+  // Fetch the reviews for the current product - https://judge.me/api/v1/reviews
+  const apiUrl = `https://judge.me/api/v1/reviews?api_token=${'7xyLFlu31C1Wj8Z8wyp5mMkO7E0'}&shop_domain=${'879c32-2.myshopify.com'}&per_page=15&page=1&product_id=${product.id}`;
+  const reviews = await fetch(apiUrl, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  })
+    .then(res => res.json())
+    .then(res => res.reviews)
+
   const productJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -96,7 +106,7 @@ export default async function ProductPage({ params }: { params: { handle: string
         </Suspense>
 
         <Suspense>
-          <ProductDescription product={product} />
+          <ProductDescription product={product} reviews={reviews} />
         </Suspense>
       </div>
 
@@ -105,7 +115,7 @@ export default async function ProductPage({ params }: { params: { handle: string
       </Suspense>
 
       <Suspense>
-        <ProductReviews product={product} />
+        <ProductReviews product={product} reviews={reviews} />
       </Suspense>
 
       {/* Products */}
@@ -119,10 +129,6 @@ export default async function ProductPage({ params }: { params: { handle: string
       {/* Last links */}
       <Suspense>
         <LastLink />
-      </Suspense>
-
-      <Suspense>
-        <Footer />
       </Suspense>
     </>
   );

@@ -16,7 +16,40 @@ export default function CreateReview({
 }) {
   const [stars, setStars] = useState(5);
   const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
   const [text, setText] = useState('');
+
+  const [loading, setLoading] = useState(false);
+
+  // Create a review on Judge.me
+  const createJudgemeReview = async () => {
+    setLoading(true);
+
+    const requestBody = {
+      shop_domain: '879c32-2.myshopify.com',
+      platform: 'shopify',
+      name: name,
+      email: email,
+      rating: stars,
+      body: text,
+    };
+  
+    try {
+      const res = await fetch('https://judge.me/api/v1/reviews', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestBody)
+      }).then(res => res.json())
+
+      console.log(res);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
 
   return (
     <>
@@ -70,6 +103,17 @@ export default function CreateReview({
                 />
               </div>
 
+              <div className="flex w-full flex-col items-start gap-2.5">
+                <p> La tua email: </p>
+                <input
+                  type="text"
+                  name="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="input-base w-full"
+                />
+              </div>
+
               {/* text */}
               <div className="flex w-full flex-col items-start gap-2.5">
                 <p> Il tuo messaggio: </p>
@@ -80,7 +124,13 @@ export default function CreateReview({
                 />
               </div>
 
-              <button className="button-primary-base">Invia recensione</button>
+              <button 
+                className="button-primary-base"
+                onClick={() => createJudgemeReview()}
+                disabled={loading}
+              >
+                {loading ? 'Invio in corso...' : 'Invia recensione'}
+              </button>
             </div>
           </ModalCenter>
         )}

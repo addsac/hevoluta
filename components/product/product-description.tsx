@@ -7,8 +7,9 @@ import { Product } from 'lib/shopify/types';
 import { Suspense, useState } from 'react';
 import ProductAccrodion from './product-accordion';
 import { VariantSelector } from './variant-selector';
+import { Review } from 'lib/judgeme/types';
 
-export function ProductDescription({ product }: { product: Product }) {
+export function ProductDescription({ product, reviews }: { product: Product, reviews: Review[] }) {
   const [rightPrice, setRightPrice] = useState({
     amount: product.priceRange.minVariantPrice.amount,
     currencyCode: product.priceRange.minVariantPrice.currencyCode
@@ -69,7 +70,7 @@ export function ProductDescription({ product }: { product: Product }) {
                   const element = document.getElementById('reviews-wrapper');
                   element?.scrollIntoView({ behavior: 'smooth' });
                 }}
-              >Leggi 16 recensioni</button>
+              >Leggi {reviews.length} recensioni</button>
             </div>
           </div>
         </div>

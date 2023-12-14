@@ -1,14 +1,13 @@
 import Footer from 'components/layout/footer';
 import Divider from 'components/ui/divider';
 import LastLink from 'components/ui/last-link';
-import { format, parseISO } from 'date-fns';
-import { it } from 'date-fns/locale';
 import { getArticle } from 'lib/shopify';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
+import { PublishedDateFormatted } from 'lib/utils'
 
 export const runtime = 'edge';
 
@@ -154,13 +153,3 @@ export default async function ArticlePage({ params }: { params: { handle: string
     </>
   );
 }
-
-const PublishedDateFormatted = ({ published } : { published: Date }) => {
-    // Parse the ISO string to a Date object
-    const date = parseISO(String(published));
-  
-    // Format the date as '24 ottobre 2023'
-    const formattedDate = format(date, 'd MMMM yyyy', { locale: it });
-  
-    return formattedDate;
-};

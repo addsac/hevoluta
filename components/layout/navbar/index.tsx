@@ -13,7 +13,7 @@ const { SITE_NAME } = process.env;
 export default async function Navbar() {
   const menu = await getMenu('next-js-frontend-header-menu');
 
-  // register api function
+  // Register api to register a new customer
   const register = async ({ email, password }) => {
     'use server'
     

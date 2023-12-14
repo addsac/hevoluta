@@ -1,4 +1,6 @@
 import { ReadonlyURLSearchParams } from 'next/navigation';
+import { format, parseISO } from 'date-fns';
+import { it } from 'date-fns/locale';
 
 export const createUrl = (pathname: string, params: URLSearchParams | ReadonlyURLSearchParams) => {
   const paramsString = params.toString();
@@ -46,3 +48,13 @@ export const divideArrayIntoGroups = (arr : any[], groupSize : number) => {
   }
   return groups;
 }
+
+export const PublishedDateFormatted = ({ published } : { published: Date }) => {
+  // Parse the ISO string to a Date object
+  const date = parseISO(String(published));
+
+  // Format the date as '24 ottobre 2023'
+  const formattedDate = format(date, 'd MMMM yyyy', { locale: it });
+
+  return formattedDate;
+};

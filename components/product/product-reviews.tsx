@@ -1,7 +1,9 @@
 'use client';
 
 import CreateReview from 'components/ui/product/create-review';
+import { Review } from 'lib/judgeme/types';
 import { Product } from 'lib/shopify/types';
+import { PublishedDateFormatted } from 'lib/utils';
 import { useState } from 'react';
 import Balancer from 'react-wrap-balancer';
 import 'swiper/css';
@@ -10,7 +12,7 @@ import 'swiper/css/pagination';
 import { Grid } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-export default function ProductReviews({ product }: { product: Product }) {
+export default function ProductReviews({ product, reviews }: { product: Product, reviews: Review[] }) {
   const [openModalCrateReview, setOpenModalCreateReview] = useState(false)
   const closeModalCreateReviw = () => setOpenModalCreateReview(false)
 
@@ -30,99 +32,122 @@ export default function ProductReviews({ product }: { product: Product }) {
           <p className="opacity-70">Leggi le testimonianze per questo prodotto</p>
         </div>
 
+        {/* empty state review */}
+        {reviews.length == 0 && (
+          <p className="text-body-1 text-center opacity-50 p-10 mx-10 border border-gray-200 bg-white">
+            Non ci sono ancora recensioni per questo prodotto.
+          </p>
+        )}
+
         {/* desktop */}
-        <div className="hidden w-full lg:block cursor-grab">
-          <Swiper
-            slidesPerView={3}
-            grid={{
-              rows: 1
-            }}
-            spaceBetween={10}
-            modules={[Grid]}
-            className="mySwiper"
-            style={{
-              width: '100%',
-              height: '100%',
-              marginLeft: 'auto',
-              marginRight: 'auto'
-            }}
-          >
-            {[1, 2, 3, 4, 5].map((value, index) => (
-              <SwiperSlide key={'review-card-desktop-' + index}>
-                <div className="flex flex-col items-center justify-center gap-6 bg-white p-10">
-                  {/* author */}
-                  <p className="text-title-6 opacity-60">Claudia M.</p>
-                  {/* description */}
-                  <p className="text-body-1 text-center">
-                    <Balancer>
-                      Crema dall’ottima consistenza, che si assorbe bene e protegge sia dal sole che
-                      dai raggi nocivi del computer.Da quando la uso il colorito della mia pelle è
-                      molto più uniforme.Il profumo non mi fa impazzire, ma è una caratteristica
-                      comune a molte creme solari.
-                    </Balancer>
-                  </p>
-                  {/* date */}
-                  <p className="text-title-7 opacity-60">Settembre 28, 2021</p>
-                  {/* rating */}
-                  <div className="flex">
-                    <img src="/img/icon/star.svg" alt="" className="h-6 w-6" />
-                    <img src="/img/icon/star.svg" alt="" className="-ml-1 h-6 w-6" />
-                    <img src="/img/icon/star.svg" alt="" className="-ml-1 h-6 w-6" />
-                    <img src="/img/icon/star.svg" alt="" className="-ml-1 h-6 w-6" />
-                    <img src="/img/icon/star.svg" alt="" className="-ml-1 h-6 w-6" />
+        {reviews.length > 0 && (
+          <div className="hidden w-full lg:block cursor-grab">
+            <Swiper
+              slidesPerView={3}
+              grid={{
+                rows: 1
+              }}
+              spaceBetween={10}
+              modules={[Grid]}
+              className="mySwiper"
+              style={{
+                width: '100%',
+                height: '100%',
+                marginLeft: 'auto',
+                marginRight: 'auto'
+              }}
+            >
+              {reviews.map((review, index) => (
+                <SwiperSlide key={'review-card-desktop-' + index}>
+                  <div className="flex flex-col items-center justify-center gap-6 bg-white p-10">
+                    {/* author */}
+                    <p className="text-title-6 opacity-60">
+                      {review.reviewer.name}
+                    </p>
+                    {/* description */}
+                    <p className="text-body-1 text-center">
+                      <Balancer>
+                        {review.body}
+                      </Balancer>
+                    </p>
+                    {/* date */}
+                    <p className="text-title-7 opacity-60">
+                      <PublishedDateFormatted 
+                          published={review.created_at}
+                      />
+                    </p>
+                    {/* rating */}
+                    <div className="flex">
+                      {Array(review.rating).fill(0).map((_, index) => (
+                        <img
+                          key={'star-' + index}
+                          src="/img/icon/star.svg"
+                          alt=""
+                          className="h-6 w-6"
+                        />
+                      ))}
+                    </div>
                   </div>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        )}
 
         {/* mobile */}
-        <div className="w-full lg:hidden cursor-grab">
-          <Swiper
-            slidesPerView={1}
-            grid={{
-              rows: 1
-            }}
-            spaceBetween={10}
-            modules={[Grid]}
-            className="mySwiper"
-            style={{
-              width: '100%',
-              height: '100%',
-              marginLeft: 'auto',
-              marginRight: 'auto'
-            }}
-          >
-            {[1, 2, 3, 4, 5].map((value, index) => (
-              <SwiperSlide key={'review-card-mobile-' + index}>
-                <div className="flex flex-col items-center justify-center gap-6 bg-white p-10">
-                  {/* author */}
-                  <p className="text-title-6 opacity-60">Claudia M.</p>
-                  {/* description */}
-                  <p className="text-body-1 text-center">
-                    <Balancer>
-                      Crema dall’ottima consistenza, che si assorbe bene e protegge sia dal sole che
-                      dai raggi nocivi del computer.Da quando la uso il colorito della mia pelle è
-                      molto più uniforme.Il profumo non mi fa impazzire, ma è una caratteristica
-                      comune a molte creme solari.
-                    </Balancer>
-                  </p>
-                  {/* date */}
-                  <p className="text-title-7 opacity-60">Settembre 28, 2021</p>
-                  {/* rating */}
-                  <div className="flex">
-                    <img src="/img/icon/star.svg" alt="" className="h-6 w-6" />
-                    <img src="/img/icon/star.svg" alt="" className="-ml-1 h-6 w-6" />
-                    <img src="/img/icon/star.svg" alt="" className="-ml-1 h-6 w-6" />
-                    <img src="/img/icon/star.svg" alt="" className="-ml-1 h-6 w-6" />
-                    <img src="/img/icon/star.svg" alt="" className="-ml-1 h-6 w-6" />
+        {reviews.length > 0 && (
+          <div className="w-full lg:hidden cursor-grab">
+            <Swiper
+              slidesPerView={1}
+              grid={{
+                rows: 1
+              }}
+              spaceBetween={10}
+              modules={[Grid]}
+              className="mySwiper"
+              style={{
+                width: '100%',
+                height: '100%',
+                marginLeft: 'auto',
+                marginRight: 'auto'
+              }}
+            >
+              {reviews.map((review, index) => (
+                <SwiperSlide key={'review-card-mobile-' + index}>
+                  <div className="flex flex-col items-center justify-center gap-6 bg-white p-10">
+                    {/* author */}
+                    <p className="text-title-6 opacity-60">
+                      {review.reviewer.name}
+                    </p>
+                    {/* description */}
+                    <p className="text-body-1 text-center">
+                      <Balancer>
+                        {review.body}
+                      </Balancer>
+                    </p>
+                    {/* date */}
+                    <p className="text-title-7 opacity-60">
+                      <PublishedDateFormatted 
+                          published={review.created_at}
+                      />
+                    </p>
+                    {/* rating */}
+                    <div className="flex">
+                      {Array(review.rating).fill(0).map((_, index) => (
+                        <img
+                          key={'star-' + index}
+                          src="/img/icon/star.svg"
+                          alt=""
+                          className="h-6 w-6"
+                        />
+                      ))}
+                    </div>
                   </div>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        )}
 
         <button
           className="button-primary-base"
