@@ -8,7 +8,7 @@ import ModalCenter from '../modal-center';
 export default function CreateReview({
   isOpen = false,
   closeModal = null,
-  product = null
+  product = null,
 }: {
   isOpen: boolean;
   closeModal: () => void;
@@ -26,7 +26,7 @@ export default function CreateReview({
     setLoading(true);
 
     const requestBody = {
-      shop_domain: '879c32-2.myshopify.com',
+      shop_domain: process.env.SHOPIFY_DOMAIN,
       platform: 'shopify',
       name: name,
       email: email,

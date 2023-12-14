@@ -12,20 +12,29 @@ import 'swiper/css/pagination';
 import { Grid } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-export default function ProductReviews({ product, reviews }: { product: Product, reviews: Review[] }) {
-  const [openModalCrateReview, setOpenModalCreateReview] = useState(false)
-  const closeModalCreateReviw = () => setOpenModalCreateReview(false)
+export default function ProductReviews({
+  product,
+  reviews
+}: {
+  product: Product;
+  reviews: Review[];
+}) {
+  const [openModalCrateReview, setOpenModalCreateReview] = useState(false);
+  const closeModalCreateReviw = () => setOpenModalCreateReview(false);
 
   return (
     <>
       {/* modals */}
-      <CreateReview 
+      <CreateReview
         isOpen={openModalCrateReview}
         closeModal={closeModalCreateReviw}
         product={product}
       />
-      
-      <div id="reviews-wrapper" className="flex w-screen flex-col items-center justify-center gap-20 bg-gray-100 px-5 py-20">
+
+      <div
+        id="reviews-wrapper"
+        className="flex w-screen flex-col items-center justify-center gap-20 bg-gray-100 px-5 py-20"
+      >
         {/* title */}
         <div className="flex flex-col gap-6 text-center">
           <p className="text-title-4">Recensioni del prodotto</p>
@@ -34,14 +43,14 @@ export default function ProductReviews({ product, reviews }: { product: Product,
 
         {/* empty state review */}
         {reviews.length == 0 && (
-          <p className="text-body-1 text-center opacity-50 p-10 mx-10 border border-gray-200 bg-white">
+          <p className="text-body-1 mx-10 border border-gray-200 bg-white p-10 text-center opacity-50">
             Non ci sono ancora recensioni per questo prodotto.
           </p>
         )}
 
         {/* desktop */}
         {reviews.length > 0 && (
-          <div className="hidden w-full lg:block cursor-grab">
+          <div className="hidden w-full cursor-grab lg:block">
             <Swiper
               slidesPerView={3}
               grid={{
@@ -61,31 +70,27 @@ export default function ProductReviews({ product, reviews }: { product: Product,
                 <SwiperSlide key={'review-card-desktop-' + index}>
                   <div className="flex flex-col items-center justify-center gap-6 bg-white p-10">
                     {/* author */}
-                    <p className="text-title-6 opacity-60">
-                      {review.reviewer.name}
-                    </p>
+                    <p className="text-title-6 opacity-60">{review.reviewer.name}</p>
                     {/* description */}
                     <p className="text-body-1 text-center">
-                      <Balancer>
-                        {review.body}
-                      </Balancer>
+                      <Balancer>{review.body}</Balancer>
                     </p>
                     {/* date */}
                     <p className="text-title-7 opacity-60">
-                      <PublishedDateFormatted 
-                          published={review.created_at}
-                      />
+                      <PublishedDateFormatted published={review.created_at} />
                     </p>
                     {/* rating */}
                     <div className="flex">
-                      {Array(review.rating).fill(0).map((_, index) => (
-                        <img
-                          key={'star-' + index}
-                          src="/img/icon/star.svg"
-                          alt=""
-                          className="h-6 w-6"
-                        />
-                      ))}
+                      {Array(review.rating)
+                        .fill(0)
+                        .map((_, index) => (
+                          <img
+                            key={'star-' + index}
+                            src="/img/icon/star.svg"
+                            alt=""
+                            className="h-6 w-6"
+                          />
+                        ))}
                     </div>
                   </div>
                 </SwiperSlide>
@@ -96,7 +101,7 @@ export default function ProductReviews({ product, reviews }: { product: Product,
 
         {/* mobile */}
         {reviews.length > 0 && (
-          <div className="w-full lg:hidden cursor-grab">
+          <div className="w-full cursor-grab lg:hidden">
             <Swiper
               slidesPerView={1}
               grid={{
@@ -116,31 +121,27 @@ export default function ProductReviews({ product, reviews }: { product: Product,
                 <SwiperSlide key={'review-card-mobile-' + index}>
                   <div className="flex flex-col items-center justify-center gap-6 bg-white p-10">
                     {/* author */}
-                    <p className="text-title-6 opacity-60">
-                      {review.reviewer.name}
-                    </p>
+                    <p className="text-title-6 opacity-60">{review.reviewer.name}</p>
                     {/* description */}
                     <p className="text-body-1 text-center">
-                      <Balancer>
-                        {review.body}
-                      </Balancer>
+                      <Balancer>{review.body}</Balancer>
                     </p>
                     {/* date */}
                     <p className="text-title-7 opacity-60">
-                      <PublishedDateFormatted 
-                          published={review.created_at}
-                      />
+                      <PublishedDateFormatted published={review.created_at} />
                     </p>
                     {/* rating */}
                     <div className="flex">
-                      {Array(review.rating).fill(0).map((_, index) => (
-                        <img
-                          key={'star-' + index}
-                          src="/img/icon/star.svg"
-                          alt=""
-                          className="h-6 w-6"
-                        />
-                      ))}
+                      {Array(review.rating)
+                        .fill(0)
+                        .map((_, index) => (
+                          <img
+                            key={'star-' + index}
+                            src="/img/icon/star.svg"
+                            alt=""
+                            className="h-6 w-6"
+                          />
+                        ))}
                     </div>
                   </div>
                 </SwiperSlide>
@@ -149,13 +150,10 @@ export default function ProductReviews({ product, reviews }: { product: Product,
           </div>
         )}
 
-        <button
-          className="button-primary-base"
-          onClick={() => setOpenModalCreateReview(true)}
-        >
-            Scrivi una recensione
+        <button className="button-primary-base" onClick={() => setOpenModalCreateReview(true)}>
+          Scrivi una recensione
         </button>
       </div>
-      </>
+    </>
   );
 }

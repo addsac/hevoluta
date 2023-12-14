@@ -20,8 +20,8 @@ export type Review = {
   curated: string;
   hidden: boolean;
   verified: string;
-  created_at: string;
-  updated_at: string;
+  created_at: Date;
+  updated_at: Date;
   ip_address: string;
   has_published_pictures: boolean;
   has_published_videos: boolean;

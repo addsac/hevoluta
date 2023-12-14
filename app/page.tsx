@@ -1,5 +1,3 @@
-// import { Carousel } from 'components/carousel';
-// import { ThreeItemGrid } from 'components/grid/three-items';
 import BlogCards from 'components/ui/blog/blog-cards';
 import Divider from 'components/ui/divider';
 import ImageDescription from 'components/ui/image-description';
@@ -8,6 +6,7 @@ import ProductRows from 'components/ui/product/product-rows';
 import { getArticles, getCollectionProducts } from 'lib/shopify';
 import { divideArrayIntoGroups } from 'lib/utils';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Suspense } from 'react';
 import { Balancer } from 'react-wrap-balancer';
 
@@ -39,15 +38,22 @@ export default async function HomePage() {
       <div className="relative w-screen h-[600px] bg-black text-center flex flex-col items-center justify-center gap-12 overflow-clip">
         <h1 className="text-title-1 text-white z-[1]">
           <Balancer>
-            Crema Viso Protettiva <br /> anti Luce Blu.
+            Semina la bellezza, 
+            <br />
+            raccogli la salute
           </Balancer>
         </h1>
-        <p className="-mt-4 text-17 text-white z-[1]">
-          Proteggiti dai danni della luce blu sulla tua pelle
+        <p className="-mt-4 text-17 leading-[190%] text-white z-[1] max-w-[1000px]">
+          <Balancer>
+            Scopri i prodotti di Hevoluta nati per prendersi cura della persona da un punto di vista più ampio, per un benessere completo e duraturo.
+          </Balancer>
         </p>
-        <button className="button-secondary-lg z-[1]">
-          Aquista ora
-        </button>
+        <Link 
+          href="/products" 
+          className="button-secondary-lg z-[1]"
+        >
+          Scopri i prodotti
+        </Link>
 
         {/* background img */}
         <Image 
@@ -69,8 +75,8 @@ export default async function HomePage() {
             alt=""
             className="w-12 h-12 opacity-50"
           />
-          <p> Spedizione gratuita </p>
-          <p className='opacity-50'> goditi la spedizione super veloce, gratis in UE </p>
+          <p> Spedizione gratuita da 65€ </p>
+          <p className='opacity-50'> goditi la spedizione veloce, gratis in UE </p>
         </div>
         <div className="w-full flex flex-col items-center justify-center gap-5">
           <img 
@@ -81,15 +87,15 @@ export default async function HomePage() {
           <p> Rimborso assistito </p>
           <p className='opacity-50'> in UE, per tutti i prodotti disponibili </p>
         </div>
-        <div className="w-full flex flex-col items-center justify-center gap-5">
+        <Link href="/chat" className="w-full flex flex-col items-center justify-center gap-5 group">
           <img 
             src="/img/icon/dubbi.svg"
             alt=""
             className="w-12 h-12 opacity-50"
           />
-          <p> Hai dei dubbi? </p>
-          <p className='opacity-50'> Apri qui la chat per ogni domanda sui prodotti </p>
-        </div>
+          <p className="group-hover:underline"> Hai dei dubbi? </p>
+          <p className='opacity-50'> Apri la chat per ogni domanda sui prodotti </p>
+        </Link>
       </div>
 
       {/* Products */}

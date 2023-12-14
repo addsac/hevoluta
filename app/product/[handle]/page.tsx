@@ -58,7 +58,7 @@ export default async function ProductPage({ params }: { params: { handle: string
   if (!product) return notFound();
 
   // Fetch the reviews for the current product - https://judge.me/api/v1/reviews
-  const apiUrl = `https://judge.me/api/v1/reviews?api_token=${'7xyLFlu31C1Wj8Z8wyp5mMkO7E0'}&shop_domain=${'879c32-2.myshopify.com'}&per_page=15&page=1&product_id=${product.id}`;
+  const apiUrl = `https://judge.me/api/v1/reviews?api_token=${process.env.JUDGEME_SECRET_TOKEN}&shop_domain=${process.env.SHOPIFY_DOMAIN}&per_page=15&page=1&product_id=${product.id}`;
   const reviews = await fetch(apiUrl, {
     method: 'GET',
     headers: {
