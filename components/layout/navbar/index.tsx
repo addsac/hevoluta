@@ -22,7 +22,7 @@ export default async function Navbar() {
       password,
     });
 
-    if(res.customerUserErrors[0].message) console.log(res.customerUserErrors[0].message)
+    if(res.customerUserErrors[0].message) console.log(res.customerUserErrors[0])
   }
 
   const login = async ({ email, password }) => {
@@ -33,7 +33,7 @@ export default async function Navbar() {
       password,
     });
 
-    if(res.customerUserErrors[0].message) console.log(res.customerUserErrors[0].message)
+    if(res.customerUserErrors[0].message) console.log(res.customerUserErrors[0])
   }
 
   const sendEmailPasswordRecovery = async ({ email }) => {

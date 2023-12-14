@@ -120,8 +120,8 @@ export default async function HomePage() {
 
       {/* Image description */}
       <ImageDescription 
-        title={"Il processo di formulazione dei nostri prodotti"} 
-        description={"nasce da una qualità superiore delle materie prime, unita ad un’attenzione per i bisogni e l’esperienza delle persone."} 
+        title={"Offriamo cosmetici sicuri"} 
+        description={"efficaci e innovativi che agiscono sulla pelle proteggendola e accompagnandola nel tempo a risolvere i cambiamenti che deve affrontare."} 
         src="/img/background/background-2.jpg"
         href="/prodotti" 
       />
