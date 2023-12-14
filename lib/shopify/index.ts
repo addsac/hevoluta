@@ -10,7 +10,7 @@ import {
   editCartItemsMutation,
   removeFromCartMutation
 } from './mutations/cart';
-import { createCustomerQuery } from './mutations/customer';
+import { createCustomerQuery, loginCustomerQuery } from './mutations/customer';
 import { getArticleQuery, getArticlesQuery } from './queries/articles';
 import { getBlogQuery } from './queries/blog';
 import { getCartQuery } from './queries/cart';
@@ -52,6 +52,7 @@ import {
   ShopifyCollectionsOperation,
   ShopifyCreateCartOperation,
   ShopifyCustomerCreateOperation,
+  ShopifyCustomerLoginOperation,
   ShopifyCustomerOperation,
   ShopifyMenuOperation,
   ShopifyPageOperation,
@@ -571,6 +572,26 @@ export async function registerCustomer({
   });
 
   return reshapeCustomer(res.body.data.customerCreate)
+}
+
+export async function loginCustomer({
+  email,
+  password
+} : {
+  email: string;
+  password: string;
+}): Promise<Customer>{
+  const res = await shopifyFetch<ShopifyCustomerLoginOperation>({
+    query: loginCustomerQuery,
+    variables: { 
+      input: {
+        email: email,
+        password: password
+      }
+    }
+  });
+
+  return reshapeCustomer(res.body.data.customerAccessTokenCreate)
 }
 
 /**

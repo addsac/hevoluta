@@ -1,17 +1,20 @@
 'use client';
 
 import { RegisterLoginType } from 'lib/shopify/types';
-import Link from 'next/link';
 import { useState } from 'react';
 
 export default function ModalContentLogin({
   flag,
   closeModal,
-  login
+  login,
+  openModalForgotPassword,
+  setFlag
 }: {
   flag: RegisterLoginType;
   closeModal: any;
   login: any;
+  openModalForgotPassword: any;
+  setFlag: any;
 }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -37,6 +40,7 @@ export default function ModalContentLogin({
               <p> Email </p>
               <input
                 type="email"
+                name="email"
                 placeholder="nome@esempio.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -58,14 +62,27 @@ export default function ModalContentLogin({
               </button>
             </div>
 
-            <button className="button-primary-lg w-full">Accedi</button>
+            <button 
+              onClick={() => login({
+                email,
+                password
+              })}
+              className="button-primary-lg w-full"
+            >
+              Accedi
+            </button>
 
             <div>
-              <p className="inline">Consulta la</p>
-              <Link href="/privacy" className="button-text mx-1 inline">
-                privacy policy
-              </Link>
-              <p className="inline">per maggiori informazioni.</p>
+              <p className="inline">
+                Non hai un account?
+              </p>
+              &nbsp;
+              <button 
+                onClick={() => setFlag('register')}
+                className="button-text-visible-underline mx-1 inline"
+              >
+                Registrati qui.
+              </button>
             </div>
           </div>
         </>

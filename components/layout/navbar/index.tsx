@@ -4,7 +4,7 @@ import BlackStripe from 'components/layout/navbar/black-stripe';
 import Accedi from 'components/ui/accedi';
 import Cookie from 'components/ui/cookie';
 import Menu from 'components/ui/menu';
-import { getMenu, registerCustomer } from 'lib/shopify';
+import { getMenu, loginCustomer, registerCustomer } from 'lib/shopify';
 import Link from 'next/link';
 import { Suspense } from 'react';
 
@@ -18,6 +18,17 @@ export default async function Navbar() {
     'use server'
     
     const res = await registerCustomer({
+      email,
+      password,
+    });
+
+    if(res.customerUserErrors[0].message) console.log(res.customerUserErrors[0].message)
+  }
+
+  const login = async ({ email, password }) => {
+    'use server'
+    
+    const res = await loginCustomer({
       email,
       password,
     });
@@ -71,9 +82,9 @@ export default async function Navbar() {
             <div className="hidden lg:block">
               <Suspense>
                 <Accedi 
-                  flag="register"
+                  flag="login"
                   register={register}
-                  login={register}
+                  login={login}
                 />
                 {/* <Profilo /> */}
               </Suspense>

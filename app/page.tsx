@@ -50,9 +50,11 @@ export default async function HomePage() {
         </p>
         <Link 
           href="/products" 
-          className="button-secondary-lg z-[1]"
+          className="z-[1]"
         >
-          Scopri i prodotti
+          <button className="button-secondary-lg">
+            Scopri i prodotti
+          </button>
         </Link>
 
         {/* background img */}

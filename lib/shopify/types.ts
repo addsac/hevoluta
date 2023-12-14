@@ -249,14 +249,19 @@ export type ShopifyMenuOperation = {
  * Customer
  */
 
-export type customerUserErrors = {
+export type CustomerUserErrors = {
   message: string;
   field: string[];
 }[];
 
+export type CustomerAccessToken = {
+  accessToken: string;
+  expiresAt: Date;
+};
+
 export type Customer = {
   customer: ShopifyCustomer;
-  customerUserErrors: customerUserErrors;
+  customerUserErrors: CustomerUserErrors;
 }
 
 export type ShopifyCustomer = {
@@ -270,7 +275,7 @@ export type ShopifyCustomerOperation = {
   data: {
     customerCreate: {
       customer: ShopifyCustomer;
-      customerUserErrors: customerUserErrors;
+      customerUserErrors: CustomerUserErrors;
     }
   };
   variables: {
@@ -282,7 +287,26 @@ export type ShopifyCustomerCreateOperation = {
   data: {
     customerCreate: {
       customer: ShopifyCustomer;
-      customerUserErrors: customerUserErrors;
+      customerUserErrors: CustomerUserErrors;
+    }
+  };
+  variables: {
+    input: {
+      email: string;
+      password: string;
+      firstName?: string;
+      lastName?: string;
+      phone?: string;
+      acceptsMarketing?: boolean;
+    };
+  };
+};
+
+export type ShopifyCustomerLoginOperation = {
+  data: {
+    customerAccessTokenCreate: {
+      customerAccessToken: CustomerAccessToken;
+      customerUserErrors: CustomerUserErrors;
     }
   };
   variables: {

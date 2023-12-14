@@ -19,7 +19,7 @@ export const createCustomerQuery = /* GraphQL */ `
   ${customerUserErrorFragment}
 `;
 
-export const customerAccessTokenCreateMutation = /* GraphQL */ `
+export const loginCustomerQuery = /* GraphQL */ `
   mutation customerAccessTokenCreate($input: CustomerAccessTokenCreateInput!) {
     customerAccessTokenCreate(input: $input) {
       customerAccessToken {

@@ -7,11 +7,13 @@ import { useState } from 'react';
 export default function ModalContentRegister({
   flag,
   closeModal,
-  register
+  register,
+  setFlag
 }: {
   flag: RegisterLoginType;
   closeModal: any;
   register: any;
+  setFlag: any;
 }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -58,12 +60,28 @@ export default function ModalContentRegister({
               <p className="text-body-1_2 oapcity-50">Minimo 8 carattri e una lettera maiuscola.</p>
             </div>
 
-            <button onClick={() => register({
+            <button 
+              onClick={() => register({
                 email,
                 password
-            })} className="button-primary-lg w-full">
+              })} 
+              className="button-primary-lg w-full"
+            >
               Registrati
             </button>
+            
+            <div>
+              <p className="inline">
+                Hai già un account?
+              </p>
+              &nbsp;
+              <button 
+                onClick={() => setFlag('login')}
+                className="button-text-visible-underline mx-1 inline"
+              >
+                Accedi qui.
+              </button>
+            </div>
 
             <div>
               <p className="inline">Consulta la</p>

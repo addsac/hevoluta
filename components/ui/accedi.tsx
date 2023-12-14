@@ -9,9 +9,9 @@ import { Suspense, useState } from 'react';
 import ForgotPassword from './nav/forgot-password';
 
 export default function Accedi({
-  flag = 'register',
+  flag = 'login',
   register,
-  login
+  login,
 }: {
   flag: RegisterLoginType;
   register: any;
@@ -20,6 +20,8 @@ export default function Accedi({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+  const [page, setPage] = useState(flag)
 
   // modal
   const [isOpenModalForgotPassword, setIsOpenModalForgotPassword] = useState(false);
@@ -35,8 +37,8 @@ export default function Accedi({
         {isModalOpen && (
           <Modal position="right" closeModal={closeModal}>
             <Suspense>
-              <ModalContentRegister flag={flag} closeModal={closeModal} register={register} />
-              <ModalContentLogin flag={flag} closeModal={closeModal} login={login} />
+              <ModalContentRegister flag={page} closeModal={closeModal} register={register} setFlag={setPage} />
+              <ModalContentLogin flag={page} closeModal={closeModal} login={login} openModalForgotPassword={openModalForgotPassword} setFlag={setPage} />
             </Suspense>
           </Modal>
         )}
