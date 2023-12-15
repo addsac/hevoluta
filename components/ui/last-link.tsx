@@ -8,6 +8,15 @@ export default function LastLink(){
     const [emailNewsletter, setEmailNewsletter] = useState('')
     const [checkNewsletter, setCheckNewsletter] = useState(false)
 
+    const [loading, setLoading] = useState(false)
+
+    const submit = async () => {
+        setLoading(true)
+        setTimeout(() => {
+            setLoading(false)
+        }, 3000)
+    }
+
     return (
         <div className="grid grid-cols-12 gap-5 px-5 py-[120px]">
             {/* newsletter */}
@@ -52,8 +61,12 @@ export default function LastLink(){
                             </p>
                         </label>
                     </div>
-                    <button className="button-primary-base">
-                    Iscriviti alla newsletter
+                    <button 
+                        className="button-primary-base"
+                        onClick={submit}
+                        disabled={loading}
+                    >
+                        {loading ? 'Caricamento...' : 'Iscriviti'}
                     </button>
                 </div>
             </div>
