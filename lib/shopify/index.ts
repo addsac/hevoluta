@@ -10,7 +10,7 @@ import {
   editCartItemsMutation,
   removeFromCartMutation
 } from './mutations/cart';
-import { createCustomerQuery, customerAccessTokenDeleteQuery, loginCustomerQuery, sendEmailPasswordRecoveryQuery } from './mutations/customer';
+import { createCustomerQuery, customerAccessTokenDeleteQuery, customerResetMutation, loginCustomerQuery, sendEmailPasswordRecoveryQuery } from './mutations/customer';
 import { getArticleQuery, getArticlesQuery } from './queries/articles';
 import { getBlogQuery } from './queries/blog';
 import { getCartQuery } from './queries/cart';
@@ -54,6 +54,7 @@ import {
   ShopifyCustomerCreateOperation,
   ShopifyCustomerLoginOperation,
   ShopifyCustomerLogoutOperation,
+  ShopifyCustomerResetPasswordOperation,
   ShopifyCustomerSendEmailPasswordRecoveryOperation,
   ShopifyMenuOperation,
   ShopifyPageOperation,
@@ -610,7 +611,7 @@ export async function logoutCustomer({
   return res.body.data
 }
 
-export async function resetPassword({
+export async function sendResetPasswordEmail({
   email
 } : {
   email: string;
@@ -623,6 +624,30 @@ export async function resetPassword({
   });
 
   return res.body.data.customerRecover
+}
+
+export async function resetPassword({
+  id,
+  input,
+} : {
+  id: string;
+  input: {
+    password: string;
+    resetToken: string;
+  }
+}): Promise<any>{
+  const res = await shopifyFetch<ShopifyCustomerResetPasswordOperation>({
+    query: customerResetMutation,
+    variables: { 
+      id: id,
+      input: {
+        password: input.password,
+        resetToken: input.resetToken
+      }
+    }
+  });
+
+  return res.body.data
 }
 
 /**

@@ -81,7 +81,7 @@ export const customerResetMutation = /* GraphQL */ `
   mutation customerReset($id: ID!, $input: CustomerResetInput!) {
     customerReset(id: $id, input: $input) {
       customer {
-        ...customerFragment
+        ...customer
       }
       customerAccessToken {
         ...customerAccessToken

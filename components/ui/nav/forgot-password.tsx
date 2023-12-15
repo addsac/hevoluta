@@ -29,15 +29,12 @@ export default function ForgotPassword({
       email: email,
     })
 
+    console.log(res)
+
     if(res.customerUserErrors[0].message) {
       setError(res.customerUserErrors[0].message)
     } else{
-      if(res.error.message){
-        setError(res.error.message)
-      }
-      else{
-        setSuccess('Email inviata con successo.')
-      }
+      setSuccess('Email inviata con successo.')
     }
 
     setLoading(false)

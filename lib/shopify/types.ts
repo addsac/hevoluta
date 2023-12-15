@@ -354,6 +354,23 @@ export type ShopifyCustomerSendEmailPasswordRecoveryOperation = {
   };
 };
 
+export type ShopifyCustomerResetPasswordOperation = {
+  data: {
+    customerReset: {
+      customer: ShopifyCustomer;
+      customerAccessToken: CustomerAccessToken;
+      customerUserErrors: CustomerUserErrors;
+    }
+  };
+  variables: {
+    id: string;
+    input: {
+      resetToken: string;
+      password: string;
+    };
+  };
+};
+
 export type ShopifyBlog = {
   id: string;
   title: string;
