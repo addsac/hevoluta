@@ -336,7 +336,7 @@ export type ShopifyCustomerLogoutOperation = {
   data: {
     deletedAccessToken: string;
     deletedCustomerAccessTokenId: string;
-    userErrors: UserErrors;
+    userErrors: CustomerUserErrors;
   };
   variables: {
     customerAccessToken: string;
@@ -345,7 +345,9 @@ export type ShopifyCustomerLogoutOperation = {
 
 export type ShopifyCustomerSendEmailPasswordRecoveryOperation = {
   data: {
-    customerUserErrors: CustomerUserErrors;
+    customerRecover: {
+      customerUserErrors: CustomerUserErrors;
+    }
   };
   variables: {
     email: string;

@@ -32,7 +32,6 @@ import {
   Connection,
   Customer,
   CustomerAccessTokenDeletePayload,
-  CustomerUserErrors,
   Image,
   Menu,
   Page,
@@ -615,7 +614,7 @@ export async function resetPassword({
   email
 } : {
   email: string;
-}): Promise<CustomerUserErrors>{
+}): Promise<any>{
   const res = await shopifyFetch<ShopifyCustomerSendEmailPasswordRecoveryOperation>({
     query: sendEmailPasswordRecoveryQuery,
     variables: { 
@@ -623,7 +622,7 @@ export async function resetPassword({
     }
   });
 
-  return res.body.data.customerUserErrors
+  return res.body.data.customerRecover
 }
 
 /**

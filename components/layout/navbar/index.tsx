@@ -58,10 +58,7 @@ export default async function Navbar() {
 
     console.log(res)
 
-    /* 
-      - se l'email non è stata inviata mostrare un messaggio di errore, 
-      - altrimenti mostrare un messaggio di successo 
-    */
+    return res
   }
 
   return (

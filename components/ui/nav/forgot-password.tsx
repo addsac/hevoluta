@@ -16,12 +16,29 @@ export default function ForgotPassword({
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
 
+  // error adn success
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
+
   const send = async () => {
     setLoading(true)
+    setError('')
+    setSuccess('')
 
-    await sendEmailPasswordRecovery({ 
-      email: email
+    const res = await sendEmailPasswordRecovery({ 
+      email: email,
     })
+
+    if(res.customerUserErrors[0].message) {
+      setError(res.customerUserErrors[0].message)
+    } else{
+      if(res.error.message){
+        setError(res.error.message)
+      }
+      else{
+        setSuccess('Email inviata con successo.')
+      }
+    }
 
     setLoading(false)
   }
@@ -67,6 +84,18 @@ export default function ForgotPassword({
                   className="w-full input-base"
                 />
               </div>
+
+              {error !== '' && (
+                <div className="bg-red-100 px-5 py-2.5 text-red-500">
+                  <p> Errore: {error} </p>
+                </div>
+              )}
+
+              {success !== '' && (
+                <div className="bg-green-100 px-5 py-2.5 text-green-500">
+                  <p> Successo: {success} </p>
+                </div>
+              )}
 
               <button 
                 className="button-primary-base"
