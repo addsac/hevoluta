@@ -25,11 +25,13 @@ export default async function ResetPasswordPage({ params }: { params: { handle: 
   return (
     <>
       <div className="w-screen flex flex-col lg:flex-row items-start gap-16 lg:gap-2.5 px-5 pt-20 pb-[120px]">
-        <ModalPasswordReset 
-          id1={params.handle[0]}
-          id2={params.handle[1]}
-          resetPassword={submitResetPassword}
-        />
+        <Suspense>
+          <ModalPasswordReset 
+            id1={params.handle[0]}
+            id2={params.handle[1]}
+            resetPassword={submitResetPassword}
+          />
+        </Suspense>
       </div>
       
       {/* divider */}

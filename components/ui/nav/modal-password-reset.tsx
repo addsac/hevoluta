@@ -33,6 +33,8 @@ export default function ModalPasswordReset({
       }
     });
 
+    // customerReset.customerUserErrors
+    
     if(res.customerUserErrors[0].message) {
         setError(res.customerUserErrors[0].message);
     }
@@ -62,6 +64,18 @@ export default function ModalPasswordReset({
             Minimo 8 caratteri.
           </p>
         </div>
+
+        {error !== '' && (
+            <div className="bg-red-100 px-5 py-2.5 text-red-500">
+                <p> Errore: {error} </p>
+            </div>
+        )}
+
+        {success !== '' && (
+            <div className="bg-green-100 px-5 py-2.5 text-green-500">
+                <p> Successo: {success} </p>
+            </div>
+        )}
 
         <button className="button-primary-base" onClick={() => send()} disabled={loading}>
           {loading ? 'Caricamento...' : 'Salva nuova password'}
