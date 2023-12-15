@@ -63,7 +63,7 @@ export default function LastLink(){
                     </div>
                     <button 
                         className="button-primary-base"
-                        onClick={submit}
+                        onClick={() => submit()}
                         disabled={loading}
                     >
                         {loading ? 'Caricamento...' : 'Iscriviti'}
