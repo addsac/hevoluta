@@ -14,11 +14,46 @@ const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   validateEnvironmentVariables();
 
+  // home
   const routesMap = [''].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString()
   }));
 
+  // about
+  routesMap.push({
+    url: `${baseUrl}/about`,
+    lastModified: new Date().toISOString()
+  });
+
+  // blog
+  routesMap.push({
+    url: `${baseUrl}/blog`,
+    lastModified: new Date().toISOString()
+  });
+
+  // articles
+  /* ... */
+
+  // chat
+  routesMap.push({
+    url: `${baseUrl}/chat`,
+    lastModified: new Date().toISOString()
+  });
+
+  // policy
+  routesMap.push({
+    url: `${baseUrl}/policy`,
+    lastModified: new Date().toISOString()
+  });
+
+  // profile
+  routesMap.push({
+    url: `${baseUrl}/profile`,
+    lastModified: new Date().toISOString()
+  });
+
+  // collections
   const collectionsPromise = getCollections().then((collections) =>
     collections.map((collection) => ({
       url: `${baseUrl}${collection.path}`,
@@ -26,6 +61,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }))
   );
 
+  // product
   const productsPromise = getProducts({}).then((products) =>
     products.map((product) => ({
       url: `${baseUrl}/product/${product.handle}`,
@@ -33,6 +69,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }))
   );
 
+  // pages
   const pagesPromise = getPages().then((pages) =>
     pages.map((page) => ({
       url: `${baseUrl}/${page.handle}`,
@@ -43,7 +80,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let fetchedRoutes: Route[] = [];
 
   try {
-    fetchedRoutes = (await Promise.all([collectionsPromise, productsPromise, pagesPromise])).flat();
+    fetchedRoutes = (await Promise.all([productsPromise, pagesPromise])).flat(); // collectionsPromise
   } catch (error) {
     throw JSON.stringify(error, null, 2);
   }

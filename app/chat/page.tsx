@@ -9,6 +9,7 @@ import { Suspense } from 'react';
 export const runtime = 'edge';
 
 export const metadata = {
+  title: 'Hevoluta – Chatta con noi',
   description: 'High-performance ecommerce store built with Next.js, Vercel, and Shopify.',
   openGraph: {
     type: 'website'

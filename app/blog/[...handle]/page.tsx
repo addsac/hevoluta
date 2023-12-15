@@ -23,7 +23,7 @@ export async function generateMetadata({
   const { title, exerp, image, authorV2, publishedAt, tags } = article;
 
   return {
-    title,
+    title: `Hevoluta – ${title}`,
     description: exerp,
     openGraph: {
       type: 'article',

@@ -1,4 +1,3 @@
-import Footer from 'components/layout/footer';
 import Divider from 'components/ui/divider';
 import LastLink from 'components/ui/last-link';
 import { Suspense } from 'react';
@@ -7,6 +6,7 @@ import Balancer from 'react-wrap-balancer';
 export const runtime = 'edge';
 
 export const metadata = {
+  title: 'Hevoluta – About',
   description: 'High-performance ecommerce store built with Next.js, Vercel, and Shopify.',
   openGraph: {
     type: 'website'

@@ -13,7 +13,8 @@ import { Balancer } from 'react-wrap-balancer';
 export const runtime = 'edge';
 
 export const metadata = {
-  description: 'High-performance ecommerce store built with Next.js, Vercel, and Shopify.',
+  title: 'Hevoluta',
+  description: 'Scopri i prodotti di Hevoluta nati per prendersi cura della persona da un punto di vista più ampio, semina la belleza, raccogli la salute.',
   openGraph: {
     type: 'website'
   }
