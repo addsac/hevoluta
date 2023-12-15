@@ -26,7 +26,7 @@ export default function ProductAccordion({ product = null } : { product: any }) 
                     transition={{ ease: 'easeOut', duration: 0.1 }}
                     className="text-13 leading-[170%]"
                 >
-                    {product.metafields.find((metafield: any) => metafield.key == 'benefici_del_prodotto')?.value}
+                    {product?.metafields.find((metafield: any) => metafield?.key == 'benefici_del_prodotto')?.value}
                 </motion.p>
             )}
           </AnimatePresence>
@@ -65,7 +65,7 @@ export default function ProductAccordion({ product = null } : { product: any }) 
                     transition={{ ease: 'easeOut', duration: 0.1 }}
                     className="text-13 leading-[170%]"
                 >
-                    {product.metafields.find((metafield: any) => metafield.key == 'ingredienti')?.value}
+                    {product?.metafields.find((metafield: any) => metafield?.key == 'ingredienti')?.value}
                 </motion.p>
             )}
           </AnimatePresence>
@@ -104,7 +104,7 @@ export default function ProductAccordion({ product = null } : { product: any }) 
                     transition={{ ease: 'easeOut', duration: 0.1 }}
                     className="text-13 leading-[170%]"
                 >
-                    {product.metafields.find((metafield: any) => metafield.key == 'modalita_uso')?.value}
+                    {product?.metafields.find((metafield: any) => metafield?.key == 'modalita_uso')?.value}
                 </motion.p>
             )}
           </AnimatePresence>

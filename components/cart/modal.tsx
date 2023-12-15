@@ -118,16 +118,18 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                         onClick={closeCart}
                         className="w-20 h-20 bg-gradient-gray"
                       >
-                        <Image
-                          className="h-full w-full object-cover"
-                          width={64}
-                          height={64}
-                          alt={
-                            item.merchandise.product.featuredImage.altText ||
-                            item.merchandise.product.title
-                          }
-                          src={item.merchandise.product.featuredImage.url}
-                        />
+                        {item.merchandise.product.featuredImage && (
+                          <Image
+                            className="h-full w-full object-cover"
+                            width={64}
+                            height={64}
+                            alt={
+                              item.merchandise.product.featuredImage.altText ||
+                              item.merchandise.product.title
+                            }
+                            src={item.merchandise.product.featuredImage.url}
+                          />
+                        )}
                       </Link>
       
                       {/* texts */}

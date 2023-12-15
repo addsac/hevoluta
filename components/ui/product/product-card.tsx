@@ -32,21 +32,21 @@ export default function ProductCard({ item = null } : { item: any }) {
 
             <div className="flex items-center justify-center py-5 bg-gradient-to-b from-gray-100 to-gray-100/0 group-hover:ring-1 group-hover:ring-black">
                 <img 
-                    src={item.images[0].url}
+                    src={item?.images[0]?.url}
                     alt="product name 1"
                     className="h-[300px] lg:h-[400px] w-auto group-hover:opacity-0 group-hover:h-0"
                 />
                 <img 
-                    src={item.images[1].url}
+                    src={item?.images[1]?.url}
                     alt="product name 2"
                     className="w-auto h-0 opacity-0 group-hover:opacity-100 group-hover:h-[300px] lg:group-hover:h-[400px]"
                 />
             </div>
             <div className="flex flex-col gap-4">
-                <p> {item.title} </p>
+                <p> {item?.title} </p>
                 <p className="font-mono font-normal"> 
-                    {Number(item.priceRange.minVariantPrice.amount).toFixed(0)} 
-                    {item.priceRange.minVariantPrice.currencyCode == 'EUR' ? '€' : ''} 
+                    {Number(item?.priceRange?.minVariantPrice?.amount).toFixed(0)} 
+                    {item?.priceRange?.minVariantPrice?.currencyCode == 'EUR' ? '€' : ''} 
                 </p>
             </div>
         </Link>

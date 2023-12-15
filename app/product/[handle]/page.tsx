@@ -23,12 +23,12 @@ export async function generateMetadata({
 
   if (!product) return notFound();
 
-  const { url, width, height, altText: alt } = product.featuredImage || {};
-  const indexable = !product.tags.includes(HIDDEN_PRODUCT_TAG);
+  const { url, width, height, altText: alt } = product?.featuredImage || {};
+  const indexable = !product?.tags.includes(HIDDEN_PRODUCT_TAG);
 
   return {
-    title: `Hevoluta – ${product.seo.title || product.title}`,
-    description: product.seo.description || product.description,
+    title: `Hevoluta – ${product?.seo.title || product?.title}`,
+    description: product?.seo.description || product?.description,
     robots: {
       index: indexable,
       follow: indexable,
@@ -58,7 +58,7 @@ export default async function ProductPage({ params }: { params: { handle: string
   if (!product) return notFound();
 
   // Fetch the reviews for the current product - https://judge.me/api/v1/reviews
-  const apiUrl = `https://judge.me/api/v1/reviews?api_token=${process.env.JUDGEME_SECRET_TOKEN}&shop_domain=${process.env.SHOPIFY_DOMAIN}&per_page=15&page=1&product_id=${product.id}`;
+  const apiUrl = `https://judge.me/api/v1/reviews?api_token=${process.env.JUDGEME_SECRET_TOKEN}&shop_domain=${process.env.SHOPIFY_DOMAIN}&per_page=15&page=1&product_id=${product?.id}`;
   const reviews = await fetch(apiUrl, {
     method: 'GET',
     headers: {
@@ -71,17 +71,17 @@ export default async function ProductPage({ params }: { params: { handle: string
   const productJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
-    name: product.title,
-    description: product.description,
-    image: product.featuredImage.url,
+    name: product?.title,
+    description: product?.description,
+    image: product?.featuredImage?.url,
     offers: {
       '@type': 'AggregateOffer',
-      availability: product.availableForSale
+      availability: product?.availableForSale
         ? 'https://schema.org/InStock'
         : 'https://schema.org/OutOfStock',
-      priceCurrency: product.priceRange.minVariantPrice.currencyCode,
-      highPrice: product.priceRange.maxVariantPrice.amount,
-      lowPrice: product.priceRange.minVariantPrice.amount
+      priceCurrency: product?.priceRange.minVariantPrice.currencyCode,
+      highPrice: product?.priceRange.maxVariantPrice.amount,
+      lowPrice: product?.priceRange.minVariantPrice.amount
     }
   };
 
