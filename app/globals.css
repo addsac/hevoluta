@@ -93,41 +93,41 @@ button{
 
 /* texts */
 .text-title-1{
-  @apply text-70 tiempos-font;
+  @apply text-48 lg:text-70 tiempos-font;
   letter-spacing: 0.8px;
   line-height: 120% !important;
 }
 .text-title-2{
-  @apply text-48 tiempos-font;
+  @apply text-32 lg:text-48 tiempos-font;
   letter-spacing: 0.8px;
 }
 .text-title-3{
-  @apply text-32 font-light tiempos-font;
+  @apply text-26 lg:text-32 font-light tiempos-font;
   letter-spacing: 0.8px;
   line-height: 150% !important;
 }
 .text-title-4{
-  @apply text-26 font-light tiempos-font;
+  @apply text-20 lg:text-26 font-light tiempos-font;
   line-height: 150% !important;
   letter-spacing: 0.8px;
 }
 .text-title-4_170{
-  @apply text-26 font-light tiempos-font;
+  @apply text-20 lg:text-26 font-light tiempos-font;
   line-height: 170% !important;
   letter-spacing: 0.8px;
 }
 .text-title-5{
-  @apply text-20 font-light tiempos-font;
+  @apply text-17 lg:text-20 font-light tiempos-font;
   line-height: 170% !important;
   letter-spacing: 0.6px;
 }
 .text-title-5_190{
-  @apply text-20 font-light tiempos-font;
+  @apply text-17 lg:text-20 font-light tiempos-font;
   line-height: 190% !important;
   letter-spacing: 0.6px;
 }
 .text-title-6{
-  @apply text-17 font-light tiempos-font;
+  @apply text-15 lg:text-17 font-light tiempos-font;
   line-height: 140% !important;
   letter-spacing: 0.5px;
 }
@@ -161,7 +161,7 @@ button{
   line-height: 190% !important;
 }
 .text-body-3{
-  @apply text-19;
+  @apply text-17 lg:text-19;
   line-height: 140% !important;
 }
 
