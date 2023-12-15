@@ -10,7 +10,7 @@ import {
   editCartItemsMutation,
   removeFromCartMutation
 } from './mutations/cart';
-import { createCustomerQuery, loginCustomerQuery, sendEmailPasswordRecoveryQuery } from './mutations/customer';
+import { createCustomerQuery, customerAccessTokenDeleteQuery, loginCustomerQuery, sendEmailPasswordRecoveryQuery } from './mutations/customer';
 import { getArticleQuery, getArticlesQuery } from './queries/articles';
 import { getBlogQuery } from './queries/blog';
 import { getCartQuery } from './queries/cart';
@@ -19,7 +19,6 @@ import {
   getCollectionQuery,
   getCollectionsQuery
 } from './queries/collection';
-import { getCustomerQuery } from './queries/customer';
 import { getMenuQuery } from './queries/menu';
 import { getPageQuery, getPagesQuery } from './queries/page';
 import {
@@ -32,6 +31,7 @@ import {
   Collection,
   Connection,
   Customer,
+  CustomerAccessTokenDeletePayload,
   CustomerUserErrors,
   Image,
   Menu,
@@ -54,7 +54,7 @@ import {
   ShopifyCreateCartOperation,
   ShopifyCustomerCreateOperation,
   ShopifyCustomerLoginOperation,
-  ShopifyCustomerOperation,
+  ShopifyCustomerLogoutOperation,
   ShopifyCustomerSendEmailPasswordRecoveryOperation,
   ShopifyMenuOperation,
   ShopifyPageOperation,
@@ -529,7 +529,7 @@ export async function revalidate(req: NextRequest): Promise<NextResponse> {
 /**
  * Customer API
  */
-export async function getCustomer({
+/* export async function getCustomer({
   customerAccessToken
 } : {
   customerAccessToken: string
@@ -542,7 +542,7 @@ export async function getCustomer({
   });
 
   return reshapeCustomer(res.body.data.customerCreate)
-}
+} */
 
 export async function registerCustomer({
   email,
@@ -594,6 +594,21 @@ export async function loginCustomer({
   });
 
   return reshapeCustomer(res.body.data.customerAccessTokenCreate)
+}
+
+export async function logoutCustomer({
+  customerAccessToken
+} : {
+  customerAccessToken: string;
+}): Promise<CustomerAccessTokenDeletePayload>{
+  const res = await shopifyFetch<ShopifyCustomerLogoutOperation>({
+    query: customerAccessTokenDeleteQuery,
+    variables: { 
+      customerAccessToken: customerAccessToken
+    }
+  });
+
+  return res.body.data
 }
 
 export async function resetPassword({

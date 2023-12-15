@@ -45,7 +45,7 @@ export const sendEmailPasswordRecoveryQuery = /* GraphQL */ `
   ${customerUserErrorFragment}
 `;
 
-export const customerAccessTokenDeleteMutation = /* GraphQL */ `
+export const customerAccessTokenDeleteQuery = /* GraphQL */ `
   mutation customerAccessTokenDelete($customerAccessToken: String!) {
     customerAccessTokenDelete(customerAccessToken: $customerAccessToken) {
       deletedAccessToken

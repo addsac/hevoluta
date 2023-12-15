@@ -254,6 +254,17 @@ export type CustomerUserErrors = {
   field: string[];
 }[];
 
+export type UserError = {
+  message: string;
+  field: string[];
+};
+
+export type CustomerAccessTokenDeletePayload = {
+  deletedAccessToken: string;
+  deletedCustomerAccessTokenId: string;
+  userErrors: UserError[];
+}
+
 export type CustomerAccessToken = {
   accessToken: string;
   expiresAt: Date;
@@ -318,6 +329,17 @@ export type ShopifyCustomerLoginOperation = {
       phone?: string;
       acceptsMarketing?: boolean;
     };
+  };
+};
+
+export type ShopifyCustomerLogoutOperation = {
+  data: {
+    deletedAccessToken: string;
+    deletedCustomerAccessTokenId: string;
+    userErrors: UserErrors;
+  };
+  variables: {
+    customerAccessToken: string;
   };
 };
 

@@ -12,9 +12,10 @@ export default function LastLink(){
 
     const submit = async () => {
         setLoading(true)
+        
         setTimeout(() => {
             setLoading(false)
-        }, 3000)
+        }, 2000)
     }
 
     return (

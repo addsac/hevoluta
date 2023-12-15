@@ -3,7 +3,7 @@ import Divider from 'components/ui/divider';
 import ImageDescription from 'components/ui/image-description';
 import LastLink from 'components/ui/last-link';
 import ProductRows from 'components/ui/product/product-rows';
-import { getArticles, getCollectionProducts } from 'lib/shopify';
+import { getArticles, getCollectionProducts, registerCustomer } from 'lib/shopify';
 import { divideArrayIntoGroups } from 'lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -124,7 +124,7 @@ export default async function HomePage() {
         title={"Offriamo cosmetici sicuri"} 
         description={"efficaci e innovativi che agiscono sulla pelle proteggendola e accompagnandola nel tempo a risolvere i cambiamenti che deve affrontare."} 
         src="/img/background/background-2.jpg"
-        href="/prodotti" 
+        href="/products" 
       />
 
       {/* About our products */}

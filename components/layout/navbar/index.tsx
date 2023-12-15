@@ -4,7 +4,7 @@ import BlackStripe from 'components/layout/navbar/black-stripe';
 import Accedi from 'components/ui/accedi';
 import Cookie from 'components/ui/cookie';
 import Menu from 'components/ui/menu';
-import { getMenu, loginCustomer, registerCustomer, resetPassword } from 'lib/shopify';
+import { getMenu, loginCustomer, logoutCustomer, registerCustomer, resetPassword } from 'lib/shopify';
 import Link from 'next/link';
 import { Suspense } from 'react';
 
@@ -25,6 +25,7 @@ export default async function Navbar() {
     if(res.customerUserErrors[0].message) console.log(res.customerUserErrors[0])
   }
 
+  // login api to get customer access token
   const login = async ({ email, password }) => {
     'use server'
     
@@ -36,6 +37,18 @@ export default async function Navbar() {
     if(res.customerUserErrors[0].message) console.log(res.customerUserErrors[0])
   }
 
+  // logout api to remove customer access token
+  const logout = async ({ token }) => {
+    'use server'
+    
+    const res = await logoutCustomer({
+      customerAccessToken: token
+    });
+
+    if(res.userErrors[0].message) console.log(res.userErrors[0].message)
+  }
+
+  // reset password api to send email to customer
   const sendEmailPasswordRecovery = async ({ email }) => {
     'use server'
     
@@ -102,7 +115,7 @@ export default async function Navbar() {
                   login={login}
                   sendEmailPasswordRecovery={sendEmailPasswordRecovery}
                 />
-                {/* <Profilo /> */}
+                {/* <Profilo logout={logout} /> */}
               </Suspense>
             </div>
             <Suspense fallback={<OpenCart />}>
