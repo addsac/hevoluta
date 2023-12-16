@@ -624,6 +624,8 @@ export async function logoutCustomer({
     }
   });
 
+  console.log(res)
+
   return res.body.data
 }
 
