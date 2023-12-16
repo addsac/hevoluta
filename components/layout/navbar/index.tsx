@@ -64,7 +64,7 @@ export default async function Navbar() {
   // Fetching the customer
   const customer = await getCustomer( cookies().get('token')?.value )
   
-  console.log(customer?.customer)
+  console.log(customer)
 
   return (
     <>

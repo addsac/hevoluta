@@ -555,8 +555,6 @@ export async function getCustomer(token: string): Promise<Customer>{
     }
   });
 
-  console.log(res)
-
   return reshapeCustomer(res.body.data)
 }
 
@@ -623,8 +621,6 @@ export async function logoutCustomer({
       customerAccessToken: customerAccessToken
     }
   });
-
-  console.log(res)
 
   return res.body.data
 }
