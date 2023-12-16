@@ -1,8 +1,18 @@
 import {
   customerAccessTokenFragment,
   customerFragment,
-  customerUserErrorFragment
+  userErrorFragment,
+  customerUserErrorFragment,
 } from '../fragments/customer';
+
+export const customerQuery = /* GraphQL */ `
+  query customer($customerAccessToken: String!) {
+    customer(customerAccessToken: $customerAccessToken) {
+      ...customer
+    }
+  }
+  ${customerFragment}
+`;
 
 export const createCustomerQuery = /* GraphQL */ `
   mutation customerCreate($input: CustomerCreateInput!) {
@@ -51,11 +61,11 @@ export const customerAccessTokenDeleteQuery = /* GraphQL */ `
       deletedAccessToken
       deletedCustomerAccessTokenId
       userErrors {
-        ...customerUserError
+        ...userError
       }
     }
   }
-  ${customerUserErrorFragment}
+  ${userErrorFragment}
 `;
 
 export const customerResetByUrlQuery = /* GraphQL */ `

@@ -40,6 +40,13 @@ export const customerUserErrorFragment = /* GraphQL */ `
   }
 `;
 
+export const userErrorFragment = /* GraphQL */ `
+  fragment userError on UserError {
+    field
+    message
+  }
+`;
+
 export const customerAccessTokenCreateInputFragment = /* GraphQL */ `
     fragment customerAccessTokenCreateInput on CustomerAccessTokenCreateInput {
         email

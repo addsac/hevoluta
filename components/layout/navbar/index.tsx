@@ -4,7 +4,9 @@ import BlackStripe from 'components/layout/navbar/black-stripe';
 import Accedi from 'components/ui/accedi';
 import Cookie from 'components/ui/cookie';
 import Menu from 'components/ui/menu';
-import { getMenu, loginCustomer, logoutCustomer, registerCustomer, sendResetPasswordEmail } from 'lib/shopify';
+import Profilo from 'components/ui/profilo';
+import { getCustomer, getMenu, loginCustomer, logoutCustomer, registerCustomer, sendResetPasswordEmail } from 'lib/shopify';
+import { cookies } from 'next/headers';
 import Link from 'next/link';
 import { Suspense } from 'react';
 
@@ -12,6 +14,7 @@ const { SITE_NAME } = process.env;
 
 export default async function Navbar() {
   const menu = await getMenu('next-js-frontend-header-menu');
+  const customer = await getCustomer( cookies().get('token')?.value );
 
   // Register api to register a new customer
   const register = async ({ email, password }) => {
@@ -38,14 +41,14 @@ export default async function Navbar() {
   }
 
   // logout api to remove customer access token
-  const logout = async ({ token }) => {
+  const logout = async () => {
     'use server'
     
     const res = await logoutCustomer({
-      customerAccessToken: token
+      customerAccessToken: cookies().get('token')?.value
     });
 
-    if(res.userErrors[0].message) console.log(res.userErrors[0].message)
+    return res
   }
 
   // reset password api to send email to customer
@@ -104,13 +107,18 @@ export default async function Navbar() {
           <div className="flex items-center justify-end w-full">
             <div className="hidden lg:block">
               <Suspense>
-                <Accedi 
-                  flag="login"
-                  register={register}
-                  login={login}
-                  sendEmailPasswordRecovery={sendEmailPasswordRecovery}
-                />
-                {/* <Profilo logout={logout} /> */}
+                {!customer ? 
+                  <Accedi 
+                    flag="login"
+                    register={register}
+                    login={login}
+                    sendEmailPasswordRecovery={sendEmailPasswordRecovery}
+                  /> : 
+                  <Profilo 
+                    logout={logout} 
+                    sendEmailPasswordRecovery={sendEmailPasswordRecovery}
+                  />
+                }
               </Suspense>
             </div>
             <Suspense fallback={<OpenCart />}>

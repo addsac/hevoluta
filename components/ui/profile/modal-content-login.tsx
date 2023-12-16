@@ -1,5 +1,6 @@
 'use client';
 
+import { createCookie } from 'lib/cookie';
 import { RegisterLoginType } from 'lib/shopify/types';
 import { useState } from 'react';
 
@@ -34,9 +35,13 @@ export default function ModalContentLogin({
 
     console.log(res)
 
-    if(res.customerUserErrors[0].message){
+    if(res?.customerUserErrors[0]?.message){
       // setError(res.customerUserErrors[0].message)
       setError('Email o password errati.')
+    } else{
+      createCookie('token', res.customerAccessToken.accessToken, 14)
+      closeModal()
+      window.location.reload()
     }
 
     setLoading(false)

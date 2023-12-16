@@ -284,15 +284,12 @@ export type ShopifyCustomer = {
 
 export type ShopifyCustomerOperation = {
   data: {
-    customerCreate: {
-      customer: ShopifyCustomer;
-      customerUserErrors: CustomerUserErrors;
-    }
-  };
+    customer
+  },
   variables: {
-    customerAccessToken: string;
-  };
-};
+    customerAccessToken: string
+  }
+}
 
 export type ShopifyCustomerCreateOperation = {
   data: {

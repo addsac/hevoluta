@@ -184,7 +184,7 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                 <div className="flex items-center justify-between gap-2.5">
                   <p> Subtotale: </p>
                   <p> 
-                    {Number(cart.cost.totalAmount.amount).toFixed(2)}€
+                    {Number(cart?.cost?.totalAmount?.amount || 0).toFixed(2)}€
                   </p>
                 </div>
             </div>

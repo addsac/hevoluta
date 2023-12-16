@@ -10,7 +10,7 @@ import {
   editCartItemsMutation,
   removeFromCartMutation
 } from './mutations/cart';
-import { createCustomerQuery, customerAccessTokenDeleteQuery, customerResetByUrlQuery, loginCustomerQuery, sendEmailPasswordRecoveryQuery } from './mutations/customer';
+import { createCustomerQuery, customerAccessTokenDeleteQuery, customerQuery, customerResetByUrlQuery, loginCustomerQuery, sendEmailPasswordRecoveryQuery } from './mutations/customer';
 import { getArticleQuery, getArticlesQuery } from './queries/articles';
 import { getBlogQuery } from './queries/blog';
 import { getCartQuery } from './queries/cart';
@@ -54,6 +54,7 @@ import {
   ShopifyCustomerCreateOperation,
   ShopifyCustomerLoginOperation,
   ShopifyCustomerLogoutOperation,
+  ShopifyCustomerOperation,
   ShopifyCustomerResetPasswordOperation,
   ShopifyCustomerSendEmailPasswordRecoveryOperation,
   ShopifyMenuOperation,
@@ -543,6 +544,19 @@ export async function revalidate(req: NextRequest): Promise<NextResponse> {
 
   return reshapeCustomer(res.body.data.customerCreate)
 } */
+
+export async function getCustomer(token: string): Promise<Customer>{
+  if(!token) return null
+
+  const res = await shopifyFetch<ShopifyCustomerOperation>({
+    query: customerQuery,
+    variables: {
+      customerAccessToken: token
+    }
+  });
+
+  return reshapeCustomer(res.body.data)
+}
 
 export async function registerCustomer({
   email,

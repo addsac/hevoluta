@@ -1,12 +1,19 @@
 'use client'
 
 import { AnimatePresence } from 'framer-motion';
+import { deleteCookie } from 'lib/cookie';
 import Link from 'next/link';
 import { useState } from 'react';
 import Modal from './modal';
 import ForgotPassword from './nav/forgot-password';
 
-export default function Profilo(){
+export default function Profilo({
+    logout,
+    sendEmailPasswordRecovery
+} : {
+    logout: any,
+    sendEmailPasswordRecovery: any
+}){
     const [isModalOpen, setIsModalOpen] = useState(false);
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
@@ -15,12 +22,24 @@ export default function Profilo(){
     const openModalForgotPassword = () => setIsOpenModalForgotPassword(true);
     const closeModalForgotPassword = () => setIsOpenModalForgotPassword(false);
 
+    const submitLogout = async () => {
+        const res = await logout()
+        
+        if(res.customerAccessTokenDelete?.deletedAccessToken){
+            // delete cookie
+            deleteCookie('token')
+            closeModal()
+            window.location.reload()
+        }
+    }
+
     return (
         <>
             {/* modals */}
             <ForgotPassword 
                 isOpen={isOpenModalForgotPassword}
                 closeModal={closeModalForgotPassword}
+                sendEmailPasswordRecovery={sendEmailPasswordRecovery}
             />
         
             <AnimatePresence>
@@ -51,7 +70,12 @@ export default function Profilo(){
                     {/* links */}
                     <div className="flex flex-col items-start gap-5">
                         <Link href="/profile" onClick={() => closeModal()} className="button-text"> Ordini </Link>
-                        <button className="button-text"> Log out </button>
+                        <button 
+                            onClick={async () => await submitLogout()}
+                            className="button-text"
+                        > 
+                            Log out 
+                        </button>
                         <button 
                             className="button-text"
                             onClick={() => openModalForgotPassword()}
