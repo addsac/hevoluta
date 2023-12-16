@@ -555,6 +555,8 @@ export async function getCustomer(token: string): Promise<Customer>{
     }
   });
 
+  console.log(res)
+
   return reshapeCustomer(res.body.data)
 }
 

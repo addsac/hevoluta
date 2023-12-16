@@ -14,7 +14,6 @@ const { SITE_NAME } = process.env;
 
 export default async function Navbar() {
   const menu = await getMenu('next-js-frontend-header-menu');
-  const customer = await getCustomer( cookies().get('token')?.value );
 
   // Register api to register a new customer
   const register = async ({ email, password }) => {
@@ -62,6 +61,11 @@ export default async function Navbar() {
     return res
   }
 
+  // Fetching the customer
+  const customer = await getCustomer( cookies().get('token')?.value )
+  
+  console.log(customer?.customer)
+
   return (
     <>
       {/* modal */}
@@ -107,7 +111,7 @@ export default async function Navbar() {
           <div className="flex items-center justify-end w-full">
             <div className="hidden lg:block">
               <Suspense>
-                {!customer ? 
+                {!customer?.customer ? 
                   <Accedi 
                     flag="login"
                     register={register}
