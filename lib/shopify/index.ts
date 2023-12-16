@@ -636,10 +636,11 @@ export async function resetPassword({
   try{
     const res = await shopifyFetch<ShopifyCustomerResetPasswordOperation>({
       query: customerResetByUrlQuery,
+      tags: ['unauthenticated_read_customer_tags'],
       variables: { 
         password: password,
         resetUrl: resetUrl,
-      }
+      },
     });
 
     return res.body.data

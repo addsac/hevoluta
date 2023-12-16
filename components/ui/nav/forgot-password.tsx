@@ -35,7 +35,7 @@ export default function ForgotPassword({
       // error state
       setError(res.customerUserErrors[0].message)
     } 
-    if(res.customerUserErrors.length === 0){
+    else {
       // success state
       setSuccess('Email inviata con successo.')
     }
