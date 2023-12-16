@@ -582,7 +582,7 @@ export async function loginCustomer({
 } : {
   email: string;
   password: string;
-}): Promise<Customer>{
+}): Promise<any>{
   const res = await shopifyFetch<ShopifyCustomerLoginOperation>({
     query: loginCustomerQuery,
     variables: { 

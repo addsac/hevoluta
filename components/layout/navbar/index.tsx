@@ -34,7 +34,7 @@ export default async function Navbar() {
       password,
     });
 
-    if(res.customerUserErrors[0].message) console.log(res.customerUserErrors[0])
+    return res
   }
 
   // logout api to remove customer access token
@@ -55,8 +55,6 @@ export default async function Navbar() {
     const res = await sendResetPasswordEmail({
       email,
     });
-
-    console.log(res)
 
     return res
   }

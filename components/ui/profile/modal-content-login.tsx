@@ -19,6 +19,29 @@ export default function ModalContentLogin({
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const [loading, setLoading] = useState(false);
+
+  // error state
+  const [error, setError] = useState('')
+
+  const submit = async () => {
+    setLoading(true)
+
+    const res = await login({
+      email,
+      password,
+    })
+
+    console.log(res)
+
+    if(res.customerUserErrors[0].message){
+      // setError(res.customerUserErrors[0].message)
+      setError('Email o password errati.')
+    }
+
+    setLoading(false)
+  }
+
   return (
     <>
       {flag == 'login' && (
@@ -63,14 +86,18 @@ export default function ModalContentLogin({
             </div>
 
             <button 
-              onClick={() => login({
-                email,
-                password
-              })}
+              onClick={() => submit()}
               className="button-primary-lg w-full"
+              disabled={loading}
             >
-              Accedi
+              {loading ? 'Caricamento...' : 'Accedi'}
             </button>
+
+            {error && (
+              <div className="bg-red-100 px-5 py-2.5 text-red-500">
+                  <p> Errore: {error} </p>
+              </div>
+            )}
 
             <div>
               <p className="inline">
