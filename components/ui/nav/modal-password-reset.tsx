@@ -23,20 +23,25 @@ export default function ModalPasswordReset({
   const [success, setSuccess] = useState('');
 
   const send = async () => {
+    if(password.length < 8) {
+        setError('La password deve essere lunga almeno 8 caratteri.');
+        return;
+    }
+
     setLoading(true);
+    setError('');
+    setSuccess('');
 
     const res = await resetPassword({
-      id: id1,
-      input: {
-        resetToken: id2,
-        password: password,
-      }
+      password,
+      resetUrl: `https://${process.env.ACTIVE_DOMAIN}/${id1}/${id2}?syclid=${syclid}`
     });
-
-    // customerReset.customerUserErrors
     
-    if(res.customerUserErrors[0].message) {
-        setError(res.customerUserErrors[0].message);
+    if(res?.error?.message !== '') {
+        setError(res.error.message);
+    }
+    else if(res?.customerReset?.customerUserErrors[0]?.message) {
+        setError(res.customerReset.customerUserErrors[0].message);
     }
     else{
         setSuccess('Password aggiornata con successo.');
@@ -57,7 +62,10 @@ export default function ModalPasswordReset({
             name="password"
             placeholder="••••••••"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => {
+              setError('');
+              setPassword(e.target.value); 
+            }}
             className="input-base w-full"
           />
           <p className="text-body-1_2 opacity-50">

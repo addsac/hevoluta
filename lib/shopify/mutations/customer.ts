@@ -59,8 +59,8 @@ export const customerAccessTokenDeleteQuery = /* GraphQL */ `
 `;
 
 export const customerResetByUrlMutation = /* GraphQL */ `
-  mutation customerResetByUrl($resetUrl: URL!, $password: String!) {
-    customerResetByUrl(resetUrl: $resetUrl, password: $password) {
+  mutation customerResetByUrl($password: String!, $resetUrl: URL!) {
+    customerResetByUrl(password: $password, resetUrl: $resetUrl) {
       customer {
         ...customer
       }
@@ -77,21 +77,3 @@ export const customerResetByUrlMutation = /* GraphQL */ `
   ${customerUserErrorFragment}
 `;
 
-export const customerResetMutation = /* GraphQL */ `
-  mutation customerReset($id: ID!, $input: CustomerResetInput!) {
-    customerReset(id: $id, input: $input) {
-      customer {
-        ...customer
-      }
-      customerAccessToken {
-        ...customerAccessToken
-      }
-      customerUserErrors {
-        ...customerUserError
-      }
-    }
-  }
-  ${customerFragment}
-  ${customerAccessTokenFragment}
-  ${customerUserErrorFragment}
-`;

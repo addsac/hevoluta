@@ -363,11 +363,8 @@ export type ShopifyCustomerResetPasswordOperation = {
     }
   };
   variables: {
-    id: string;
-    input: {
-      resetToken: string;
-      password: string;
-    };
+    resetUrl: string;
+    password: string;
   };
 };
 

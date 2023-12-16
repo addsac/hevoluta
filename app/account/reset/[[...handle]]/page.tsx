@@ -11,12 +11,12 @@ export const runtime = 'edge';
 
 export default async function ResetPasswordPage({ params }: { params: { handle: any } }) {
   // reset password
-  const submitResetPassword = async ({ id, input }) => {
+  const submitResetPassword = async ({ password, resetUrl }) => {
     "use server"
 
     const res = await resetPassword({
-      id: id,
-      input: input
+      password,
+      resetUrl
     })
 
     return res
