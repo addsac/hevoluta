@@ -14,15 +14,10 @@ export default async function ResetPasswordPage({ params }: { params: { handle: 
   const submitResetPassword = async ({ password, resetUrl }) => {
     "use server"
 
-    console.log(password)
-    console.log(String(process.env.SHOPIFY_STORE_DOMAIN + '/account/reset/' + resetUrl))
-
     const res = await resetPassword({
       password,
       resetUrl: String(process.env.SHOPIFY_STORE_DOMAIN + '/account/reset/' + resetUrl)
     })
-
-    console.log(res)
 
     return res
   }

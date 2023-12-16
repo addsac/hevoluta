@@ -29,8 +29,6 @@ export default function ForgotPassword({
       email: email,
     })
 
-    console.log(res)
-
     if(res.customerUserErrors[0].message) {
       // error state
       setError(res.customerUserErrors[0].message)
