@@ -34,14 +34,11 @@ export default function ModalPasswordReset({
 
     const res = await resetPassword({
       password,
-      resetUrl: `https://${process.env.ACTIVE_DOMAIN}/${id1}/${id2}?syclid=${syclid}`
+      resetUrl: `${id1}/${id2}?syclid=${syclid}`
     });
     
-    if(res?.error?.message !== '') {
-        setError(res.error.message);
-    }
-    else if(res?.customerReset?.customerUserErrors[0]?.message) {
-        setError(res.customerReset.customerUserErrors[0].message);
+    if(res?.customerResetByUrl?.customerUserErrors[0]?.message) {
+        setError(res.customerResetByUrl.customerUserErrors[0].message);
     }
     else{
         setSuccess('Password aggiornata con successo.');

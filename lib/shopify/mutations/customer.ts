@@ -58,7 +58,7 @@ export const customerAccessTokenDeleteQuery = /* GraphQL */ `
   ${customerUserErrorFragment}
 `;
 
-export const customerResetByUrlMutation = /* GraphQL */ `
+export const customerResetByUrlQuery = /* GraphQL */ `
   mutation customerResetByUrl($password: String!, $resetUrl: URL!) {
     customerResetByUrl(password: $password, resetUrl: $resetUrl) {
       customer {
