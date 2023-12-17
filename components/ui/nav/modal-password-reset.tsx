@@ -39,8 +39,8 @@ export default function ModalPasswordReset({
 
     console.log(res)
     
-    if(res?.customerResetByUrl?.customerUserErrors[0]?.message) {
-        setError(res.customerResetByUrl.customerUserErrors[0].message);
+    if(res?.customerUserErrors[0]?.message) {
+        setError(res?.customerUserErrors[0]?.message);
     }
     else{
         setSuccess('Password aggiornata con successo.');
