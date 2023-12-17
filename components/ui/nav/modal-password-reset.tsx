@@ -36,6 +36,8 @@ export default function ModalPasswordReset({
       password,
       resetUrl: `${id1}/${id2}?syclid=${syclid}`
     });
+
+    console.log(res)
     
     if(res?.customerResetByUrl?.customerUserErrors[0]?.message) {
         setError(res.customerResetByUrl.customerUserErrors[0].message);

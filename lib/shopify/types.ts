@@ -269,6 +269,12 @@ export type CustomerSendEmailPasswordRecoveryPayload = {
   customerUserErrors: UserError[];
 }
 
+export type CustomerResetByUrlPayload = {
+  customer: ShopifyCustomer;
+  customerAccessToken: CustomerAccessToken;
+  customerUserErrors: UserError[];
+}
+
 export type CustomerAccessToken = {
   accessToken: string;
   expiresAt: Date;
@@ -357,7 +363,7 @@ export type ShopifyCustomerSendEmailPasswordRecoveryOperation = {
 
 export type ShopifyCustomerResetPasswordOperation = {
   data: {
-    customerReset: {
+    customerResetByUrl: {
       customer: ShopifyCustomer;
       customerAccessToken: CustomerAccessToken;
       customerUserErrors: CustomerUserErrors;
