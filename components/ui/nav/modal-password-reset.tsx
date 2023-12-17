@@ -32,11 +32,9 @@ export default function ModalPasswordReset({
     setError('');
     setSuccess('');
 
-    console.log(`${id1}/${id2}?syclid=${syclid}`)
-
     const res = await resetPassword({
       password,
-      resetUrl: String(`${id1}/${id2}?syclid=${syclid}`)
+      resetUrl: `${id1}/${id2}?syclid=${syclid}`
     });
 
     console.log(res)

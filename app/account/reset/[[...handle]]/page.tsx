@@ -14,6 +14,8 @@ export default async function ResetPasswordPage({ params }: { params: { handle: 
   const submitResetPassword = async ({ password, resetUrl }) => {
     "use server"
 
+    console.log(String(process.env.SHOPIFY_STORE_DOMAIN + '/account/reset/' + resetUrl))
+
     const res = await resetPassword({
       password,
       resetUrl: String(process.env.SHOPIFY_STORE_DOMAIN + '/account/reset/' + resetUrl)
@@ -25,8 +27,7 @@ export default async function ResetPasswordPage({ params }: { params: { handle: 
   return (
     <>
       <div className="w-screen flex flex-col lg:flex-row items-start gap-16 lg:gap-2.5 px-5 pt-20 pb-[120px]">
-        <Suspense>
-          <ModalPasswordReset 
+        <Suspense><ModalPasswordReset 
             id1={params.handle[0]}
             id2={params.handle[1]}
             resetPassword={submitResetPassword}
