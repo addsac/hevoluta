@@ -4,12 +4,8 @@ import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 
 export default function ModalPasswordReset({
-  id1,
-  id2,
   resetPassword
 }: {
-  id1: string;
-  id2: string;
   resetPassword: any;
 }) {
   const searchParams = useSearchParams();
@@ -34,7 +30,7 @@ export default function ModalPasswordReset({
 
     const res = await resetPassword({
       password,
-      resetUrl: `${id1}/${id2}?syclid=${syclid}`
+      syclid: syclid
     });
 
     console.log(res)

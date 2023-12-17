@@ -11,14 +11,14 @@ export const runtime = 'edge';
 
 export default async function ResetPasswordPage({ params }: { params: { handle: any } }) {
   // reset password
-  const submitResetPassword = async ({ password, resetUrl }) => {
+  const submitResetPassword = async ({ password, syclid }) => {
     "use server"
 
-    console.log(String(process.env.SHOPIFY_STORE_DOMAIN + '/account/reset/' + resetUrl))
+    console.log(String(process.env.SHOPIFY_STORE_DOMAIN + '/account/reset/' + params.handle[0] + '/' + params.handle[1] + syclid))
 
     const res = await resetPassword({
       password,
-      resetUrl: String(process.env.SHOPIFY_STORE_DOMAIN + '/account/reset/' + resetUrl)
+      resetUrl: String(process.env.SHOPIFY_STORE_DOMAIN + '/account/reset/' + params.handle[0] + '/' + params.handle[1] + syclid)
     })
 
     return res
@@ -27,9 +27,8 @@ export default async function ResetPasswordPage({ params }: { params: { handle: 
   return (
     <>
       <div className="w-screen flex flex-col lg:flex-row items-start gap-16 lg:gap-2.5 px-5 pt-20 pb-[120px]">
-        <Suspense><ModalPasswordReset 
-            id1={params.handle[0]}
-            id2={params.handle[1]}
+        <Suspense>
+          <ModalPasswordReset 
             resetPassword={submitResetPassword}
           />
         </Suspense>
