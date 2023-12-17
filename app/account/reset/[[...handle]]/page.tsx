@@ -16,7 +16,7 @@ export default async function ResetPasswordPage({ params }: { params: { handle: 
 
     const res = await resetPassword({
       password,
-      resetUrl: String(process.env.SHOPIFY_STORE_DOMAIN + '/account/reset/' + resetUrl)
+      resetUrl: String('https://hevolta.vercel.app/account/reset/' + resetUrl)
     })
 
     return res
