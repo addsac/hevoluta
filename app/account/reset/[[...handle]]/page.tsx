@@ -16,7 +16,7 @@ export default async function ResetPasswordPage({ params }: { params: { handle: 
 
     const res = await resetPassword({
       password,
-      resetUrl: String('https://hevolta.vercel.app/account/reset/' + resetUrl)
+      resetUrl: String('https://hevoluta.vercel.app/account/reset/' + resetUrl)
     })
 
     return res
