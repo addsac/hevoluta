@@ -32,6 +32,8 @@ export default function ModalPasswordReset({
     setError('');
     setSuccess('');
 
+    console.log(String(process.env.SHOPIFY_DOMAIN + `${id1}/${id2}?syclid=${syclid}`))
+
     const res = await resetPassword({
       password,
       resetUrl: `${id1}/${id2}?syclid=${syclid}`
