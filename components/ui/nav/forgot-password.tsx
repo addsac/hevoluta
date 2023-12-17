@@ -29,10 +29,14 @@ export default function ForgotPassword({
       email: email,
     })
 
-    if(res.customerUserErrors[0].message) {
-      // error state
-      setError(res.customerUserErrors[0].message)
+    console.log(res) 
+
+    if(res?.customerUserErrors[0]?.message) {
+      setError(res?.customerUserErrors[0]?.message)
     } 
+    else if(res?.error?.message) {
+      setError(res?.error?.message)
+    }
     else {
       // success state
       setSuccess('Email inviata con successo.')
@@ -91,7 +95,7 @@ export default function ForgotPassword({
 
               {success !== '' && (
                 <div className="bg-green-100 px-5 py-2.5 text-green-500">
-                  <p> Successo: {success} </p>
+                  <p> {success} </p>
                 </div>
               )}
 
