@@ -16,7 +16,7 @@ export default function ForgotPassword({
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
 
-  // error adn success
+  // error and success
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
@@ -29,7 +29,7 @@ export default function ForgotPassword({
       email: email,
     })
 
-    console.log(res) 
+    console.log(res)
 
     if(res?.customerUserErrors[0]?.message) {
       setError(res?.customerUserErrors[0]?.message)

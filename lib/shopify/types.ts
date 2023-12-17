@@ -265,6 +265,10 @@ export type CustomerAccessTokenDeletePayload = {
   userErrors: UserError[];
 }
 
+export type CustomerSendEmailPasswordRecoveryPayload = {
+  customerUserErrors: UserError[];
+}
+
 export type CustomerAccessToken = {
   accessToken: string;
   expiresAt: Date;
