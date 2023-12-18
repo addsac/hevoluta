@@ -16,7 +16,36 @@ export default function ModalContentRegister({
   setFlag: any;
 }) {
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState('00010000');
+
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
+  const [success, setSuccess] = useState('')
+
+  const submit = async () => {
+    // client password min 8 chars validation
+    /* if(password.length < 8){
+      setError('La password deve essere di almeno 8 caratteri.')
+      return
+    } */
+
+    setLoading(true)
+
+    const res = await register({
+      email,
+      password,
+    })
+
+    // console.log(res)
+
+    if(res?.customerUserErrors[0]?.message){
+      setError(res?.customerUserErrors[0]?.message)
+    } else{
+      setSuccess('Abbiamo inviato una mail di conferma al tuo indirizzo. Per completare la registrazione, apri la mail e conferma.')
+    }
+
+    setLoading(false)
+  }
 
   return (
     <>
@@ -47,7 +76,7 @@ export default function ModalContentRegister({
               />
             </div>
 
-            <div className="flex w-full flex-col items-start gap-2.5">
+            {/* <div className="flex w-full flex-col items-start gap-2.5">
               <p> Password </p>
               <input
                 type="password"
@@ -58,16 +87,26 @@ export default function ModalContentRegister({
                 className="input-base w-full"
               />
               <p className="text-body-1_2 oapcity-50">Minimo 8 carattri e una lettera maiuscola.</p>
-            </div>
+            </div> */}
+
+            {error !== '' && (
+              <div className="bg-red-100 px-5 py-2.5 text-red-500">
+                  <p> Errore: {error} </p>
+              </div>
+            )}
+
+            {success !== '' && (
+              <div className="bg-green-100 px-5 py-2.5 text-green-600">
+                  <p> {success} </p>
+              </div>
+            )}
 
             <button 
-              onClick={() => register({
-                email,
-                password
-              })} 
+              onClick={() => submit()} 
               className="button-primary-lg w-full"
+              disabled={loading}
             >
-              Registrati
+              {loading ? 'Caricamento...' : 'Registrati'}
             </button>
             
             <div>

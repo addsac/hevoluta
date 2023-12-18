@@ -31,7 +31,7 @@ export default async function HomePage() {
     sortKey: 'PUBLISHED_AT',
     reverse: true,
   });
-  let arrayOfArticlesdividedBy3: any = divideArrayIntoGroups(articles.edges, 3);
+  let arrayOfArticlesdividedBy3: any = divideArrayIntoGroups(articles.edges, 3);  
 
   return (
     <>
@@ -229,6 +229,9 @@ export default async function HomePage() {
       <Suspense>
         <LastLink />
       </Suspense>
+
+      {/* Modal confirm subscriptiona and set email to activate account */}
+      <div className="w-screen h-screen bg-white z-50"></div>
     </>
   );
 }

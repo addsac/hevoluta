@@ -29,6 +29,25 @@ export const createCustomerQuery = /* GraphQL */ `
   ${customerUserErrorFragment}
 `;
 
+export const customerActivateByUrlQuery = /* GraphQL */ `
+  mutation customerActivateByUrl($activationUrl: URL!, $password: String!) {
+    customerActivateByUrl(activationUrl: $activationUrl, password: $password) {
+      customer {
+        ...customer
+      }
+      customerAccessToken {
+        ...customerAccessToken
+      }
+      customerUserErrors {
+        ...customerUserError
+      }
+    }
+  }
+  ${customerFragment}
+  ${customerAccessTokenFragment}
+  ${customerUserErrorFragment}
+`;
+
 export const loginCustomerQuery = /* GraphQL */ `
   mutation customerAccessTokenCreate($input: CustomerAccessTokenCreateInput!) {
     customerAccessTokenCreate(input: $input) {

@@ -33,7 +33,7 @@ export default function ModalContentLogin({
       password,
     })
 
-    console.log(res)
+    // console.log(res)
 
     if(res?.customerUserErrors[0]?.message){
       // setError(res.customerUserErrors[0].message)

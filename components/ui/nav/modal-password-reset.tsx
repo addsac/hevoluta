@@ -75,7 +75,7 @@ export default function ModalPasswordReset({
         )}
 
         {success !== '' && (
-            <div className="bg-green-100 px-5 py-2.5 text-green-500">
+            <div className="bg-green-100 px-5 py-2.5 text-green-600">
                 <p> Successo: {success} </p>
             </div>
         )}

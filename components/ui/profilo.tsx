@@ -2,15 +2,18 @@
 
 import { AnimatePresence } from 'framer-motion';
 import { deleteCookie } from 'lib/cookie';
+import { ShopifyCustomer } from 'lib/shopify/types';
 import Link from 'next/link';
 import { useState } from 'react';
 import Modal from './modal';
 import ForgotPassword from './nav/forgot-password';
 
 export default function Profilo({
+    customer,
     logout,
     sendEmailPasswordRecovery
 } : {
+    customer: ShopifyCustomer,
     logout: any,
     sendEmailPasswordRecovery: any
 }){
@@ -69,7 +72,9 @@ export default function Profilo({
 
                     {/* links */}
                     <div className="flex flex-col items-start gap-5">
-                        <Link href="/profile" onClick={() => closeModal()} className="button-text"> Ordini </Link>
+                        <Link href="/profile" onClick={() => closeModal()} className="button-text"> 
+                            Ordini &nbsp;({customer.numberOfOrders}) 
+                        </Link>
                         <button 
                             onClick={async () => await submitLogout()}
                             className="button-text"

@@ -290,6 +290,14 @@ export type ShopifyCustomer = {
   firstName: string;
   lastName: string;
   email: string;
+  // here down not required fields
+  acceptsMarketing?: boolean,
+  createdAt?: string,
+  displayName?: string,
+  numberOfOrders?: string,
+  phone?: any,
+  tags?: string[],
+  updatedAt?: string,
 };
 
 export type ShopifyCustomerOperation = {
@@ -319,6 +327,20 @@ export type ShopifyCustomerCreateOperation = {
     };
   };
 };
+
+export type ShopifyCustomerConfirmByUrlOperation = {
+  data: {
+    customerActivateByUrl: {
+      customer: ShopifyCustomer;
+      customerAccessToken: CustomerAccessToken;
+      customerUserErrors: CustomerUserErrors;
+    }
+  };
+  variables: {
+    activationUrl: string;
+    password: string;
+  }
+}
 
 export type ShopifyCustomerLoginOperation = {
   data: {

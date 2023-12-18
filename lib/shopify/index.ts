@@ -10,7 +10,7 @@ import {
   editCartItemsMutation,
   removeFromCartMutation
 } from './mutations/cart';
-import { createCustomerQuery, customerAccessTokenDeleteQuery, customerQuery, customerResetByUrlQuery, loginCustomerQuery, sendEmailPasswordRecoveryQuery } from './mutations/customer';
+import { createCustomerQuery, customerActivateByUrlQuery, customerAccessTokenDeleteQuery, customerQuery, customerResetByUrlQuery, loginCustomerQuery, sendEmailPasswordRecoveryQuery } from './mutations/customer';
 import { getArticleQuery, getArticlesQuery } from './queries/articles';
 import { getBlogQuery } from './queries/blog';
 import { getCartQuery } from './queries/cart';
@@ -53,6 +53,7 @@ import {
   ShopifyCollectionProductsOperation,
   ShopifyCollectionsOperation,
   ShopifyCreateCartOperation,
+  ShopifyCustomerConfirmByUrlOperation,
   ShopifyCustomerCreateOperation,
   ShopifyCustomerLoginOperation,
   ShopifyCustomerLogoutOperation,
@@ -590,6 +591,24 @@ export async function registerCustomer({
   });
 
   return reshapeCustomer(res.body.data.customerCreate)
+}
+
+export async function registerConfirmCustomer({
+  activationUrl,
+  password
+} : {
+  activationUrl: string;
+  password: string;
+}): Promise<any>{
+  const res = await shopifyFetch<ShopifyCustomerConfirmByUrlOperation>({
+    query: customerActivateByUrlQuery,
+    variables: { 
+      activationUrl,
+      password
+    }
+  });
+
+  return res.body.data
 }
 
 export async function loginCustomer({

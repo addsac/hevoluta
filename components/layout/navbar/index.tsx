@@ -4,8 +4,9 @@ import BlackStripe from 'components/layout/navbar/black-stripe';
 import Accedi from 'components/ui/accedi';
 import Cookie from 'components/ui/cookie';
 import Menu from 'components/ui/menu';
+import ModalRegistrationConfirm from 'components/ui/nav/modal-registration-confirm';
 import Profilo from 'components/ui/profilo';
-import { getCustomer, getMenu, loginCustomer, logoutCustomer, registerCustomer, sendResetPasswordEmail } from 'lib/shopify';
+import { getCustomer, getMenu, loginCustomer, logoutCustomer, registerConfirmCustomer, registerCustomer, sendResetPasswordEmail } from 'lib/shopify';
 import { cookies } from 'next/headers';
 import Link from 'next/link';
 import { Suspense } from 'react';
@@ -24,7 +25,22 @@ export default async function Navbar() {
       password,
     });
 
-    if(res.customerUserErrors[0].message) console.log(res.customerUserErrors[0])
+    return res
+  }
+
+  // set new password after activating the registration
+  const registerConfirm = async ({ syclid, password }) => {
+    'use server'
+
+    console.log(syclid)
+    console.log(password)
+
+    const res = registerConfirmCustomer({
+      activationUrl: String(process.env.SHOPIFY_STORE_DOMAIN + '?syclid=' + syclid),
+      password
+    });
+    
+    return res
   }
 
   // Login api to get customer access token
@@ -70,6 +86,9 @@ export default async function Navbar() {
     <>
       {/* modal */}
       <Cookie />
+      <ModalRegistrationConfirm 
+        registerConfirm={registerConfirm}
+      />
 
       <div className="w-screen flex flex-col">
         <Suspense>
@@ -119,6 +138,7 @@ export default async function Navbar() {
                     sendEmailPasswordRecovery={sendEmailPasswordRecovery}
                   /> : 
                   <Profilo 
+                    customer={customer.customer}
                     logout={logout} 
                     sendEmailPasswordRecovery={sendEmailPasswordRecovery}
                   />
