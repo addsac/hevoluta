@@ -5,46 +5,49 @@ import { AnimatePresence } from 'framer-motion';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-export default function ModalRegistrationConfirm({
-    registerConfirm
-} : {
-    registerConfirm: any
-}) {
+export default function ModalRegistrationConfirm({ registerConfirm }: { registerConfirm: any }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const syclid = searchParams.get('syclid');
 
   const [modalActive, setModalActive] = useState(false);
-  
+  const closeModal = () => {
+    // return to home
+    location.href = '/'
+
+    // if i call setModalActive(false) the modal will re-rerender and because the router is still '/syclid=[...]' 
+    // the modal will reopen and user will not be able to close it.
+  };
+
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-    const [success, setSuccess] = useState('');
+  const [success, setSuccess] = useState('');
 
-    const submit = async () => {
-        // client password min 8 chars validation
-        if(password.length < 8){
-          setError('La password deve essere di almeno 8 caratteri.')
-          return
-        }
-    
-        setLoading(true)
-    
-        const res = await registerConfirm({
-            syclid,
-            password,
-        })
-    
-        console.log(res)
-    
-        if(res?.customerUserErrors[0]?.message){
-          setError(res?.customerUserErrors[0]?.message)
-        } else{
-          setSuccess('Password impostata con successo.')
-        }
-    
-        setLoading(false)
-      }
+  const submit = async () => {
+    // client password min 8 chars validation
+    if (password.length < 8) {
+      setError('La password deve essere di almeno 8 caratteri.');
+      return;
+    }
+
+    setLoading(true);
+
+    const res = await registerConfirm({
+      syclid,
+      password
+    });
+
+    console.log(res);
+
+    if (res?.customerUserErrors[0]?.message) {
+      setError(res?.customerUserErrors[0]?.message);
+    } else {
+      setSuccess('Password impostata con successo.');
+    }
+
+    setLoading(false);
+  };
 
   useEffect(() => {
     // intercept if the router is home and syclid params exists
@@ -57,9 +60,12 @@ export default function ModalRegistrationConfirm({
   return (
     <AnimatePresence>
       {modalActive && (
-        <ModalCenter closeModal={setModalActive}>
+        <ModalCenter closeModal={closeModal}>
           <div className="flex flex-col items-start gap-8">
-            <p className="text-title-4"> Imposta una nuova password per confermare la registrazione </p>
+            <p className="text-title-4">
+              {' '}
+              Imposta una nuova password per confermare la registrazione{' '}
+            </p>
 
             <div className="flex w-full flex-col items-start gap-2.5">
               <p> Nuova password </p>
@@ -67,6 +73,7 @@ export default function ModalRegistrationConfirm({
                 type="text"
                 name="password"
                 placeholder="••••••••"
+                autoFocus={true}
                 value={password}
                 onChange={(e) => {
                   setError('');

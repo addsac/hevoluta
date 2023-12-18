@@ -32,11 +32,11 @@ export default async function Navbar() {
   const registerConfirm = async ({ syclid, password }) => {
     'use server'
 
-    console.log(syclid)
+    console.log(String(process.env.SHOPIFY_STORE_DOMAIN + '/?syclid=' + syclid))
     console.log(password)
 
     const res = registerConfirmCustomer({
-      activationUrl: String(process.env.SHOPIFY_STORE_DOMAIN + '?syclid=' + syclid),
+      activationUrl: String(process.env.SHOPIFY_STORE_DOMAIN + '/?syclid=' + syclid),
       password
     });
     
@@ -85,10 +85,14 @@ export default async function Navbar() {
   return (
     <>
       {/* modal */}
-      <Cookie />
-      <ModalRegistrationConfirm 
-        registerConfirm={registerConfirm}
-      />
+      <Suspense>
+        <Cookie />
+      </Suspense>
+      <Suspense>
+        <ModalRegistrationConfirm 
+          registerConfirm={registerConfirm}
+        />
+      </Suspense>
 
       <div className="w-screen flex flex-col">
         <Suspense>
