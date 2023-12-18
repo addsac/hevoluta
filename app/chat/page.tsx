@@ -1,7 +1,5 @@
-import Footer from 'components/layout/footer';
 import ChatScript from 'components/ui/chat/chat-script';
 import Divider from 'components/ui/divider';
-import LastLink from 'components/ui/last-link';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Suspense } from 'react';
@@ -10,7 +8,7 @@ export const runtime = 'edge';
 
 export const metadata = {
   title: 'Hevoluta – Chatta con noi',
-  description: 'High-performance ecommerce store built with Next.js, Vercel, and Shopify.',
+  description: 'La pagina riservata tra noi e te, per chattare sui dubbi e le curiosità sui nostri prodotti.',
   openGraph: {
     type: 'website'
   }

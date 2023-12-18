@@ -53,7 +53,7 @@ export type CreateReviewResponse = {
   title: string;
   body: string;
   cf_answers: CustomFieldAnswer[];
-  picture_urls: string[]; // Assuming all URLs are strings. If not, adjust accordingly.
+  picture_urls: string[];
   ip_addr: string;
 };
 

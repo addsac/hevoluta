@@ -147,40 +147,6 @@ export type ShopifyProduct = {
   updatedAt: string;
 };
 
-export type InputAddress = {
-  address1: string;
-  address2?: string;
-  city: string;
-  company?: string;
-  country: string;
-  firstName: string;
-  lastName: string;
-  phone?: string;
-  province: string;
-  zip: string;
-}
-
-export type MailingAddress = {
-  address1: string;
-  address2?: string;
-  city?: string;
-  company?: string;
-  country?: string;
-  countryCodeV2?: string;
-  firstName?: string;
-  formatted?: string[];
-  formattedArea?: string;
-  lastName?: string;
-  id: string,
-  latitude?: number;
-  longitude?: number;
-  name: string;
-  phone?: string;
-  province?: string;
-  provinceCode?: string;
-  zip?: string;
-}
-
 export type ShopifyCartOperation = {
   data: {
     cart: ShopifyCart;
@@ -341,6 +307,40 @@ export type ShopifyCustomer = {
   orders: any;
 };
 
+export type InputAddress = {
+  address1: string;
+  address2?: string;
+  city: string;
+  company?: string;
+  country: string;
+  firstName: string;
+  lastName: string;
+  phone?: string;
+  province: string;
+  zip: string;
+}
+
+export type MailingAddress = {
+  address1: string;
+  address2?: string;
+  city?: string;
+  company?: string;
+  country?: string;
+  countryCodeV2?: string;
+  firstName?: string;
+  formatted?: string[];
+  formattedArea?: string;
+  lastName?: string;
+  id: string,
+  latitude?: number;
+  longitude?: number;
+  name: string;
+  phone?: string;
+  province?: string;
+  provinceCode?: string;
+  zip?: string;
+}
+
 export type ShopifyCustomerOperation = {
   data: {
     customer
@@ -451,6 +451,10 @@ export type CustomerAddressUpdateOperation = {
     id: string
   }
 }
+
+/**
+ * Blog
+ */
 
 export type ShopifyBlog = {
   id: string;

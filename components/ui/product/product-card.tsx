@@ -3,7 +3,6 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'
 import { useState } from 'react'
-import TypingAnimaitonWords from '../animate/typing-animation-words'
 
 export default function ProductCard({ item = null } : { item: any }) {
     const [isHovered, setIsHovered] = useState(false)
@@ -25,7 +24,7 @@ export default function ProductCard({ item = null } : { item: any }) {
                         exit={{ opacity: 0, y: -8 }}
                         transition={{ duration: 0.05, ease: 'easeOut' }}
                     >
-                        <TypingAnimaitonWords words={item?.description} />
+                        {item?.description}
                     </motion.div>
                 )}
             </AnimatePresence>

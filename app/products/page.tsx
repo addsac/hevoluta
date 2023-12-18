@@ -1,15 +1,13 @@
 import Divider from 'components/ui/divider';
-import LastLink from 'components/ui/last-link';
 import ProductRows from 'components/ui/product/product-rows';
 import { getCollectionProducts } from 'lib/shopify';
 import Image from 'next/image';
-import { Suspense } from 'react';
 
 export const runtime = 'edge';
 
 export const metadata = {
   title: 'Hevoluta – Prodotti',
-  description: 'High-performance ecommerce store built with Next.js, Vercel, and Shopify.',
+  description: 'Tutti i prodotti progettati e formulati da Hvoluta.',
   openGraph: {
     type: 'website'
   }

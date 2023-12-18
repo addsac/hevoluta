@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
+import Alert from 'components/ui/state/alert';
 
 export default function LastLink({ register }: { register: any }) {
   const [email, setEmail] = useState('');
@@ -92,15 +93,17 @@ export default function LastLink({ register }: { register: any }) {
           </div>
 
           {error !== '' && (
-            <div className="bg-red-100 px-5 py-2.5 text-red-500">
-              <p> Errore: {error} </p>
-            </div>
+            <Alert 
+              text={'Errore:' + {error}}
+              state="error"
+            />
           )}
 
           {success !== '' && (
-            <div className="bg-green-100 px-5 py-2.5 text-green-600">
-              <p> {success} </p>
-            </div>
+            <Alert 
+              text={success}
+              state="success"
+            />
           )}
 
           <button className="button-primary-base" onClick={() => submit()} disabled={loading}>

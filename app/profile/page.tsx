@@ -57,8 +57,6 @@ export default async function ProfilePage() {
         </div>
       </div>
 
-      <Suspense>{/* <BlogArticles /> */}</Suspense>
-
       {/* divider */}
       <Divider />
     </>

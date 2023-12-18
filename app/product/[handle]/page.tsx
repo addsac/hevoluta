@@ -3,7 +3,6 @@ import { ProductDescription } from 'components/product/product-description';
 import ProductDetails from 'components/product/product-details';
 import ProductReviews from 'components/product/product-reviews';
 import Divider from 'components/ui/divider';
-import LastLink from 'components/ui/last-link';
 import ProductRows from 'components/ui/product/product-rows';
 import { HIDDEN_PRODUCT_TAG } from 'lib/constants';
 import { getProduct, getProductRecommendations } from 'lib/shopify';

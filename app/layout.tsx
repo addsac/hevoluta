@@ -7,8 +7,8 @@ import { getCollectionProducts, getCustomer, registerCustomer } from 'lib/shopif
 import { ensureStartsWith } from 'lib/utils';
 import localFont from 'next/font/local';
 import { ReactNode, Suspense } from 'react';
-import './globals.css';
 import { cookies } from 'next/headers';
+import './globals.css';
 
 // Tiempos font
 const tiempos_light = localFont({ 
