@@ -1,24 +1,70 @@
 'use client'
 
+import Alert from 'components/ui/state/alert';
+import { ShopifyCustomer } from 'lib/shopify/types';
+import { PublishedDateFormatted } from 'lib/utils';
+import Link from 'next/link';
 import { useState } from 'react';
 
-export default function ProfileSettings(){
+export default function ProfileSettings({
+    customer,
+    updateAddress
+} : {
+    customer: ShopifyCustomer;
+    updateAddress: any
+}){
     const [page, setPage] = useState<number>(0);
 
     // form data
-    const [name, setName] = useState<string>('');
-    const [surname, setSurname] = useState<string>('');
-    const [address, setAddress] = useState<string>('');
-    const [city, setCity] = useState<string>('');
-    const [civicNumber, setCivicNumber] = useState<string>('');
-    const [cap, setCap] = useState<string>('');
-    const [nation, setNation] = useState<string>('');
-    const [province, setProvince] = useState<string>('');
-    const [email, setEmail] = useState<string>('');
-    const [phone, setPhone] = useState<string>('');
+    const [name, setName] = useState<string>(customer.defaultAddress.firstName);
+    const [surname, setSurname] = useState<string>(customer.defaultAddress.lastName);
+    const [address, setAddress] = useState<string>(customer.defaultAddress.address1);
+    const [city, setCity] = useState<string>(customer.defaultAddress.city);
+    const [civicNumber, setCivicNumber] = useState<string>(customer.defaultAddress.address2);
+    const [cap, setCap] = useState<string>(customer.defaultAddress.zip);
+    const [nation, setNation] = useState<string>(customer.defaultAddress.country);
+    const [province, setProvince] = useState<string>(customer.defaultAddress.province);
+    const [email, setEmail] = useState<string>(customer.email);
+    const [phone, setPhone] = useState<string>(customer.defaultAddress.phone);
+
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
+
+    const saveCustomerAddressData = async () => {
+        // client validations
+        if(address.length == 0 || city.length == 0 || nation.length == 0 || name.length == 0 || surname.length == 0 || province.length == 0 || cap.length == 0){
+            setError('I campi obbligatori sono: indirizzo, città, paese, nome, cognome, provincia e cap.')
+            return
+        }
+
+        setLoading(true)
+        setError('')
+        setSuccess('')
+
+        const res = await updateAddress({
+            address1: address,
+            address2: civicNumber,
+            city: city,
+            country: nation,
+            firstName: name,
+            lastName: surname,
+            phone: phone,
+            province: province,
+            zip: cap
+        })
+
+        if(res?.customerUserErrors[0]?.message){
+            setError(res?.customerUserErrors[0]?.message)
+        } else{
+            setSuccess('Indirizzo aggiornato con successo.')
+        }
+
+        setLoading(false)
+    }
 
     return (
-        <div className="flex flex-col gap-10">
+        <div className="w-full overflow-x-auto flex flex-col gap-10">
             {/* buttons */}
             <div className="flex flex-wrap">
                 <button 
@@ -43,21 +89,47 @@ export default function ProfileSettings(){
                 <table className="w-full">
                     <thead>
                         <tr className="border-y border-black text-left">
-                            <th className="px-3 py-5 uppercase font-normal">Data</th>
-                            <th className="px-3 py-5 uppercase font-normal">Numero d'ordine</th>
-                            <th className="px-3 py-5 uppercase font-normal">Totale</th>
-                            <th className="px-3 py-5 uppercase font-normal">Stato</th>
-                            <th className="px-3 py-5 uppercase font-normal">Reso</th>
+                            <th className="px-3 py-5 uppercase font-normal whitespace-nowrap">Data</th>
+                            <th className="px-3 py-5 uppercase font-normal whitespace-nowrap">Numero d'ordine</th>
+                            <th className="px-3 py-5 uppercase font-normal whitespace-nowrap">Prodotti</th>
+                            <th className="px-3 py-5 uppercase font-normal whitespace-nowrap">Totale</th>
+                            <th className="px-3 py-5 uppercase font-normal whitespace-nowrap">Stato</th>
+                            <th className="px-3 py-5 uppercase font-normal whitespace-nowrap">Dettaglio</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {[1, 2].map((value, index) => (
+                        {customer.orders.edges.map((order, index) => (
                             <tr key={'row-orders-'+index}>
-                                <td className="px-3 py-5">14/03/2023</td>
-                                <td className="px-3 py-5">1403G618723022</td>
-                                <td className="px-3 py-5">eur 462,00</td>
-                                <td className="px-3 py-5">spedito</td>
-                                <td className="px-3 py-5"></td>
+                                <td className="px-3 py-5 whitespace-nowrap">
+                                    {PublishedDateFormatted({
+                                        published: order.node.processedAt
+                                    })}
+                                </td>
+                                <td className="px-3 py-5 whitespace-nowrap">
+                                    {order.node.orderNumber}
+                                </td>
+                                <td className="px-3 py-5 whitespace-nowrap">
+                                    <ul className="list-disc list-inside">
+                                        {order.node.lineItems.edges.map((product, index) => (
+                                            <li key={'row-orders-products-'+index}>
+                                                {product.node.quantity} x {product.node.title}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </td>
+                                <td className="px-3 py-5 whitespace-nowrap">
+                                    {order.node.totalPrice.currencyCode} {Number(order.node.totalPrice.amount).toFixed(2)}
+                                </td>
+                                <td className="px-3 py-5 whitespace-nowrap">
+                                    {order.node.fulfillmentStatus}
+                                </td>
+                                <td className="px-3 py-5 whitespace-nowrap">
+                                    <Link href={order.node.statusUrl} target="_blank" rel="noopener noreferrer">
+                                        <button className="button-text-blue">
+                                            Apri l'ordine    
+                                        </button>
+                                    </Link>
+                                </td>
                             </tr>
                         ))}
                     </tbody>
@@ -69,10 +141,10 @@ export default function ProfileSettings(){
                     <div className="w-full flex flex-col gap-2.5">
                         <p> Nome </p>
                         <input 
-                            type="email"
-                            placeholder="nome@esempio.com"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            type="text"
+                            placeholder=""
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
                             className="w-full input-base"
                         />
                     </div>
@@ -80,10 +152,10 @@ export default function ProfileSettings(){
                     <div className="w-full flex flex-col gap-2.5">
                         <p> Cognome </p>
                         <input 
-                            type="email"
-                            placeholder="nome@esempio.com"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            type="text"
+                            placeholder=""
+                            value={surname}
+                            onChange={(e) => setSurname(e.target.value)}
                             className="w-full input-base"
                         />
                     </div>
@@ -91,10 +163,10 @@ export default function ProfileSettings(){
                     <div className="w-full flex flex-col gap-2.5">
                         <p> Indirizzo </p>
                         <input 
-                            type="email"
-                            placeholder="nome@esempio.com"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            type="text"
+                            placeholder=""
+                            value={address}
+                            onChange={(e) => setAddress(e.target.value)}
                             className="w-full input-base"
                         />
                     </div>
@@ -102,10 +174,10 @@ export default function ProfileSettings(){
                     <div className="w-full flex flex-col gap-2.5">
                         <p> Comune </p>
                         <input 
-                            type="email"
-                            placeholder="nome@esempio.com"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            type="text"
+                            placeholder=""
+                            value={city}
+                            onChange={(e) => setCity(e.target.value)}
                             className="w-full input-base"
                         />
                     </div>
@@ -113,10 +185,10 @@ export default function ProfileSettings(){
                     <div className="w-full flex flex-col gap-2.5">
                         <p> Civico </p>
                         <input 
-                            type="email"
-                            placeholder="nome@esempio.com"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            type="text"
+                            placeholder=""
+                            value={civicNumber}
+                            onChange={(e) => setCivicNumber(e.target.value)}
                             className="w-full input-base"
                         />
                     </div>
@@ -124,10 +196,10 @@ export default function ProfileSettings(){
                     <div className="w-full flex flex-col gap-2.5">
                         <p> Cap </p>
                         <input 
-                            type="email"
-                            placeholder="nome@esempio.com"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            type="text"
+                            placeholder=""
+                            value={cap}
+                            onChange={(e) => setCap(e.target.value)}
                             className="w-full input-base"
                         />
                     </div>
@@ -135,10 +207,10 @@ export default function ProfileSettings(){
                     <div className="w-full flex flex-col gap-2.5">
                         <p> Paese </p>
                         <input 
-                            type="email"
-                            placeholder="nome@esempio.com"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            type="text"
+                            placeholder=""
+                            value={nation}
+                            onChange={(e) => setNation(e.target.value)}
                             className="w-full input-base"
                         />
                     </div>
@@ -146,10 +218,10 @@ export default function ProfileSettings(){
                     <div className="w-full flex flex-col gap-2.5">
                         <p> Provincia </p>
                         <input 
-                            type="email"
-                            placeholder="nome@esempio.com"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            type="text"
+                            placeholder=""
+                            value={province}
+                            onChange={(e) => setProvince(e.target.value)}
                             className="w-full input-base"
                         />
                     </div>
@@ -158,7 +230,7 @@ export default function ProfileSettings(){
                         <p> Email </p>
                         <input 
                             type="email"
-                            placeholder="nome@esempio.com"
+                            placeholder=""
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             className="w-full input-base"
@@ -168,16 +240,34 @@ export default function ProfileSettings(){
                     <div className="w-full flex flex-col gap-2.5">
                         <p> Telefono </p>
                         <input 
-                            type="email"
-                            placeholder="nome@esempio.com"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            type="phone"
+                            placeholder=""
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
                             className="w-full input-base"
                         />
                     </div>
+
+                    {error !== '' && (
+                        <Alert 
+                            text={error}
+                            state="error"
+                        />
+                    )}
+
+                    {success !== '' && (
+                        <Alert 
+                            text={success}
+                            state="success"
+                        />
+                    )}
                     
-                    <button className="button-primary-base">
-                        Salva i dati
+                    <button 
+                        className="button-primary-base"
+                        onClick={() => saveCustomerAddressData()}
+                        disabled={loading}
+                    >
+                        {loading ? 'Carcamento...' : 'Salva i dati'}
                     </button>
                 </div>
             )}

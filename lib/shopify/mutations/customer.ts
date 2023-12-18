@@ -3,6 +3,7 @@ import {
   customerFragment,
   userErrorFragment,
   customerUserErrorFragment,
+  customerAddressFragment,
 } from '../fragments/customer';
 
 export const customerQuery = /* GraphQL */ `
@@ -106,3 +107,17 @@ export const customerResetByUrlQuery = /* GraphQL */ `
   ${customerUserErrorFragment}
 `;
 
+export const updateCustomerAddressQuery = /* GraphQL */ `
+  mutation customerAddressUpdate($address: MailingAddressInput!, $customerAccessToken: String!, $id: ID!) {
+    customerAddressUpdate(address: $address, customerAccessToken: $customerAccessToken, id: $id) {
+      customerAddress {
+        ...customerAddress
+      }
+      customerUserErrors {
+        ...customerUserError
+      }
+    }
+  }
+  ${customerAddressFragment}
+  ${customerUserErrorFragment}
+`;

@@ -3,11 +3,12 @@ import Navbar from 'components/layout/navbar';
 import LastLink from 'components/ui/last-link';
 import { GeistMono } from 'geist/font/mono';
 import { GeistSans } from 'geist/font/sans';
-import { getCollectionProducts, registerCustomer } from 'lib/shopify';
+import { getCollectionProducts, getCustomer, registerCustomer } from 'lib/shopify';
 import { ensureStartsWith } from 'lib/utils';
 import localFont from 'next/font/local';
 import { ReactNode, Suspense } from 'react';
 import './globals.css';
+import { cookies } from 'next/headers';
 
 // Tiempos font
 const tiempos_light = localFont({ 
@@ -45,6 +46,7 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
+  const customer = await getCustomer( cookies().get('token')?.value )
   const products = await getCollectionProducts({
     'collection': "homepage-featured-items",
   });
@@ -64,7 +66,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   return (
     <html lang="it" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <body>
-        <Navbar />
+        <Navbar customer={customer} />
         
         <Suspense>
           <main>{children}</main>

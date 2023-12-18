@@ -1,6 +1,8 @@
 import Divider from 'components/ui/divider';
-import LastLink from 'components/ui/last-link';
 import ProfileSettings from 'components/ui/profile/profile-settings';
+import { getCustomer, updateCustomerAddress } from 'lib/shopify';
+import { InputAddress } from 'lib/shopify/types';
+import { cookies } from 'next/headers';
 import { Suspense } from 'react';
 
 export const runtime = 'edge';
@@ -16,6 +18,22 @@ export const metadata = {
 export default async function ProfilePage() {
   // const blogs = await getBlogs();
 
+  // Fetching the customer
+  const customer = await getCustomer( cookies().get('token')?.value )
+
+  // Update api to update customer address
+  const updateAddress = async (address: InputAddress) => {
+    'use server'
+    
+    const res = await updateCustomerAddress({
+      address: address,
+      token: cookies().get('token')?.value,
+      id: customer.customer.defaultAddress.id
+    });
+
+    return res
+  }
+
   return (
     <>
       {/* Hero */}
@@ -25,7 +43,7 @@ export default async function ProfilePage() {
           {/* header text */}
           <div className="flex flex-col gap-6 text-center">
             <h1 className="text-title-4">
-                Bentornato Leonardo
+                Bentornato {customer.customer.firstName}
             </h1>
             <p className="opacity-70">
                 Nel tuo profilo puoi gestire al meglio la tua Shopping Experience su Hevoluta.com.
@@ -34,7 +52,7 @@ export default async function ProfilePage() {
 
           {/* data */}
           <Suspense>
-            <ProfileSettings />
+            <ProfileSettings customer={customer.customer} updateAddress={updateAddress} />
           </Suspense>
         </div>
       </div>

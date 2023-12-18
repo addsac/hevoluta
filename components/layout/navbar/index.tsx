@@ -6,14 +6,15 @@ import Cookie from 'components/ui/cookie';
 import Menu from 'components/ui/menu';
 import ModalRegistrationConfirm from 'components/ui/nav/modal-registration-confirm';
 import Profilo from 'components/ui/profilo';
-import { getCustomer, getMenu, loginCustomer, logoutCustomer, registerConfirmCustomer, registerCustomer, sendResetPasswordEmail } from 'lib/shopify';
+import { getMenu, loginCustomer, logoutCustomer, registerConfirmCustomer, registerCustomer, sendResetPasswordEmail } from 'lib/shopify';
+import { Customer } from 'lib/shopify/types';
 import { cookies } from 'next/headers';
 import Link from 'next/link';
 import { Suspense } from 'react';
 
 const { SITE_NAME } = process.env;
 
-export default async function Navbar() {
+export default async function Navbar({ customer }: { customer: Customer }) {
   const menu = await getMenu('next-js-frontend-header-menu');
 
   // Register api to register a new customer
@@ -76,11 +77,6 @@ export default async function Navbar() {
 
     return res
   }
-
-  // Fetching the customer
-  const customer = await getCustomer( cookies().get('token')?.value )
-  
-  console.log(customer)
 
   return (
     <>

@@ -147,6 +147,40 @@ export type ShopifyProduct = {
   updatedAt: string;
 };
 
+export type InputAddress = {
+  address1: string;
+  address2?: string;
+  city: string;
+  company?: string;
+  country: string;
+  firstName: string;
+  lastName: string;
+  phone?: string;
+  province: string;
+  zip: string;
+}
+
+export type MailingAddress = {
+  address1: string;
+  address2?: string;
+  city?: string;
+  company?: string;
+  country?: string;
+  countryCodeV2?: string;
+  firstName?: string;
+  formatted?: string[];
+  formattedArea?: string;
+  lastName?: string;
+  id: string,
+  latitude?: number;
+  longitude?: number;
+  name: string;
+  phone?: string;
+  province?: string;
+  provinceCode?: string;
+  zip?: string;
+}
+
 export type ShopifyCartOperation = {
   data: {
     cart: ShopifyCart;
@@ -275,6 +309,11 @@ export type CustomerResetByUrlPayload = {
   customerUserErrors: UserError[];
 }
 
+export type CustomerAddressUpdatePayload = {
+  customerAddress: MailingAddress;
+  customerUserErrors: UserError[];
+}
+
 export type CustomerAccessToken = {
   accessToken: string;
   expiresAt: Date;
@@ -298,6 +337,8 @@ export type ShopifyCustomer = {
   phone?: any,
   tags?: string[],
   updatedAt?: string,
+  defaultAddress?: any;
+  orders: any;
 };
 
 export type ShopifyCustomerOperation = {
@@ -396,6 +437,20 @@ export type ShopifyCustomerResetPasswordOperation = {
     resetUrl: string;
   };
 };
+
+export type CustomerAddressUpdateOperation = {
+  data: {
+    customerAddressUpdate: {
+      customerAddress: MailingAddress;
+      customerUserErrors: CustomerUserErrors;
+    }
+  };
+  variables: {
+    address: InputAddress,
+    customerAccessToken: string
+    id: string
+  }
+}
 
 export type ShopifyBlog = {
   id: string;

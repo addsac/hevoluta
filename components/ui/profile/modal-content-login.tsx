@@ -26,6 +26,12 @@ export default function ModalContentLogin({
   const [error, setError] = useState('')
 
   const submit = async () => {
+    // email and password client validation
+    if(email.trim().length === 0 || password.trim().length === 0) {
+      setError('Per favore inserisci tutti i campi.')
+      return
+    }
+
     setLoading(true)
 
     const res = await login({

@@ -10,7 +10,7 @@ import {
   editCartItemsMutation,
   removeFromCartMutation
 } from './mutations/cart';
-import { createCustomerQuery, customerActivateByUrlQuery, customerAccessTokenDeleteQuery, customerQuery, customerResetByUrlQuery, loginCustomerQuery, sendEmailPasswordRecoveryQuery } from './mutations/customer';
+import { createCustomerQuery, customerAccessTokenDeleteQuery, customerActivateByUrlQuery, customerQuery, customerResetByUrlQuery, loginCustomerQuery, sendEmailPasswordRecoveryQuery, updateCustomerAddressQuery } from './mutations/customer';
 import { getArticleQuery, getArticlesQuery } from './queries/articles';
 import { getBlogQuery } from './queries/blog';
 import { getCartQuery } from './queries/cart';
@@ -27,11 +27,13 @@ import {
   getProductsQuery
 } from './queries/product';
 import {
+  InputAddress,
   Cart,
   Collection,
   Connection,
   Customer,
   CustomerAccessTokenDeletePayload,
+  CustomerAddressUpdateOperation,
   CustomerResetByUrlPayload,
   CustomerSendEmailPasswordRecoveryPayload,
   Image,
@@ -68,7 +70,8 @@ import {
   ShopifyProductRecommendationsOperation,
   ShopifyProductsOperation,
   ShopifyRemoveFromCartOperation,
-  ShopifyUpdateCartOperation
+  ShopifyUpdateCartOperation,
+  CustomerAddressUpdatePayload
 } from './types';
 
 const domain = process.env.SHOPIFY_STORE_DOMAIN
@@ -152,6 +155,11 @@ const removeEdgesAndNodesWithPagination = (array: Connection<any>) => {
 const reshapeCustomer = (customer: any): any => {
   if (!customer) {
     return undefined;
+  }
+
+  // reshape order if exists
+  if(customer.orders){
+    customer.orders = removeEdgesAndNodesWithPagination(customer.orders)
   }
 
   return customer;
@@ -567,7 +575,7 @@ export async function registerCustomer({
   firstName,
   lastName,
   phone,
-  acceptsMarketing
+  acceptsMarketing = true
 } : {
   email: string,
   password: string,
@@ -683,6 +691,27 @@ export async function resetPassword({
   catch(e){
     return e
   }
+}
+
+export async function updateCustomerAddress({
+  address,
+  token,
+  id
+} : {
+  address: InputAddress;
+  token: string;
+  id: string;
+}): Promise<CustomerAddressUpdatePayload>{
+  const res = await shopifyFetch<CustomerAddressUpdateOperation>({
+    query: updateCustomerAddressQuery,
+    variables: { 
+      address,
+      customerAccessToken: token,
+      id: id
+    }
+  });
+
+  return res.body.data.customerAddressUpdate
 }
 
 /**

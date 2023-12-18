@@ -40,6 +40,9 @@ button{
 .button-text{
   @apply border-b border-transparent hover:border-black leading-['auto'] cursor-pointer;
 }
+.button-text-blue{
+  @apply border-b border-transparent hover:border-blue-600 text-blue-600 leading-['auto'] cursor-pointer;
+}
 .button-text-visible-underline{
   @apply border-b border-transparent border-black hover:opacity-50 leading-['auto'] cursor-pointer;
 }
