@@ -43,11 +43,6 @@ export default async function ProfilePage() {
 
       {/* divider */}
       <Divider />
-
-      {/* Last links */}
-      <Suspense>
-        <LastLink />
-      </Suspense>
     </>
   );
 }

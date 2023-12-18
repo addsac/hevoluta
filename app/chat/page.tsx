@@ -64,11 +64,6 @@ export default async function OrderSuccessPage() {
 
       {/* divider */}
       <Divider />
-
-      {/* Last links */}
-      <Suspense>
-        <LastLink />
-      </Suspense>
     </>
   );
 }

@@ -65,11 +65,6 @@ export default async function ProductPage() {
 
       {/* divider */}
       <Divider />
-
-      {/* Last links */}
-      <Suspense>
-        <LastLink />
-      </Suspense>
     </>
   );
 }

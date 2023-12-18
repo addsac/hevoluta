@@ -145,11 +145,6 @@ export default async function ArticlePage({ params }: { params: { handle: string
       
       {/* divider */}
       <Divider />
-
-      {/* Last links */}
-      <Suspense>
-        <LastLink />
-      </Suspense>
     </>
   );
 }

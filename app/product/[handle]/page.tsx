@@ -125,11 +125,6 @@ export default async function ProductPage({ params }: { params: { handle: string
       
       {/* divider */}
       <Divider />
-
-      {/* Last links */}
-      <Suspense>
-        <LastLink />
-      </Suspense>
     </>
   );
 }

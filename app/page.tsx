@@ -224,14 +224,6 @@ export default async function HomePage() {
 
       {/* divider */}
       <Divider />
-
-      {/* Last links */}
-      <Suspense>
-        <LastLink />
-      </Suspense>
-
-      {/* Modal confirm subscriptiona and set email to activate account */}
-      <div className="w-screen h-screen bg-white z-50"></div>
     </>
   );
 }

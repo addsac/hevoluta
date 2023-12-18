@@ -34,11 +34,6 @@ export default async function ResetPasswordPage({ params }: { params: { handle: 
       
       {/* divider */}
       <Divider />
-
-      {/* Last links */}
-      <Suspense>
-        <LastLink />
-      </Suspense>
     </>
   );
 }

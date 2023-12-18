@@ -49,11 +49,6 @@ export default async function BlogPage() {
 
       {/* divider */}
       <Divider />
-
-      {/* Last links */}
-      <Suspense>
-        <LastLink />
-      </Suspense>
     </>
   );
 }

@@ -29,6 +29,12 @@ export default function ModalContentRegister({
       return
     } */
 
+    // check email validation
+    if(email.length <= 0){
+      setError('Inserisci una email valida.')
+      return
+  }
+
     setLoading(true)
 
     const res = await register({
