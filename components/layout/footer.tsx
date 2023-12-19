@@ -1,6 +1,7 @@
 import MaxWidthLayout from 'components/layout/max-width-layout';
 import { Product } from 'lib/shopify/types';
 import Link from 'next/link';
+import Balancer from 'react-wrap-balancer';
 
 export default async function Footer({
   products = []
@@ -50,7 +51,9 @@ export default async function Footer({
                     href={`/product/${item.handle}`}
                     className="button-text"
                   >
-                    {item.title}
+                    <Balancer>
+                      {item.title}
+                    </Balancer>
                   </Link>
                 ))}
 
@@ -97,12 +100,42 @@ export default async function Footer({
         </div>
 
         <div className="w-full text-center bg-white px-5 py-10 flex flex-col gap-5 border-t border-gray-100">
-          <p className="text-13">
-            © 2023 Mia Burton S.r.l.  |  Partita IVA: 06760920824  |  Via XII Gennaio 16 - 90141 Palermo - Italia  |  Privacy policy  |  Cookie policy  |  Gestione cookie
+          <p className="text-body-1_2">
+            <Balancer>
+              P.Iva e C.F.: 05063580285  
+              &nbsp;&nbsp;|&nbsp;&nbsp;
+              Sede: Via degli Alpini 13/5 35013 - Cittadella (PD) - Italia  
+              &nbsp;&nbsp;|&nbsp;&nbsp;
+              <Link href="/policy/privacy">
+                <button className="button-text">
+                  Privacy policy  
+                </button>
+              </Link>
+              &nbsp;&nbsp;|&nbsp;&nbsp;
+              <Link href="/policy/cookie">
+                <button className="button-text">
+                  Cookie policy  
+                </button>
+              </Link>
+              &nbsp;&nbsp;|&nbsp;&nbsp;
+              <Link href="/policy/terms">
+                <button className="button-text">
+                  Termini
+                </button>
+              </Link>
+              &nbsp;&nbsp;|&nbsp;&nbsp;
+              <a href="?cookie=open-modal">
+                <button className="button-text">
+                  Gestione cookie
+                </button>
+              </a>
+            </Balancer>
           </p>
 
-          <p className="text-13 opacity-50">
-            Il nome MIA BURTON® è un marchio registrato di Mia Burton S.r.l. Il logo AUO™ e il logo MIA BURTON™ sono marchi di Mia Burton S.r.l.
+          <p className="text-body-1_2 opacity-50">
+            © 2023 HEVOLUTA® - All rights reserved  
+            &nbsp;|&nbsp; 
+            Il nome Hevoluta ® è un marchio registrato di Moira Bonaldo
           </p>
         </div>
 

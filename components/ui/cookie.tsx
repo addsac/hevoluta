@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { createCookie, deleteCookie, getCookie } from '../../lib/cookie';
 import ModalCenter from './modal-center';
@@ -93,6 +94,19 @@ export default function Cookie(){
             setIsOpen(true)
         }
     }, [])
+
+    // Open modal edit cookie if user needs it
+    const searchParams = useSearchParams();
+    const cookieSearchParam = searchParams.get('cookie')
+
+    useEffect(() => {
+        if(cookieSearchParam === 'open-modal'){
+            openModalChooseCookie()
+
+            // clean the route params
+            window.history.replaceState({}, '', window.location.pathname)
+        }
+    }, [cookieSearchParam])
 
     return (
         <>
