@@ -21,6 +21,12 @@ export default function ForgotPassword({
   const [success, setSuccess] = useState('');
 
   const send = async () => {
+    // email client validation
+    if(email.trim().length == 0){
+      setError('Per favore inserisci un indirizzo email.')
+      return
+    }
+
     setLoading(true)
     setError('')
     setSuccess('')

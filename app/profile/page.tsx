@@ -3,23 +3,24 @@ import ProfileSettings from 'components/ui/profile/profile-settings';
 import { getCustomer, updateCustomerAddress } from 'lib/shopify';
 import { InputAddress } from 'lib/shopify/types';
 import { cookies } from 'next/headers';
+import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 
 export const runtime = 'edge';
 
 export const metadata = {
   title: 'Hevoluta – Profilo',
-  description: 'High-performance ecommerce store built with Next.js, Vercel, and Shopify.',
+  description: 'Questa è la oagina profilo di Hevoluta. In questa pagina puoi gestire al meglio la tua Shopping Experience.',
   openGraph: {
     type: 'website'
   }
 };
 
 export default async function ProfilePage() {
-  // const blogs = await getBlogs();
-
   // Fetching the customer
   const customer = await getCustomer( cookies().get('token')?.value )
+
+  if (!customer?.customer) return notFound();
 
   // Update api to update customer address
   const updateAddress = async (address: InputAddress) => {
@@ -51,7 +52,7 @@ export default async function ProfilePage() {
           </div>
 
           {/* data */}
-          <Suspense>
+          <Suspense fallback={<p>Caricando i dati...</p>}>
             <ProfileSettings customer={customer.customer} updateAddress={updateAddress} />
           </Suspense>
         </div>

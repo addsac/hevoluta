@@ -13,11 +13,13 @@ export default function Accedi({
   register,
   login,
   sendEmailPasswordRecovery,
+  theme = 'white'
 }: {
   flag: RegisterLoginType;
   register: any;
   login: any;
   sendEmailPasswordRecovery: any;
+  theme?: 'white' | 'black';
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => setIsModalOpen(true);
@@ -50,7 +52,13 @@ export default function Accedi({
         )}
       </AnimatePresence>
 
-      <button className="button-menu" onClick={() => openModal()}>
+      <button 
+        className={`
+          ${theme === 'white' && "button-menu"}
+          ${theme === 'black' && "button-menu-dark"}
+        `} 
+        onClick={() => openModal()}
+      >
         Accedi
       </button>
     </>
