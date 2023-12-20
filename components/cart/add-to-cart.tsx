@@ -39,7 +39,7 @@ function SubmitButton({
         {/* <div className="absolute left-0 ml-4">
           <PlusIcon className="h-5" />
         </div> */}
-        Aggiungi al carrello
+        Scegli un formato
       </button>
     );
   }

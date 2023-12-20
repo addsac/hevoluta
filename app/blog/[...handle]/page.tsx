@@ -1,13 +1,10 @@
-import Footer from 'components/layout/footer';
 import Divider from 'components/ui/divider';
-import LastLink from 'components/ui/last-link';
 import { getArticle } from 'lib/shopify';
+import { PublishedDateFormatted } from 'lib/utils';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { Suspense } from 'react';
-import { PublishedDateFormatted } from 'lib/utils'
 
 export const runtime = 'edge';
 
@@ -87,14 +84,15 @@ export default async function ArticlePage({ params }: { params: { handle: string
       />
       
       <div className="w-screen flex lg:gap-2.5 px-5 pt-20 pb-[120px]">
-        <div className="hidden lg:block w-1/12"></div> {/* margin */}
-        <div className="w-full lg:w-10/12 flex flex-col gap-20">
+        <div className="hidden lg:block w-2/12"></div> {/* margin */}
+        <div className="w-full lg:w-8/12 flex flex-col gap-20">
             {/* header text */}
             <div className="flex flex-col gap-8">
-                <p className="text-body-2 opacity-50">
+                <p className="text-body-1 opacity-50">
                     {article.tags.map((tag: string, index: number) => (
                       <span key={'blog-tag-'+index}>
-                        {tag}&nbsp;&nbsp;
+                        {tag}
+                        {(index < article.tags.length - 1) && <>&nbsp;&nbsp;-&nbsp;&nbsp;</>}
                       </span>
                     ))}
                 </p>
@@ -104,7 +102,7 @@ export default async function ArticlePage({ params }: { params: { handle: string
             </div>
 
             {/* image */}
-            <div className="w-full h-[600px] flex flex-col items-start bg-black">
+            <div className="w-full h-[320px] lg:h-[600px] flex flex-col items-start bg-black">
                 <Image
                     src={article.image ? article.image.url : '/img/background/background-1.jpg'}
                     alt=""
@@ -123,7 +121,17 @@ export default async function ArticlePage({ params }: { params: { handle: string
                     />
                 </p>
                 <div className="shrink-0 flex items-center gap-5">
-                    <div className="w-10 h-10 rounded-full bg-gray-200"></div>
+                    {article.authorV2.name === 'Moira Bonaldo' && (
+                      <div className="w-14 h-14 rounded-full bg-black border border-gray-100 flex items-center justify-center overflow-clip">
+                        <Image 
+                          src="/img/blog/author.jpg"
+                          alt=""
+                          width={80}
+                          height={80}
+                          className='w-full h-full object-cover'
+                        />
+                      </div>
+                    )}
                     <p className="opacity-50">
                         Scritto da: {article.authorV2.name}
                     </p>
@@ -144,7 +152,7 @@ export default async function ArticlePage({ params }: { params: { handle: string
                 </button>
             </Link>
         </div>
-        <div className="hidden lg:block w-1/12"></div> {/* margin */}
+        <div className="hidden lg:block w-2/12"></div> {/* margin */}
       </div>
       
       {/* divider */}

@@ -757,7 +757,8 @@ export async function getArticle(id : string): Promise<ShopifyArticle | undefine
     query: getArticleQuery,
     variables: {
       id
-    }
+    },
+    cache: 'no-cache'
   });
 
   return reshapeArticle(res.body.data.node);
