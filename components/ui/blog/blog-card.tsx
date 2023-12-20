@@ -15,7 +15,7 @@ export default function BlogCard({ article } : { article: ShopifyArticle }){
                     alt=""
                     width={400}
                     height={400}
-                    className="w-full h-full object-cover opacity-80 select-none"
+                    className="w-full h-full object-cover opacity-90 select-none"
                     draggable={false}
                 />
             </div>

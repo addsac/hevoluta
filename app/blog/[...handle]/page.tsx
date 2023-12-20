@@ -92,7 +92,11 @@ export default async function ArticlePage({ params }: { params: { handle: string
             {/* header text */}
             <div className="flex flex-col gap-8">
                 <p className="text-body-2 opacity-50">
-                    {article.tags.map((tag: string) => `${tag} `)}
+                    {article.tags.map((tag: string, index: number) => (
+                      <span key={'blog-tag-'+index}>
+                        {tag}&nbsp;&nbsp;
+                      </span>
+                    ))}
                 </p>
                 <h1 className="text-title-2">
                     {article.title}

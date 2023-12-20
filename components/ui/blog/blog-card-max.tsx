@@ -14,7 +14,7 @@ export default function BlogCardMax({
         >
             {/* texts */}
             <div className="flex flex-col items-start gap-6 lg:pr-20">
-                <p className="opacity-50">
+                <p className="text-body-2 opacity-50">
                     {article.tags.map((tag: string) => `${tag} `)}
                 </p>
                 <p className="text-title-3 group-hover:underline">
@@ -26,13 +26,13 @@ export default function BlogCardMax({
             </div>
 
             {/* image */}
-            <div className="w-full h-[400px] flex flex-col items-start bg-black">
+            <div className="w-full h-[500px] flex flex-col items-start bg-black">
                 <Image
                     src={article.image ? article.image.url : '/img/background/background-1.jpg'}
                     alt=""
                     width={1200}
-                    height={800}
-                    className="w-full h-full object-cover opacity-80 select-none"
+                    height={900}
+                    className="w-full h-full object-cover opacity-90 select-none"
                     draggable={false}
                 />
             </div>

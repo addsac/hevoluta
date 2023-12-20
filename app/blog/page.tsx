@@ -1,7 +1,5 @@
-import Footer from 'components/layout/footer';
 import BlogArticles from 'components/ui/blog/blog-articles';
 import Divider from 'components/ui/divider';
-import LastLink from 'components/ui/last-link';
 import Image from 'next/image';
 import { Suspense } from 'react';
 

@@ -128,7 +128,7 @@ export default async function HomePage() {
       />
 
       {/* About our products */}
-      <div className="flex flex-col gap-16 px-5 py-[120px]">
+      {/* <div className="flex flex-col gap-16 px-5 py-[120px]">
         <div className="w-full lg:w-1/2 flex flex-col gap-8">
           <p className="text-title-2">
             Riguardo ai nostri prodotti
@@ -200,7 +200,7 @@ export default async function HomePage() {
             <div className="h-12 w-24 bg-gray-100"></div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* divider */}
       <Divider />
