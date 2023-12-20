@@ -30,14 +30,14 @@ export default async function Navbar({ customer }: { customer: Customer }) {
   }
 
   // set new password after activating the registration
-  const registerConfirm = async ({ syclid, password }) => {
+  const registerConfirm = async ({ syclid, discount, password }) => {
     'use server'
 
     console.log(String(process.env.SHOPIFY_STORE_DOMAIN + '/?syclid=' + syclid))
     console.log(password)
 
     const res = registerConfirmCustomer({
-      activationUrl: String(process.env.SHOPIFY_STORE_DOMAIN + '/?syclid=' + syclid),
+      activationUrl: String(process.env.SHOPIFY_STORE_DOMAIN + '/?syclid=' + syclid + '&discount=' + discount),
       password
     });
     

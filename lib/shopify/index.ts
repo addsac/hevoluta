@@ -27,16 +27,17 @@ import {
   getProductsQuery
 } from './queries/product';
 import {
-  InputAddress,
   Cart,
   Collection,
   Connection,
   Customer,
   CustomerAccessTokenDeletePayload,
   CustomerAddressUpdateOperation,
+  CustomerAddressUpdatePayload,
   CustomerResetByUrlPayload,
   CustomerSendEmailPasswordRecoveryPayload,
   Image,
+  InputAddress,
   Menu,
   Page,
   // Post,
@@ -70,8 +71,7 @@ import {
   ShopifyProductRecommendationsOperation,
   ShopifyProductsOperation,
   ShopifyRemoveFromCartOperation,
-  ShopifyUpdateCartOperation,
-  CustomerAddressUpdatePayload
+  ShopifyUpdateCartOperation
 } from './types';
 
 const domain = process.env.SHOPIFY_STORE_DOMAIN
@@ -389,7 +389,8 @@ export async function getCollectionProducts({
 export async function getCollections(): Promise<Collection[]> {
   const res = await shopifyFetch<ShopifyCollectionsOperation>({
     query: getCollectionsQuery,
-    tags: [TAGS.collections]
+    tags: [TAGS.collections],
+    cache: 'no-cache'
   });
   const shopifyCollections = removeEdgesAndNodes(res.body?.data?.collections);
   const collections = [
@@ -494,7 +495,8 @@ export async function getProducts({
       query,
       reverse,
       sortKey
-    }
+    },
+    cache: 'no-cache'
   });
 
   return reshapeProducts(removeEdgesAndNodes(res.body.data.products));
@@ -590,9 +592,6 @@ export async function registerCustomer({
       input: {
         email: email,
         password: password,
-        firstName: firstName,
-        lastName: lastName,
-        phone: phone,
         acceptsMarketing: acceptsMarketing
       }
     }
@@ -616,7 +615,7 @@ export async function registerConfirmCustomer({
     }
   });
 
-  return res.body.data
+  return res.body
 }
 
 export async function loginCustomer({

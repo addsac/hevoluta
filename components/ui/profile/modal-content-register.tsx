@@ -3,6 +3,7 @@
 import { RegisterLoginType } from 'lib/shopify/types';
 import Link from 'next/link';
 import { useState } from 'react';
+import Alert from '../state/alert';
 
 export default function ModalContentRegister({
   flag,
@@ -36,6 +37,8 @@ export default function ModalContentRegister({
   }
 
     setLoading(true)
+    setError('')
+    setSuccess('')
 
     const res = await register({
       email,
@@ -96,15 +99,17 @@ export default function ModalContentRegister({
             </div> */}
 
             {error !== '' && (
-              <div className="bg-red-100 px-5 py-2.5 text-red-500">
-                  <p> Errore: {error} </p>
-              </div>
+              <Alert 
+                text={'Errore:' + {error}}
+                state="error"
+              />
             )}
 
             {success !== '' && (
-              <div className="bg-green-100 px-5 py-2.5 text-green-600">
-                  <p> {success} </p>
-              </div>
+              <Alert 
+                text={success}
+                state="success"
+              />
             )}
 
             <button 

@@ -34,6 +34,8 @@ export default function LastLink({ register }: { register: any }) {
     }
 
     setLoading(true);
+    setError('');
+    setSuccess('');
 
     const res = await register({
       email,

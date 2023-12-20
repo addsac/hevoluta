@@ -115,7 +115,13 @@ export default async function HomePage() {
           </div>
 
           {/* rows prodcucts */}
-          <ProductRows items={collections} />
+          <ProductRows items={collections.slice(0, 8)} />
+
+          <Link href="/products">
+            <button className="button-secondary-base">
+              Vedi tutti i  prodotti
+            </button>
+          </Link>
         </div>
       </div>
 

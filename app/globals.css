@@ -186,6 +186,9 @@ button{
 .textarea-base{
   @apply bg-gray-50 border border-black p-5 min-h-[150px] placeholder:opacity-50 focus:outline-none;
 }
+.drop-base{
+  @apply border border-gray-200 hover:border-gray-300 cursor-pointer h-11 indent-2.5 placeholder:opacity-50 focus:outline-none;
+}
 .checkbox-base{
   @apply w-5 h-5;
 }

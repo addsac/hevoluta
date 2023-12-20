@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 import type { ListItem, PathFilterItem } from '.';
 
-function PathFilterItem({ item }: { item: PathFilterItem }) {
+function PathFilterItem({ item, index }: { item: PathFilterItem, index: number }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const active = pathname === item.path;
@@ -17,7 +17,7 @@ function PathFilterItem({ item }: { item: PathFilterItem }) {
   newParams.delete('q');
 
   return (
-    <li className="mt-2 flex text-black dark:text-white" key={item.title}>
+    <li className={`${index !== 0 ? 'mt-2.5' : ''} flex text-black dark:text-white`} key={item.title}>
       <DynamicTag
         href={createUrl(item.path, newParams)}
         className={clsx(
@@ -33,7 +33,7 @@ function PathFilterItem({ item }: { item: PathFilterItem }) {
   );
 }
 
-function SortFilterItem({ item }: { item: SortFilterItem }) {
+function SortFilterItem({ item, index }: { item: SortFilterItem, index: number }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const active = searchParams.get('sort') === item.slug;
@@ -48,7 +48,7 @@ function SortFilterItem({ item }: { item: SortFilterItem }) {
   const DynamicTag = active ? 'p' : Link;
 
   return (
-    <li className="mt-2 flex text-sm text-black dark:text-white" key={item.title}>
+    <li className={`${index !== 0 ? 'mt-2.5' : ''} flex text-sm text-black dark:text-white`} key={item.title}>
       <DynamicTag
         prefetch={!active ? false : undefined}
         href={href}
@@ -62,6 +62,6 @@ function SortFilterItem({ item }: { item: SortFilterItem }) {
   );
 }
 
-export function FilterItem({ item }: { item: ListItem }) {
-  return 'path' in item ? <PathFilterItem item={item} /> : <SortFilterItem item={item} />;
+export function FilterItem({ item, index }: { item: ListItem, index: number }) {
+  return 'path' in item ? <PathFilterItem item={item} index={index} /> : <SortFilterItem item={item} index={index} />;
 }
