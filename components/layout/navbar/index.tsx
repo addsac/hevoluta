@@ -33,7 +33,7 @@ export default async function Navbar({ customer }: { customer: Customer }) {
   const registerConfirm = async ({ syclid, discount, password }) => {
     'use server'
 
-    console.log(String(process.env.SHOPIFY_STORE_DOMAIN + '/?syclid=' + syclid))
+    console.log(String(process.env.SHOPIFY_STORE_DOMAIN + '/?syclid=' + syclid + '&discount=' + discount))
     console.log(password)
 
     const res = registerConfirmCustomer({

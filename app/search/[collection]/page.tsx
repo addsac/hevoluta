@@ -2,8 +2,9 @@ import { getCollection, getCollectionProducts } from 'lib/shopify';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import Grid from 'components/grid';
-import ProductGridItems from 'components/layout/product-grid-items';
+// import Grid from 'components/grid';
+// import ProductGridItems from 'components/layout/product-grid-items';
+import ProductRows from 'components/ui/product/product-rows';
 import { defaultSort, sorting } from 'lib/constants';
 
 export const runtime = 'edge';
@@ -36,14 +37,12 @@ export default async function CategoryPage({
   const products = await getCollectionProducts({ collection: params.collection, sortKey, reverse });
 
   return (
-    <section>
+    <>
       {products.length === 0 ? (
         <p className="py-3 text-lg">{`No products found in this collection`}</p>
       ) : (
-        <Grid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          <ProductGridItems products={products} />
-        </Grid>
+        <ProductRows items={products} />
       )}
-    </section>
+    </>
   );
 }

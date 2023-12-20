@@ -1,15 +1,11 @@
-import Grid from 'components/grid';
-
 export default function Loading() {
   return (
-    <Grid className="grid-cols-2 lg:grid-cols-3">
-      {Array(12)
-        .fill(0)
-        .map((_, index) => {
-          return (
-            <Grid.Item key={index} className="animate-pulse bg-neutral-100 dark:bg-neutral-900" />
-          );
-        })}
-    </Grid>
-  );
+    Array(4).map(() => (
+      <div className='w-full flex flex-col lg:flex-row gap-5 lg:gap-16'>
+        {Array(2).map(() => (
+          <div className="w-full lg:w-1/2 h-[400px] bg-gray-100"></div>
+        ))}
+      </div>
+    ))
+  )
 }

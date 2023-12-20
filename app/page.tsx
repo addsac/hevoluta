@@ -1,13 +1,11 @@
 import BlogCards from 'components/ui/blog/blog-cards';
 import Divider from 'components/ui/divider';
 import ImageDescription from 'components/ui/image-description';
-import LastLink from 'components/ui/last-link';
 import ProductRows from 'components/ui/product/product-rows';
-import { getArticles, getCollectionProducts, registerCustomer } from 'lib/shopify';
+import { getArticles, getCollectionProducts, getProducts } from 'lib/shopify';
 import { divideArrayIntoGroups } from 'lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Suspense } from 'react';
 import { Balancer } from 'react-wrap-balancer';
 
 export const runtime = 'edge';
@@ -21,9 +19,11 @@ export const metadata = {
 };
 
 export default async function HomePage() {
-  const collections = await getCollectionProducts({
+  // before i used => getCollectionProducts, after i use 
+  const collections = await getProducts({})
+  /* const collections = await getCollectionProducts({
     'collection': "homepage-featured-items",
-  });
+  }); */
 
   let articles = await getArticles({
     first: 3,
@@ -119,7 +119,7 @@ export default async function HomePage() {
 
           <Link href="/products">
             <button className="button-secondary-base">
-              Vedi tutti i  prodotti
+              Vedi tutti i prodotti
             </button>
           </Link>
         </div>

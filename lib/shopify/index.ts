@@ -375,7 +375,8 @@ export async function getCollectionProducts({
       handle: collection,
       reverse,
       sortKey: sortKey === 'CREATED_AT' ? 'CREATED' : sortKey
-    }
+    },
+    // cache: 'no-cache'
   });
 
   if (!res.body.data.collection) {
@@ -396,7 +397,7 @@ export async function getCollections(): Promise<Collection[]> {
   const collections = [
     {
       handle: '',
-      title: 'All',
+      title: 'Tutti',
       description: 'All products',
       seo: {
         title: 'All',
@@ -496,7 +497,7 @@ export async function getProducts({
       reverse,
       sortKey
     },
-    cache: 'no-cache'
+    // cache: 'no-cache'
   });
 
   return reshapeProducts(removeEdgesAndNodes(res.body.data.products));
