@@ -43,7 +43,7 @@ export default function Menu(): any {
               <div className="flex flex-col items-start gap-5">
                 <p className="opacity-50"> Pagine </p>
                 <Link href="/" onClick={() => closeMenu()} className="button-text"> Home </Link>
-                <Link href="/products" onClick={() => closeMenu()} className="button-text"> Prodotti </Link>
+                <Link href="/search" onClick={() => closeMenu()} className="button-text"> Prodotti </Link>
                 <Link href="/blog" onClick={() => closeMenu()} className="button-text"> Blog </Link>
                 <Link href="/chat" onClick={() => closeMenu()} className="button-text"> Chatta con noi </Link>
                 <Link href="/about" onClick={() => closeMenu()} className="button-text"> Chi siamo </Link>

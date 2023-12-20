@@ -50,7 +50,7 @@ export default async function HomePage() {
           </Balancer>
         </p>
         <Link 
-          href="/products" 
+          href="/search" 
           className="z-[1]"
         >
           <button className="button-secondary-lg">
@@ -117,7 +117,7 @@ export default async function HomePage() {
           {/* rows prodcucts */}
           <ProductRows items={collections.slice(0, 8)} />
 
-          <Link href="/products">
+          <Link href="/search">
             <button className="button-secondary-base">
               Vedi tutti i prodotti
             </button>
@@ -130,7 +130,7 @@ export default async function HomePage() {
         title={"Offriamo cosmetici sicuri"} 
         description={"efficaci e innovativi che agiscono sulla pelle proteggendola e accompagnandola nel tempo a risolvere i cambiamenti che deve affrontare."} 
         src="/img/background/background-2.jpg"
-        href="/products" 
+        href="/search" 
       />
 
       {/* About our products */}

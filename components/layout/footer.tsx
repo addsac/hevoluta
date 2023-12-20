@@ -29,7 +29,7 @@ export default async function Footer({
 
             <div className="flex flex-col items-start gap-[20px] lg:gap-[28px]">
               <Link href="/" className="button-text"> Home </Link>
-              <Link href="/products" className="button-text"> Prodotti </Link>
+              <Link href="/search" className="button-text"> Prodotti </Link>
               <Link href="/blog" className="button-text"> Blog </Link>
               <Link href="/chat" className="button-text"> Chatta con noi </Link>
               <Link href="/about" className="button-text"> Chi siamo </Link>
@@ -57,7 +57,7 @@ export default async function Footer({
 
               {products.length > 5 && (
                 <Link 
-                  href="/products"
+                  href="/search"
                   className="button-text"
                 >
                   <Balancer>

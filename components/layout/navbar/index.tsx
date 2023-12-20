@@ -101,7 +101,7 @@ export default async function Navbar({ customer }: { customer: Customer }) {
           <div className="flex items-center w-full">
             <Menu />
             <div className="hidden lg:block">
-              <Link href="/products"> 
+              <Link href="/search"> 
                 <button className="button-menu">
                   Prodotti
                 </button>
