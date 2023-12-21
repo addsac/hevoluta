@@ -135,7 +135,11 @@ export default function ModalContentRegister({
 
             <div>
               <p className="inline">Consulta la</p>
-              <Link href="/privacy" className="button-text mx-1 inline">
+              <Link 
+                href="/policy/privacy" 
+                className="button-text mx-1 inline"
+                onClick={() => closeModal()}
+              >
                 privacy policy
               </Link>
               <p className="inline">per maggiori informazioni.</p>

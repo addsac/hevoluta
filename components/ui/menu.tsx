@@ -5,6 +5,7 @@ import Modal from 'components/ui/modal';
 import { AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { useState } from 'react';
+import Balancer from 'react-wrap-balancer';
 
 export default function Menu(): any {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -52,10 +53,14 @@ export default function Menu(): any {
               </div>
 
               {/* contatti */}
-              <div className="flex flex-col items-start gap-5">
+              <div className="flex flex-col items-start gap-5 mr-5">
                 <p className="opacity-50"> Contatti </p>
                 <Link href="mailto:support@hevoluta.com" onClick={() => closeMenu()} className="button-text"> support@hevoluta.com </Link>
-                <p> Siamo a tua disposizione in chat dal lunedì al venerdi (CET), dalle 9:00 alle 12:00 e dalle 15:00 alle 18:00. </p>
+                <p> 
+                  <Balancer>
+                    Siamo a tua disposizione in chat dal lunedì al venerdi (CET), dalle 9:00 alle 12:00 e dalle 15:00 alle 18:00.
+                  </Balancer>
+                </p>
               </div>
 
               {/* social */}

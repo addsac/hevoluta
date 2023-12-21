@@ -5,6 +5,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import Balancer from 'react-wrap-balancer';
 
 export const runtime = 'edge';
 
@@ -97,7 +98,9 @@ export default async function ArticlePage({ params }: { params: { handle: string
                     ))}
                 </p>
                 <h1 className="text-title-2">
+                  <Balancer>
                     {article.title}
+                  </Balancer>
                 </h1>
             </div>
 
