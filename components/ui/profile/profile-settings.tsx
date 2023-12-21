@@ -130,9 +130,9 @@ export default function ProfileSettings({
                 >
                     Indirizzo di spedizione
                 </button>
-                <button className="button-cips-menu-inactive">
+                {/* <button className="button-cips-menu-inactive">
                     Log out
-                </button>
+                </button> */}
             </div>
 
             {/* table */}

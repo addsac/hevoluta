@@ -597,7 +597,8 @@ export async function registerCustomer({
         password: password,
         acceptsMarketing: acceptsMarketing
       }
-    }
+    },
+    cache: 'no-store'
   });
 
   return reshapeCustomer(res.body.data.customerCreate)
@@ -615,7 +616,8 @@ export async function registerConfirmCustomer({
     variables: { 
       activationUrl,
       password
-    }
+    },
+    cache: 'no-store'
   });
 
   return res.body
@@ -635,7 +637,8 @@ export async function loginCustomer({
         email: email,
         password: password
       }
-    }
+    },
+    cache: 'no-store'
   });
 
   return reshapeCustomer(res.body.data.customerAccessTokenCreate)
@@ -650,7 +653,8 @@ export async function logoutCustomer({
     query: customerAccessTokenDeleteQuery,
     variables: { 
       customerAccessToken: customerAccessToken
-    }
+    },
+    cache: 'no-store'
   });
 
   return res.body.data
@@ -665,7 +669,8 @@ export async function sendResetPasswordEmail({
     query: sendEmailPasswordRecoveryQuery,
     variables: { 
       email: email
-    }
+    },
+    cache: 'no-store'
   });
 
   return res.body.data.customerRecover
@@ -686,6 +691,7 @@ export async function resetPassword({
         password: password,
         resetUrl: resetUrl,
       },
+      cache: 'no-store'
     });
 
     return res.body.data.customerResetByUrl
@@ -707,7 +713,8 @@ export async function updateCustomer({
     variables: { 
       customer,
       customerAccessToken: token
-    }
+    },
+    cache: 'no-store'
   });
 
   return res.body.data.customerUpdate
@@ -728,7 +735,8 @@ export async function updateCustomerAddress({
       address,
       customerAccessToken: token,
       id: id
-    }
+    },
+    cache: 'no-store'
   });
 
   return res.body.data.customerAddressUpdate
