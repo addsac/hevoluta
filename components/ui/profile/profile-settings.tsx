@@ -250,14 +250,14 @@ export default function ProfileSettings({
 
                     {error !== '' && (
                         <Alert 
-                            text={error}
+                            text={errorUserData}
                             state="error"
                         />
                     )}
 
                     {success !== '' && (
                         <Alert 
-                            text={success}
+                            text={successUserData}
                             state="success"
                         />
                     )}
@@ -265,9 +265,9 @@ export default function ProfileSettings({
                     <button 
                         className="button-primary-base"
                         onClick={() => saveCustomerData()}
-                        disabled={loading}
+                        disabled={loadingUserData}
                     >
-                        {loading ? 'Carcamento...' : 'Salva i dati'}
+                        {loadingUserData ? 'Carcamento...' : 'Salva i dati'}
                     </button>
                 </div>
             )}
