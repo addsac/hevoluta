@@ -96,7 +96,7 @@ export default function LastLink({ register }: { register: any }) {
 
           {error !== '' && (
             <Alert 
-              text={'Errore:' + {error}}
+              text={'Errore:' + error}
               state="error"
             />
           )}

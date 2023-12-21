@@ -45,7 +45,7 @@ export default function Accedi({
         {isModalOpen && (
           <Modal position="right" closeModal={closeModal}>
             <Suspense>
-              <ModalContentRegister flag={page} closeModal={closeModal} register={register} setFlag={setPage} />
+              <ModalContentRegister flag={page} closeModal={closeModal} register={register} login={login} setFlag={setPage} />
               <ModalContentLogin flag={page} closeModal={closeModal} login={login} openModalForgotPassword={openModalForgotPassword} setFlag={setPage} />
             </Suspense>
           </Modal>

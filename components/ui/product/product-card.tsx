@@ -43,6 +43,13 @@ export default function ProductCard({ item = null } : { item: any }) {
             </div>
             <div className="flex flex-col gap-4">
                 <p> {item?.title} </p>
+                <div className="opacity-50 -mt-1.5"> 
+                    {item?.collections.edges?.map((edge, index) => (
+                        <p key={'product-collection-'+index}>
+                            {edge?.node?.title}
+                        </p>
+                    ) )}
+                </div>
                 <p className="font-mono font-normal"> 
                     {Number(item?.priceRange?.minVariantPrice?.amount).toFixed(0)} 
                     {item?.priceRange?.minVariantPrice?.currencyCode == 'EUR' ? '€' : ''} 

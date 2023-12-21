@@ -1,5 +1,6 @@
 'use client';
 
+import { createCookie } from 'lib/cookie';
 import { RegisterLoginType } from 'lib/shopify/types';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -9,15 +10,17 @@ export default function ModalContentRegister({
   flag,
   closeModal,
   register,
+  login,
   setFlag
 }: {
   flag: RegisterLoginType;
   closeModal: any;
   register: any;
+  login: any;
   setFlag: any;
 }) {
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('00010000');
+  const [password, setPassword] = useState('');
 
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -25,10 +28,10 @@ export default function ModalContentRegister({
 
   const submit = async () => {
     // client password min 8 chars validation
-    /* if(password.length < 8){
+    if(password.length < 8){
       setError('La password deve essere di almeno 8 caratteri.')
       return
-    } */
+    }
 
     // check email validation
     if(email.length <= 0){
@@ -45,12 +48,27 @@ export default function ModalContentRegister({
       password,
     })
 
-    // console.log(res)
-
     if(res?.customerUserErrors[0]?.message){
       setError(res?.customerUserErrors[0]?.message)
-    } else{
-      setSuccess('Abbiamo inviato una mail di conferma al tuo indirizzo. Per completare la registrazione, apri la mail e conferma. Guarda nelle spam se non la trovi.')
+    } 
+    else{
+      setSuccess('Stai per essere reindirizzato...')
+
+      const res = await login({
+        email,
+        password,
+      })
+  
+      // console.log(res)
+  
+      if(res?.customerUserErrors[0]?.message){
+        // setError(res.customerUserErrors[0].message)
+        setError('Email o password errati.')
+      } else{
+        createCookie('login-token', res.customerAccessToken.accessToken, 14)
+        closeModal()
+        window.location.reload()
+      }
     }
 
     setLoading(false)
@@ -85,7 +103,7 @@ export default function ModalContentRegister({
               />
             </div>
 
-            {/* <div className="flex w-full flex-col items-start gap-2.5">
+            <div className="flex w-full flex-col items-start gap-2.5">
               <p> Password </p>
               <input
                 type="password"
@@ -96,11 +114,11 @@ export default function ModalContentRegister({
                 className="input-base w-full"
               />
               <p className="text-body-1_2 oapcity-50">Minimo 8 carattri e una lettera maiuscola.</p>
-            </div> */}
+            </div>
 
             {error !== '' && (
               <Alert 
-                text={'Errore:' + {error}}
+                text={'Errore:' + error}
                 state="error"
               />
             )}

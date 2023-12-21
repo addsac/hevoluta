@@ -2,7 +2,7 @@ import BlogCards from 'components/ui/blog/blog-cards';
 import Divider from 'components/ui/divider';
 import ImageDescription from 'components/ui/image-description';
 import ProductRows from 'components/ui/product/product-rows';
-import { getArticles, getCollectionProducts, getProducts } from 'lib/shopify';
+import { getArticles, getProducts } from 'lib/shopify';
 import { divideArrayIntoGroups } from 'lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -42,6 +42,7 @@ export default async function HomePage() {
             Semina la bellezza, 
             <br />
             raccogli la salute
+
           </Balancer>
         </h1>
         <p className="-mt-4 text-17 leading-[190%] text-white z-[1] max-w-[1000px]">
