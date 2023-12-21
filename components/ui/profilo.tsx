@@ -73,7 +73,7 @@ export default function Profilo({
                     {/* links */}
                     <div className="flex flex-col items-start gap-5">
                         <Link href="/profile" onClick={() => closeModal()} className="button-text"> 
-                            Ordini &nbsp;({customer.numberOfOrders}) 
+                            Account &nbsp;({customer.numberOfOrders} ordini) 
                         </Link>
                         <button 
                             onClick={async () => await submitLogout()}
