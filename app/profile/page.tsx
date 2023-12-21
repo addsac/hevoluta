@@ -1,7 +1,7 @@
 import Accedi from 'components/ui/accedi';
 import Divider from 'components/ui/divider';
 import ProfileSettings from 'components/ui/profile/profile-settings';
-import { getCustomer, loginCustomer, registerCustomer, sendResetPasswordEmail, updateCustomerAddress } from "lib/shopify";
+import { getCustomer, loginCustomer, registerCustomer, sendResetPasswordEmail, updateCustomer, updateCustomerAddress } from "lib/shopify";
 import { InputAddress } from 'lib/shopify/types';
 import { cookies } from 'next/headers';
 import { Suspense } from 'react';
@@ -36,12 +36,12 @@ export default async function ProfilePage() {
     return res;
   };
 
-  const updateCustomer = async (customer: any) => {
+  const updateCustomerData = async (customer: any) => {
     'use server';
 
     const res = await updateCustomer({
-      token: cookies().get('login-token')?.value,
-      customer
+      customer,
+      token: cookies().get('login-token')?.value
     });
 
     return res;
@@ -66,7 +66,7 @@ export default async function ProfilePage() {
             <ProfileSettings 
               customer={customer.customer} 
               updateCustomer={updateCustomer}
-              updateAddress={updateAddress} 
+              updateAddress={updateCustomerData} 
             />
           </Suspense>
         </div>
