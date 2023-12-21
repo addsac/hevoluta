@@ -54,7 +54,7 @@ export default function ModalRegistrationConfirm({ registerConfirm }: { register
   useEffect(() => {
     // intercept if the router is home and syclid params exists
     // exapmple - http://localhost:3000/?syclid=68ca64f7-6603-486f-94bd-d8dbe50dd7ae, https://hevoluta.vercel.app/?syclid=68ca64f7-6603-486f-94bd-d8dbe50dd7ae
-    if (pathname === '/' && syclid && discount) {
+    if (pathname === '/' && syclid) {
       setModalActive(true);
     }
   });

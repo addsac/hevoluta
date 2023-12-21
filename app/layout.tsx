@@ -3,7 +3,7 @@ import Navbar from 'components/layout/navbar';
 import LastLink from 'components/ui/last-link';
 import { GeistMono } from 'geist/font/mono';
 import { GeistSans } from 'geist/font/sans';
-import { getCollectionProducts, getCustomer, registerCustomer } from 'lib/shopify';
+import { getCustomer, getProducts, registerCustomer } from 'lib/shopify';
 import { ensureStartsWith } from 'lib/utils';
 import localFont from 'next/font/local';
 import { ReactNode, Suspense } from 'react';
@@ -47,9 +47,7 @@ export const metadata = {
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
   const customer = await getCustomer( cookies().get('login-token')?.value )
-  const products = await getCollectionProducts({
-    'collection': "homepage-featured-items"
-  });
+  const products = await getProducts({})
 
   // Register api to register a new customer
   const register = async ({ email, password }) => {

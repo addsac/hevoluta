@@ -50,7 +50,7 @@ export default function ModalContentRegister({
     if(res?.customerUserErrors[0]?.message){
       setError(res?.customerUserErrors[0]?.message)
     } else{
-      setSuccess('Abbiamo inviato una mail di conferma al tuo indirizzo. Per completare la registrazione, apri la mail e conferma.')
+      setSuccess('Abbiamo inviato una mail di conferma al tuo indirizzo. Per completare la registrazione, apri la mail e conferma. Guarda nelle spam se non la trovi.')
     }
 
     setLoading(false)
