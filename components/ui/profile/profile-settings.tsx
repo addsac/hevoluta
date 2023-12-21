@@ -48,6 +48,8 @@ export default function ProfileSettings({
             acceptsMarketing: emailMarketingUserData
         })
 
+        console.log(res)
+
         if(res?.customerUserErrors[0]?.message){
             setErrorUserData(res?.customerUserErrors[0]?.message)
         } else{
