@@ -246,14 +246,14 @@ export default function ProfileSettings({
                         </label>
                     </div>
 
-                    {error !== '' && (
+                    {errorUserData !== '' && (
                         <Alert 
                             text={errorUserData}
                             state="error"
                         />
                     )}
 
-                    {success !== '' && (
+                    {successUserData !== '' && (
                         <Alert 
                             text={successUserData}
                             state="success"

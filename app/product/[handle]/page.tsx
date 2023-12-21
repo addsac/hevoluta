@@ -148,7 +148,7 @@ async function RelatedProducts({ id }: { id: string }) {
 
           {/* rows prodcucts */}
           <Suspense>
-            <ProductRows items={relatedProducts} />
+            <ProductRows items={relatedProducts.slice(0, 6)} />
           </Suspense>
         </div>
       </div>
