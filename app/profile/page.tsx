@@ -65,8 +65,8 @@ export default async function ProfilePage() {
           <Suspense fallback={<p>Caricando i dati...</p>}>
             <ProfileSettings 
               customer={customer.customer} 
-              updateCustomer={updateCustomer}
-              updateAddress={updateCustomerData} 
+              updateCustomer={updateCustomerData}
+              updateAddress={updateAddress} 
             />
           </Suspense>
         </div>
