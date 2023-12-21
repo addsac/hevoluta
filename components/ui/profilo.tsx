@@ -30,7 +30,7 @@ export default function Profilo({
         
         if(res.customerAccessTokenDelete?.deletedAccessToken){
             // delete cookie
-            deleteCookie('token')
+            deleteCookie('login-token')
             closeModal()
             window.location.reload()
         }

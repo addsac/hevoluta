@@ -45,7 +45,7 @@ export default function ModalContentLogin({
       // setError(res.customerUserErrors[0].message)
       setError('Email o password errati.')
     } else{
-      createCookie('token', res.customerAccessToken.accessToken, 14)
+      createCookie('login-token', res.customerAccessToken.accessToken, 14)
       closeModal()
       window.location.reload()
     }

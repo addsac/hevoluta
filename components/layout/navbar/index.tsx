@@ -61,7 +61,7 @@ export default async function Navbar({ customer }: { customer: Customer }) {
     'use server'
     
     const res = await logoutCustomer({
-      customerAccessToken: cookies().get('token')?.value
+      customerAccessToken: cookies().get('login-token')?.value
     });
 
     return res

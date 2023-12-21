@@ -46,7 +46,7 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
-  const customer = await getCustomer( cookies().get('token')?.value )
+  const customer = await getCustomer( cookies().get('login-token')?.value )
   const products = await getCollectionProducts({
     'collection': "homepage-featured-items"
   });

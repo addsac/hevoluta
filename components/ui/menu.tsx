@@ -1,5 +1,6 @@
 'use client';
 
+import Accedi from 'components/ui/accedi';
 import Modal from 'components/ui/modal';
 import { AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
@@ -47,7 +48,7 @@ export default function Menu(): any {
                 <Link href="/blog" onClick={() => closeMenu()} className="button-text"> Blog </Link>
                 <Link href="/chat" onClick={() => closeMenu()} className="button-text"> Chatta con noi </Link>
                 <Link href="/about" onClick={() => closeMenu()} className="button-text"> Chi siamo </Link>
-                <Link href="/login" onClick={() => closeMenu()} className="button-text"> Accedi </Link>
+                <Link href="?modal=login" onClick={() => closeMenu()} className="button-text"> Accedi </Link>
               </div>
 
               {/* contatti */}
