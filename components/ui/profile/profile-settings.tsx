@@ -123,7 +123,7 @@ export default function ProfileSettings({
                     I miei dati
                 </button>
                 <button 
-                    className={page == 1 ? 'button-cips-menu-active' : 'button-cips-menu-inactive'}
+                    className={page == 2 ? 'button-cips-menu-active' : 'button-cips-menu-inactive'}
                     onClick={() => setPage(2)}
                 >
                     Indirizzo di spedizione
