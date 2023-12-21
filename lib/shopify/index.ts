@@ -10,7 +10,7 @@ import {
   editCartItemsMutation,
   removeFromCartMutation
 } from './mutations/cart';
-import { createCustomerQuery, customerAccessTokenDeleteQuery, customerActivateByUrlQuery, customerQuery, customerResetByUrlQuery, loginCustomerQuery, sendEmailPasswordRecoveryQuery, updateCustomerAddressQuery } from './mutations/customer';
+import { createCustomerQuery, customerAccessTokenDeleteQuery, customerActivateByUrlQuery, customerQuery, customerResetByUrlQuery, loginCustomerQuery, sendEmailPasswordRecoveryQuery, updateCustomerAddressQuery, updateCustomerQuery } from './mutations/customer';
 import { getArticleQuery, getArticlesQuery } from './queries/articles';
 import { getBlogQuery } from './queries/blog';
 import { getCartQuery } from './queries/cart';
@@ -63,6 +63,7 @@ import {
   ShopifyCustomerOperation,
   ShopifyCustomerResetPasswordOperation,
   ShopifyCustomerSendEmailPasswordRecoveryOperation,
+  ShopifyCustomerUpdateOperation,
   ShopifyMenuOperation,
   ShopifyPageOperation,
   ShopifyPagesOperation,
@@ -71,7 +72,8 @@ import {
   ShopifyProductRecommendationsOperation,
   ShopifyProductsOperation,
   ShopifyRemoveFromCartOperation,
-  ShopifyUpdateCartOperation
+  ShopifyUpdateCartOperation,
+  inputCustomer
 } from './types';
 
 const domain = process.env.SHOPIFY_STORE_DOMAIN
@@ -691,6 +693,24 @@ export async function resetPassword({
   catch(e){
     return e
   }
+}
+
+export async function updateCustomer({
+  customer,
+  token
+} : {
+  customer: inputCustomer;
+  token: string;
+}): Promise<any>{
+  const res = await shopifyFetch<ShopifyCustomerUpdateOperation>({
+    query: updateCustomerQuery,
+    variables: { 
+      customer,
+      customerAccessToken: token
+    }
+  });
+
+  return res.body.data.customerUpdate
 }
 
 export async function updateCustomerAddress({

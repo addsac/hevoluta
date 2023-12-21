@@ -107,6 +107,25 @@ export const customerResetByUrlQuery = /* GraphQL */ `
   ${customerUserErrorFragment}
 `;
 
+export const updateCustomerQuery = /* GraphQL */ `
+  mutation customerUpdate($customer: CustomerUpdateInput!, $customerAccessToken: String!) {
+    customerUpdate(customer: $customer, customerAccessToken: $customerAccessToken) {
+      customer {
+        ...customer
+      }
+      customerAccessToken {
+        ...customerAccessToken
+      }
+      customerUserErrors {
+        ...customerUserError
+      }
+    }
+  }
+  ${customerFragment}
+  ${customerAccessTokenFragment}
+  ${customerUserErrorFragment}
+`;
+
 export const updateCustomerAddressQuery = /* GraphQL */ `
   mutation customerAddressUpdate($address: MailingAddressInput!, $customerAccessToken: String!, $id: ID!) {
     customerAddressUpdate(address: $address, customerAccessToken: $customerAccessToken, id: $id) {

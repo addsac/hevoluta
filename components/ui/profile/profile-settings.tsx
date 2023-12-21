@@ -8,14 +8,56 @@ import { useState } from 'react';
 
 export default function ProfileSettings({
     customer,
-    updateAddress
+    updateCustomer,
+    updateAddress,
 } : {
     customer: ShopifyCustomer;
-    updateAddress: any
+    updateCustomer: any;
+    updateAddress: any;
 }){
     const [page, setPage] = useState<number>(0);
 
-    // form data
+    // form data - page 1
+    // Email, Nome, Cognome, Password, Telefono, Email marketing
+    const [emailUserData, setEmailUserData] = useState<string>(customer.email);
+    const [nameUserData, setNameUserData] = useState<string>(customer.firstName);
+    const [surnameUserData, setSurnameUserData] = useState<string>(customer.lastName);
+    const [phoneUserData, setPhoneUserData] = useState<string>(customer.defaultAddress.phone);
+    const [emailMarketingUserData, setEmailMarketingUserData] = useState<boolean>(customer.acceptsMarketing);
+
+    const [loadingUserData, setLoadingUserData] = useState(false);
+    const [errorUserData, setErrorUserData] = useState('');
+    const [successUserData, setSuccessUserData] = useState('');
+
+    const saveCustomerData = async () => {
+        // client validations
+        if(emailUserData.length == 0 || nameUserData.length == 0 || surnameUserData.length == 0 || phoneUserData.length == 0){
+            setErrorUserData('I campi obbligatori sono: email, nome e cognome.')
+            return
+        }
+
+        setLoadingUserData(true)
+        setErrorUserData('')
+        setSuccessUserData('')
+
+        const res = await updateCustomer({
+            email: emailUserData,
+            firstName: nameUserData,
+            lastName: surnameUserData,
+            phone: phoneUserData,
+            acceptsMarketing: emailMarketingUserData
+        })
+
+        if(res?.customerUserErrors[0]?.message){
+            setErrorUserData(res?.customerUserErrors[0]?.message)
+        } else{
+            setSuccessUserData('Dati aggiornati con successo.')
+        }
+
+        setLoadingUserData(false)
+    }
+
+    // form data - page 2
     const [name, setName] = useState<string>(customer.defaultAddress.firstName);
     const [surname, setSurname] = useState<string>(customer.defaultAddress.lastName);
     const [address, setAddress] = useState<string>(customer.defaultAddress.address1);
@@ -73,9 +115,16 @@ export default function ProfileSettings({
                 >
                     I miei ordini
                 </button>
+
                 <button 
                     className={page == 1 ? 'button-cips-menu-active' : 'button-cips-menu-inactive'}
                     onClick={() => setPage(1)}
+                >
+                    I miei dati
+                </button>
+                <button 
+                    className={page == 1 ? 'button-cips-menu-active' : 'button-cips-menu-inactive'}
+                    onClick={() => setPage(2)}
                 >
                     Indirizzo di spedizione
                 </button>
@@ -137,6 +186,91 @@ export default function ProfileSettings({
             )}
 
             {page === 1 && (
+                <div className="flex flex-col items-start gap-8 w-full lg:w-1/2">
+                    <div className="w-full flex flex-col gap-2.5">
+                        <p> Email </p>
+                        <input 
+                            type="text"
+                            placeholder=""
+                            value={emailUserData}
+                            onChange={(e) => setEmailUserData(e.target.value)}
+                            className="w-full input-base"
+                        />
+                    </div>
+
+                    <div className="w-full flex flex-col gap-2.5">
+                        <p> Nome </p>
+                        <input 
+                            type="text"
+                            placeholder=""
+                            value={nameUserData}
+                            onChange={(e) => setNameUserData(e.target.value)}
+                            className="w-full input-base"
+                        />
+                    </div>
+
+                    <div className="w-full flex flex-col gap-2.5">
+                        <p> Cognome </p>
+                        <input 
+                            type="text"
+                            placeholder=""
+                            value={surnameUserData}
+                            onChange={(e) => setSurnameUserData(e.target.value)}
+                            className="w-full input-base"
+                        />
+                    </div>
+
+                    <div className="w-full flex flex-col gap-2.5">
+                        <p> Telefono </p>
+                        <input 
+                            type="text"
+                            placeholder=""
+                            value={phoneUserData}
+                            onChange={(e) => setPhoneUserData(e.target.value)}
+                            className="w-full input-base"
+                        />
+                    </div>
+
+                    <div className="flex items-center justify-start gap-2">
+                        <input
+                            type="checkbox"
+                            checked={emailMarketingUserData}
+                            onChange={() => setEmailMarketingUserData(!emailMarketingUserData)}
+                            id="newsletter"
+                            className="checkbox-base shrink-0"
+                        />
+                        <label htmlFor="newsletter">
+                            <p className="inline">
+                                Email marketing
+                            </p>
+                        </label>
+                    </div>
+
+                    {error !== '' && (
+                        <Alert 
+                            text={error}
+                            state="error"
+                        />
+                    )}
+
+                    {success !== '' && (
+                        <Alert 
+                            text={success}
+                            state="success"
+                        />
+                    )}
+                    
+                    <button 
+                        className="button-primary-base"
+                        onClick={() => saveCustomerData()}
+                        disabled={loading}
+                    >
+                        {loading ? 'Carcamento...' : 'Salva i dati'}
+                    </button>
+                </div>
+            )}
+
+            {page === 2 && (
                 <div className="flex flex-col items-start gap-8 w-full lg:w-1/2">
                     <div className="w-full flex flex-col gap-2.5">
                         <p> Nome </p>

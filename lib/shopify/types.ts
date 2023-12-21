@@ -307,6 +307,15 @@ export type ShopifyCustomer = {
   orders: any;
 };
 
+export type inputCustomer = {
+  email: string;
+  password: string;
+  firstName?: string;
+  lastName?: string;
+  phone?: string;
+  acceptsMarketing?: boolean;
+}
+
 export type InputAddress = {
   address1: string;
   address2?: string;
@@ -437,6 +446,26 @@ export type ShopifyCustomerResetPasswordOperation = {
     resetUrl: string;
   };
 };
+
+export type ShopifyCustomerUpdateOperation = {
+  data: {
+    customerUpdate: {
+      customer: ShopifyCustomer;
+      customerAccessToken: CustomerAccessToken;
+      customerUserErrors: CustomerUserErrors;
+    }
+  };
+  variables: {
+    customerAccessToken: string;
+    customer: {
+      firstName?: string;
+      lastName?: string;
+      email?: string;
+      phone?: string;
+      acceptsMarketing?: boolean;
+    };
+  };
+}
 
 export type CustomerAddressUpdateOperation = {
   data: {

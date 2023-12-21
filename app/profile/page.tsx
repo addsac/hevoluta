@@ -36,6 +36,17 @@ export default async function ProfilePage() {
     return res;
   };
 
+  const updateCustomer = async (customer: any) => {
+    'use server';
+
+    const res = await updateCustomer({
+      token: cookies().get('login-token')?.value,
+      customer
+    });
+
+    return res;
+  }
+
   return (
     <>
       {/* Hero */}
@@ -52,7 +63,11 @@ export default async function ProfilePage() {
 
           {/* data */}
           <Suspense fallback={<p>Caricando i dati...</p>}>
-            <ProfileSettings customer={customer.customer} updateAddress={updateAddress} />
+            <ProfileSettings 
+              customer={customer.customer} 
+              updateCustomer={updateCustomer}
+              updateAddress={updateAddress} 
+            />
           </Suspense>
         </div>
       </div>
