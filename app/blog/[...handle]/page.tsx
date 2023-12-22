@@ -14,7 +14,8 @@ export async function generateMetadata({
 }: {
   params: { handle: string[] };
 }): Promise<Metadata | JSX.Element> {
-  console.log(String('gid://shopify/Article/' + params.handle))
+  console.log(params.handle[0])
+  console.log(params.handle[1])
 
   const article = await getArticle(String('gid://shopify/Article/' + params.handle[1]));
 
@@ -47,7 +48,8 @@ export async function generateMetadata({
 }
 
 export default async function ArticlePage({ params }: { params: { handle: string[] } }) {
-  console.log(String('gid://shopify/Article/' + params.handle))
+  console.log(params.handle[0])
+  console.log(params.handle[1])
 
   const article = await getArticle(String('gid://shopify/Article/' + params.handle[1]));
   
