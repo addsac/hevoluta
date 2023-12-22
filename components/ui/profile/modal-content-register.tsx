@@ -118,7 +118,7 @@ export default function ModalContentRegister({
 
             {error !== '' && (
               <Alert 
-                text={'Errore:' + error}
+                text={'Errore: ' + error}
                 state="error"
               />
             )}

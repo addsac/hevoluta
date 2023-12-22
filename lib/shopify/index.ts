@@ -620,7 +620,7 @@ export async function registerConfirmCustomer({
     cache: 'no-store'
   });
 
-  return res.body
+  return res.body.data.customerActivateByUrl
 }
 
 export async function loginCustomer({

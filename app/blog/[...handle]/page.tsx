@@ -4,7 +4,7 @@ import { PublishedDateFormatted } from 'lib/utils';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import { Suspense } from 'react';
 import Balancer from 'react-wrap-balancer';
 
 export const runtime = 'edge';
@@ -13,10 +13,12 @@ export async function generateMetadata({
   params
 }: {
   params: { handle: string[] };
-}): Promise<Metadata> {
+}): Promise<Metadata | JSX.Element> {
   const article = await getArticle(String('gid://shopify/Article/' + params.handle[1]));
 
-  if (!article) return notFound();
+  console.log(article)
+
+  if (!article) return ErrorPage();
 
   const { title, exerp, image, authorV2, publishedAt, tags } = article;
 
@@ -44,8 +46,10 @@ export async function generateMetadata({
 
 export default async function ArticlePage({ params }: { params: { handle: string[] } }) {
   const article = await getArticle(String('gid://shopify/Article/' + params.handle[1]));
+  
+  console.log(article)
 
-  if (!article) return notFound();
+  if (!article) return ErrorPage();
 
   const articleJsonLd = {
     '@context': 'https://schema.org',
@@ -125,7 +129,7 @@ export default async function ArticlePage({ params }: { params: { handle: string
                 </p>
                 <div className="shrink-0 flex items-center gap-5">
                     {article.authorV2.name === 'Moira Bonaldo' && (
-                      <div className="w-14 h-14 rounded-full bg-black border border-gray-100 flex items-center justify-center overflow-clip">
+                      <div className="w-14 h-14 rounded-full border border-gray-100 flex items-center justify-center overflow-clip">
                         <Image 
                           src="/img/blog/author.jpg"
                           alt=""
@@ -163,3 +167,25 @@ export default async function ArticlePage({ params }: { params: { handle: string
     </>
   );
 }
+
+const ErrorPage = () => {
+  return (
+    <>
+      <div className="mb-10 mt-24 flex w-screen flex-col items-center justify-center gap-8 px-5 text-center">
+        <p className="text-title-4">Questo articolo non è pi disponibile</p>
+        <p>
+          Ritorna alla lista di articoli per vedere quelli esistenti.
+        </p>
+      </div>
+      <Suspense>
+        <div className="flex w-screen justify-center">
+          <Link href="/blog">
+            <button className="button-primary-base">
+              Torna al blog
+            </button>
+          </Link>
+        </div>
+      </Suspense>
+    </>
+  );
+};

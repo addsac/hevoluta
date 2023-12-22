@@ -11,7 +11,7 @@ export const runtime = 'edge';
 export const metadata = {
   title: 'Hevoluta – Profilo',
   description:
-    'Questa è la oagina profilo di Hevoluta. In questa pagina puoi gestire al meglio la tua Shopping Experience.',
+    'Questa è la pagina profilo di Hevoluta. In questa pagina puoi gestire al meglio la tua Shopping Experience.',
   openGraph: {
     type: 'website'
   }
@@ -20,6 +20,8 @@ export const metadata = {
 export default async function ProfilePage() {
   // Fetching the customer
   const customer = await getCustomer(cookies().get('login-token')?.value);
+
+  console.log(customer?.customer)
 
   if (!customer?.customer) return ErrorPage();
 
@@ -30,7 +32,7 @@ export default async function ProfilePage() {
     const res = await updateCustomerAddress({
       address: address,
       token: cookies().get('login-token')?.value,
-      id: customer.customer.defaultAddress.id
+      id: customer.customer.defaultAddress?.id
     });
 
     return res;

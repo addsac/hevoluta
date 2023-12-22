@@ -34,7 +34,7 @@ export default async function BlogPage() {
                 alt=""
                 width={1440}
                 height={400}
-                className="absolute h-full w-full object-cover opacity-[0.35] select-none z-[0]"
+                className="absolute h-full w-full object-cover opacity-[0.35] z-[0]"
                 draggable="false"
                 style={{ userSelect: 'none' }}
             />

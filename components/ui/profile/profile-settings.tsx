@@ -22,7 +22,7 @@ export default function ProfileSettings({
     const [emailUserData, setEmailUserData] = useState<string>(customer.email);
     const [nameUserData, setNameUserData] = useState<string>(customer.firstName);
     const [surnameUserData, setSurnameUserData] = useState<string>(customer.lastName);
-    const [phoneUserData, setPhoneUserData] = useState<string>(customer.defaultAddress.phone);
+    const [phoneUserData, setPhoneUserData] = useState<string>(customer.phone);
     const [emailMarketingUserData, setEmailMarketingUserData] = useState<boolean>(customer.acceptsMarketing);
 
     const [loadingUserData, setLoadingUserData] = useState(false);
@@ -44,7 +44,7 @@ export default function ProfileSettings({
             email: emailUserData,
             firstName: nameUserData,
             lastName: surnameUserData,
-            phone: phoneUserData,
+            phone: '+39'+phoneUserData,
             acceptsMarketing: emailMarketingUserData
         })
 
@@ -58,16 +58,16 @@ export default function ProfileSettings({
     }
 
     // form data - page 2
-    const [name, setName] = useState<string>(customer.defaultAddress.firstName);
-    const [surname, setSurname] = useState<string>(customer.defaultAddress.lastName);
-    const [address, setAddress] = useState<string>(customer.defaultAddress.address1);
-    const [city, setCity] = useState<string>(customer.defaultAddress.city);
-    const [civicNumber, setCivicNumber] = useState<string>(customer.defaultAddress.address2);
-    const [cap, setCap] = useState<string>(customer.defaultAddress.zip);
-    const [nation, setNation] = useState<string>(customer.defaultAddress.country);
-    const [province, setProvince] = useState<string>(customer.defaultAddress.province);
+    const [name, setName] = useState<string>(customer.defaultAddress?.firstName);
+    const [surname, setSurname] = useState<string>(customer.defaultAddress?.lastName);
+    const [address, setAddress] = useState<string>(customer.defaultAddress?.address1);
+    const [city, setCity] = useState<string>(customer.defaultAddress?.city);
+    const [civicNumber, setCivicNumber] = useState<string>(customer.defaultAddress?.address2);
+    const [cap, setCap] = useState<string>(customer.defaultAddress?.zip);
+    const [nation, setNation] = useState<string>(customer.defaultAddress?.country);
+    const [province, setProvince] = useState<string>(customer.defaultAddress?.province);
     const [email, setEmail] = useState<string>(customer.email);
-    const [phone, setPhone] = useState<string>(customer.defaultAddress.phone);
+    const [phone, setPhone] = useState<string>(customer.defaultAddress?.phone);
 
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
