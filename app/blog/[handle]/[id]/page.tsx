@@ -17,12 +17,7 @@ export async function generateMetadata({
     id: string
   };
 }): Promise<Metadata | JSX.Element> {
-  console.log(params.handle)
-  console.log(params.id)
-
   const article = await getArticle(String('gid://shopify/Article/' + params.id));
-
-  // console.log(article)
 
   if (!article) return ErrorPage();
 
@@ -51,12 +46,7 @@ export async function generateMetadata({
 }
 
 export default async function ArticlePage({ params }: { params: { handle: string, id: string } }) {
-  console.log(params.handle)
-  console.log(params.handle)
-
   const article = await getArticle(String('gid://shopify/Article/' + params.id));
-  
-  // console.log(article)
 
   if (!article) return ErrorPage();
 
@@ -182,7 +172,7 @@ const ErrorPage = () => {
   return (
     <>
       <div className="mb-10 mt-24 flex w-screen flex-col items-center justify-center gap-8 px-5 text-center">
-        <p className="text-title-4">Questo articolo non è pi disponibile</p>
+        <p className="text-title-4">Questo articolo non è più disponibile</p>
         <p>
           Ritorna alla lista di articoli per vedere quelli esistenti.
         </p>

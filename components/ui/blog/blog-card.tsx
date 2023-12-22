@@ -1,6 +1,7 @@
 import { ShopifyArticle } from 'lib/shopify/types'
 import Image from 'next/image'
 import Link from 'next/link'
+import Balancer from 'react-wrap-balancer'
 
 export default function BlogCard({ article } : { article: ShopifyArticle }){
     return (
@@ -26,7 +27,9 @@ export default function BlogCard({ article } : { article: ShopifyArticle }){
                     {article?.tags.map((tag: string) => `${tag} `)}
                 </p>
                 <p className="text-title-5 group-hover:underline">
-                    {article?.title}
+                    <Balancer>
+                        {article?.title}
+                    </Balancer>
                 </p>
                 <button className="button-primary-base">
                     Leggi l'articolo

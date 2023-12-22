@@ -159,16 +159,16 @@ const ErrorPage = () => {
   return (
     <>
       <div className="mb-10 mt-24 flex w-screen flex-col items-center justify-center gap-8 px-5 text-center">
-        <p className="text-title-4">Questo articolo non è pi disponibile</p>
+        <p className="text-title-4">Questo prodotto non è più disponibile</p>
         <p>
-          Ritorna alla lista di articoli per vedere quelli esistenti.
+          Ritorna alla lista di prodotti per vedere quelli esistenti. 
         </p>
       </div>
       <Suspense>
         <div className="flex w-screen justify-center">
           <Link href="/search">
             <button className="button-primary-base">
-              Torna al blog
+              Torna ai prodotti
             </button>
           </Link>
         </div>
