@@ -8,7 +8,7 @@ import { HIDDEN_PRODUCT_TAG } from 'lib/constants';
 import { getProduct, getProductRecommendations } from 'lib/shopify';
 import { Image } from 'lib/shopify/types';
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import Link from 'next/link';
 import { Suspense } from 'react';
 
 export const runtime = 'edge';
@@ -17,10 +17,10 @@ export async function generateMetadata({
   params
 }: {
   params: { handle: string };
-}): Promise<Metadata> {
+}): Promise<Metadata | JSX.Element> {
   const product = await getProduct(params.handle);
 
-  if (!product) return notFound();
+  if (!product) return ErrorPage();
 
   const { url, width, height, altText: alt } = product?.featuredImage || {};
   const indexable = !product?.tags.includes(HIDDEN_PRODUCT_TAG);
@@ -54,7 +54,7 @@ export async function generateMetadata({
 export default async function ProductPage({ params }: { params: { handle: string } }) {
   const product = await getProduct(params.handle);
 
-  if (!product) return notFound();
+  if (!product) return ErrorPage();
 
   // Fetch the reviews for the current product - https://judge.me/api/v1/reviews
   const apiUrl = `https://judge.me/api/v1/reviews?api_token=${process.env.JUDGEME_SECRET_TOKEN}&shop_domain=${process.env.SHOPIFY_DOMAIN}&per_page=15&page=1&product_id=${product?.id}`;
@@ -154,3 +154,25 @@ async function RelatedProducts({ id }: { id: string }) {
       </div>
   );
 }
+
+const ErrorPage = () => {
+  return (
+    <>
+      <div className="mb-10 mt-24 flex w-screen flex-col items-center justify-center gap-8 px-5 text-center">
+        <p className="text-title-4">Questo articolo non è pi disponibile</p>
+        <p>
+          Ritorna alla lista di articoli per vedere quelli esistenti.
+        </p>
+      </div>
+      <Suspense>
+        <div className="flex w-screen justify-center">
+          <Link href="/search">
+            <button className="button-primary-base">
+              Torna al blog
+            </button>
+          </Link>
+        </div>
+      </Suspense>
+    </>
+  );
+};
