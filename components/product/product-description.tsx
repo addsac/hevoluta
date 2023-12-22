@@ -8,6 +8,7 @@ import { Suspense, useState } from 'react';
 import ProductAccrodion from './product-accordion';
 import { VariantSelector } from './variant-selector';
 import { Review } from 'lib/judgeme/types';
+import Balancer from 'react-wrap-balancer';
 
 export function ProductDescription({ product, reviews }: { product: Product, reviews: Review[] }) {
   const [rightPrice, setRightPrice] = useState({
@@ -32,7 +33,11 @@ export function ProductDescription({ product, reviews }: { product: Product, rev
       <div className="w-full lg:w-1/2 flex flex-col gap-20 lg:px-10">
         {/* title and ctas */}
         <div className="flex flex-col gap-8">
-          <h1 className="text-title-3 !leading-[140%]">{product.title}</h1>
+          <h1 className="text-title-3 !leading-[140%]">
+            <Balancer>
+              {product.title}
+            </Balancer>
+          </h1>
 
           <Price
             amount={rightPrice.amount}

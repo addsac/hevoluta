@@ -62,7 +62,9 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
             <div className="flex items-start justify-between">
               <div className="flex flex-col gap-2.5">
                 <p className="text-title-4"> Carrello </p>
-                <p className="opacity-50"> {cart?.totalQuantity} prodotti aggiunti </p>
+                <p className="opacity-50"> 
+                  {cart?.totalQuantity} prodotti
+                </p>
               </div>
 
               <button   
@@ -76,6 +78,19 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                   className="w-6 h-6"
                 />
               </button>
+            </div>
+
+            {/* free delivery data message */}
+            <div className="bg-gray-100 text-body-1_2 text-black/60 text-center p-5 -mt-5">
+              {Number(cart?.cost?.totalAmount?.amount) < 65 ? (
+                <p>
+                  Ti Mancano solo {65-Number(cart?.cost?.totalAmount?.amount)}€ per la spedizione gratuita.
+                </p> 
+              ) : (
+                <p>
+                  La spedizione è gratuita!
+                </p>
+              )}
             </div>
 
             {/* products */}
