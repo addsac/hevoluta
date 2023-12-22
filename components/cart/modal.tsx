@@ -81,17 +81,19 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
             </div>
 
             {/* free delivery data message */}
-            <div className="bg-gray-100 text-body-1_2 text-black/60 text-center p-5 -mt-5">
-              {Number(cart?.cost?.totalAmount?.amount) < 65 ? (
-                <p>
-                  Ti Mancano solo {65-Number(cart?.cost?.totalAmount?.amount)}€ per la spedizione gratuita.
-                </p> 
-              ) : (
-                <p>
-                  La spedizione è gratuita!
-                </p>
-              )}
-            </div>
+            {(cart && cart.lines.length > 0) && (
+              <div className="bg-gray-100 text-body-1_2 text-black/60 text-center p-5 -mt-5">
+                {Number(cart?.cost?.totalAmount?.amount) < 65 ? (
+                  <p>
+                    Ti mancano {65-Number(cart?.cost?.totalAmount?.amount)}€ per la spedizione gratuita
+                  </p> 
+                ) : (
+                  <p>
+                    La spedizione è gratuita!
+                  </p>
+                )}
+              </div>
+            )}
 
             {/* products */}
             {!cart || cart.lines.length === 0 ? (
@@ -125,13 +127,13 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                   return (
                     <div 
                       key={i}
-                      className="w-full flex gap-4 p-2.5 border border-gray-200"
+                      className="w-full flex gap-5 p-2.5 border border-gray-200"
                     >
                       {/* img */}
                       <Link 
                         href={merchandiseUrl}
                         onClick={closeCart}
-                        className="w-20 h-20 bg-gradient-gray"
+                        className="w-20 h-20 bg-gradient-gray shrink-0"
                       >
                         {item.merchandise.product.featuredImage && (
                           <Image
@@ -148,7 +150,7 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                       </Link>
       
                       {/* texts */}
-                      <div className="w-full flex flex-col items-start gap-5">
+                      <div className="w-full flex flex-col items-start gap-3">
                         <div className="flex flex-col gap-2.5">
                           <p className="line-clamp-1">
                             {item.merchandise.product.title}
