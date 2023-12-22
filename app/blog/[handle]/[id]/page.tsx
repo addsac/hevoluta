@@ -12,12 +12,15 @@ export const runtime = 'edge';
 export async function generateMetadata({
   params
 }: {
-  params: { handle: string[] };
+  params: { 
+    handle: string,
+    id: string
+  };
 }): Promise<Metadata | JSX.Element> {
-  console.log(params.handle[0])
-  console.log(params.handle[1])
+  console.log(params.handle)
+  console.log(params.id)
 
-  const article = await getArticle(String('gid://shopify/Article/' + params.handle[1]));
+  const article = await getArticle(String('gid://shopify/Article/' + params.id));
 
   // console.log(article)
 
@@ -47,11 +50,11 @@ export async function generateMetadata({
   };
 }
 
-export default async function ArticlePage({ params }: { params: { handle: string[] } }) {
-  console.log(params.handle[0])
-  console.log(params.handle[1])
+export default async function ArticlePage({ params }: { params: { handle: string, id: string } }) {
+  console.log(params.handle)
+  console.log(params.handle)
 
-  const article = await getArticle(String('gid://shopify/Article/' + params.handle[1]));
+  const article = await getArticle(String('gid://shopify/Article/' + params.id));
   
   // console.log(article)
 
