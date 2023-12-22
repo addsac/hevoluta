@@ -14,9 +14,11 @@ export async function generateMetadata({
 }: {
   params: { handle: string[] };
 }): Promise<Metadata | JSX.Element> {
+  console.log(String('gid://shopify/Article/' + params.handle[1]))
+
   const article = await getArticle(String('gid://shopify/Article/' + params.handle[1]));
 
-  console.log(article)
+  // console.log(article)
 
   if (!article) return ErrorPage();
 
@@ -45,9 +47,11 @@ export async function generateMetadata({
 }
 
 export default async function ArticlePage({ params }: { params: { handle: string[] } }) {
+  console.log(String('gid://shopify/Article/' + params.handle[1]))
+  
   const article = await getArticle(String('gid://shopify/Article/' + params.handle[1]));
   
-  console.log(article)
+  // console.log(article)
 
   if (!article) return ErrorPage();
 
@@ -116,6 +120,7 @@ export default async function ArticlePage({ params }: { params: { handle: string
                     width={980}
                     height={600}
                     className="w-full h-full object-cover opacity-80 select-none"
+                    priority={true}
                     draggable={false}
                 />
             </div>
