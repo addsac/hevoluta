@@ -1,12 +1,14 @@
 'use client';
 
 import Alert from 'components/ui/state/alert';
+import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
 export default function LastLink({ register }: { register: any }) {
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [checkNewsletter, setCheckNewsletter] = useState(false);
   // const [password, setPassword] = useState('00010000');
 
@@ -18,6 +20,12 @@ export default function LastLink({ register }: { register: any }) {
     // check email validation
     if(email.trim().length == 0){
         setError('Inserisci una email valida.')
+        return
+    }
+
+    // check password validation
+    if(password.trim().length == 0){
+        setError('Inserisci una password valida.')
         return
     }
 
@@ -61,12 +69,38 @@ export default function LastLink({ register }: { register: any }) {
             onChange={(e) => setEmail(e.target.value)}
             onKeyUp={(e) => {
               if (e.key === 'Enter') {
-                submit();
+                // go to password input
+                document.getElementById('input-password').focus()
               }
             }}
             placeholder="nome@esempio.com"
             className="input-base w-full max-w-[400px]"
           />
+
+          <AnimatePresence>
+            {email.trim() !== '' && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+              >
+                <input
+                  id="input-password"
+                  type="text"
+                  name="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  onKeyUp={(e) => {
+                    if (e.key === 'Enter') {
+                      submit();
+                    }
+                  }}
+                  placeholder="scegli una password"
+                  className="input-base w-full max-w-[400px]"
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           <div className="flex items-center justify-start gap-2">
             <input
@@ -96,7 +130,7 @@ export default function LastLink({ register }: { register: any }) {
           )}
 
           <button className="button-primary-base" onClick={() => submit()} disabled={loading}>
-            {loading ? 'Caricamento...' : 'Iscriviti'}
+            {loading ? 'Caricamento...' : 'Iscriviti alla newsletter'}
           </button>
         </div>
       </div>
