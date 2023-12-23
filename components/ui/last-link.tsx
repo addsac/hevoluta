@@ -1,28 +1,22 @@
 'use client';
 
+import Alert from 'components/ui/state/alert';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-import Alert from 'components/ui/state/alert';
 
 export default function LastLink({ register }: { register: any }) {
   const [email, setEmail] = useState('');
   const [checkNewsletter, setCheckNewsletter] = useState(false);
-  const [password, setPassword] = useState('00010000');
+  // const [password, setPassword] = useState('00010000');
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
   const submit = async () => {
-    // client password min 8 chars validation
-    /* if(password.length < 8){
-      setError('La password deve essere di almeno 8 caratteri.')
-      return
-    } */
-
     // check email validation
-    if(email.length <= 0){
+    if(email.trim().length == 0){
         setError('Inserisci una email valida.')
         return
     }
@@ -37,20 +31,8 @@ export default function LastLink({ register }: { register: any }) {
     setError('');
     setSuccess('');
 
-    const res = await register({
-      email,
-      password
-    });
-
-    // console.log(res)
-
-    if (res?.customerUserErrors[0]?.message) {
-      setError(res?.customerUserErrors[0]?.message);
-    } else {
-      setSuccess(
-        'Abbiamo inviato una mail di conferma al tuo indirizzo. Per completare la registrazione, apri la mail e conferma.'
-      );
-    }
+    // api to register the email to the newsletter in mailchimp audience
+    // ...
 
     setLoading(false);
   };
@@ -77,6 +59,11 @@ export default function LastLink({ register }: { register: any }) {
             name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            onKeyUp={(e) => {
+              if (e.key === 'Enter') {
+                submit();
+              }
+            }}
             placeholder="nome@esempio.com"
             className="input-base w-full max-w-[400px]"
           />
