@@ -19,10 +19,10 @@ export default function ProfileSettings({
 
     // form data - page 1
     // Email, Nome, Cognome, Password, Telefono, Email marketing
-    const [emailUserData, setEmailUserData] = useState<string>(customer.email);
-    const [nameUserData, setNameUserData] = useState<string>(customer.firstName);
-    const [surnameUserData, setSurnameUserData] = useState<string>(customer.lastName);
-    const [phoneUserData, setPhoneUserData] = useState<string>(customer.phone);
+    const [emailUserData, setEmailUserData] = useState<string>(customer.email || '');
+    const [nameUserData, setNameUserData] = useState<string>(customer.firstName || '');
+    const [surnameUserData, setSurnameUserData] = useState<string>(customer.lastName || '');
+    const [phoneUserData, setPhoneUserData] = useState<string>(customer.phone?.replace('+39', '') || '');
     const [emailMarketingUserData, setEmailMarketingUserData] = useState<boolean>(customer.acceptsMarketing);
 
     const [loadingUserData, setLoadingUserData] = useState(false);
@@ -32,7 +32,7 @@ export default function ProfileSettings({
     const saveCustomerData = async () => {
         // client validations
         if(emailUserData.length == 0 || nameUserData.length == 0 || surnameUserData.length == 0 || phoneUserData.length == 0){
-            setErrorUserData('I campi obbligatori sono: email, nome e cognome.')
+            setErrorUserData('I campi obbligatori sono: email, nome, cognome e telefono.')
             return
         }
 

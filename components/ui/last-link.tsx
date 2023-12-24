@@ -2,15 +2,15 @@
 
 import Alert from 'components/ui/state/alert';
 import { AnimatePresence, motion } from 'framer-motion';
+import { createCookie } from 'lib/cookie';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
-export default function LastLink({ register }: { register: any }) {
+export default function LastLink({ register, login }: { register: any, login: any }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [checkNewsletter, setCheckNewsletter] = useState(false);
-  // const [password, setPassword] = useState('00010000');
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -40,7 +40,30 @@ export default function LastLink({ register }: { register: any }) {
     setSuccess('');
 
     // api to register the email to the newsletter in mailchimp audience
-    // ...
+    const res = await register({
+      email,
+      password,
+    });
+
+    if(res?.customerUserErrors[0]?.message){
+      setError(res?.customerUserErrors[0]?.message)
+    } 
+    else{
+      setSuccess('Stai per essere reindirizzato...')
+
+      const res = await login({
+        email,
+        password,
+      })
+  
+      if(res?.customerUserErrors[0]?.message){
+        // setError(res.customerUserErrors[0].message)
+        setError('Email o password errati.')
+      } else{
+        createCookie('login-token', res.customerAccessToken.accessToken, 14)
+        window.location.reload()
+      }
+    }
 
     setLoading(false);
   };
@@ -83,6 +106,8 @@ export default function LastLink({ register }: { register: any }) {
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.2, ease: 'easeOut' }}
+                className="w-full"
               >
                 <input
                   id="input-password"

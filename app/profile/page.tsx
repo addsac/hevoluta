@@ -21,8 +21,6 @@ export default async function ProfilePage() {
   // Fetching the customer
   const customer = await getCustomer(cookies().get('login-token')?.value);
 
-  console.log(customer?.customer)
-
   if (!customer?.customer) return ErrorPage();
 
   // Update api to update customer address

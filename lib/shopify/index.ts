@@ -511,19 +511,19 @@ export async function revalidate(req: NextRequest): Promise<NextResponse> {
   // otherwise it will continue to retry the request.
   const collectionWebhooks = ['collections/create', 'collections/delete', 'collections/update'];
   const productWebhooks = ['products/create', 'products/delete', 'products/update'];
-  const blogWebhooks = ['blogs/create', 'blogs/delete', 'blogs/update'];
+  // const blogWebhooks = ['blogs/create', 'blogs/delete', 'blogs/update'];
   const topic = headers().get('x-shopify-topic') || 'unknown';
   const secret = req.nextUrl.searchParams.get('secret');
   const isCollectionUpdate = collectionWebhooks.includes(topic);
   const isProductUpdate = productWebhooks.includes(topic);
-  const isArticleUpdate = blogWebhooks.includes(topic);
+  // const isArticleUpdate = blogWebhooks.includes(topic);
 
   if (!secret || secret !== process.env.SHOPIFY_REVALIDATION_SECRET) {
     console.error('Invalid revalidation secret.');
     return NextResponse.json({ status: 200 });
   }
 
-  if (!isCollectionUpdate && !isProductUpdate && !isArticleUpdate) {
+  if (!isCollectionUpdate && !isProductUpdate) {  // && !isArticleUpdate
     // We don't need to revalidate anything for any other topics.
     return NextResponse.json({ status: 200 });
   }
@@ -536,9 +536,9 @@ export async function revalidate(req: NextRequest): Promise<NextResponse> {
     revalidateTag(TAGS.products);
   }
 
-  if (isArticleUpdate) {
+  /* if (isArticleUpdate) {
     revalidateTag(TAGS.blog);
-  }
+  } */
 
   return NextResponse.json({ status: 200, revalidated: true, now: Date.now() });
 }
@@ -568,7 +568,8 @@ export async function getCustomer(token: string): Promise<Customer>{
     query: customerQuery,
     variables: {
       customerAccessToken: token
-    }
+    },
+    cache: 'no-store'
   });
 
   return reshapeCustomer(res.body.data)

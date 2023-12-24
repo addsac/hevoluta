@@ -75,8 +75,8 @@ export default function Profilo({
                         <Link href="/profile" onClick={() => closeModal()} className="button-text"> 
                             Account &nbsp;
                             (
-                                {customer.numberOfOrders} 
-                                {Number(customer.numberOfOrders) > 1 ? 'ordini' : 'ordine'}
+                                {customer.numberOfOrders} &nbsp;
+                                {Number(customer.numberOfOrders) === 1 ? 'ordine' : 'ordini'}
                             ) 
                         </Link>
                         <button 

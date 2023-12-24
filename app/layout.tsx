@@ -3,7 +3,7 @@ import Navbar from 'components/layout/navbar';
 import LastLink from 'components/ui/last-link';
 import { GeistMono } from 'geist/font/mono';
 import { GeistSans } from 'geist/font/sans';
-import { getCustomer, getProducts, registerCustomer } from 'lib/shopify';
+import { getCustomer, getProducts, loginCustomer, registerCustomer } from 'lib/shopify';
 import { ensureStartsWith } from 'lib/utils';
 import localFont from 'next/font/local';
 import { ReactNode, Suspense } from 'react';
@@ -61,6 +61,18 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
     return res
   }
 
+  // Login api to get customer access token
+  const login = async ({ email, password }) => {
+    'use server'
+    
+    const res = await loginCustomer({
+      email,
+      password,
+    });
+
+    return res
+  }
+
   return (
     <html lang="it" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <body>
@@ -71,7 +83,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         </Suspense>
 
         <Suspense>
-          <LastLink register={register} />
+          <LastLink register={register} login={login} />
           <Footer products={products} />
         </Suspense>
       </body>
