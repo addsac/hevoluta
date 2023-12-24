@@ -63,7 +63,7 @@ export default function ProductDetails({ product = null }: { product: any }) {
               className="text-body-1_170 lg:text-body-2 text-white lg:pr-20"
             >
               <Balancer>
-                {product?.metafields.find((metafield: any) => metafield?.key == 'indicazioni')?.value}
+                {product?.metafields.find((metafield: any) => metafield?.key == 'indicazioni_prodotto')?.value}
               </Balancer>
             </motion.p>
           )}
@@ -79,7 +79,7 @@ export default function ProductDetails({ product = null }: { product: any }) {
               className="text-body-1_170 lg:text-body-2 text-white lg:pr-20"
             >
               <Balancer>
-                {product?.metafields.find((metafield: any) => metafield?.key == 'mantenimento')?.value}
+                {product?.metafields.find((metafield: any) => metafield?.key == 'cura_e_mantenimento')?.value}
               </Balancer>
             </motion.p>
           )}

@@ -48,7 +48,7 @@ export default function LastLink({ register }: { register: any }) {
   return (
     <div className="grid grid-cols-12 gap-5 px-5 py-[120px]">
       {/* newsletter */}
-      <div className="bg-gradient-gray relative col-span-12 h-[400px] overflow-clip border border-black lg:col-span-8">
+      <div className="bg-gradient-gray relative col-span-12 h-[400px] overflow-clip border border-gray-200 lg:col-span-8">
         <Image
           src="/img/background/background-3.png"
           alt=""
@@ -58,7 +58,7 @@ export default function LastLink({ register }: { register: any }) {
           draggable={false}
         />
         <div className="absolute bottom-5 left-5 right-5 flex flex-col items-start gap-5">
-          <p className="text-title-4">Ottieni il 15% di sconto sul tuo primo ordine.</p>
+          <p className="text-title-4">Ottieni il 10% di sconto sul tuo primo ordine.</p>
           <p className="-mt-3 opacity-70">
             Iscriviti: riceverai il coupon di benvenuto, offerte riservate e novità.
           </p>
