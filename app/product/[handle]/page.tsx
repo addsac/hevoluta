@@ -36,7 +36,7 @@ export async function generateMetadata({
         follow: indexable
       }
     },
-    /* openGraph: url
+    openGraph: url
       ? {
           images: [
             {
@@ -47,7 +47,7 @@ export async function generateMetadata({
             }
           ]
         }
-      : null */
+      : null
   };
 }
 

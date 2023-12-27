@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion';
 import { useEffect, useState } from "react";
 import ProductCard from "./product-card";
 
@@ -22,12 +21,12 @@ export default function ProductRow({ items = [] } : { items: any[] }) {
     return (
         <>
             {array.map((item, index) => (
-                <motion.div 
+                <div 
                     key={'product-row-' + index}
                     className="w-full flex flex-col lg:flex-row gap-16 lg:gap-2.5" 
-                    initial={{ opacity: 0, y: 15 }}
+                    /* initial={{ opacity: 0, y: 15 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true }} */
                     transition={{ ease: 'easeOut', duration: 0.15, delay: 0.15 }}
                 >
                     {item.map((item, index) => (
@@ -36,7 +35,7 @@ export default function ProductRow({ items = [] } : { items: any[] }) {
                             item={item}
                         />
                     ))}
-                </motion.div>
+                </div>
             ))}
         </>
     )
