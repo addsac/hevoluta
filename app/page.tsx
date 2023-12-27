@@ -77,7 +77,7 @@ export default async function HomePage() {
             alt=""
             className="w-12 h-12 opacity-50"
           />
-          <p className="group-hover:underline"> Hai dei dubbi? </p>
+          <p className="group-hover:underline"> Chatta on noi </p>
           <p className='opacity-50'> Apri la chat per ogni domanda sui prodotti </p>
         </Link>
       </div>
