@@ -30,20 +30,30 @@ export default function ProductCard({ item = null } : { item: any }) {
             </AnimatePresence>
 
             <div className="flex items-center justify-center py-5 bg-gradient-to-b from-gray-100 to-gray-100/0 group-hover:ring-1 group-hover:ring-black">
-                <img 
-                    src={item?.images[0]?.url}
-                    alt={item?.images[0]?.altText}
-                    className={`
-                        "h-[300px] lg:h-[400px] w-auto 
-                    `}
-                    // group-hover:opacity-0 group-hover:h-0
-                />
-                
-                <img 
-                    src={item?.images[1]?.url}
-                    alt={item?.images[1]?.altText}
-                    className="w-auto h-0 opacity-0 group-hover:opacity-100 group-hover:h-[300px] lg:group-hover:h-[400px]"
-                />
+                {item?.images[0] ? (
+                    <img 
+                        src={item?.images[0]?.url}
+                        alt={item?.images[0]?.altText}
+                        className={`
+                            "h-[300px] lg:h-[400px] w-auto 
+                            ${item?.images[1] ? 'group-hover:opacity-0 group-hover:h-0' : ''}
+                        `}
+                    />
+                ) : (
+                    <div className="h-[300px] lg:h-[400px] w-auto flex items-center justify-center text-center opacity-50">
+                        <p>
+                            Foto non disponibile
+                        </p>
+                    </div>
+                )}
+
+                {item?.images[1] && (
+                    <img 
+                        src={item?.images[1]?.url}
+                        alt={item?.images[1]?.altText}
+                        className="w-auto h-0 opacity-0 group-hover:opacity-100 group-hover:h-[300px] lg:group-hover:h-[400px]"
+                    />
+                )}
             </div>
             <div className="flex flex-col gap-4">
                 <p> {item?.title} </p>

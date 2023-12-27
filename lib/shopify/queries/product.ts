@@ -5,12 +5,12 @@ export const getProductQuery = /* GraphQL */ `
     product(handle: $handle) {
       ...product
       metafields(identifiers: [
-        {namespace: "custom", key: "mantenimento"},
-        {namespace: "custom", key: "indicazioni"},
-        {namespace: "custom", key: "storia"},
-        {namespace: "custom", key: "modalita_uso"},
+        {namespace: "custom", key: "benefici"},
         {namespace: "custom", key: "ingredienti"},
-        {namespace: "custom", key: "benefici_del_prodotto"},
+        {namespace: "custom", key: "modalita_uso"},
+        {namespace: "custom", key: "storia"},
+        {namespace: "custom", key: "indicazioni_prodotto"},
+        {namespace: "custom", key: "cura_e_mantenimento"},
       ]) {
         description
         id
