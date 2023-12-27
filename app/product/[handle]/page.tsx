@@ -71,7 +71,7 @@ export default async function ProductPage({ params }: { params: { handle: string
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: product?.title,
-    description: product?.description,
+    description: product?.description.slice(0, 200),
     image: product?.featuredImage?.url,
     offers: {
       '@type': 'AggregateOffer',
