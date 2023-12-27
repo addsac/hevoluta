@@ -69,7 +69,7 @@ export default async function HomePage() {
             className="w-12 h-12 opacity-50"
           />
           <p> Rimborso assistito </p>
-          <p className='opacity-50'> in UE, per tutti i prodotti disponibili </p>
+          <p className='opacity-50'> Se ti serve cambiare o rendere un acquisto </p>
         </div>
         <Link href="/chat" className="w-full flex flex-col items-center justify-center gap-5 group">
           <img 
