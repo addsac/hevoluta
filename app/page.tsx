@@ -1,12 +1,12 @@
 import BlogCards from 'components/ui/blog/blog-cards';
 import Divider from 'components/ui/divider';
+import HeroSectionAnimated from 'components/ui/hero-section-animated';
 import ImageDescription from 'components/ui/image-description';
 import ProductRows from 'components/ui/product/product-rows';
 import { getArticles, getProducts } from 'lib/shopify';
 import { divideArrayIntoGroups } from 'lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Balancer } from 'react-wrap-balancer';
 
 export const runtime = 'edge';
 
@@ -37,27 +37,7 @@ export default async function HomePage() {
     <>
       {/* Hero */}
       <div className="relative w-screen h-[600px] bg-black text-center flex flex-col items-center justify-center gap-12 overflow-clip">
-        <h1 className="text-title-1 text-white z-[1]">
-          <Balancer>
-            Semina la bellezza, 
-            <br />
-            raccogli la salute
-
-          </Balancer>
-        </h1>
-        <p className="-mt-4 text-17 leading-[190%] text-white z-[1] max-w-[1000px]">
-          <Balancer>
-            Scopri i prodotti di Hevoluta nati per prendersi cura della persona da un punto di vista più ampio, per un benessere completo e duraturo.
-          </Balancer>
-        </p>
-        <Link 
-          href="/search" 
-          className="z-[1]"
-        >
-          <button className="button-secondary-lg">
-            Scopri i prodotti
-          </button>
-        </Link>
+        <HeroSectionAnimated />
 
         {/* background img */}
         <Image 
