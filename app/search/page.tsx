@@ -16,8 +16,6 @@ export default async function SearchPage({ searchParams } : { searchParams?: { [
   const products = await getProducts({ sortKey, reverse, query: searchValue });
   const resultsText = products.length > 1 ? 'results' : 'result';
 
-  console.log(products)
-
   return (
     <>
       {searchValue ? (

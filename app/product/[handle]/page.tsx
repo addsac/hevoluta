@@ -148,8 +148,14 @@ async function RelatedProducts({ id }: { id: string }) {
 
           {/* rows prodcucts */}
           <Suspense>
-            <ProductRows items={relatedProducts.slice(0, 6)} />
+            <ProductRows items={relatedProducts.slice(0, 4)} />
           </Suspense>
+
+          <Link href="/search">
+            <button className="button-secondary-base">
+              Vedi altri prodotti
+            </button>
+          </Link>
         </div>
       </div>
   );

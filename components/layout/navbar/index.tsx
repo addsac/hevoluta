@@ -35,8 +35,7 @@ export default async function Navbar({ customer }: { customer: Customer }) {
 
     let url = String(process.env.SHOPIFY_STORE_DOMAIN)
 
-    console.log(url)
-    console.log(password)
+
 
     const res = await registerConfirmCustomer({
       activationUrl: url,
