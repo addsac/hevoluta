@@ -36,7 +36,7 @@ export async function generateMetadata({
         follow: indexable
       }
     },
-    openGraph: url
+    /* openGraph: url
       ? {
           images: [
             {
@@ -47,7 +47,7 @@ export async function generateMetadata({
             }
           ]
         }
-      : null
+      : null */
   };
 }
 
@@ -148,7 +148,7 @@ async function RelatedProducts({ id }: { id: string }) {
 
           {/* rows prodcucts */}
           <Suspense>
-            <ProductRows items={relatedProducts.slice(0, 2)} />
+            <ProductRows items={relatedProducts.slice(0, 4)} />
           </Suspense>
 
           <Link href="/search">
