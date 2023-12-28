@@ -26,8 +26,8 @@ export default function ProductRow({ items = [] } : { items: any[] }) {
                     className="w-full flex flex-col lg:flex-row gap-16 lg:gap-2.5" 
                     /* initial={{ opacity: 0, y: 15 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }} */
-                    transition={{ ease: 'easeOut', duration: 0.15, delay: 0.15 }}
+                    viewport={{ once: true }}
+                    transition={{ ease: 'easeOut', duration: 0.15, delay: 0.15 }}  */
                 >
                     {item.map((item, index) => (
                         <ProductCard 
