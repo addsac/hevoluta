@@ -165,7 +165,9 @@ const ErrorPage = () => {
   return (
     <>
       <div className="mb-10 mt-24 flex w-screen flex-col items-center justify-center gap-8 px-5 text-center">
-        <p className="text-title-4">Questo prodotto non è più disponibile</p>
+        <p className="text-title-4">
+          Questo prodotto non è più disponibile
+        </p>
         <p>
           Ritorna alla lista di prodotti per vedere quelli esistenti. 
         </p>

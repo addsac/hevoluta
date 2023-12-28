@@ -77,10 +77,10 @@ export default function LastLink({ register, login }: { register: any, login: an
           alt=""
           width={400}
           height={400}
-          className="absolute bottom-0 right-0 top-0 w-auto select-none opacity-50 lg:opacity-100"
+          className="absolute bottom-0 right-0 top-0 w-auto select-none opacity-50 lg:opacity-100 z-[0]"
           draggable={false}
         />
-        <div className="absolute bottom-5 left-5 right-5 flex flex-col items-start gap-5">
+        <div className="absolute bottom-5 left-5 right-5 flex flex-col items-start gap-5 z-[5]">
           <p className="text-title-4">Ottieni il 10% di sconto sul tuo primo ordine.</p>
           <p className="-mt-3 opacity-70">
             Iscriviti: riceverai il coupon di benvenuto, offerte riservate e novità.
@@ -203,15 +203,24 @@ export default function LastLink({ register, login }: { register: any, login: an
       </div>
 
       {/* chatta con noi */}
-      <div className="bg-gray-100 relative col-span-12 py-16 px-5 flex flex-col gap-6 items-start justify-center">
-        <p className="text-title-4">
+      <div className="bg-gradient-gray border border-gray-200 relative col-span-12 h-[240px] overflow-clip px-5 flex flex-col gap-6 items-start justify-center">
+        <Image
+          src="/img/background/background-6.png"
+          alt=""
+          width={400}
+          height={400}
+          className="absolute bottom-0 right-0 top-0 w-auto h-[240px] select-none opacity-50 lg:opacity-100 z-[0]"
+          draggable={false}
+        />
+
+        <p className="text-title-4 z-[5]">
           Hai domande o curiosità sui prodotti?
         </p>
-        <p className='opacity-50 -mt-3'>
+        <p className='opacity-50 -mt-3 z-[5]'>
           Apri la chat – Saremo felici di rispondere a ogni tua domanda.
         </p>
         <Link href="/chat">
-          <button className="button-primary-base">
+          <button className="button-primary-base z-[5]">
             Chatta con noi
           </button>
         </Link>
