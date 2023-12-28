@@ -198,16 +198,16 @@ button{
   @apply flex flex-col;
 }
 .blog-content-wrapper img{
-  @apply w-full lg:w-1/2 h-auto my-8;
+  @apply w-full lg:w-2/3 h-auto my-8;
 }
 .blog-content-wrapper button, .blog-content-wrapper a{
   @apply active:outline-none focus:outline-none active:scale-[0.97] disabled:opacity-50 disabled:cursor-not-allowed button-text-blue;
 }
 .blog-content-wrapper h1{
-  @apply text-title-2 mb-5;
+  @apply text-title-2 mb-10 mt-5;
 }
 .blog-content-wrapper h2{
-  @apply text-title-3 mb-5;
+  @apply text-title-3 mb-10 mt-5;
 }
 .blog-content-wrapper p, .blog-content-wrapper span, .blog-content-wrapper ul, .blog-content-wrapper li{
   @apply text-17;

@@ -201,6 +201,21 @@ export default function LastLink({ register, login }: { register: any, login: an
           </div>
         </div>
       </div>
+
+      {/* chatta con noi */}
+      <div className="bg-gray-100 relative col-span-12 py-16 px-5 flex flex-col gap-6 items-start justify-center">
+        <p className="text-title-4">
+          Hai domande o curiosità sui prodotti?
+        </p>
+        <p className='opacity-50 -mt-3'>
+          Apri la chat – Saremo felici di rispondere a ogni tua domanda.
+        </p>
+        <Link href="/chat">
+          <button className="button-primary-base">
+            Chatta con noi
+          </button>
+        </Link>
+      </div>
     </div>
   );
 }

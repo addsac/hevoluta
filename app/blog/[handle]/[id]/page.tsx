@@ -87,7 +87,7 @@ export default async function ArticlePage({ params }: { params: { handle: string
         }}
       />
       
-      <div className="w-screen flex lg:gap-2.5 px-5 pt-20 pb-[120px]">
+      <div className="w-screen flex lg:gap-2.5 px-8 xl:px-32 pt-20 pb-[120px]">
         <div className="hidden lg:block w-2/12"></div> {/* margin */}
         <div className="w-full lg:w-8/12 flex flex-col gap-20">
             {/* header text */}
