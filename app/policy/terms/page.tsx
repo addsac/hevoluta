@@ -199,12 +199,6 @@ export default async function PolicyPage() {
                 opzionali di terze parti.
                 <br />
                 <br />
-                Qualsiasi utilizzo da parte tua degli strumenti opzionali offerti attraverso il sito
-                avverrà interamente a tuo rischio e discrezione. Starà a te assicurarti di conoscere
-                e approvare i termini e le condizioni a cui sono soggetti gli strumenti di terze
-                parti.
-                <br />
-                <br />
                 In futuro potremo anche offrire nuovi servizi e/o funzionalità attraverso il sito
                 web (ad esempio, introducendo nuovi strumenti e risorse). Anche tali nuove
                 funzionalità e/o servizi saranno soggetti ai presenti Termini e condizioni del
