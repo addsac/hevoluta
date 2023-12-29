@@ -1,10 +1,12 @@
 import Link from 'next/link';
+import Balancer from 'react-wrap-balancer';
 
 export const runtime = 'edge';
 
 export const metadata = {
   title: 'Hevoluta – Policy',
-  description: 'High-performance ecommerce store built with Next.js, Vercel, and Shopify.',
+  description:
+    'Questa è la pagina delle policy di Hevoluta. Qui troverai tutte le informazioni legali sul sito e sugli acquisti dei nostri prodotti.',
   openGraph: {
     type: 'website'
   }
@@ -21,196 +23,35 @@ export default async function PolicyPage({ params }: { params: { page: string } 
         <div className="col-span-3 hidden flex-col gap-5 lg:flex">
           <Link
             href="/policy/privacy"
-            className={`
-                    button-no-scale flex w-full items-center justify-start gap-2.5 border px-4 py-[14px] font-mono
-                    ${
-                      page === '' || page === 'privacy'
-                        ? 'border-black'
-                        : 'border-gray-200 hover:border-gray-300'
-                    }
-                `}
+            className="button-no-scale flex w-full items-center justify-start gap-2.5 border border-gray-200 px-4 py-[14px] font-mono hover:border-gray-300"
           >
             Privacy policy
           </Link>
           <Link
             href="/policy/terms"
-            className={`
-                    button-no-scale flex w-full items-center justify-start gap-2.5 border px-4 py-[14px] font-mono
-                    ${page === 'terms' ? 'border-black' : 'border-gray-200 hover:border-gray-300'}
-                `}
+            className="button-no-scale flex w-full items-center justify-start gap-2.5 border border-black px-4 py-[14px] font-mono"
           >
             Termini e condizioni
           </Link>
           <Link
             href="/policy/delivery"
-            className={`
-                    button-no-scale flex w-full items-center justify-start gap-2.5 border px-4 py-[14px] font-mono
-                    ${
-                      page === 'delivery' ? 'border-black' : 'border-gray-200 hover:border-gray-300'
-                    }
-                `}
+            className="button-no-scale flex w-full items-center justify-start gap-2.5 border border-gray-200 px-4 py-[14px] font-mono hover:border-gray-300"
           >
             Spedizioni
           </Link>
           <Link
             href="/policy/return"
-            className={`
-                    button-no-scale flex w-full items-center justify-start gap-2.5 border px-4 py-[14px] font-mono
-                    ${page === 'return' ? 'border-black' : 'border-gray-200 hover:border-gray-300'}
-                `}
+            className="button-no-scale flex w-full items-center justify-start gap-2.5 border border-gray-200 px-4 py-[14px] font-mono hover:border-gray-300"
           >
             Rimborsi
           </Link>
         </div>
         {/* page */}
         <div className="col-span-12 lg:col-span-9 lg:pr-10">
-          {page === 'privacy' && (
-            <div>
-              <h1 className="text-title-3 mb-10"> Privacy policy </h1>
-              <p className="text-body-1_170 block whitespace-pre">
-                Informativa sulla privacy di Bonaldo Moira
-                <br />
-                <br />
-                La presente Informativa sulla privacy descrive le modalità con cui i tuoi dati
-                personali vengono raccolti, utilizzati e diffusi quando visiti o effettui un
-                acquisto su www.hevoluta.com (il “Sito”).
-                <br />
-                <br />
-                RACCOLTA DATI PERSONALI
-                <br />
-                <br />
-                Quando visiti il Sito, raccogliamo automaticamente determinate informazioni presenti
-                sul tuo dispositivo, tra cui dati del browser, indirizzo IP, fuso orario e dati di
-                alcuni cookie installati sul tuo dispositivo. Inoltre, mentre navighi sul Sito
-                raccogliamo informazioni specifiche sulle pagine web e i prodotti che visualizzi,
-                sui siti web o i termini di ricerca che ti hanno indirizzato al Sito e sul modo in
-                cui interagisci con il Sito. Definiremo queste informazioni raccolte automaticamente
-                come “Informazioni sul dispositivo”.
-                <br />
-                <br />
-                Raccogliamo le Informazioni sul dispositivo con le seguenti tecnologie:
-                <br />
-                <br />
-                <ul className="list-inside list-disc">
-                  <li>
-                    I “cookie” sono file di dati che vengono inseriti sul tuo dispositivo o
-                    computer, e spesso includono un codice identificativo univoco anonimo. Per
-                    maggiori informazioni sui cookie e su come disattivarli visita
-                    http://www.allaboutcookies.org.
-                  </li>
-                  <li>
-                    I “File di log” tengono traccia delle azioni che hanno luogo sul Sito, e
-                    raccolgono dati tra cui indirizzo IP, tipo di browser, provider di servizi
-                    internet, pagine di riferimento/uscita e marcatura temporale con data/ora.
-                  </li>
-                  <li>
-                    “Web beacon”, “tag” e “pixel” sono file elettronici utilizzati per registrare
-                    dati sulle tue modalità di navigazione nel Sito.
-                  </li>
-                </ul>
-                <br />
-                <br />
-                In più quando effettui un acquisto o tenti di effettuare un acquisto tramite il
-                Sito, raccogliamo determinate informazioni che ti riguardano, tra cui nome e
-                cognome, indirizzo di fatturazione, indirizzo di spedizione, dati di pagamento
-                (compresi i numeri delle carte di credito [[INSERISCI QUALSIASI ALTRO TIPO DI
-                PAGAMENTO ACCETTATO]]), indirizzo email e numero di telefono. Definiremo questi dati
-                “Informazioni sugli ordini”.
-                <br />
-                <br />
-                Quando parliamo di “Dati personali” in questa Informativa sulla privacy, facciamo
-                riferimento sia alle Informazioni sul dispositivo che alle Informazioni sugli
-                ordini.
-                <br />
-                <br />
-                COME UTILIZZIAMO I TUOI DATI PERSONALI?
-                <br />
-                <br />
-                Generalmente utilizziamo le Informazioni sugli ordini per evadere gli ordini
-                effettuati tramite il Sito (il che include l’elaborazione dei dati di pagamento,
-                l’organizzazione della spedizione e il recapito di fatture e/o conferme d’ordine).
-                Inoltre, utilizziamo le Informazioni sugli ordini per: Comunicare con te; verificare
-                l’assenza di potenziali rischi o frodi negli ordini; fornirti informazioni o
-                pubblicità sui nostri prodotti o servizi, se in linea con le preferenze che ci hai
-                espresso. Utilizziamo le Informazioni sul dispositivo raccolte (in particolare il
-                tuo indirizzo IP) per verificare l’assenza di potenziali rischi o frodi e, più in
-                generale, per migliorare e ottimizzare il nostro Sito (ad esempio, generando dati
-                analitici sulle modalità di navigazione e interazione con il Sito da parte dei
-                nostri clienti, e per valutare il successo delle nostre campagne pubblicitarie e di
-                marketing). DIVULGAZIONE DEI TUOI DATI PERSONALI
-                <br />
-                <br />
-                Condividiamo i tuoi Dati personali con le aziende di terze parti che ci aiutano
-                nello svolgimento delle attività sopra descritte. Ad esempio, ci avvaliamo di
-                Shopify per la tecnologia del nostro negozio online. Trovi maggiori informazioni su
-                come Shopify utilizza i tuoi Dati personali qui:
-                https://it.shopify.com/legal/privacy. Inoltre ci avvaliamo di Google Analytics per
-                analizzare le modalità di utilizzo del Sito da parte dei clienti. Trovi maggiori
-                informazioni su come Google utilizza i tuoi Dati personali qui:
-                https://www.google.com/intl/it/policies/privacy/. Volendo puoi disattivare Google
-                Analytics da qui: https://tools.google.com/dlpage/gaoptout.
-                <br />
-                <br />
-                Infine, possiamo anche comunicare a terzi i tuoi Dati personali per conformarci a
-                leggi e regolamenti applicabili, rispondere a citazioni in giudizio, mandati di
-                perquisizione o altre richieste legali di dati ricevute, o comunque per tutelare i
-                nostri diritti. PUBBLICITÀ COMPORTAMENTALE Come descritto sopra, utilizziamo i tuoi
-                Dati personali per fornirti pubblicità mirata o comunicazioni di marketing che
-                riteniamo possano essere di tuo interesse. Per maggiori informazioni su come
-                funziona la pubblicità mirata, visita la pagina formativa di Network Advertising
-                Initiative (“NAI”) all’indirizzo web
-                http://www.networkadvertising.org/understanding-online-advertising/how-does-it-work.
-                <br />
-                <br />
-                Puoi disattivare la pubblicità mirata da qui: FACEBOOK –
-                https://www.facebook.com/settings/?tab=ads GOOGLE –
-                https://www.google.com/settings/ads/anonymous BING –
-                https://about.ads.microsoft.com/it-it/risorse/informative/annunci-personalizzati
-                <br />
-                <br />
-                Inoltre, puoi rifiutare esplicitamente alcuni di questi servizi visitando il portale
-                di recesso dalla pubblicità digitale di Digital Advertising Alliance:
-                http://optout.aboutads.info/.
-                <br />
-                <br />
-                DO NOT TRACK Tieni presente che non alteriamo le modalità di raccolta dati del
-                nostro Sito e le pratiche di utilizzo dei dati in presenza del segnale Do Not Track
-                del tuo browser.
-                <br />
-                <br />
-                I TUOI DIRITTI Se risiedi in Europa, hai il diritto di accedere ai dati personali
-                che ti riguardano in nostro possesso e di richiederne l’aggiornamento, la correzione
-                o la rimozione. Se desideri esercitare questo diritto, contattaci attraverso i
-                recapiti sottostanti. In più, se risiedi in Europa, tieni presente che trattiamo i
-                tuoi dati anche per adempiere agli eventuali obblighi contrattuali nei tuoi
-                confronti (ad esempio, in relazione agli ordini da te effettuati tramite il Sito) o
-                comunque per perseguire i nostri legittimi interessi aziendali sopra indicati. Oltre
-                a ciò, tieni presente che i tuoi dati saranno trasferiti in paesi extraeuropei tra
-                cui il Canada e gli Stati Uniti.
-                <br />
-                <br />
-                CONSERVAZIONE DEI DATI Quando effettui degli ordini tramite il Sito, conserviamo le
-                Informazioni sugli ordini nei nostri archivi, tranne se e fino a quando non ci
-                chiedi di eliminare tali informazioni.
-                <br />
-                <br />
-                MODIFICHE Di volta in volta potremo aggiornare la presente Informativa sulla
-                privacy, ad esempio in modo che rifletta le modifiche alle nostre procedure, oppure
-                per altre ragioni operative, legali o normative. CONTATTACI Per maggiori
-                informazioni sulle nostre procedure in materia di privacy, se hai domande o se vuoi
-                presentare un reclamo, inviaci un’email a info@hevoluta.com o contattaci tramite
-                posta ai seguenti recapiti:
-                <br />
-                <br />
-                Via degli Alpini 13/5 35013 Cittadella PD Italia
-              </p>
-            </div>
-          )}
-
-          {page === 'terms' && (
-            <div>
-              <h1 className="text-title-3 mb-10"> Termini e condizioni </h1>
-              <p className="text-body-1_170 whitespace-pre">
+          <div>
+            <h1 className="text-title-3 mb-10"> Termini e condizioni </h1>
+            <p className="text-body-1_170 whitespace-pre">
+              <Balancer>
                 Questo sito web è gestito da Bonaldo Moira. I termini “noi” e “nostro” all’interno
                 del sito si riferiscono a Bonaldo Moira. Bonaldo Moira ti offre questo sito web con
                 tutte le informazioni, gli strumenti e i servizi in esso disponibili a condizione
@@ -599,211 +440,9 @@ export default async function PolicyPage({ params }: { params: { page: string } 
                 <br />
                 Eventuali domande relative ai Termini e condizioni del servizio dovranno esserci
                 inviate all’indirizzo info@hevoluta.com.
-              </p>
-            </div>
-          )}
-
-          {page === 'delivery' && (
-            <div>
-              <h1 className="text-title-3 mb-10"> Spedizione </h1>
-              <p className="text-body-1_170 whitespace-pre">
-                Titolare della spedizione I prodotti HEVOLUTA® è un prodotto di Bonaldo Moira
-                vengono spediti in tutto il territorio italiano dalla società individuale titolare
-                del marchio.
-                <br />
-                <br />
-                Informazioni e costi HEVOLUTA® è costantemente impegnata coi principali Corrieri
-                Espresso nazionali per garantire il minor costo di spedizione per ogni zona d’Italia
-                e il miglior servizio in termini di tempi, garanzia di consegna e servizio al
-                Cliente.
-                <br />
-                <br />
-                I prodotti ordinati vengono recapitati all’indirizzo postale specificato dal Cliente
-                nel modulo d’ordine. Registrandosi al sito sarà possibile accedere alla sezione
-                riservata e gestire da qui una rubrica di indirizzi ai quali fare recapitare i
-                propri ordini. Lo stato dell’ordine sarà sempre consultabile nella sezione personale
-                tramite il proprio account.
-                <br />
-                <br />
-                Le consegne vengono effettuate dal lunedì al venerdì, nel normale orario di ufficio,
-                escluse le festività nazionali e le chiusure aziendali.
-                <br />
-                <br />
-                Nel momento in cui l’ordine viene consegnato al corriere verrà inviata un’e-mail
-                contenente un link per verificare il percorso della spedizione dalla presa in carico
-                del corriere fino all’effettiva consegna. La consegna è ritenuta completata nel
-                momento in cui il prodotto è messo a disposizione del Cliente all’indirizzo
-                specificato nel modulo d’ordine.
-                <br />
-                <br />
-                Al momento della consegna dei Prodotti da parte del corriere incaricato da
-                HEVOLUTA®, il Cliente è tenuto a controllare scrupolosamente:
-                <br />
-                a) che l’imballo non risulti danneggiato o comunque alterato;
-                <br />
-                b) che il numero di pezzi in consegna corrisponda a quanto indicato nel documento di
-                trasporto.
-                <br />
-                <br />
-                Eventuali danni agli imballi e ai Prodotti o la mancata corrispondenza del numero
-                dei pezzi/colli o delle indicazioni devono essere immediatamente contestati dal
-                Cliente, che potrà contattare HEVOLUTA® attraverso il Servizio Clienti specificando
-                l’ordine per il quale si sono verificati tali disguidi.
-                <br />
-                <br />
-                Mancata consegna In caso di mancata consegna per assenza del destinatario
-                all’indirizzo specificato, il corriere invierà una email di avviso al Cliente con un
-                link per concordare un appuntamento di consegna. Il cliente potrà indicare una data
-                e se l’autista dovrà passare di mattina o di pomeriggio. In caso di impossibilità
-                nell’eseguire la consegna anche nel giorno concordato per assenza del destinatario,
-                Il Servizio Clienti tenterà di contattare il Cliente per programmare una nuova
-                consegna. Nel caso in cui il Servizio Clienti non dovesse riuscire a contattare il
-                Cliente per i successivi 10 giorni lavorativi o nel caso di ulteriore impossibilità
-                di consegna per assenza del destinatario, i Prodotti oggetto dell’ordine saranno
-                riconsegnati a HEVOLUTA®. Decorsi 30 giorni dalla data in cui i Prodotti oggetto
-                dell’ordine sono stati rispediti a HEVOLUTA® per impossibilità nell’esecuzione
-                della consegna, il contratto si intenderà risolto e l’ordine d’acquisto annullato ai
-                sensi dell’art. 1456 c.c. HEVOLUTA® procederà al rimborso della somma pagata dal
-                Cliente al netto delle spese di restituzione dei Prodotti e delle spese di custodia
-                degli stessi presso la filiale del corriere incaricato per la consegna. La
-                risoluzione del contratto e l’importo del rimborso verranno comunicati via e-mail.
-                L’importo del rimborso verrà accreditato sul mezzo di pagamento utilizzato dal
-                Cliente per l’acquisto. Nel caso in cui, prima del decorso dei 30 giorni, il Cliente
-                chieda di ricevere nuovamente i Prodotti acquistati, HEVOLUTA® procederà alla nuova
-                consegna previo addebito, oltre alle spese della stessa, delle spese di restituzione
-                dei Prodotti a HEVOLUTA® e delle spese di custodia.
-                <br />
-                <br />
-                Tempi di spedizione HEVOLUTA® assicura la ricezione del proprio pacco entro 96 ore
-                dalla presa in consegna dell’ordine da parte dei nostri corrieri. Le tempistiche di
-                consegna possono variare per cause di forza maggiore come condizioni atmosferiche e
-                scioperi. Le consegne vengono effettuate dal lunedì al venerdì, nel normale orario
-                di ufficio, escluse le festività nazionali e le chiusure aziendali, recapitando i
-                prodotti all’indirizzo specificato al momento dell’ordine. Lo stato dell’ordine sarà
-                sempre consultabile mediante la sezione “I miei Ordini” nell’area riservata del
-                sito, dove è possibile verificare il percorso del pacco dalla presa in carico del
-                corriere fino all’effettiva consegna.
-                <br />
-                <br />
-                Modalità di pagamento HEVOLUTA®, offre un’unica modalità di pagamento attraverso
-                Shopify, che garantisce un sistema rapido e sicuro. Una volta completato il
-                pagamento con Shopify, l’acquirente verrà reindirizzato sul sito Shopify, dove potrà
-                accedere al proprio conto inserendo l’indirizzo e-mail personale e la propria
-                password. Scegliendo di pagare con Shopify l’importo viene addebitato direttamente
-                sulla carta di credito (Visa, Visa Electron, MasterCard) o prepagata (PostePay)
-                assegnata. Shopify tutela le informazioni dell’acquirente in quanto non vengono
-                passate informazioni finanziare. Ad ogni transazione eseguita con questo metodo
-                verrà inviata una e-mail di conferma da Shopify. L’importo dell’ordine viene
-                addebitato sul conto Shopify al momento dell’acquisizione dell’ordine. In caso di
-                annullamento l’importo viene rimborsato sul conto Shopify del Cliente.
-                <br />
-                <br />
-                Sicurezza del pagamento Gli acquisti fatti su capehorn.it sono sicuri e garantiti.
-                Il pagamento online è completamente privo di rischi. Le informazioni relative ai
-                pagamenti vengono criptate durante la trasmissione e gestite direttamente da
-                Shopify. In nessun caso manifattura HEVOLUTA® verrà a conoscenza del numero di
-                carta di credito, né tratterà o conserverà i dati forniti sui propri sistemi.
-                HEVOLUTA® si limiterà a ricevere comunicazione dell’esito positivo della
-                transazione.
-                <br />
-                <br />
-                Tutti i dati vengono trasferiti in forma codificata mediante certificato SSL e non
-                sono pertanto intercettabili da soggetti esterni. Shopify è un sistema di pagamento
-                rapido e sicuro, in cui l’importo viene addebitato direttamente sulla Carta di
-                Credito o prepagata assegnata dal cliente, tutelando le informazioni dell’acquirente
-                in quanto non vengono trasmesse informazioni finanziare.
-                <br />
-                <br />
-                Soddisfatti o rimborsati Ogni cliente del sito Cape Horn può avvalersi del Diritto
-                di Recesso, nel caso uno o più prodotti non fosse di suo gradimento. Le tempistiche
-                di rimborso sono al massimo di 14 giorni dal ricevimento della merce o dalla
-                ricezione della prova di spedizione.
-              </p>
-            </div>
-          )}
-
-          {page === 'return' && (
-            <div>
-              <h1 className="text-title-3 mb-10"> Rimborsi </h1>
-              <p className="text-body-1_170 whitespace-pre">
-                La nostra policy prevede un termine di 30 giorni per i resi. Se sono trascorsi 30
-                giorni dalla data dell’acquisto, purtroppo non possiamo offrirti alcun rimborso o
-                cambio.
-                <br />
-                <br />
-                Affinché sia idoneo al reso, l’articolo deve essere intatto e nelle stesse
-                condizioni in cui lo hai ricevuto. Deve anche essere nella sua confezione originale.
-                <br />
-                <br />
-                Per diverse tipologie di beni è escluso il reso. I beni deperibili come cibo, fiori,
-                giornali o riviste non possono essere oggetto di reso. Inoltre non accettiamo il
-                reso di prodotti intimi o sanitari, materiali pericolosi e liquidi o gas
-                infiammabili.
-                <br />
-                <br />
-                Ulteriori articoli per i quali è escluso il reso: * Buoni regalo * Prodotti software
-                scaricabili * Alcuni articoli per la salute e la cura della persona
-                <br />
-                <br />
-                Ai fini del reso, richiediamo una ricevuta o una prova di acquisto. Per favore non
-                rispedire indietro il tuo acquisto al produttore.
-                <br />
-                <br />
-                In alcuni casi sono concessi solo rimborsi parziali (se applicabili): * Libro con
-                evidenti segni d’uso * CD, DVD, nastro VHS, software, videogioco, cassetta o disco
-                in vinile che sia stato aperto. * Qualsiasi articolo che non si trovi nel suo stato
-                originario, sia danneggiato o con parti mancanti per cause estranee a un nostro
-                errore. * Qualsiasi articolo restituito più di 30 giorni dopo la consegna Rimborsi
-                (se applicabile) Una volta ricevuto e ispezionato il reso, ti invieremo un’email per
-                comunicarti l’avvenuta ricezione dell’articolo. Ti comunicheremo anche
-                l’approvazione o il rifiuto della tua richiesta di rimborso. Se la tua richiesta è
-                approvata, il rimborso sarà elaborato e verrà automaticamente applicato un credito
-                sulla tua carta o metodo di pagamento originario, entro un certo numero di giorni.
-                <br />
-                <br />
-                Rimborsi tardivi o inevasi (se applicabile) Se non hai ancora ricevuto un rimborso,
-                innanzitutto ricontrolla il tuo conto bancario. Poi contatta l’azienda emittente
-                della carta di credito; può occorrere del tempo prima che il rimborso sia
-                formalmente registrato. Quindi contatta la tua banca. Spesso sono previsti dei tempi
-                di elaborazione per la registrazione di un rimborso. Se hai già seguito questi
-                passaggi e non hai ancora ricevuto il rimborso, scrivici al seguente indirizzo:
-                info@hevoluta.com.
-                <br />
-                <br />
-                Cambi (se applicabile) Sostituiamo gli articoli solo se difettosi o danneggiati. Se
-                ti occorre un cambio con lo stesso articolo, inviaci un’email a info@hevoluta.com e
-                spedisci l’articolo al seguente indirizzo: Via degli Alpini 13/5 35013 Cittadella PD
-                Italia.
-                <br />
-                <br />
-                Regali Se al momento dell’acquisto l’articolo è stato contrassegnato come regalo e
-                spedito direttamente a te, riceverai un buono corrispondente al valore del reso.
-                Alla ricezione dell’articolo oggetto di reso, ti sarà spedito per posta il buono
-                regalo.
-                <br />
-                <br />
-                Se l’articolo non è stato contrassegnato come regalo al momento dell’acquisto, o se
-                chi ha fatto il regalo si è fatto spedire l’ordine per consegnartelo di persona,
-                invieremo un rimborso a chi ha fatto il regalo e questi verrà a conoscenza del tuo
-                reso. Spedizione Per effettuare un reso, spedisci il prodotto al seguente indirizzo:
-                Via degli Alpini 13/5 35013 Cittadella PD Italia.
-                <br />
-                <br />
-                I costi di spedizione per il reso dell’articolo saranno a tuo carico. I costi di
-                spedizione non sono rimborsabili. Se ricevi un rimborso, i costi di spedizione del
-                reso non saranno inclusi nel rimborso.
-                <br />
-                <br />
-                A seconda del paese in cui vivi, il tempo necessario per il recapito del prodotto in
-                sostituzione può variare.
-                <br />
-                <br />
-                Se devi spedire un articolo del valore di oltre 75 €, considera di utilizzare un
-                servizio di spedizione tracciabile o di assicurare la spedizione. Non garantiamo che
-                riceveremo l’articolo oggetto di reso.
-              </p>
-            </div>
-          )}
+              </Balancer>
+            </p>
+          </div>
         </div>
       </div>
     </>
