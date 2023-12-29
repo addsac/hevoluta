@@ -26,7 +26,7 @@ export default function ProductDetails({ product = null }: { product: any }) {
             }`}
             onClick={() => setOpenText(1)}
           >
-            Indicazioni
+            A chi è rivolto
           </button>
           <button
             className={`${

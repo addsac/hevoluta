@@ -28,9 +28,12 @@ export default async function Navbar({ customer }: { customer: Customer }) {
         </Suspense>
 
         {/* navigation menu */}
-        <nav className="w-full px-5 py-5 flex items-center justify-between bg-white border-b border-gray-200">
+        <nav className="w-full px-5 py-4 lg:py-5 flex items-center justify-between bg-white border-b border-gray-200">
           {/* left buttons */}
           <div className="flex items-center w-full">
+            {/* button on the left of the header with a server component 
+            as a child, because it's not possible to use server functions 
+            inside a client component */}
             <Menu />
             <div className="hidden lg:block">
               <Link href="/search"> 
@@ -54,18 +57,16 @@ export default async function Navbar({ customer }: { customer: Customer }) {
             <img
               src="/img/logo.png"
               alt="logo"
-              className="h-5 w-auto"
+              className="h-4 lg:h-5 w-auto"
             />
           </Link>
 
           {/* right buttons */}
           <div className="flex items-center justify-end w-full">
-            <div className="hidden lg:block">
-              <AuthButtons 
-                customer={customer}
-                token={token}
-              />
-            </div>
+            <AuthButtons 
+              customer={customer}
+              token={token}
+            />
             <Suspense fallback={<OpenCart />}>
               <Cart />
             </Suspense>

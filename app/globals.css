@@ -46,6 +46,9 @@ button{
 .button-text-visible-underline{
   @apply border-b border-transparent border-black hover:opacity-50 leading-['auto'] cursor-pointer;
 }
+.button-icon{
+  @apply rounded-full bg-white text-black hover:bg-gray-100 px-2.5 py-2.5 flex items-center justify-center;
+}
 .button-primary-lg{
   @apply bg-black text-white font-medium px-8 py-[18px];
 }

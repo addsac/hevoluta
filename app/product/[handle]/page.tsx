@@ -68,8 +68,6 @@ export default async function ProductPage({ params }: { params: { handle: string
     .then(res => res.json())
     .then(res => res.reviews)
 
-  console.log(reviews);
-
   const productJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',

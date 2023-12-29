@@ -82,7 +82,12 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
 
             {/* free delivery data message */}
             {(cart && cart.lines.length > 0) && (
-              <div className="bg-gray-100 text-body-1_2 text-black/60 text-center p-5 -mt-5">
+              <div 
+                className={`
+                  ${Number(cart?.cost?.totalAmount?.amount) < 65 ? 'bg-gray-100 text-black/60' : 'bg-green-100 text-green-600'}
+                  text-body-1_2 text-center p-5 -mt-5
+                `}
+              >
                 {Number(cart?.cost?.totalAmount?.amount) < 65 ? (
                   <p>
                     Ti mancano {65-Number(cart?.cost?.totalAmount?.amount)}€ per la spedizione gratuita
