@@ -5,18 +5,18 @@ import { GeistMono } from 'geist/font/mono';
 import { GeistSans } from 'geist/font/sans';
 import { getCustomer, getProducts, loginCustomer, registerCustomer } from 'lib/shopify';
 import { ensureStartsWith } from 'lib/utils';
-import localFont from 'next/font/local';
+// import localFont from 'next/font/local';
 import { cookies } from 'next/headers';
 import { ReactNode, Suspense } from 'react';
 import './globals.css';
 
 // Tiempos font
-const tiempos_light = localFont({ 
+/* const tiempos_light = localFont({ 
   src: '../fonts/TiemposHeadline-Light.otf',
 })
 const tiempos_light_italic = localFont({ 
   src: '../fonts/TiemposHeadline-LightItalic.otf',
-})
+}) */
 
 const { TWITTER_CREATOR, TWITTER_SITE, SITE_NAME } = process.env;
 const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
