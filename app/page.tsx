@@ -7,6 +7,7 @@ import { getArticles, getProducts } from 'lib/shopify';
 import { divideArrayIntoGroups } from 'lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Suspense } from 'react';
 
 export const runtime = 'edge';
 
@@ -96,7 +97,9 @@ export default async function HomePage() {
           </div>
 
           {/* rows prodcucts */}
-          <ProductRows items={collections.slice(0, 8)} />
+          <Suspense>
+            <ProductRows items={collections.slice(0, 8)} />
+          </Suspense>
 
           <Link href="/search">
             <button className="button-secondary-base">

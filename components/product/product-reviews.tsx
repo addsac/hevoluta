@@ -33,7 +33,7 @@ export default function ProductReviews({
 
       <div
         id="reviews-wrapper"
-        className="flex w-screen flex-col items-center justify-center gap-20 bg-gray-100 px-5 py-20"
+        className="flex w-screen flex-col items-center justify-center gap-20 bg-gray-100 px-5 py-[120px]"
       >
         {/* title */}
         <div className="flex flex-col gap-6 text-center">

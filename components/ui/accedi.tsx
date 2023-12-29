@@ -19,7 +19,7 @@ export default function Accedi({
   register: any;
   login: any;
   sendEmailPasswordRecovery: any;
-  theme?: 'white' | 'black';
+  theme?: 'white' | 'black' | 'text';
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => setIsModalOpen(true);
@@ -56,6 +56,7 @@ export default function Accedi({
         className={`
           ${theme === 'white' && "button-menu"}
           ${theme === 'black' && "button-menu-dark"}
+          ${theme === 'text' && "button-text"}
         `} 
         onClick={() => openModal()}
       >

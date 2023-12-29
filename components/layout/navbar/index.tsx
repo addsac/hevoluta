@@ -1,12 +1,9 @@
 import Cart from 'components/cart';
 import OpenCart from 'components/cart/open-cart';
 import BlackStripe from 'components/layout/navbar/black-stripe';
-import Accedi from 'components/ui/accedi';
+import AuthButtons from 'components/ui/auth-buttons';
 import Cookie from 'components/ui/cookie';
 import Menu from 'components/ui/menu';
-import ModalRegistrationConfirm from 'components/ui/nav/modal-registration-confirm';
-import Profilo from 'components/ui/profilo';
-import { getMenu, loginCustomer, logoutCustomer, registerConfirmCustomer, registerCustomer, sendResetPasswordEmail } from 'lib/shopify';
 import { Customer } from 'lib/shopify/types';
 import { cookies } from 'next/headers';
 import Link from 'next/link';
@@ -15,80 +12,14 @@ import { Suspense } from 'react';
 const { SITE_NAME } = process.env;
 
 export default async function Navbar({ customer }: { customer: Customer }) {
-  const menu = await getMenu('next-js-frontend-header-menu');
-
-  // Register api to register a new customer
-  const register = async ({ email, password }) => {
-    'use server'
-    
-    const res = await registerCustomer({
-      email,
-      password,
-    });
-
-    return res
-  }
-
-  // set new password after activating the registration
-  const registerConfirm = async ({ syclid, discount, password }) => {
-    'use server'
-
-    let url = String(process.env.SHOPIFY_STORE_DOMAIN)
-
-
-
-    const res = await registerConfirmCustomer({
-      activationUrl: url,
-      password
-    });
-    
-    return res
-  }
-
-  // Login api to get customer access token
-  const login = async ({ email, password }) => {
-    'use server'
-    
-    const res = await loginCustomer({
-      email,
-      password,
-    });
-
-    return res
-  }
-
-  // Logout api to remove customer access token
-  const logout = async () => {
-    'use server'
-    
-    const res = await logoutCustomer({
-      customerAccessToken: cookies().get('login-token')?.value
-    });
-
-    return res
-  }
-
-  // Reset password api to send email to customer
-  const sendEmailPasswordRecovery = async ({ email }) => {
-    'use server'
-    
-    const res = await sendResetPasswordEmail({
-      email,
-    });
-
-    return res
-  }
+  // const menu = await getMenu('next-js-frontend-header-menu');
+  const token = cookies().get('login-token')?.value
 
   return (
     <>
       {/* modal */}
       <Suspense>
         <Cookie />
-      </Suspense>
-      <Suspense>
-        <ModalRegistrationConfirm 
-          registerConfirm={registerConfirm}
-        />
       </Suspense>
 
       <div className="w-screen flex flex-col">
@@ -130,21 +61,10 @@ export default async function Navbar({ customer }: { customer: Customer }) {
           {/* right buttons */}
           <div className="flex items-center justify-end w-full">
             <div className="hidden lg:block">
-              <Suspense>
-                {!customer?.customer ? 
-                  <Accedi 
-                    flag="login"
-                    register={register}
-                    login={login}
-                    sendEmailPasswordRecovery={sendEmailPasswordRecovery}
-                  /> : 
-                  <Profilo 
-                    customer={customer.customer}
-                    logout={logout} 
-                    sendEmailPasswordRecovery={sendEmailPasswordRecovery}
-                  />
-                }
-              </Suspense>
+              <AuthButtons 
+                customer={customer}
+                token={token}
+              />
             </div>
             <Suspense fallback={<OpenCart />}>
               <Cart />

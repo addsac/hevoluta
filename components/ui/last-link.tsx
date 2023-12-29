@@ -219,8 +219,8 @@ export default function LastLink({ register, login }: { register: any, login: an
         <p className='opacity-50 -mt-3 z-[5]'>
           Apri la chat – Saremo felici di rispondere a ogni tua domanda.
         </p>
-        <Link href="/chat">
-          <button className="button-primary-base z-[5]">
+        <Link href="/chat" className="z-[5]">
+          <button className="button-primary-base">
             Chatta con noi
           </button>
         </Link>

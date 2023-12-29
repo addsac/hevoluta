@@ -6,8 +6,8 @@ import { GeistSans } from 'geist/font/sans';
 import { getCustomer, getProducts, loginCustomer, registerCustomer } from 'lib/shopify';
 import { ensureStartsWith } from 'lib/utils';
 import localFont from 'next/font/local';
-import { ReactNode, Suspense } from 'react';
 import { cookies } from 'next/headers';
+import { ReactNode, Suspense } from 'react';
 import './globals.css';
 
 // Tiempos font

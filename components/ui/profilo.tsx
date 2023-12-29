@@ -11,11 +11,13 @@ import ForgotPassword from './nav/forgot-password';
 export default function Profilo({
     customer,
     logout,
-    sendEmailPasswordRecovery
+    sendEmailPasswordRecovery,
+    theme = 'white'
 } : {
-    customer: ShopifyCustomer,
-    logout: any,
-    sendEmailPasswordRecovery: any
+    customer: ShopifyCustomer;
+    logout: any;
+    sendEmailPasswordRecovery: any;
+    theme?: 'white' | 'black' | 'text';
 }){
     const [isModalOpen, setIsModalOpen] = useState(false);
     const openModal = () => setIsModalOpen(true);
@@ -73,9 +75,9 @@ export default function Profilo({
                     {/* links */}
                     <div className="flex flex-col items-start gap-5">
                         <Link href="/profile" onClick={() => closeModal()} className="button-text"> 
-                            Account &nbsp;
+                            Account&nbsp;
                             (
-                                {customer.numberOfOrders} &nbsp;
+                                {customer.numberOfOrders}&nbsp;
                                 {Number(customer.numberOfOrders) === 1 ? 'ordine' : 'ordini'}
                             ) 
                         </Link>
@@ -97,7 +99,11 @@ export default function Profilo({
             </AnimatePresence>
         
             <button 
-                className="button-menu"
+                className={`
+                ${theme === 'white' && "button-menu"}
+                ${theme === 'black' && "button-menu-dark"}
+                ${theme === 'text' && "button-text"}
+                `} 
                 onClick={() => openModal()}
             >
                 Bentornato Leonardo

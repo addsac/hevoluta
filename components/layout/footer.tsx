@@ -1,4 +1,7 @@
+import AuthButtons from 'components/ui/auth-buttons';
+import { getCustomer } from 'lib/shopify';
 import { Product } from 'lib/shopify/types';
+import { cookies } from 'next/headers';
 import Link from 'next/link';
 import Balancer from 'react-wrap-balancer';
 
@@ -8,6 +11,8 @@ export default async function Footer({
   products: Product[]
 }) {
   // const menu = await getMenu('next-js-frontend-footer-menu');
+  const customer = await getCustomer( cookies().get('login-token')?.value )
+  const token = cookies().get('login-token')?.value
 
   return (
     <footer className="w-full px-5 flex flex-col">
@@ -33,7 +38,11 @@ export default async function Footer({
               <Link href="/blog" className="button-text"> Blog </Link>
               <Link href="/chat" className="button-text"> Chatta con noi </Link>
               <Link href="/about" className="button-text"> Chi siamo </Link>
-              <Link href="/login" className="button-text"> Accedi </Link>
+              <AuthButtons 
+                customer={customer}
+                theme="text"
+                token={token}
+              />
             </div>
           </div>
           

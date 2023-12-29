@@ -1,13 +1,12 @@
 'use client';
 
-import Accedi from 'components/ui/accedi';
 import Modal from 'components/ui/modal';
 import { AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { useState } from 'react';
 import Balancer from 'react-wrap-balancer';
 
-export default function Menu(): any {
+export default function Menu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const openMenu = () => setIsMenuOpen(true);
   const closeMenu = () => setIsMenuOpen(false);
@@ -49,7 +48,6 @@ export default function Menu(): any {
                 <Link href="/blog" onClick={() => closeMenu()} className="button-text"> Blog </Link>
                 <Link href="/chat" onClick={() => closeMenu()} className="button-text"> Chatta con noi </Link>
                 <Link href="/about" onClick={() => closeMenu()} className="button-text"> Chi siamo </Link>
-                <Link href="?modal=login" onClick={() => closeMenu()} className="button-text"> Accedi </Link>
               </div>
 
               {/* contatti */}
