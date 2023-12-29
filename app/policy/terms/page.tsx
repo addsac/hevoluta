@@ -12,9 +12,7 @@ export const metadata = {
   }
 };
 
-export default async function PolicyPage({ params }: { params: { page: string } }) {
-  const page = params.page;
-
+export default async function PolicyPage() {
   return (
     <>
       {/* Hero */}
