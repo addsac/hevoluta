@@ -62,10 +62,13 @@ export default async function ProductPage({ params }: { params: { handle: string
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-    }
+    },
+    cache: 'no-cache',
   })
     .then(res => res.json())
     .then(res => res.reviews)
+
+  console.log(reviews);
 
   const productJsonLd = {
     '@context': 'https://schema.org',
