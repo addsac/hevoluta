@@ -8,6 +8,11 @@ import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 export default function BlackStripe() {
+  const goToNewsletterForm = () => {
+    const input = document.getElementById('email-newsletter')
+    setTimeout(() => input?.focus(), 100)
+  }
+
   return (
     <>
       {/* black stripe - mobile */}
@@ -29,19 +34,25 @@ export default function BlackStripe() {
           }}
         >
           <SwiperSlide>
-            <p className="text-center whitespace-nowrap font-mono text-12 font-medium">
-              Progettato e fabbricato in Italia
-            </p>
-          </SwiperSlide>
-          <SwiperSlide>
-            <p className="text-center whitespace-nowrap font-mono text-12 font-medium">
+            <button className="mx-auto whitespace-nowrap font-mono text-12 font-medium">
               Spedizione gratuita da 65€
-            </p>
+            </button>
           </SwiperSlide>
           <SwiperSlide>
-            <p className="text-center whitespace-nowrap font-mono text-12 font-medium">
+            <button 
+              className='mx-auto whitespace-nowrap font-mono text-12 font-medium hover:underline'
+              onClick={() => goToNewsletterForm()}
+            >
+              Iscriviti per avere il 10% di sconto primo ordine
+            </button>
+          </SwiperSlide>
+          <SwiperSlide>
+            <Link 
+              href="/chat"
+              className="mx-auto whitespace-nowrap font-mono text-12 font-medium hover:underline"
+            >
               Dubbi? Chatta con noi gratis
-            </p>
+            </Link>
           </SwiperSlide>
         </Swiper>
       </div>
@@ -51,9 +62,12 @@ export default function BlackStripe() {
         <p className="whitespace-nowrap font-mono text-12 font-medium">
           Spedizione gratuita da 65€
         </p>
-        <p className="whitespace-nowrap font-mono text-12 font-medium">
-          Progettato e fabbricato in Italia
-        </p>
+        <button 
+          className="whitespace-nowrap font-mono text-12 font-medium hover:underline"
+          onClick={() => goToNewsletterForm()}
+        >
+          Iscriviti per avere il 10% di sconto primo ordine
+        </button>
         <Link
           href="/chat"
           className="whitespace-nowrap font-mono text-12 font-medium hover:underline"

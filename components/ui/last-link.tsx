@@ -86,6 +86,7 @@ export default function LastLink({ register, login }: { register: any, login: an
             Iscriviti: riceverai il coupon di benvenuto, offerte riservate e novità.
           </p>
           <input
+            id="email-newsletter"
             type="text"
             name="email"
             value={email}
@@ -93,7 +94,7 @@ export default function LastLink({ register, login }: { register: any, login: an
             onKeyUp={(e) => {
               if (e.key === 'Enter') {
                 // go to password input
-                document.getElementById('input-password').focus()
+                document.getElementById('password-newsletter').focus()
               }
             }}
             placeholder="nome@esempio.com"
@@ -110,7 +111,7 @@ export default function LastLink({ register, login }: { register: any, login: an
                 className="w-full"
               >
                 <input
-                  id="input-password"
+                  id="password-newsletter"
                   type="text"
                   name="password"
                   value={password}

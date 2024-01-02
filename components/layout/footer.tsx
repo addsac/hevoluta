@@ -129,19 +129,25 @@ export default async function Footer({
             &nbsp;&nbsp;|&nbsp;&nbsp;
             <Link href="/policy/privacy">
               <button className="button-text">
-                Privacy policy  
-              </button>
-            </Link>
-            &nbsp;&nbsp;|&nbsp;&nbsp;
-            <Link href="/policy/cookie">
-              <button className="button-text">
-                Cookie policy  
+                Privacy  
               </button>
             </Link>
             &nbsp;&nbsp;|&nbsp;&nbsp;
             <Link href="/policy/terms">
               <button className="button-text">
                 Termini
+              </button>
+            </Link>
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+            <Link href="/policy/delivery">
+              <button className="button-text">
+                Spedizioni
+              </button>
+            </Link>
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+            <Link href="/policy/return">
+              <button className="button-text">
+                Rimborsi
               </button>
             </Link>
             &nbsp;&nbsp;|&nbsp;&nbsp;
