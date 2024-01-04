@@ -25,6 +25,12 @@ export default async function Footer({
             alt="logo"
             className="h-5 w-auto"
           />
+
+          <p className="text-body-1_2_170 opacity-50 mt-8 max-w-[400px] lg:pr-10">
+            <Balancer>
+              I cosmetici HEVOLUTA® sono prodotti in un’azienda italiana, situata in Italia e regolarmente certificata UNI EN ISO 9001:2008, UNI EN ISO 22716:2007 e ISO 13485 (produzione di dispositivi medici per uso topico), per garantire i massimi livelli di qualità e sicurezza dalla “ricerca e sviluppo”, alla produzione fino al confezionamento del cosmetico.
+            </Balancer>
+          </p>
         </div>
         <div className="w-full lg:w-2/3 flex flex-col lg:flex-row items-start gap-16 lg:gap-2.5">
           <div className="flex flex-col gap-[20px] lg:gap-[28px] w-full">

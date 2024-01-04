@@ -1,6 +1,4 @@
 import Divider from 'components/ui/divider';
-import LastLink from 'components/ui/last-link';
-import { Suspense } from 'react';
 import Balancer from 'react-wrap-balancer';
 
 export const runtime = 'edge';
@@ -23,11 +21,36 @@ export default async function AbotuPage() {
             <div className="flex flex-col gap-20">
                 <div className="flex flex-col gap-6">
                     <h1 className="text-title-2">
-                        Hevoluta – dove bellezza e salute si fondono.
+                        Hevoluta - semina la Bellezza, raccogli la Salute.
                     </h1>
                     <p className="text-body-2_190">
                         <Balancer>
-                            Hevoluta è un marchio italiano che nasce dall’idea di creare prodotti di bellezza e salute di alta qualità, esclusivamente Made in Italy. La necessità del progetto nasce nel vedere in commercio prodotti molto usati, ma che non rispettano sempre la persona, con ingredienti discutibili e potenzialmente dannosi, a scapito della loro utilità. Su questo principio basiamo tutti i prodotti sviluppati di Hevoluta.
+                            Hevoluta è un marchio italiano che nasce dall’idea di creare prodotti di bellezza di alta qualità, esclusivamente Made in Italy, dedicati al Bellessere  dell’intera Persona.
+                        </Balancer>
+                    </p>
+                    <p className="text-body-2_190">
+                        <Balancer>
+                            Oggi le persone si rendono sempre più conto che salute e bellezza viaggiano sugli stessi binari e che il loro destino dipende in gran parte dall’ambiente in cui vivono e dallo stile e scelte di vita che decidono di adottare.
+                        </Balancer>
+                    </p>
+                    <p className="text-body-2_190">
+                        <Balancer>
+                            In questa prospettiva, la ricerca della bellezza diventa un tendere naturale a una funzionalità ottimale del nostro intero organismo, per raggiungere quell’armonia che ci rende più accettabili a noi stessi e più desiderabili e attraenti agli altri.
+                        </Balancer>
+                    </p>
+                    <p className="text-body-2_190">
+                        <Balancer>
+                            HEVOLUTA® nasce dalla visione da parte della sua creatrice e fondatrice Moira Bonaldo di «concepire bellezza, benessere e salute collegate fra loro e imprescindibili l’una dalle altre».
+                        </Balancer>
+                    </p>
+                    <p className="text-body-2_190">
+                        <Balancer>
+                            La pelle diventa così un tramite, un gate, a nostra diretta disposizione per agire su di essa direttamente e indirettamente sul resto del nostro corpo.
+                        </Balancer>
+                    </p>
+                    <p className="text-body-2_190">
+                        <Balancer>
+                            In HEVOLUTA® si ricercano, si studiano, si applicano e si condividono solo le più innovative ed efficaci strategie e soluzioni che consentano alle persone di sviluppare, raggiungere e mantenere il loro massimo potenziale di Bellessere, ossia l’insieme di bellezza, benessere e salute.
                         </Balancer>
                     </p>
                 </div>
@@ -45,11 +68,11 @@ export default async function AbotuPage() {
                             Fibra extra lunga
                         </p>
                         <p className="text-title-4">
-                            Tocco morbido
+                            Sicuri
                         </p>
                         <p className="text-body-1_170 opacity-50">
                             <Balancer>
-                                Solo cotoni di finissima qualità lavorati in Italia che regalano una sensazione di incredibile morbidezza.
+                                I cosmetici HEVOLUTA® sono dermatologicamente testati e sono privi di parabeni, siliconi,EDTA, BHA, BHT e altre sostanze sospette di non essere completamente sicure.
                             </Balancer>
                         </p>
                     </div>
@@ -63,11 +86,11 @@ export default async function AbotuPage() {
                             Doppio riporto
                         </p>
                         <p className="text-title-4">
-                            Qualità duratura
+                            Efficaci
                         </p>
                         <p className="text-body-1_170 opacity-50">
                             <Balancer>
-                                Lavorazioni artigianali danno vita a tessuti pregiati che mantengono la loro bellezza nel tempo.
+                                Ricchi di sostanze  funzionali e presenti in concentrazione efficace per raggiungere l’effetto cosmetologico vantato dal prodotto.
                             </Balancer>
                         </p>
                     </div>
@@ -81,11 +104,11 @@ export default async function AbotuPage() {
                             tecniche sartoriali
                         </p>
                         <p className="text-title-4">
-                            Fit confortevole
+                            Funzionali
                         </p>
                         <p className="text-body-1_170 opacity-50">
                             <Balancer>
-                                Un processo studiato secondo l'antica tradizione sartoriale per un capo dalla vestibilità perfetta.
+                                I principi attivi utilizzati sono scelti in base a studi, verifiche sperimentali e bibliografia che dimostrino la loro funzionalità cosmetica specifica.
                             </Balancer>
                         </p>
                     </div>
@@ -96,7 +119,12 @@ export default async function AbotuPage() {
             <div className="w-full bg-citation flex flex-col items-center gap-10 px-5 py-12 text-center">
                 <p className="text-title-5_190 max-w-[900px]">
                     <Balancer>
-                        Flower Mountain è il brand di sneakers nato nel 2015 dall’amicizia tra Keisuke Ota di Tokyo e Yang Chao di Pechino, che hanno in comune la passione per il trekking in montagna, il campeggio e, ovviamente, le calzature.
+                        “Tutto in noi è collegato e unito da una rete quasi invisibile 
+                        e questa rete ci unisce  agli altri e al Pianeta Terra.
+                        Salute fisica e mentale, relazioni umane, bellezza, benessere e longevità: tutto è collegato e interdipendente. 
+                        Affrontarle separatamente porta solo a tamponare i problemi 
+                        e a non risolverli in modo definitivo e sostenibile nel tempo.
+                        É folle non rendersi conto di questo e doveroso rispettarlo.”
                     </Balancer>
                 </p>
                 <p className="opacity-50">
@@ -104,9 +132,15 @@ export default async function AbotuPage() {
                 </p>
             </div>
 
-            <p className="text-title-4">
-                I Principi alla base dei nostri prodotti
-            </p>
+            <div className='text-center'>
+                <p className="text-title-4">
+                    I Principi alla base dei nostri prodotti
+                </p>
+
+                <p className="text-body-1_190 opacity-50 max-w-[600px] mt-8">
+                    Ogni Prodotto è realizzato per uno scopo ben preciso, ma contribuisce al più grande e fondamentale obiettivo di HEVOLUTA®: sviluppare e mantenere il massimo potenziale di Bellessere della persona!
+                </p>
+            </div>
 
             <div className="flex flex-col lg:flex-row items-start justify-between gap-12 lg:gap-16">
                 {/* photo */}
@@ -118,12 +152,13 @@ export default async function AbotuPage() {
                 <div className="w-full">
                     <p className="text-title-4_170">
                         <Balancer>
-                            Occhiali a maschera, Il trend inaspettato dell’autunno/inverno 2023
+                            I cosmetici Hevoluta non sono prodotti che seguono le mode o i trend,
                         </Balancer>
                     </p>
-                    <p className="text-body-1_170 mt-8 opacity-70">
+                    <p className="text-body-1_190 mt-8 opacity-70">
                         <Balancer>
-                            Our first product and still the most popular, the Cotton T-Shirt is the cornerstone of any man’s wardrobe. Made from the world’s highest quality cotton for extra softness and durability. Made to Order in Portugal. Our first product and still the most popular, the Cotton T-Shirt is the cornerstone  of any man’s wardrobe. Made from the world’s highest quality cotton for extra softness and durability. 
+                            anche se siamo costantemente e attentamente in ascolto dei problemi e delle esigenze di coloro che scelgono e si affidano a Hevoluta: vogliamo che siano cosmetici funzionali destinai a rimanere nel tempo, perché realizzati con sostanze attive ben studiate, conosciute e con solide fondamenta scientifiche. 
+                            Questo comporta essere sempre aggiornati e studiare continuamente i progressi cosmetologici in particolare e scientifici in generale, per poterli tradurre velocemente nei prodotti Hevoluta, per aggiornarli rendendoli sempre “top performance”. Questo è possibile per le piccole dimensioni di Hevoluta, che la rende fluida, arguta, e veloce nell’aggiornare le formulazioni secondo le ultime scoperte, a differenza di grandi aziende e multinazionali (che sono dinosauri in confronto)
                         </Balancer>
                     </p>
                 </div>
@@ -139,12 +174,12 @@ export default async function AbotuPage() {
                 <div className="w-full">
                     <p className="text-title-4_170">
                         <Balancer>
-                            Occhiali a maschera, Il trend inaspettato dell’autunno/inverno 2023
+                            Nonostante l’obiettivo di Hevoluta sia di mettere a disposizione del consumatore cosmetici funzionali “evergreen” per la loro efficacia e lungimiranza,
                         </Balancer>
                     </p>
-                    <p className="text-body-1_170 mt-8 opacity-70">
+                    <p className="text-body-1_190 mt-8 opacity-70">
                         <Balancer>
-                            Our first product and still the most popular, the Cotton T-Shirt is the cornerstone of any man’s wardrobe. Made from the world’s highest quality cotton for extra softness and durability. Made to Order in Portugal. Our first product and still the most popular, the Cotton T-Shirt is the cornerstone  of any man’s wardrobe. Made from the world’s highest quality cotton for extra softness and durability. 
+                            in essi c’è sempre la scintilla dell’Innovazione e della Trasformazione: Hevoluta Crema Viso Protettiva Anti Luce Blu, per esempio, è la prima che permette davvero di proteggere la pelle dai danni da Luce Blu di origine naturale e artificiale, di sicuro quando è iniziata la sua vendita nell’Ottobre 2021. Inoltre, sicuramente è la prima formulata con la visione che l’interferenza della Luce Blu con il Ciclo Circadiano, con tutte le conseguenze nefaste, passi attraverso l’organo Pelle e non solo attraverso l’Occhio. Anche Hevoniric Gold Oil è stato pensato per agire sulla pelle nutrendola e calmandola, ma è stato formulato per calmare, rilassare e aiutare l’intero organismo a beneficiare di un sonno ristoratore, riparatore e rigenerante.
                         </Balancer>
                     </p>
                 </div>
@@ -160,15 +195,25 @@ export default async function AbotuPage() {
                 <div className="w-full">
                     <p className="text-title-4_170">
                         <Balancer>
-                            Occhiali a maschera, Il trend inaspettato dell’autunno/inverno 2023
+                            Il made in Italy è il nostro fiore all’occhiello che rispettiamo sempre e al quale teniamo particolarmente.
                         </Balancer>
                     </p>
-                    <p className="text-body-1_170 mt-8 opacity-70">
+                    <p className="text-body-1_190 mt-8 opacity-70">
                         <Balancer>
-                            Our first product and still the most popular, the Cotton T-Shirt is the cornerstone of any man’s wardrobe. Made from the world’s highest quality cotton for extra softness and durability. Made to Order in Portugal. Our first product and still the most popular, the Cotton T-Shirt is the cornerstone  of any man’s wardrobe. Made from the world’s highest quality cotton for extra softness and durability. 
+                            Inoltre, i lotti relativamente piccoli, rispetto a una multinazionale o grandi aziende produttive, ci permettono di essere veramente rispettosi dell’ambiente: che fine pensate facciano i milioni di cosmetici prodotti in tutto il mondo, anche make-up, ma rimasti  invenduti?
+                            Un altro occhio di riguardo viene dato al packaging, che deve essere almeno riciclabile. Inoltre, cerchiamo di utilizzare il meno possibile il packaging secondario, ossia le scatole di cartone che vengono subito buttate nel cestino dopo l’acquisto, per sostenere l’ambiente, gli alberi e tutta la filiera chimica che consegue.
                         </Balancer>
                     </p>
                 </div>
+            </div>
+
+            {/* citation */}
+            <div className="w-full bg-citation flex flex-col items-center gap-10 px-5 py-12 text-center">
+                <p className="text-title-5_190 max-w-[900px]">
+                    <Balancer>
+                        I ricercatori che hanno dato vita a HEVOLUTA® collaborano con l’Università degli Studi di Padova, di Ferrara e di Trieste, sono autori di decine di pubblicazioni scientifiche su riviste specializzate, sono relatori di decine di tesi di Laurea e Specializzazione in Scienza e Tecnologia Cosmetiche e sono inventori di Brevetti Internazionali.
+                    </Balancer>
+                </p>
             </div>
         </div>
         <div className="hidden lg:block w-1/12"></div> {/* margin */}

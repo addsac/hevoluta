@@ -153,6 +153,10 @@ button{
   @apply text-13 tracking-[-0.1px];
   line-height: 140% !important;
 }
+.text-body-1_2_170{
+  @apply text-13 tracking-[-0.1px];
+  line-height: 170% !important;
+}
 .text-body-1{
   @apply text-15 tracking-[-0.1px];
   line-height: 140% !important;
@@ -160,6 +164,10 @@ button{
 .text-body-1_170{
   @apply text-15 tracking-[-0.1px];
   line-height: 170% !important;
+}
+.text-body-1_190{
+  @apply text-15 tracking-[-0.1px];
+  line-height: 190% !important;
 }
 .text-body-2{
   @apply text-17 tracking-[-0.1px];
