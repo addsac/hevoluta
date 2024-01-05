@@ -775,7 +775,8 @@ export async function getArticles({
       reverse: reverse,
       sortKey: sortKey === 'CREATED_AT' ? 'CREATED' : sortKey,
       after: after
-    }
+    },
+    cache: 'no-cache'
   });
 
   return reshapeArticles(res.body.data.articles);
