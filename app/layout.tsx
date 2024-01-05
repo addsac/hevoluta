@@ -14,12 +14,12 @@ import './globals.css';
 const tiempos = localFont({
   src: [
     {
-      path: './fonts/TiemposHeadline-Light.otf',
+      path: './fonts/TiemposHeadline-Light.woff2',
       weight: '400',
       style: 'normal',
     },
     {
-      path: './fonts/TiemposHeadline-LightItalic.otf',
+      path: './fonts/TiemposHeadline-LightItalic.woff2',
       weight: '400',
       style: 'italic',
     }
