@@ -41,7 +41,7 @@ export function VariantSelector({
   }));
 
   return options.map((option) => (
-    <dl key={option.id}>
+    <dl key={option.id} className='w-full'>
       <dt className="mb-4 text-sm tracking-wide">
         {/* {option.name} */}
         Formato:

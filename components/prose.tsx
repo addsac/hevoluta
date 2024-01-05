@@ -10,7 +10,7 @@ const Prose: FunctionComponent<TextProps> = ({ html, className }) => {
   return (
     <div
       className={clsx(
-        className
+        className,
       )}
       dangerouslySetInnerHTML={{ __html: html as string }}
     />
