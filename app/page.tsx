@@ -3,6 +3,7 @@ import Divider from 'components/ui/divider';
 import HeroSectionAnimated from 'components/ui/hero-section-animated';
 import ImageDescription from 'components/ui/image-description';
 import ProductRows from 'components/ui/product/product-rows';
+import { defaultSort } from 'lib/constants';
 import { getArticles, getProducts } from 'lib/shopify';
 import { divideArrayIntoGroups } from 'lib/utils';
 import Image from 'next/image';
@@ -18,8 +19,10 @@ export const metadata = {
 };
 
 export default async function HomePage() {
+  const { sortKey, reverse } = defaultSort;
+
   // before i used => getCollectionProducts, after i use 
-  const collections = await getProducts({})
+  const collections = await getProducts({ sortKey, reverse })
   /* const collections = await getCollectionProducts({
     'collection': "homepage-featured-items",
   }); */

@@ -1,4 +1,4 @@
-import ProductRows from 'components/ui/product/product-rows'
+import ProductRows from 'components/ui/product/product-rows';
 import { defaultSort, sorting } from 'lib/constants';
 import { getProducts } from 'lib/shopify';
 

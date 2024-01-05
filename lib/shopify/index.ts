@@ -499,7 +499,6 @@ export async function getProducts({
       reverse,
       sortKey
     },
-    // cache: 'no-cache'
   });
 
   return reshapeProducts(removeEdgesAndNodes(res.body.data.products));
