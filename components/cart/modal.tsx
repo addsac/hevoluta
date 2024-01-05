@@ -90,7 +90,7 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
               >
                 {Number(cart?.cost?.totalAmount?.amount) < 65 ? (
                   <p>
-                    Ti mancano {65-Number(cart?.cost?.totalAmount?.amount)}€ per la spedizione gratuita
+                    Ti mancano {(65-Number(cart?.cost?.totalAmount?.amount)).toFixed(2)}€ per la spedizione gratuita
                   </p> 
                 ) : (
                   <p>

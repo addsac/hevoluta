@@ -7,7 +7,7 @@ export const runtime = 'edge';
 
 export const metadata = {
   title: 'Hevoluta – Blog',
-  description: 'High-performance ecommerce store built with Next.js, Vercel, and Shopify.',
+  description: 'Le ultime ricerche nel campo di cosmetici, benessere e salute.',
   openGraph: {
     type: 'website'
   }
