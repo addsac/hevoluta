@@ -18,10 +18,10 @@ export default function ProductCard({ item = null } : { item: any }) {
             <AnimatePresence>
                 {isHovered && (
                     <motion.div 
-                        className="absolute top-5 right-5 left-5 p-5 bg-black text-white z-5 font"
+                        className="absolute top-5 right-5 left-5 p-5 bg-white/50 backdrop-blur-[28px] border border-black z-5 font"
                         initial={{ opacity: 0, y: 8 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -8 }}
+                        exit={{ opacity: 0, y: 8 }}
                         transition={{ duration: 0.2, ease: 'easeOut' }}
                     >
                         {item?.description}
