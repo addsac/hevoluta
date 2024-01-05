@@ -91,14 +91,20 @@ export default function Profilo({
         `}
           onClick={() => openModal()}
         >
-          Bentornato Leonardo
+          Bentornato {customer.firstName}
         </button>
       </div>
 
       <div className="lg:hidden">
-        <button onClick={() => openModal()} className="button-icon" aria-label="Profile" >
-          <img src="/img/icon/user.svg" alt="" className="h-auto w-6" />
-        </button>
+        {theme === 'text' ? (
+          <button onClick={() => openModal()} className="button-text" aria-label="Profile" >
+            Bentornato {customer.firstName}
+          </button>
+        ) : (
+          <button onClick={() => openModal()} className="button-icon" aria-label="Profile" >
+            <img src="/img/icon/user.svg" alt="" className="h-auto w-6" />
+          </button>
+        )}
       </div>
     </>
   );

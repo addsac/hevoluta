@@ -78,9 +78,15 @@ export default function Accedi({
       </div>
 
       <div className="lg:hidden">
-        <button onClick={() => openModal()} className="button-icon" aria-label="Login">
-          <img src="/img/icon/user.svg" alt="" className="h-auto w-6" />
-        </button>
+        {theme === 'text' ? (
+          <button onClick={() => openModal()} className="button-text" aria-label="Login">
+            Accedi
+          </button>
+        ) : (
+          <button onClick={() => openModal()} className="button-icon" aria-label="Login">
+            <img src="/img/icon/user.svg" alt="" className="h-auto w-6" />
+          </button>
+        )}
       </div>
     </>
   );

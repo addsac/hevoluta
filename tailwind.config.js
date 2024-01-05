@@ -21,6 +21,8 @@ module.exports = {
       fontFamily: {
         sans: ['var(--font-geist-sans)'],
         mono: ['var(--font-geist-mono)'],
+        'tiempos-normal': ['var(--font-tiempos-normal)'],
+        'tiempos-italic': ['var(--font-tiempos-italic)'],
       },
       keyframes: {
         fadeIn: {

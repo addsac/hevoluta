@@ -11,20 +11,26 @@ import { ReactNode, Suspense } from 'react';
 import './globals.css';
 
 // Tiempos font
-const tiempos = localFont({
+const tiempos_normal = localFont({
   src: [
     {
       path: './fonts/TiemposHeadline-Light.woff2',
       weight: '400',
       style: 'normal',
     },
+  ],
+  variable: '--font-tiempos-normal'
+})
+
+const tiempos_italic = localFont({
+  src: [
     {
       path: './fonts/TiemposHeadline-LightItalic.woff2',
       weight: '400',
       style: 'italic',
     }
   ],
-  display: 'swap',
+  variable: '--font-tiempos-italic'
 })
 
 const { TWITTER_CREATOR, TWITTER_SITE, SITE_NAME } = process.env;
@@ -83,7 +89,10 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   }
 
   return (
-    <html lang="it" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+    <html lang="it" className={`
+      ${tiempos_normal.variable} ${tiempos_italic.variable}
+      ${GeistSans.variable} ${GeistMono.variable} font-sans
+    `}>
       <body>
         <Navbar customer={customer} />
         
