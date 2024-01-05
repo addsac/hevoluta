@@ -355,7 +355,8 @@ export async function getCollection(handle: string): Promise<Collection | undefi
     tags: [TAGS.collections],
     variables: {
       handle
-    }
+    },
+    cache: 'no-cache'
   });
 
   return reshapeCollection(res.body.data.collection);
@@ -378,7 +379,7 @@ export async function getCollectionProducts({
       reverse,
       sortKey: sortKey === 'CREATED_AT' ? 'CREATED' : sortKey
     },
-    // cache: 'no-cache'
+    cache: 'no-cache'
   });
 
   if (!res.body.data.collection) {
@@ -499,6 +500,7 @@ export async function getProducts({
       reverse,
       sortKey
     },
+    cache: 'no-cache'
   });
 
   return reshapeProducts(removeEdgesAndNodes(res.body.data.products));
