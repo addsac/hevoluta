@@ -14,16 +14,17 @@ import './globals.css';
 const tiempos = localFont({
   src: [
     {
-      path: '../fonts/TiemposHeadline-Light.otf',
+      path: './fonts/TiemposHeadline-Light.otf',
       weight: '400',
       style: 'normal',
     },
     {
-      path: '../fonts/TiemposHeadline-LightItalic.otf',
+      path: './fonts/TiemposHeadline-LightItalic.otf',
       weight: '400',
       style: 'italic',
     }
-  ]
+  ],
+  display: 'swap',
 })
 
 const { TWITTER_CREATOR, TWITTER_SITE, SITE_NAME } = process.env;

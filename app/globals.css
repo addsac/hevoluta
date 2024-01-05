@@ -95,9 +95,11 @@ button{
 /* font */
 .tiempos-font {
   font-family: 'TiemposHeadline-Light', sans-serif;
+  font-weight: 300;
 }  
 .tiempos-font-italic {
   font-family: 'TiemposHeadline-LightItalic', sans-serif;
+  font-weight: 300;
 }
 
 /* texts */
