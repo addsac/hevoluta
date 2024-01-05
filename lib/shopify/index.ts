@@ -356,7 +356,7 @@ export async function getCollection(handle: string): Promise<Collection | undefi
     variables: {
       handle
     },
-    cache: 'no-cache'
+    cache: 'no-store'
   });
 
   return reshapeCollection(res.body.data.collection);
@@ -379,7 +379,7 @@ export async function getCollectionProducts({
       reverse,
       sortKey: sortKey === 'CREATED_AT' ? 'CREATED' : sortKey
     },
-    cache: 'no-cache'
+    cache: 'no-store'
   });
 
   if (!res.body.data.collection) {
@@ -394,7 +394,7 @@ export async function getCollections(): Promise<Collection[]> {
   const res = await shopifyFetch<ShopifyCollectionsOperation>({
     query: getCollectionsQuery,
     tags: [TAGS.collections],
-    cache: 'no-cache'
+    cache: 'no-store'
   });
   const shopifyCollections = removeEdgesAndNodes(res.body?.data?.collections);
   const collections = [
@@ -500,7 +500,7 @@ export async function getProducts({
       reverse,
       sortKey
     },
-    cache: 'no-cache'
+    cache: 'no-store'
   });
 
   return reshapeProducts(removeEdgesAndNodes(res.body.data.products));
@@ -777,7 +777,7 @@ export async function getArticles({
       sortKey: sortKey === 'CREATED_AT' ? 'CREATED' : sortKey,
       after: after
     },
-    cache: 'no-cache'
+    cache: 'no-store'
   });
 
   return reshapeArticles(res.body.data.articles);
@@ -789,7 +789,7 @@ export async function getArticle(id : string): Promise<ShopifyArticle | undefine
     variables: {
       id
     },
-    cache: 'no-cache'
+    cache: 'no-store'
   });
 
   return reshapeArticle(res.body.data.node);

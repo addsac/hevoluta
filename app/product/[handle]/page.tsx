@@ -61,7 +61,7 @@ export default async function ProductPage({ params }: { params: { handle: string
     headers: {
       'Content-Type': 'application/json',
     },
-    cache: 'no-cache',
+    cache: 'no-store',
   })
     .then(res => res.json())
     .then(res => res.reviews)
