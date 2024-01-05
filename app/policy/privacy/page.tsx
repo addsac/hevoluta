@@ -1,8 +1,6 @@
 import Link from 'next/link';
 import Balancer from 'react-wrap-balancer';
 
-export const runtime = 'edge';
-
 export const metadata = {
   title: 'Hevoluta – Policy',
   description:

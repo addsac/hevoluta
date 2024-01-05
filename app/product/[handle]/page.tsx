@@ -11,8 +11,6 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Suspense } from 'react';
 
-export const runtime = 'edge';
-
 export async function generateMetadata({
   params
 }: {
