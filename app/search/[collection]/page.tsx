@@ -7,8 +7,6 @@ import { notFound } from 'next/navigation';
 import ProductRows from 'components/ui/product/product-rows';
 import { defaultSort, sorting } from 'lib/constants';
 
-export const runtime = 'edge';
-
 export async function generateMetadata({
   params
 }: {

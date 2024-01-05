@@ -2,8 +2,6 @@ import ProductRows from 'components/ui/product/product-rows'
 import { defaultSort, sorting } from 'lib/constants';
 import { getProducts } from 'lib/shopify';
 
-export const runtime = 'edge';
-
 export const metadata = {
   title: 'Hevoluta – Prodotti',
   description: 'Tutti i prodotti progettati e formulati da Hevoluta.'

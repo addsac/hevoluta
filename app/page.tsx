@@ -9,8 +9,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Suspense } from 'react';
 
-export const runtime = 'edge';
-
 export const metadata = {
   title: 'Hevoluta',
   description: 'Scopri i prodotti di Hevoluta nati per prendersi cura della persona da un punto di vista più ampio, semina la belleza, raccogli la salute.',
