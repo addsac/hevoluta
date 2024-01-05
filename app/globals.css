@@ -25,7 +25,7 @@ html, body{
 }
 
 p{
-  letter-spacing: 0.4px;
+  letter-spacing: 0.2px;
   line-height: 140%;
 }
 
@@ -50,13 +50,13 @@ button{
   @apply rounded-full bg-white text-black hover:bg-gray-100 px-2.5 py-2.5 flex items-center justify-center;
 }
 .button-primary-lg{
-  @apply bg-black text-white font-medium px-8 py-[18px];
+  @apply bg-black text-white tracking-wide px-8 py-[18px];
 }
 .button-primary-base{
   @apply bg-black text-white px-4 py-[12px];
 }
 .button-secondary-lg{
-  @apply bg-white text-black font-medium px-8 py-[18px];
+  @apply bg-white text-black px-8 py-[18px];
 }
 .button-secondary-base{
   @apply bg-white text-black border border-black px-4 py-[12px];

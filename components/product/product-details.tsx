@@ -2,7 +2,6 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
-import Balancer from 'react-wrap-balancer';
 
 export default function ProductDetails({ product = null }: { product: any }) {
   const [openText, setOpenText] = useState(0);

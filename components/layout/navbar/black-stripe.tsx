@@ -25,7 +25,7 @@ export default function BlackStripe() {
             delay: 8000,
             disableOnInteraction: false
           }}
-          className="mySwiper"
+          className="mySwiper text-center"
           style={{
             width: '100%',
             height: '100%',
@@ -34,13 +34,13 @@ export default function BlackStripe() {
           }}
         >
           <SwiperSlide>
-            <button className="mx-auto whitespace-nowrap font-mono text-12 font-medium">
+            <button className="whitespace-nowrap font-mono text-12 font-medium">
               Spedizione gratuita da 65€
             </button>
           </SwiperSlide>
           <SwiperSlide>
             <button 
-              className='mx-auto whitespace-nowrap font-mono text-12 font-medium hover:underline'
+              className='whitespace-nowrap font-mono text-12 font-medium hover:underline'
               onClick={() => goToNewsletterForm()}
             >
               Iscriviti per avere il 10% di sconto primo ordine
@@ -49,7 +49,7 @@ export default function BlackStripe() {
           <SwiperSlide>
             <Link 
               href="/chat"
-              className="mx-auto whitespace-nowrap font-mono text-12 font-medium hover:underline"
+              className="whitespace-nowrap font-mono text-12 font-medium hover:underline"
             >
               Dubbi? Chatta con noi gratis
             </Link>

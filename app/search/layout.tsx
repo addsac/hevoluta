@@ -2,11 +2,14 @@ import Collections from 'components/layout/search/collections';
 import FilterItemDropdown from 'components/layout/search/filter/dropdown';
 import Divider from 'components/ui/divider';
 import { sorting } from 'lib/constants';
+import { getCollections } from 'lib/shopify';
 import Image from 'next/image';
 import { Suspense } from 'react';
 import Balancer from 'react-wrap-balancer';
 
-export default function SearchLayout({ children } : { children: React.ReactNode }) {
+export default async function SearchLayout({ children } : { children: React.ReactNode }) {
+  const collections = await getCollections();
+
   return (
     <>
       {/* Hero */}
@@ -34,8 +37,11 @@ export default function SearchLayout({ children } : { children: React.ReactNode 
         </div>
       </div>
 
+      {/* categories */}
+      {/* <ProductCategories collections={collections} /> */}
+
       {/* Products */}
-      <div className="flex flex-col gap-20 px-5 py-[120px]">
+      <div id="products-container" className="flex flex-col gap-20 px-5 py-[120px]">
         <div className="w-full flex flex-col items-center justify-center gap-20">
           {/* title */}
           <div className="flex flex-col gap-6 text-center">
