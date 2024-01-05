@@ -24,7 +24,7 @@ export default function ProductCard({ item = null } : { item: any }) {
                         exit={{ opacity: 0, y: 8 }}
                         transition={{ duration: 0.2, ease: 'easeOut' }}
                     >
-                        {item?.description}
+                        {item?.description.trim()}
                     </motion.div>
                 )}
             </AnimatePresence>
