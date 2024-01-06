@@ -465,7 +465,8 @@ export async function getProduct(handle: string): Promise<Product | undefined> {
     tags: [TAGS.products],
     variables: {
       handle
-    }
+    },
+    cache: 'no-store'
   });
 
   return reshapeProduct(res.body.data.product, false);
@@ -477,7 +478,8 @@ export async function getProductRecommendations(productId: string): Promise<Prod
     tags: [TAGS.products],
     variables: {
       productId
-    }
+    },
+    cache: 'no-store'
   });
 
   return reshapeProducts(res.body.data.productRecommendations);

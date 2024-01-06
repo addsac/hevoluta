@@ -31,7 +31,7 @@ export function Gallery({ images }: { images: { src: string; altText: string }[]
         {images[imageIndex] && (
           <div className="flex items-center justify-center bg-gradient-gray p-10">
             <Image
-              className="h-auto w-auto max-h-[500px] bg-gradient-gray"
+              className="h-auto w-auto max-h-[500px] aspect-scquare bg-gradient-gray"
               width={800}
               height={800}
               alt={images[imageIndex]?.altText as string}
@@ -43,7 +43,7 @@ export function Gallery({ images }: { images: { src: string; altText: string }[]
           
         {/* other photos */}
         {images.length > 1 ? (
-          <ul className="grid grid-cols-5 lg:grid-cols-6 gap-2.5">
+          <ul className="grid grid-cols-4 lg:grid-cols-6 gap-2.5">
             {images.map((image, index) => {
               const isActive = index === imageIndex;
               const imageSearchParams = new URLSearchParams(searchParams.toString());
@@ -66,7 +66,7 @@ export function Gallery({ images }: { images: { src: string; altText: string }[]
                       src={image.src}
                       width={80}
                       height={80}
-                      className="h-full w-full"
+                      className="h-auto w-full"
                     />
                   </Link>
                 </li>
