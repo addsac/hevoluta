@@ -61,12 +61,12 @@ export default async function AbotuPage() {
 
             <div className="flex flex-col lg:flex-row items-center justify-between gap-20 lg:gap-10">
                 <div className="flex flex-col items-center justify-center text-center gap-6">
-                    <img src="/img/about/flower.jpg" alt="" className="w-[150px] h-[150px] opacity-80 grayscale" />
+                    <img src="/img/about/flower-1.png" alt="" className="w-[150px] h-[150px] opacity-80 grayscale" />
 
-                    <div className="flex flex-col gap-3">
-                        <p className="text-body-1_3 opacity-50 uppercase font-mono">
+                    <div className="flex flex-col gap-5">
+                        {/* <p className="text-body-1_3 opacity-50 uppercase font-mono">
                             Fibra extra lunga
-                        </p>
+                        </p> */}
                         <p className="text-title-4">
                             Sicuri
                         </p>
@@ -79,12 +79,12 @@ export default async function AbotuPage() {
                 </div>
                 <div className="hidden lg:block h-full w-px bg-gray-200"></div> {/* divider */}
                 <div className="flex flex-col items-center justify-center text-center gap-6">
-                    <img src="/img/about/flower.jpg" alt="" className="w-[150px] h-[150px] opacity-80 grayscale" />
+                    <img src="/img/about/flower-2.png" alt="" className="w-[150px] h-[150px] opacity-80 grayscale" />
 
-                    <div className="flex flex-col gap-3">
-                        <p className="text-body-1_3 opacity-50 uppercase font-mono">
+                    <div className="flex flex-col gap-5">
+                        {/* <p className="text-body-1_3 opacity-50 uppercase font-mono">
                             Doppio riporto
-                        </p>
+                        </p> */}
                         <p className="text-title-4">
                             Efficaci
                         </p>
@@ -97,12 +97,12 @@ export default async function AbotuPage() {
                 </div>
                 <div className="hidden lg:block h-full w-px bg-gray-200"></div> {/* divider */}
                 <div className="flex flex-col items-center justify-center text-center gap-6">
-                    <img src="/img/about/flower.jpg" alt="" className="w-[150px] h-[150px] opacity-80 grayscale" />
+                    <img src="/img/about/flower-3.png" alt="" className="w-[150px] h-[150px] opacity-80 grayscale" />
 
-                    <div className="flex flex-col gap-3">
-                        <p className="text-body-1_3 opacity-50 uppercase font-mono">
+                    <div className="flex flex-col gap-5">
+                        {/* <p className="text-body-1_3 opacity-50 uppercase font-mono">
                             tecniche sartoriali
-                        </p>
+                        </p> */}
                         <p className="text-title-4">
                             Funzionali
                         </p>

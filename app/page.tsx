@@ -22,7 +22,7 @@ export default async function HomePage() {
   const { sortKey, reverse } = defaultSort;
 
   // before i used => getCollectionProducts, after i use 
-  const collections = await getProducts({ sortKey, reverse })
+  const collections = await getProducts({ sortKey, reverse: true })
   /* const collections = await getCollectionProducts({
     'collection': "homepage-featured-items",
   }); */
