@@ -1,4 +1,5 @@
 import Divider from 'components/ui/divider';
+import Image from 'next/image';
 import Balancer from 'react-wrap-balancer';
 
 export const runtime = 'edge';
@@ -56,7 +57,13 @@ export default async function AbotuPage() {
                 </div>
                 
                 {/* img */}
-                <div className="w-full h-[500px] bg-black"></div> 
+                <Image 
+                    src='/img/about/about-1.jpg'
+                    alt=""
+                    width={1200}
+                    height={1200}
+                    className="w-full h-auto" 
+                />
             </div>
 
             <div className="flex flex-col lg:flex-row items-center justify-between gap-20 lg:gap-10">
@@ -144,8 +151,14 @@ export default async function AbotuPage() {
 
             <div className="flex flex-col lg:flex-row items-start justify-between gap-12 lg:gap-16">
                 {/* photo */}
-                <div className="w-full">
-                    <div className="w-full min-h-[200px] aspect-square bg-black"></div>
+                <div className="w-full mb-[80px]">
+                    <Image 
+                        src='/img/about/about-2.jpg'
+                        alt=""
+                        width={1200}
+                        height={1200}
+                        className="w-full h-auto" 
+                    />
                 </div>
 
                 {/* texts */}
@@ -166,8 +179,14 @@ export default async function AbotuPage() {
 
             <div className="flex flex-col lg:flex-row items-start justify-between gap-12 lg:gap-16">
                 {/* photo */}
-                <div className="w-full">
-                    <div className="w-full min-h-[200px] aspect-square bg-black"></div>
+                <div className="w-full mb-[80px]">
+                    <Image 
+                        src='/img/about/about-3.jpg'
+                        alt=""
+                        width={1200}
+                        height={1200}
+                        className="w-full h-auto" 
+                    />
                 </div>
 
                 {/* texts */}
@@ -187,8 +206,14 @@ export default async function AbotuPage() {
 
             <div className="flex flex-col lg:flex-row items-start justify-between gap-12 lg:gap-16">
                 {/* photo */}
-                <div className="w-full">
-                    <div className="w-full min-h-[200px] aspect-square bg-black"></div>
+                <div className="w-full mb-[80px]">
+                    <Image 
+                        src='/img/about/about-4.jpg'
+                        alt=""
+                        width={1200}
+                        height={1200}
+                        className="w-full h-auto" 
+                    />
                 </div>
 
                 {/* texts */}
