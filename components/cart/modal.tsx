@@ -176,6 +176,8 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                             <EditItemQuantityButton item={item} type="plus" />
                           </div>
 
+                          {/* {console.log(item.cost)} */}
+
                           <Price
                             amount={item.cost.totalAmount.amount}
                             currencyCode={item.cost.totalAmount.currencyCode}
