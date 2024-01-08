@@ -1,5 +1,6 @@
 'use client';
 
+import Alert from 'components/ui/state/alert';
 import { AnimatePresence } from 'framer-motion';
 import { Product } from 'lib/shopify/types';
 import { useState } from 'react';
@@ -20,16 +21,36 @@ export default function CreateReview({
   const [text, setText] = useState('');
 
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
   const createReviews = async () => {
+    // controls
+    if(name.trim() === '') {
+      setError('Inserisci il tuo nome');
+      return;
+    }
+
+    if(email.trim() === '') {
+      setError('Inserisci la tua email');
+      return;
+    }
+
+    if(text.trim() === '') {
+      setError('Inserisci il tuo messaggio');
+      return;
+    }
+
     setLoading(true);
+    setError('');
+    setSuccess('');
 
     const url = `https://api.yotpo.com/v1/widget/reviews`;
     const requestBody = {
       appkey: 'mKh4HnWxTbkF02FL1KB2CtTLltAYgqcJ711mzIil',
       sku: Number(product.id.replace('gid://shopify/Product/', '')),
       product_title: product.title,
-      product_url: `https://hevoluta.com/products/${product.handle}`,
+      product_url: `https://hevoluta.com/product/${product.handle}`,
       display_name: name,
       email,
       review_content: text,
@@ -45,9 +66,13 @@ export default function CreateReview({
       })
         .then(res => res.json())
 
+      setSuccess('Per favore, apri la mail di conferma per attivare la recensione...')
+
       console.log(res);
       setLoading(false);
     } catch (error) {
+      setError(error);
+
       console.log(error);
       setLoading(false);
     }
@@ -127,7 +152,19 @@ export default function CreateReview({
               </div>
 
               {/* confirm or error messages */}
-              {/* ... */}
+              {error !== '' && (
+                <Alert 
+                  text={'Errore: ' + error}
+                  state="error"
+                />
+              )}
+
+              {success !== '' && (
+                <Alert 
+                  text={success}
+                  state="success"
+                />
+              )}
 
               <button 
                 className="button-primary-base"
