@@ -50,7 +50,7 @@ export default function CreateReview({
       appkey: 'mKh4HnWxTbkF02FL1KB2CtTLltAYgqcJ711mzIil',
       sku: Number(product.id.replace('gid://shopify/Product/', '')),
       product_title: product.title,
-      product_url: `https://hevoluta.com/product/${product.handle}`,
+      product_url: `https://hevoluta.com/products/${product.handle}`,
       display_name: name,
       email,
       review_content: text,

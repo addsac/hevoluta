@@ -19,7 +19,7 @@ export default function ProductCard({ item = null } : { item: any }) {
 
     return (
         <Link 
-            href={`/product/${item?.handle}`}
+            href={`/products/${item?.handle}`}
             className="relative w-full lg:w-1/2 flex flex-col gap-6 cursor-pointer group"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}

@@ -61,7 +61,7 @@ export default async function Footer({
               {products.slice(0, 5).map((item, index) => (
                 <Link 
                   key={'footer-product'+index}
-                  href={`/product/${item.handle}`}
+                  href={`/products/${item.handle}`}
                   className="button-text"
                 >
                   <Balancer>
