@@ -69,7 +69,7 @@ export default async function ProductPage({ params }: { params: { handle: string
 
   console.log(reviewsData)
 
-  const reviews = reviewsData.response.reviews || []
+  const reviews = reviewsData?.response?.reviews || []
 
   const productJsonLd = {
     '@context': 'https://schema.org',
