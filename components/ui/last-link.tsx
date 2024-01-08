@@ -179,7 +179,7 @@ export default function LastLink({ register, login }: { register: any, login: an
               href="https://instagram.com/hevoluta"
               target="_blank"
               rel="noreferrer noopener"
-              className="flex h-8 w-8 items-center justify-center bg-black"
+              className="flex h-8 w-8 items-center justify-center bg-black border border-white/30"
             >
               <img src="/img/social/social-tiktok.png" alt="" className="h-5 w-auto" />
             </Link>
@@ -187,7 +187,7 @@ export default function LastLink({ register, login }: { register: any, login: an
               href="https://instagram.com/hevoluta"
               target="_blank"
               rel="noreferrer noopener"
-              className="flex h-8 w-8 items-center justify-center bg-black"
+              className="flex h-8 w-8 items-center justify-center bg-black border border-white/30"
             >
               <img src="/img/social/social-instagram.png" alt="" className="h-6 w-auto" />
             </Link>
@@ -195,7 +195,7 @@ export default function LastLink({ register, login }: { register: any, login: an
               href="https://instagram.com/hevoluta"
               target="_blank"
               rel="noreferrer noopener"
-              className="flex h-8 w-8 items-center justify-center bg-black"
+              className="flex h-8 w-8 items-center justify-center bg-black border border-white/30"
             >
               <img src="/img/social/social-facebook.png" alt="" className="h-5 w-auto" />
             </Link>

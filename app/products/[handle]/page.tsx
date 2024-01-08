@@ -59,17 +59,14 @@ export default async function ProductPage({ params }: { params: { handle: string
   // reviews
   const url = `https://api-cdn.yotpo.com/v1/widget/${process.env.YOTPO_APP_KEY}/products/${productId}/reviews.json?per_page=100&page=1&direction=asc`;
   
-  const reviewsData = await fetch(url, {
+  const reviews = await fetch(url, {
     method: 'GET',
     headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
     cache: 'no-store',
   })
     .then(res => res.json())
+    .then(data => data.response.reviews || [])
     .catch(err => console.error('error:' + err));
-
-  console.log(reviewsData)
-
-  const reviews = reviewsData?.response?.reviews || []
 
   const productJsonLd = {
     '@context': 'https://schema.org',
