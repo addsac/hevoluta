@@ -56,7 +56,7 @@ export default function ProductReviews({
               grid={{
                 rows: 1
               }}
-              centeredSlides={true}
+              centeredSlides={reviews.length < 3 ? true : false}
               spaceBetween={10}
               modules={[Grid]}
               className="mySwiper"

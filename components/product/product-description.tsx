@@ -11,7 +11,7 @@ import Balancer from 'react-wrap-balancer';
 import ProductAccrodion from './product-accordion';
 import { VariantSelector } from './variant-selector';
 
-export function ProductDescription({ product, reviews }: { product: Product, reviews: Review[] }) {
+export function ProductDescription({ product, reviews = [] }: { product: Product, reviews: Review[] }) {
   const [rightPrice, setRightPrice] = useState({
     amount: product.priceRange.minVariantPrice.amount,
     currencyCode: product.priceRange.minVariantPrice.currencyCode
@@ -134,7 +134,7 @@ export function ProductDescription({ product, reviews }: { product: Product, rev
                   const element = document.getElementById('reviews-wrapper');
                   element?.scrollIntoView({ behavior: 'smooth' });
                 }}
-              >Leggi {reviews.length} recensioni</button>
+              >Leggi {reviews?.length || 0} recensioni</button>
             </div>
           </div>
         </div>
