@@ -65,7 +65,7 @@ export default async function ProductPage({ params }: { params: { handle: string
     cache: 'no-cache',
   })
     .then(res => res.json())
-    .then(res => res.response.reviews)
+    .then(res => res.response.reviews || [])
     .catch(err => console.error('error:' + err));
 
   const productJsonLd = {

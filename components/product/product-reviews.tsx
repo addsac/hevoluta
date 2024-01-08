@@ -14,7 +14,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 export default function ProductReviews({
   product,
-  reviews,
+  reviews = [],
 }: {
   product: Product;
   reviews: Review[];
