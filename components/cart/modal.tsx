@@ -129,13 +129,23 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                     new URLSearchParams(merchandiseSearchParams)
                   );
 
+                  console.log(item)
+
                   const rightPrice = {
-                    amount: item.merchandise.product.variants.edges[0].node.price.amount,
-                    currencyCode: item.merchandise.product.variants.edges[0].node.price.currencyCode
+                    amount: item.cost.totalAmount.amount,
+                    currencyCode: item.cost.totalAmount.currencyCode
                   }
+                  
+                  // find right compareAtPrice based on the selected option
+                  const compareAtPriceIndex = 
+                    item.merchandise.title === DEFAULT_OPTION ? 0 : 
+                    item.merchandise.product.variants.edges.findIndex(variant => {
+                      return variant.node.title === item.merchandise.title
+                    })
+                  
                   const compareAtPrice = {
-                    amount: item.merchandise.product.variants.edges[0].node.compareAtPrice?.amount,
-                    currencyCode: item.merchandise.product.variants.edges[0].node.compareAtPrice?.currencyCode
+                    amount: item.merchandise.product.variants.edges[compareAtPriceIndex].node.compareAtPrice?.amount,
+                    currencyCode: item.merchandise.product.variants.edges[compareAtPriceIndex].node.compareAtPrice?.currencyCode
                   }
 
                   return (
@@ -191,7 +201,7 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                               <Price
                                 amount={String(compareAtPrice.amount)}
                                 currencyCode={compareAtPrice.currencyCode}
-                                className="line-through"
+                                className="opacity-50 line-through"
                               />
                               <Price
                                 amount={String(rightPrice.amount)}

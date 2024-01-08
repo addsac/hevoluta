@@ -74,7 +74,7 @@ export function ProductDescription({ product, reviews }: { product: Product, rev
               <Price
                 amount={compareAtPrice.amount}
                 currencyCode={compareAtPrice.currencyCode}
-                className="-mt-2 line-through"
+                className="-mt-2 opacity-50 line-through"
               />
               <Price
                 amount={rightPrice.amount}

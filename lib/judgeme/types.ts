@@ -1,39 +1,28 @@
 export type Review = {
   id: number;
+  score: number;
+  votes_up: number;
+  votes_down: number;
+  content: string;
   title: string;
-  body: string;
-  rating: number;
-  product_external_id: number;
-  product_title: string;
-  product_handle: string;
-  reviewer: {
-    id: number;
-    email: string;
-    name: string;
-    phone: string;
-    tags: string[];
-    accepts_marketing: boolean;
-    unsubscribed_at: string;
-    external_id: number;
+  sentiment: any;
+  created_at: string; // ISO 8601 date format
+  deleted: boolean;
+  verified_buyer: any;
+  source_review_id: any;
+  custom_fields: any;
+  product_id: number;
+  is_incentivized: boolean;
+  incentive_type: any;
+  images_data: any;
+  comment: any;
+  user: {
+    user_id: any;
+    social_image: any;
+    user_type: any;
+    is_social_connected: number;
+    display_name: string;
   };
-  source: string;
-  curated: string;
-  hidden: boolean;
-  verified: string;
-  created_at: Date;
-  updated_at: Date;
-  ip_address: string;
-  has_published_pictures: boolean;
-  has_published_videos: boolean;
-  pictures: {
-    hidden: boolean;
-    urls: {
-      small: string;
-      compact: string;
-      huge: string;
-      original: string;
-    };
-  }[];
 };
 
 export type ReviewResponse = {

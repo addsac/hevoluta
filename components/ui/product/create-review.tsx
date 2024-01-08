@@ -21,27 +21,29 @@ export default function CreateReview({
 
   const [loading, setLoading] = useState(false);
 
-  // Create a review on Judge.me
-  const createJudgemeReview = async () => {
+  const createReviews = async () => {
     setLoading(true);
 
+    const url = `https://api.yotpo.com/v1/widget/reviews`;
     const requestBody = {
-      shop_domain: process.env.SHOPIFY_DOMAIN,
-      platform: 'shopify',
-      name: name,
-      email: email,
-      rating: stars,
-      body: text,
+      appkey: 'mKh4HnWxTbkF02FL1KB2CtTLltAYgqcJ711mzIil',
+      sku: Number(product.id.replace('gid://shopify/Product/', '')),
+      product_title: product.title,
+      product_url: `https://hevoluta.com/products/${product.handle}`,
+      display_name: name,
+      email,
+      review_content: text,
+      review_title: '-',
+      review_score: stars,
     };
-  
+
     try {
-      const res = await fetch('https://judge.me/api/v1/reviews', {
+      const res = await fetch(url, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
         body: JSON.stringify(requestBody)
-      }).then(res => res.json())
+      })
+        .then(res => res.json())
 
       console.log(res);
       setLoading(false);
@@ -49,7 +51,7 @@ export default function CreateReview({
       console.log(error);
       setLoading(false);
     }
-  };
+  }
 
   return (
     <>
@@ -60,7 +62,7 @@ export default function CreateReview({
             <div className="flex items-start justify-between">
               <div className="flex flex-col gap-2.5">
                 <p className="text-title-4"> Scrivi una recensione </p>
-                <p className="opacity-50">Prodotto: {product.title}</p>
+                <p className="opacity-50">Prodotto: {product.title} </p>
               </div>
 
               <button
@@ -124,9 +126,12 @@ export default function CreateReview({
                 />
               </div>
 
+              {/* confirm or error messages */}
+              {/* ... */}
+
               <button 
                 className="button-primary-base"
-                onClick={() => createJudgemeReview()}
+                onClick={() => createReviews()}
                 disabled={loading}
               >
                 {loading ? 'Invio in corso...' : 'Invia recensione'}

@@ -49,7 +49,7 @@ export const divideArrayIntoGroups = (arr : any[], groupSize : number) => {
   return groups;
 }
 
-export const PublishedDateFormatted = ({ published } : { published: Date }) => {
+export const PublishedDateFormatted = ({ published } : { published: string }) => {
   // Parse the ISO string to a Date object
   const date = parseISO(String(published));
 

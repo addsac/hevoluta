@@ -56,22 +56,17 @@ export default async function ProductPage({ params }: { params: { handle: string
 
   const productId = Number(product?.id.replace('gid://shopify/Product/', ''))
 
-  // https://judge.me/api/v1/reviews
-  /* const apiUrl = `https://judge.me/api/v1/reviews?api_token=${process.env.JUDGEME_SECRET_TOKEN}&shop_domain=${process.env.SHOPIFY_DOMAIN}&product_id=-1&product_external_id=${productId}`;
-
-  const reviews = await fetch(apiUrl, {
+  // reviews
+  const url = `https://api-cdn.yotpo.com/v1/widget/${process.env.YOTPO_APP_KEY}/products/${productId}/reviews.json?per_page=100&page=1&direction=desc`;
+  
+  const reviews = await fetch(url, {
     method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    cache: 'no-store',
+    headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+    cache: 'no-cache',
   })
     .then(res => res.json())
-    .catch(err => console.error(err));
-
-  console.log(reviews) */
-
-  const reviews = []
+    .then(res => res.response.reviews)
+    .catch(err => console.error('error:' + err));
 
   const productJsonLd = {
     '@context': 'https://schema.org',

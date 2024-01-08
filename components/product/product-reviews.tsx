@@ -14,7 +14,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 export default function ProductReviews({
   product,
-  reviews
+  reviews,
 }: {
   product: Product;
   reviews: Review[];
@@ -56,6 +56,7 @@ export default function ProductReviews({
               grid={{
                 rows: 1
               }}
+              centeredSlides={true}
               spaceBetween={10}
               modules={[Grid]}
               className="mySwiper"
@@ -70,18 +71,39 @@ export default function ProductReviews({
                 <SwiperSlide key={'review-card-desktop-' + index}>
                   <div className="flex flex-col items-center justify-center gap-6 bg-white p-10">
                     {/* author */}
-                    <p className="text-title-6 opacity-60">{review.reviewer.name}</p>
+                    <p className="text-title-6 opacity-60">{review.user.display_name}</p>
                     {/* description */}
-                    <p className="text-body-1 text-center">
-                      <Balancer>{review.body}</Balancer>
-                    </p>
+                    <div className="text-body-1 text-center">
+                      <Balancer>
+                        {review.content.length > 800 ? (
+                          <>
+                            {review.content.slice(0, 800)}...
+
+                            <button
+                              id={'review-desktop-button-'+index}
+                              className="button-text opacity-50 inline ml-2"
+                              onClick={() => {
+                                document.getElementById('review-desktop-' + index).classList.remove('hidden');
+                                document.getElementById('review-desktop-button-' + index).classList.add('hidden');
+                              }}
+                            >
+                              Mostra di più
+                            </button>
+
+                            <p id={'review-desktop-' + index} className='hidden'>
+                              {review.content.slice(800)}
+                            </p>
+                          </>
+                        ) : review.content}
+                      </Balancer>
+                    </div>
                     {/* date */}
                     <p className="text-title-7 opacity-60">
                       <PublishedDateFormatted published={review.created_at} />
                     </p>
-                    {/* rating */}
+                    {/* score */}
                     <div className="flex">
-                      {Array(review.rating)
+                      {Array(review.score)
                         .fill(0)
                         .map((_, index) => (
                           <img
@@ -121,18 +143,39 @@ export default function ProductReviews({
                 <SwiperSlide key={'review-card-mobile-' + index}>
                   <div className="flex flex-col items-center justify-center gap-6 bg-white p-10">
                     {/* author */}
-                    <p className="text-title-6 opacity-60">{review.reviewer.name}</p>
+                    <p className="text-title-6 opacity-60">{review.user.display_name}</p>
                     {/* description */}
-                    <p className="text-body-1 text-center">
-                      <Balancer>{review.body}</Balancer>
-                    </p>
+                    <div className="text-body-1 text-center">
+                      <Balancer>
+                        {review.content.length > 800 ? (
+                          <>
+                            {review.content.slice(0, 800)}...
+
+                            <button
+                              id={'review-mobile-button-'+index}
+                              className="button-text opacity-50 inline ml-2"
+                              onClick={() => {
+                                document.getElementById('review-mobile-' + index).classList.remove('hidden');
+                                document.getElementById('review-mobile-button-' + index).classList.add('hidden');
+                              }}
+                            >
+                              Mostra di più
+                            </button>
+
+                            <p id={'review-mobile-' + index} className='hidden'>
+                              {review.content.slice(800)}
+                            </p>
+                          </>
+                        ) : review.content}
+                      </Balancer>
+                    </div>
                     {/* date */}
                     <p className="text-title-7 opacity-60">
                       <PublishedDateFormatted published={review.created_at} />
                     </p>
                     {/* rating */}
                     <div className="flex">
-                      {Array(review.rating)
+                      {Array(review.score)
                         .fill(0)
                         .map((_, index) => (
                           <img
