@@ -66,7 +66,7 @@ export default function CreateReview({
       })
         .then(res => res.json())
 
-      setSuccess('Per favore, apri la mail di conferma per attivare la recensione...')
+      setSuccess('Per favore, apri la email per confermare la recensione...')
 
       console.log(res);
       setLoading(false);

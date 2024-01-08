@@ -57,12 +57,12 @@ export default async function ProductPage({ params }: { params: { handle: string
   const productId = Number(product?.id.replace('gid://shopify/Product/', ''))
 
   // reviews
-  const url = `https://api-cdn.yotpo.com/v1/widget/${process.env.YOTPO_APP_KEY}/products/${productId}/reviews.json?per_page=100&page=1&direction=desc`;
+  const url = `https://api-cdn.yotpo.com/v1/widget/${process.env.YOTPO_APP_KEY}/products/${productId}/reviews.json?per_page=100&page=1&direction=asc`;
   
   const reviews = await fetch(url, {
     method: 'GET',
     headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
-    cache: 'no-cache',
+    cache: 'no-store',
   })
     .then(res => res.json())
     .then(res => res.response.reviews || [])
