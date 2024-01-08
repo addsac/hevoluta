@@ -1,11 +1,21 @@
 'use client'
 
+import Price from 'components/price'
 import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'
 import { useState } from 'react'
 
 export default function ProductCard({ item = null } : { item: any }) {
     const [isHovered, setIsHovered] = useState(false)
+
+    const rightPrice = {
+        amount: item.priceRange.minVariantPrice.amount,
+        currencyCode: item.priceRange.minVariantPrice.currencyCode
+    }
+    const compareAtPrice = {
+        amount: item.variants[0].compareAtPrice?.amount,
+        currencyCode: item.variants[0].compareAtPrice?.currencyCode
+    }
 
     return (
         <Link 
@@ -68,10 +78,29 @@ export default function ProductCard({ item = null } : { item: any }) {
                         </p>
                     ) )}
                 </div>
-                <p className="font-mono font-normal"> 
+                {/* <p className="font-mono font-normal"> 
                     {Number(item?.priceRange?.minVariantPrice?.amount).toFixed(0)} 
                     {item?.priceRange?.minVariantPrice?.currencyCode == 'EUR' ? '€' : ''} 
-                </p>
+                </p> */}
+                {item.variants[0]?.compareAtPrice?.amount != undefined ? (
+                    <div className="flex items-center gap-2.5">
+                    <Price
+                        amount={compareAtPrice.amount}
+                        currencyCode={compareAtPrice.currencyCode}
+                        className="line-through"
+                    />
+                    <Price
+                        amount={rightPrice.amount}
+                        currencyCode={rightPrice.currencyCode}
+                        className="text-red-500"
+                    />
+                    </div>
+                ) : (
+                    <Price
+                        amount={rightPrice.amount}
+                        currencyCode={rightPrice.currencyCode}
+                    />
+                )}
             </div>
         </Link>
     )

@@ -67,7 +67,9 @@ export default async function Navbar({ customer }: { customer: Customer }) {
               customer={customer}
               token={token}
             />
-            <Suspense fallback={<OpenCart />}>
+            <Suspense 
+              // fallback={<OpenCart />}
+            >
               <Cart />
             </Suspense>
           </div>

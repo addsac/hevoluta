@@ -57,7 +57,7 @@ export default async function ProductPage({ params }: { params: { handle: string
   const productId = Number(product?.id.replace('gid://shopify/Product/', ''))
 
   // https://judge.me/api/v1/reviews
-  const apiUrl = `https://judge.me/api/v1/reviews?api_token=${process.env.JUDGEME_SECRET_TOKEN}&shop_domain=${process.env.SHOPIFY_DOMAIN}&product_id=-1&product_external_id=${productId}`;
+  /* const apiUrl = `https://judge.me/api/v1/reviews?api_token=${process.env.JUDGEME_SECRET_TOKEN}&shop_domain=${process.env.SHOPIFY_DOMAIN}&product_id=-1&product_external_id=${productId}`;
 
   const reviews = await fetch(apiUrl, {
     method: 'GET',
@@ -69,7 +69,9 @@ export default async function ProductPage({ params }: { params: { handle: string
     .then(res => res.json())
     .catch(err => console.error(err));
 
-  console.log(reviews)
+  console.log(reviews) */
+
+  const reviews = []
 
   const productJsonLd = {
     '@context': 'https://schema.org',

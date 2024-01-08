@@ -99,6 +99,10 @@ export type ProductVariant = {
     name: string;
     value: string;
   }[];
+  compareAtPrice: {
+    amount: string;
+    currencyCode: string;
+  };
   price: Money;
 };
 

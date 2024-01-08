@@ -129,6 +129,15 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                     new URLSearchParams(merchandiseSearchParams)
                   );
 
+                  const rightPrice = {
+                    amount: item.merchandise.product.variants.edges[0].node.price.amount,
+                    currencyCode: item.merchandise.product.variants.edges[0].node.price.currencyCode
+                  }
+                  const compareAtPrice = {
+                    amount: item.merchandise.product.variants.edges[0].node.compareAtPrice?.amount,
+                    currencyCode: item.merchandise.product.variants.edges[0].node.compareAtPrice?.currencyCode
+                  }
+
                   return (
                     <div 
                       key={i}
@@ -176,12 +185,31 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                             <EditItemQuantityButton item={item} type="plus" />
                           </div>
 
-                          {/* {console.log(item.cost)} */}
+                          {/* price */}
+                          {compareAtPrice.amount != undefined ? (
+                            <div className="flex items-center gap-2.5">
+                              <Price
+                                amount={String(compareAtPrice.amount)}
+                                currencyCode={compareAtPrice.currencyCode}
+                                className="line-through"
+                              />
+                              <Price
+                                amount={String(rightPrice.amount)}
+                                currencyCode={rightPrice.currencyCode}
+                                className="text-red-500"
+                              />
+                            </div>
+                          ) : (
+                            <Price
+                              amount={String(rightPrice.amount)}
+                              currencyCode={rightPrice.currencyCode}
+                            />
+                          )}
 
-                          <Price
+                          {/* <Price
                             amount={item.cost.totalAmount.amount}
                             currencyCode={item.cost.totalAmount.currencyCode}
-                          />
+                          /> */}
                         </div>
 
                         {/* remove product */}

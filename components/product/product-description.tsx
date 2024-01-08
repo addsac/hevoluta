@@ -5,7 +5,8 @@ import Price from 'components/price';
 import Prose from 'components/prose';
 import { Review } from 'lib/judgeme/types';
 import { Product } from 'lib/shopify/types';
-import { Suspense, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
+import { Suspense, useLayoutEffect, useState } from 'react';
 import Balancer from 'react-wrap-balancer';
 import ProductAccrodion from './product-accordion';
 import { VariantSelector } from './variant-selector';
@@ -15,6 +16,15 @@ export function ProductDescription({ product, reviews }: { product: Product, rev
     amount: product.priceRange.minVariantPrice.amount,
     currencyCode: product.priceRange.minVariantPrice.currencyCode
   });
+
+  const [compareAtPrice, setCompareAtPrice] = useState({
+    amount: product.variants[0].compareAtPrice?.amount,
+    currencyCode: product.variants[0].compareAtPrice?.currencyCode
+  });
+  
+  // get the product variant from the url
+  const searchParams = useSearchParams()
+  const size = searchParams.get('size')
 
   const setRightPriceBasedOnChoosenVariant = (variant: string) => {
     // find the right pirce based on the variant
@@ -28,6 +38,25 @@ export function ProductDescription({ product, reviews }: { product: Product, rev
     })
   }
 
+  const setCompareAtPriceBasedOnChoosenVariant = (variant: string) => {
+    // find the right comparePrice based on the variant
+    product.variants.map((item) => {
+      if(item.title === variant){
+        setCompareAtPrice({
+          amount: item.compareAtPrice?.amount,
+          currencyCode: item.compareAtPrice?.currencyCode
+        })
+      }
+    })
+  }
+
+  useLayoutEffect(() => {
+    // set the right price based on the variant at start
+    setRightPriceBasedOnChoosenVariant(size ? size : product.variants[0].title)
+    // set the comparePrice based on the variant at start
+    setCompareAtPriceBasedOnChoosenVariant(size ? size : product.variants[0].title)
+  }, [product])
+
   return (
     <>
       <div className="w-full lg:w-1/2 flex flex-col gap-20 lg:px-10">
@@ -39,11 +68,27 @@ export function ProductDescription({ product, reviews }: { product: Product, rev
             </Balancer>
           </h1>
 
-          <Price
-            amount={rightPrice.amount}
-            currencyCode={rightPrice.currencyCode}
-            className='-mt-2'
-          />
+          {/* price in full and cancelled, if there is a discount */}
+          {product.variants[0]?.compareAtPrice?.amount != undefined ? (
+            <div className="flex items-center gap-2.5">
+              <Price
+                amount={compareAtPrice.amount}
+                currencyCode={compareAtPrice.currencyCode}
+                className="-mt-2 line-through"
+              />
+              <Price
+                amount={rightPrice.amount}
+                currencyCode={rightPrice.currencyCode}
+                className="-mt-2 text-red-500"
+              />
+            </div>
+          ) : (
+            <Price
+              amount={rightPrice.amount}
+              currencyCode={rightPrice.currencyCode}
+              className='-mt-2'
+            />
+          )}
 
           {/* klarna */}
           <div className="flex items-center gap-4 p-4 bg-gray-50 border border-gray-100">
@@ -68,6 +113,7 @@ export function ProductDescription({ product, reviews }: { product: Product, rev
             options={product.options} 
             variants={product.variants} 
             setRightPriceBasedOnChoosenVariant={setRightPriceBasedOnChoosenVariant}
+            setCompareAtPriceBasedOnChoosenVariant={setCompareAtPriceBasedOnChoosenVariant}
           />
 
           {/* cta and reviews */}
