@@ -290,7 +290,7 @@ export default function Cookie(){
             </AnimatePresence>
 
             {isOpen && (
-                <div className="fixed w-[400px] h-auto bottom-5 left-5 bg-white p-5 border border-black z-10">
+                <div className="fixed w-[calc(100vw-40px)] lg:w-[400px] h-auto bottom-5 left-5 bg-white p-5 border border-black z-10">
                     <p>
                         Questo sito utilizza i cookie per fini di funzionalità del sito e altri servizi terzi, per migliorare l’esperienza delle sessioni.
                     </p>
