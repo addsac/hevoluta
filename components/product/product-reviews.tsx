@@ -9,7 +9,7 @@ import Balancer from 'react-wrap-balancer';
 import 'swiper/css';
 import 'swiper/css/grid';
 import 'swiper/css/pagination';
-import { Grid } from 'swiper/modules';
+import { Grid, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 export default function ProductReviews({
@@ -50,7 +50,7 @@ export default function ProductReviews({
 
         {/* desktop */}
         {reviews.length > 0 && (
-          <div className="hidden w-full cursor-grab lg:block">
+          <div className="relative hidden w-full cursor-grab lg:block">
             <Swiper
               slidesPerView={3}
               grid={{
@@ -58,8 +58,12 @@ export default function ProductReviews({
               }}
               centeredSlides={reviews.length < 3 ? true : false}
               spaceBetween={10}
-              modules={[Grid]}
+              modules={[Grid, Navigation]}
               className="mySwiper"
+              navigation={{
+                prevEl: '#nav-button-reviews-sx',
+                nextEl: '#nav-button-reviews-dx'
+              }}
               style={{
                 width: '100%',
                 height: '100%',
@@ -130,8 +134,12 @@ export default function ProductReviews({
                 rows: 1
               }}
               spaceBetween={10}
-              modules={[Grid]}
+              modules={[Grid, Navigation]}
               className="mySwiper"
+              navigation={{
+                prevEl: '#nav-button-reviews-sx',
+                nextEl: '#nav-button-reviews-dx'
+              }}
               style={{
                 width: '100%',
                 height: '100%',
@@ -192,6 +200,21 @@ export default function ProductReviews({
             </Swiper>
           </div>
         )}
+
+        <div className='flex items-center justify-center gap-4 -mb-5'>
+          {/* arrows to navigate - left */}
+          <button id="nav-button-reviews-sx" className='w-12 h-12 border border-gray-200 text-black/50 flex items-center justify-center bg-white/90 backdrop-blur-md rounded-full'>
+            <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13.25 8.75L9.75 12L13.25 15.25"></path>
+            </svg>
+          </button>
+          {/* arrows to navigate - left */}
+          <button id="nav-button-reviews-dx" className='w-12 h-12 border border-gray-200 text-black/50 flex items-center justify-center bg-white/90 backdrop-blur-md rounded-full'>
+            <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M10.75 8.75L14.25 12L10.75 15.25"></path>
+            </svg>
+          </button>
+        </div>
 
         <button className="button-primary-base" onClick={() => setOpenModalCreateReview(true)}>
           Scrivi una recensione
