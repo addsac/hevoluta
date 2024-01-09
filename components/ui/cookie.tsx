@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import Balancer from 'react-wrap-balancer';
 import { createCookie, deleteCookie, getCookie } from '../../lib/cookie';
 import ModalCenter from './modal-center';
 
@@ -292,7 +293,9 @@ export default function Cookie(){
             {isOpen && (
                 <div className="fixed w-[calc(100vw-40px)] lg:w-[400px] h-auto bottom-5 left-5 bg-white p-5 border border-black z-10">
                     <p>
-                        Questo sito utilizza i cookie per fini di funzionalità del sito e altri servizi terzi, per migliorare l’esperienza delle sessioni.
+                        <Balancer>
+                            Questo sito utilizza i cookie per fini di funzionalità del sito e altri servizi terzi, per migliorare l’esperienza delle sessioni.
+                        </Balancer>
                     </p>
                     
                     <div className="flex gap-5 mt-5">
