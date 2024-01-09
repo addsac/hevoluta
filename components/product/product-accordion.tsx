@@ -24,9 +24,9 @@ export default function ProductAccordion({ product = null } : { product: any }) 
                     animate={{ opacity: 0.5, y: 0, height: 'auto' }}
                     exit={{ opacity: 0, y: -10, height: 0 }}
                     transition={{ ease: 'easeOut', duration: 0.1 }}
-                    className="text-13 leading-[170%]"
+                    className="text-13 leading-[170%] whitespace-pre-line"
                 >
-                    {product?.metafields.find((metafield: any) => metafield?.key == 'benefici')?.value}
+                    {product?.metafields.find((metafield: any) => metafield?.key == 'benefici')?.value?.trim()}
                 </motion.p>
             )}
           </AnimatePresence>
@@ -63,9 +63,9 @@ export default function ProductAccordion({ product = null } : { product: any }) 
                     animate={{ opacity: 0.5, y: 0, height: 'auto' }}
                     exit={{ opacity: 0, y: -10, height: 0 }}
                     transition={{ ease: 'easeOut', duration: 0.1 }}
-                    className="text-13 leading-[170%]"
+                    className="text-13 leading-[170%] whitespace-pre-line"
                 >
-                    {product?.metafields.find((metafield: any) => metafield?.key == 'ingredienti')?.value}
+                    {product?.metafields.find((metafield: any) => metafield?.key == 'ingredienti')?.value?.trim()}
                 </motion.p>
             )}
           </AnimatePresence>
@@ -102,9 +102,9 @@ export default function ProductAccordion({ product = null } : { product: any }) 
                     animate={{ opacity: 0.5, y: 0, height: 'auto' }}
                     exit={{ opacity: 0, y: -10, height: 0 }}
                     transition={{ ease: 'easeOut', duration: 0.1 }}
-                    className="text-13 leading-[170%]"
+                    className="text-13 leading-[170%] whitespace-pre-line"
                 >
-                    {product?.metafields.find((metafield: any) => metafield?.key == 'modalita_uso')?.value}
+                    {product?.metafields.find((metafield: any) => metafield?.key == 'modalita_uso')?.value?.trim()}
                 </motion.p>
             )}
           </AnimatePresence>
