@@ -20,7 +20,7 @@ export default async function SearchLayout({ children } : { children: React.Reac
             </h1>
             <p className="text-17 text-white z-[1]">
               <Balancer>
-                Progettati con standard superiori di formulazion ed efficacia
+                Progettati con standard superiori di formulazione ed efficacia
               </Balancer>
             </p>
 
