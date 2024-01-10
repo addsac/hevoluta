@@ -9,9 +9,12 @@ import { useSearchParams } from 'next/navigation';
 import { Suspense, useLayoutEffect, useState } from 'react';
 import Balancer from 'react-wrap-balancer';
 import ProductAccrodion from './product-accordion';
+import ProductStars from './product-stars';
 import { VariantSelector } from './variant-selector';
 
-export function ProductDescription({ product, reviews = [] }: { product: Product, reviews: Review[] }) {
+export function ProductDescription({ product, reviews = [], reviewsData = null }: { product: Product, reviews: Review[], reviewsData: any }) {
+  const averageScore = Number(reviewsData?.bottomline?.average_score).toFixed(1)
+
   const [rightPrice, setRightPrice] = useState({
     amount: product.priceRange.minVariantPrice.amount,
     currencyCode: product.priceRange.minVariantPrice.currencyCode
@@ -119,23 +122,22 @@ export function ProductDescription({ product, reviews = [] }: { product: Product
           {/* cta and reviews */}
           <div className="w-full mt-3 flex flex-col gap-3">
             <AddToCart variants={product.variants} availableForSale={product.availableForSale} />
-            <div className="flex items-center gap-2.5 p-2">
-              <div className="flex">
-                <img src="/img/icon/star.svg" alt="" className="h-6 w-6" />
-                <img src="/img/icon/star.svg" alt="" className="-ml-1 h-6 w-6" />
-                <img src="/img/icon/star.svg" alt="" className="-ml-1 h-6 w-6" />
-                <img src="/img/icon/star.svg" alt="" className="-ml-1 h-6 w-6" />
-                <img src="/img/icon/star.svg" alt="" className="-ml-1 h-6 w-6" />
+            
+            {reviews?.length > 0 && (
+              <div className="flex items-center gap-2.5 p-2">
+                <div className="flex">
+                  <ProductStars averageScore={Number(averageScore)} />
+                </div>
+                <button 
+                  className="button-text"
+                  onClick={() => {
+                    // scroll to reviews-wrapper id
+                    const element = document.getElementById('reviews-wrapper');
+                    element?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                >Leggi {reviews?.length || 0} recensioni</button>
               </div>
-              <button 
-                className="button-text"
-                onClick={() => {
-                  // scroll to reviews-wrapper id
-                  const element = document.getElementById('reviews-wrapper');
-                  element?.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >Leggi {reviews?.length || 0} recensioni</button>
-            </div>
+            )}
           </div>
         </div>
 

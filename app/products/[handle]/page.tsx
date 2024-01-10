@@ -65,7 +65,7 @@ export default async function ProductPage({ params }: { params: { handle: string
     cache: 'no-store',
   })
     .then(res => res.json())
-    .then(data => data.response.reviews || [])
+    .then(data => data.response || [])
     .catch(err => console.error('error:' + err));
 
   const productJsonLd = {
@@ -106,7 +106,7 @@ export default async function ProductPage({ params }: { params: { handle: string
         </Suspense>
 
         <Suspense>
-          <ProductDescription product={product} reviews={reviews} />
+          <ProductDescription product={product} reviews={reviews.reviews} reviewsData={reviews}/>
         </Suspense>
       </div>
 
@@ -115,7 +115,7 @@ export default async function ProductPage({ params }: { params: { handle: string
       </Suspense>
 
       <Suspense>
-        <ProductReviews product={product} reviews={reviews} />
+        <ProductReviews product={product} reviews={reviews.reviews} />
       </Suspense>
 
       {/* Products */}
