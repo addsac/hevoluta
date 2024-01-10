@@ -201,20 +201,22 @@ export default function ProductReviews({
           </div>
         )}
 
-        <div className='flex items-center justify-center gap-4 -mb-5'>
-          {/* arrows to navigate - left */}
-          <button id="nav-button-reviews-sx" className='w-12 h-12 border border-gray-200 text-black/50 flex items-center justify-center bg-white/90 backdrop-blur-md rounded-full'>
-            <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
-              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13.25 8.75L9.75 12L13.25 15.25"></path>
-            </svg>
-          </button>
-          {/* arrows to navigate - left */}
-          <button id="nav-button-reviews-dx" className='w-12 h-12 border border-gray-200 text-black/50 flex items-center justify-center bg-white/90 backdrop-blur-md rounded-full'>
-            <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
-              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M10.75 8.75L14.25 12L10.75 15.25"></path>
-            </svg>
-          </button>
-        </div>
+        {reviews.length > 0 && (
+          <div className='flex items-center justify-center gap-4 -mb-5'>
+            {/* arrows to navigate - left */}
+            <button id="nav-button-reviews-sx" className='w-12 h-12 border border-gray-200 text-black/50 flex items-center justify-center bg-white/90 backdrop-blur-md rounded-full'>
+              <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13.25 8.75L9.75 12L13.25 15.25"></path>
+              </svg>
+            </button>
+            {/* arrows to navigate - left */}
+            <button id="nav-button-reviews-dx" className='w-12 h-12 border border-gray-200 text-black/50 flex items-center justify-center bg-white/90 backdrop-blur-md rounded-full'>
+              <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M10.75 8.75L14.25 12L10.75 15.25"></path>
+              </svg>
+            </button>
+          </div>
+        )}
 
         <button className="button-primary-base" onClick={() => setOpenModalCreateReview(true)}>
           Scrivi una recensione
