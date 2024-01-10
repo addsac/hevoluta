@@ -245,9 +245,10 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                 <div className="w-full h-px bg-gray-100"></div> 
                 <div className="flex items-center justify-between gap-2.5">
                   <p> Subtotale: </p>
-                  <p> 
-                    {Number(cart?.cost?.totalAmount?.amount || 0).toFixed(2)}€
-                  </p>
+                  <Price
+                    amount={Number(cart?.cost?.subtotalAmount?.amount || 0).toFixed(2)}
+                    currencyCode={cart?.cost?.subtotalAmount?.currencyCode}
+                  />
                 </div>
             </div>
             
