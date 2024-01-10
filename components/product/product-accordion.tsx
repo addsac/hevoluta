@@ -23,7 +23,7 @@ export default function ProductAccordion({ product = null } : { product: any }) 
                     initial={{ opacity: 0, y: -10, height: 0 }}
                     animate={{ opacity: 0.5, y: 0, height: 'auto' }}
                     exit={{ opacity: 0, y: -10, height: 0 }}
-                    transition={{ ease: 'easeOut', duration: 0.1 }}
+                    transition={{ ease: 'easeOut', duration: 0.2 }}
                     className="text-13 leading-[170%] whitespace-pre-line"
                 >
                     {product?.metafields.find((metafield: any) => metafield?.key == 'benefici')?.value?.trim()}
@@ -62,7 +62,7 @@ export default function ProductAccordion({ product = null } : { product: any }) 
                     initial={{ opacity: 0, y: -10, height: 0 }}
                     animate={{ opacity: 0.5, y: 0, height: 'auto' }}
                     exit={{ opacity: 0, y: -10, height: 0 }}
-                    transition={{ ease: 'easeOut', duration: 0.1 }}
+                    transition={{ ease: 'easeOut', duration: 0.2 }}
                     className="text-13 leading-[170%] whitespace-pre-line"
                 >
                     {product?.metafields.find((metafield: any) => metafield?.key == 'ingredienti')?.value?.trim()}
@@ -101,7 +101,7 @@ export default function ProductAccordion({ product = null } : { product: any }) 
                     initial={{ opacity: 0, y: -10, height: 0 }}
                     animate={{ opacity: 0.5, y: 0, height: 'auto' }}
                     exit={{ opacity: 0, y: -10, height: 0 }}
-                    transition={{ ease: 'easeOut', duration: 0.1 }}
+                    transition={{ ease: 'easeOut', duration: 0.2 }}
                     className="text-13 leading-[170%] whitespace-pre-line"
                 >
                     {product?.metafields.find((metafield: any) => metafield?.key == 'modalita_uso')?.value?.trim()}
