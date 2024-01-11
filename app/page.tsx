@@ -73,15 +73,15 @@ export default async function HomePage() {
           <p> Rimborso assistito </p>
           <p className='opacity-50'> Se ti serve cambiare o rendere un acquisto </p>
         </div>
-        <Link href="/chat" className="w-full flex flex-col items-center justify-center gap-5 group">
+        <div className="w-full flex flex-col items-center justify-center gap-5">
           <img 
-            src="/img/icon/dubbi.svg"
+            src="/img/icon/made-in-italy.svg"
             alt=""
             className="w-12 h-12 opacity-50"
           />
-          <p className="group-hover:underline"> Chatta con noi </p>
-          <p className='opacity-50'> Apri la chat per ogni domanda sui prodotti </p>
-        </Link>
+          <p> 100% Made in Italy </p>
+          <p className='opacity-50'>  Progettati, formulati e prodotti in Italia </p>
+        </div>
       </div>
 
       {/* Products */}
