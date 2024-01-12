@@ -137,7 +137,13 @@ export default function LastLink({ register, login }: { register: any, login: an
               className="checkbox-base shrink-0"
             />
             <label htmlFor="newsletter">
-              <p className="inline">Accetto i termini e condizioni.</p>
+              <p className="inline">
+                Accetto i&nbsp;
+                <Link href="/policy/terms" className="button-text inline-block">
+                  termini e condizioni
+                </Link>
+                .
+              </p>
             </label>
           </div>
 
