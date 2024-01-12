@@ -205,6 +205,9 @@ button{
 .checkbox-base{
   @apply w-5 h-5;
 }
+input[type="search"] {
+  -webkit-appearance: none;
+}
 
 /* BLOG */
 .blog-content-wrapper {
