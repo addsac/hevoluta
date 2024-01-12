@@ -2,7 +2,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { Balancer } from "react-wrap-balancer"
 
-export default function ImageDescription({ title = '', description = '', src = '', href = '/' } : {
+export default function ImageDescription({ subtitle = '', title = '', description = '', src = '', href = '/' } : {
+    subtitle?: string,
     title: string,
     description: string,
     src: string,
@@ -23,6 +24,9 @@ export default function ImageDescription({ title = '', description = '', src = '
         
                 {/* texts */}
                 <div className="absolute bottom-5 left-5 right-5 flex flex-col items-start gap-5">
+                    <p className="text-body-1 text-white mb-2.5">
+                        {subtitle}
+                    </p>
                     <p className="text-title-3 text-white w-full lg:w-2/3">
                         <Balancer>
                             <span className="tiempos-font-italic">

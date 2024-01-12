@@ -112,6 +112,7 @@ export default async function HomePage() {
 
       {/* Image description */}
       <ImageDescription 
+        subtitle={"Perchè scegliere Hevoluta?"}
         title={"Offriamo cosmetici sicuri,"} 
         description={"efficaci e innovativi che agiscono sulla pelle proteggendola e accompagnandola nel tempo a risolvere i cambiamenti che deve affrontare."} 
         src="/img/background/background-2.jpg"
