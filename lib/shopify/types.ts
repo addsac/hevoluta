@@ -151,6 +151,16 @@ export type ShopifyProduct = {
   updatedAt: string;
 };
 
+export type ShopifyMetaobject = {
+  id: string;
+  type: string;
+  fields: {
+    key: string;
+    value: string;
+    reference: any;
+  }[];
+};
+
 export type ShopifyCartOperation = {
   data: {
     cart: ShopifyCart;
@@ -246,6 +256,15 @@ export type ShopifyMenuOperation = {
   };
   variables: {
     handle: string;
+  };
+};
+
+export type ShopifyMetaobjectsOperation = {
+  data: {
+    metaobjects: Connection<ShopifyMetaobject>;
+  };
+  variables: {
+    type: string;
   };
 };
 

@@ -1,5 +1,5 @@
 import Cart from 'components/cart';
-import OpenCart from 'components/cart/open-cart';
+// import OpenCart from 'components/cart/open-cart';
 import BlackStripe from 'components/layout/navbar/black-stripe';
 import AuthButtons from 'components/ui/auth-buttons';
 import Cookie from 'components/ui/cookie';
@@ -11,7 +11,7 @@ import { Suspense } from 'react';
 
 const { SITE_NAME } = process.env;
 
-export default async function Navbar({ customer }: { customer: Customer }) {
+export default async function Navbar({ customer, announcements }: { customer: Customer, announcements: any }) {
   // const menu = await getMenu('next-js-frontend-header-menu');
   const token = cookies().get('login-token')?.value
 
@@ -24,7 +24,7 @@ export default async function Navbar({ customer }: { customer: Customer }) {
 
       <div className="w-screen flex flex-col">
         <Suspense>
-          <BlackStripe />
+          <BlackStripe announcements={announcements} />
         </Suspense>
 
         {/* navigation menu */}

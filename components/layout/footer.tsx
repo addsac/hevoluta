@@ -97,7 +97,7 @@ export default async function Footer({
               </p>
               <div className="flex gap-5">
                 <Link 
-                  href="https://instagram.com/hevoluta"
+                  href="https://www.tiktok.com/@moirabonaldocosmetologa?_t=8iybYXlBN5M&_r=1"
                   target='_blank'
                   rel='noreferrer noopener'
                   className="bg-black w-8 h-8 flex items-center justify-center"
@@ -113,12 +113,20 @@ export default async function Footer({
                   <img src="/img/social/social-instagram.png" alt="" className="w-auto h-6" />
                 </Link>
                 <Link 
-                  href="https://instagram.com/hevoluta"
+                  href="https://www.facebook.com/drssabonaldomoira"
                   target='_blank'
                   rel='noreferrer noopener'
                   className="bg-black w-8 h-8 flex items-center justify-center"
                 >
                   <img src="/img/social/social-facebook.png" alt="" className="w-auto h-5" />
+                </Link>
+                <Link
+                  href="https://www.youtube.com/@MoiraBonaldo"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="flex h-8 w-8 items-center justify-center bg-black border border-white/30"
+                >
+                  <img src="/img/social/social-youtube.png" alt="" className="h-4 w-auto" />
                 </Link>
               </div>
             </div>

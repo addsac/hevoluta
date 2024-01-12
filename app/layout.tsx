@@ -3,7 +3,7 @@ import Navbar from 'components/layout/navbar';
 import LastLink from 'components/ui/last-link';
 import { GeistMono } from 'geist/font/mono';
 import { GeistSans } from 'geist/font/sans';
-import { getCustomer, getProducts, loginCustomer, registerCustomer } from 'lib/shopify';
+import { getAnnouncements, getCustomer, getProducts, loginCustomer, registerCustomer } from 'lib/shopify';
 import { ensureStartsWith } from 'lib/utils';
 import localFont from 'next/font/local';
 import { cookies } from 'next/headers';
@@ -63,6 +63,7 @@ export const metadata = {
 export default async function RootLayout({ children }: { children: ReactNode }) {
   const customer = await getCustomer( cookies().get('login-token')?.value )
   const products = await getProducts({})
+  const announcements = await getAnnouncements('announcements_bar')
 
   // Register api to register a new customer
   const register = async ({ email, password }) => {
@@ -94,7 +95,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
       ${GeistSans.variable} ${GeistMono.variable} font-sans
     `}>
       <body>
-        <Navbar customer={customer} />
+        <Navbar customer={customer} announcements={announcements} />
         
         <Suspense>
           <main>{children}</main>

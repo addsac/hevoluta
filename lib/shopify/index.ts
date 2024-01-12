@@ -11,6 +11,7 @@ import {
   removeFromCartMutation
 } from './mutations/cart';
 import { createCustomerQuery, customerAccessTokenDeleteQuery, customerActivateByUrlQuery, customerQuery, customerResetByUrlQuery, loginCustomerQuery, sendEmailPasswordRecoveryQuery, updateCustomerAddressQuery, updateCustomerQuery } from './mutations/customer';
+import { getAnnouncementsQuery } from './queries/announcements';
 import { getArticleQuery, getArticlesQuery } from './queries/articles';
 import { getBlogQuery } from './queries/blog';
 import { getCartQuery } from './queries/cart';
@@ -65,6 +66,8 @@ import {
   ShopifyCustomerSendEmailPasswordRecoveryOperation,
   ShopifyCustomerUpdateOperation,
   ShopifyMenuOperation,
+  ShopifyMetaobject,
+  ShopifyMetaobjectsOperation,
   ShopifyPageOperation,
   ShopifyPagesOperation,
   ShopifyProduct,
@@ -165,6 +168,14 @@ const reshapeCustomer = (customer: any): any => {
   }
 
   return customer;
+}
+
+const reshapeMetaobjects = (metaobjects: any): any => {
+  if (!metaobjects) {
+    return undefined;
+  }
+
+  return removeEdgesAndNodes(metaobjects);
 }
 
 const reshapeBlogs = (blogs: any): any => {
@@ -544,6 +555,21 @@ export async function revalidate(req: NextRequest): Promise<NextResponse> {
   } */
 
   return NextResponse.json({ status: 200, revalidated: true, now: Date.now() });
+}
+
+/**
+ * Announcements API
+ */
+export async function getAnnouncements(type: string): Promise<ShopifyMetaobject[]> {
+  const res = await shopifyFetch<ShopifyMetaobjectsOperation>({
+    query: getAnnouncementsQuery,
+    variables: {
+      type: type
+    },
+    cache: 'no-store'
+  });
+
+  return reshapeMetaobjects(res.body.data.metaobjects)
 }
 
 /**

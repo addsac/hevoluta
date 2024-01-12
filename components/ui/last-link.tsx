@@ -182,7 +182,7 @@ export default function LastLink({ register, login }: { register: any, login: an
           <p className="text-title-4 text-white">Seguici sui social</p>
           <div className="flex gap-5">
             <Link
-              href="https://instagram.com/hevoluta"
+              href="https://www.tiktok.com/@moirabonaldocosmetologa?_t=8iybYXlBN5M&_r=1"
               target="_blank"
               rel="noreferrer noopener"
               className="flex h-8 w-8 items-center justify-center bg-black border border-white/30"
@@ -198,12 +198,20 @@ export default function LastLink({ register, login }: { register: any, login: an
               <img src="/img/social/social-instagram.png" alt="" className="h-6 w-auto" />
             </Link>
             <Link
-              href="https://instagram.com/hevoluta"
+              href="https://www.facebook.com/drssabonaldomoira"
               target="_blank"
               rel="noreferrer noopener"
               className="flex h-8 w-8 items-center justify-center bg-black border border-white/30"
             >
               <img src="/img/social/social-facebook.png" alt="" className="h-5 w-auto" />
+            </Link>
+            <Link
+              href="https://www.youtube.com/@MoiraBonaldo"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="flex h-8 w-8 items-center justify-center bg-black border border-white/30"
+            >
+              <img src="/img/social/social-youtube.png" alt="" className="h-4 w-auto" />
             </Link>
           </div>
         </div>
