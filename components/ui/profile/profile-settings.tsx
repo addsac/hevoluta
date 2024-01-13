@@ -40,6 +40,11 @@ export default function ProfileSettings({
         setErrorUserData('')
         setSuccessUserData('')
 
+        // add +39 to phone number if it hasn't it
+        if(!phoneUserData.startsWith('+39')){
+            setPhoneUserData('+39'+phoneUserData)
+        }
+
         const res = await updateCustomer({
             email: emailUserData,
             firstName: nameUserData,
