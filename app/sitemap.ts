@@ -1,4 +1,4 @@
-import { getCollections, getPages, getProducts } from 'lib/shopify';
+import { getArticles, getPages, getProducts } from 'lib/shopify';
 import { validateEnvironmentVariables } from 'lib/utils';
 import { MetadataRoute } from 'next';
 
@@ -33,7 +33,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   });
 
   // articles
-  /* ... */
+  const articlesFetched = await getArticles({
+    first: 50,
+    title: `title:${process.env.BLOG_TITLE}`,
+    sortKey: 'PUBLISHED_AT',
+    reverse: true,
+  });
+
+  const articles = articlesFetched.edges.map((article) => ({
+    url: `${baseUrl}/blog/${article.handle}/${String(article.id).replace('gid://shopify/Article/', '')}`,
+    lastModified: article.updatedAt
+  }));
 
   // chat
   routesMap.push({
@@ -54,12 +64,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   });
 
   // collections
-  const collectionsPromise = getCollections().then((collections) =>
+  /* const collectionsPromise = getCollections().then((collections) =>
     collections.map((collection) => ({
       url: `${baseUrl}${collection.path}`,
       lastModified: collection.updatedAt
     }))
-  );
+  ); */
+
+  // search
+  routesMap.push({
+    url: `${baseUrl}/search`,
+    lastModified: new Date().toISOString()
+  });
 
   // product
   const productsPromise = getProducts({}).then((products) =>
@@ -80,7 +96,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let fetchedRoutes: Route[] = [];
 
   try {
-    fetchedRoutes = (await Promise.all([productsPromise, pagesPromise])).flat(); // collectionsPromise
+    fetchedRoutes = (await Promise.all([productsPromise, pagesPromise, articles])).flat(); // collectionsPromise
   } catch (error) {
     throw JSON.stringify(error, null, 2);
   }
