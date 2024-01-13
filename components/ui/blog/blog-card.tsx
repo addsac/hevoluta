@@ -10,7 +10,7 @@ export default function BlogCard({ article } : { article: ShopifyArticle }){
             href={`/blog/${article?.handle}/${article?.id?.replace('gid://shopify/Article/', '')}`}
         >
             {/* image */}
-            <div className="w-full h-[300px] flex flex-col items-start bg-black">
+            <div className="w-full h-[300px] flex flex-col items-start">
                 <Image
                     src={article?.image ? article?.image?.url : '/img/background/background-1.jpg'}
                     alt=""

@@ -26,7 +26,7 @@ export default function BlogCardMax({
             </div>
 
             {/* image */}
-            <div className="w-full h-[500px] flex flex-col items-start bg-black">
+            <div className="w-full h-[500px] flex flex-col items-start">
                 <Image
                     src={article?.image ? article?.image?.url : '/img/background/background-1.jpg'}
                     alt=""
