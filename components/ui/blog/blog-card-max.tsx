@@ -15,7 +15,12 @@ export default function BlogCardMax({
             {/* texts */}
             <div className="flex flex-col items-start gap-6 lg:pr-20">
                 <p className="text-body-2 opacity-50">
-                    {article?.tags.map((tag: string) => `${tag} `)}
+                    {article.tags.map((tag: string, index: number) => (
+                      <span key={'blog-tag-'+index}>
+                        {tag}
+                        {(index < article.tags.length - 1) && <>&nbsp;&nbsp;-&nbsp;&nbsp;</>}
+                      </span>
+                    ))}
                 </p>
                 <p className="text-title-3 group-hover:underline">
                     {article?.title}

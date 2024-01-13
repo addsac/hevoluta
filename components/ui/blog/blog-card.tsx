@@ -24,7 +24,12 @@ export default function BlogCard({ article } : { article: ShopifyArticle }){
             {/* texts */}
             <div className="flex flex-col items-start gap-5">
                 <p className="opacity-50">
-                    {article?.tags.map((tag: string) => `${tag} `)}
+                    {article.tags.map((tag: string, index: number) => (
+                      <span key={'blog-tag-'+index}>
+                        {tag}
+                        {(index < article.tags.length - 1) && <>&nbsp;&nbsp;-&nbsp;&nbsp;</>}
+                      </span>
+                    ))}
                 </p>
                 <p className="text-title-5 group-hover:underline">
                     <Balancer>
