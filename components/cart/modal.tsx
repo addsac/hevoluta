@@ -251,6 +251,9 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                   />
                 </div>
             </div>
+
+            {/* spacing */}
+            {/* <div className="h-full"></div> */}
             
             {/* cta */}
             <div className="flex flex-col gap-4">
@@ -262,7 +265,7 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                 Procedi all'ordine 
               </button>
               <p className="text-13 opacity-50">
-                I costi di spedizione sarrano calcolati alla cassa. La spedizione è gratuita sopra i 65€. Iva inclusa. Il reso è gratuito e valido entro 15 giorni.
+                I costi di spedizione sarrano calcolati alla cassa. Iva inclusa. Il reso è gratuito e valido entro 15 giorni.
               </p>
             </div>
           </Modal>

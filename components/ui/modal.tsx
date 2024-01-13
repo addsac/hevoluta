@@ -23,10 +23,10 @@ const Modal = ({ children = <></>, position = 'right', closeModal = null }: { ch
                 className={`
                     fixed top-0 bottom-0 bg-white 
                     w-[calc(100vw-20px)] lg:w-[400px] h-screen max-h-screen
-                    flex flex-col gap-10 p-5 pb-20 z-20
+                    flex flex-col gap-10 p-5 z-20
                     overflow-y-auto
                     ${position === 'right' ? 'right-0' : 'left-0'}
-                `}
+                `} /* pb-20 */
             >
                 {children}
             </motion.div>
