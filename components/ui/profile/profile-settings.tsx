@@ -44,7 +44,7 @@ export default function ProfileSettings({
             email: emailUserData,
             firstName: nameUserData,
             lastName: surnameUserData,
-            phone: '+39'+phoneUserData,
+            phone: phoneUserData,
             acceptsMarketing: emailMarketingUserData
         })
 
