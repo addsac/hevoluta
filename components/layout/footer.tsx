@@ -33,12 +33,12 @@ export default async function Footer({
           </p>
         </div>
         <div className="w-full lg:w-2/3 flex flex-col lg:flex-row items-start gap-16 lg:gap-2.5">
-          <div className="flex flex-col gap-[20px] lg:gap-[28px] w-full">
+          <div className="flex flex-col gap-5 lg:gap-7 w-full">
             <p className="opacity-50">
               Pagine
             </p>
 
-            <div className="flex flex-col items-start gap-[20px] lg:gap-[28px]">
+            <div className="flex flex-col items-start gap-5 lg:gap-[27">
               <Link href="/" className="button-text"> Home </Link>
               <Link href="/search" className="button-text"> Prodotti </Link>
               <Link href="/blog" className="button-text"> Blog </Link>
@@ -52,12 +52,12 @@ export default async function Footer({
             </div>
           </div>
           
-          <div className="flex flex-col gap-[20px] lg:gap-[28px] w-full">
+          <div className="flex flex-col gap-5 lg:gap-7 w-full">
             <p className="opacity-50">
               Prodotti
             </p>
 
-            <div className="flex flex-col items-start gap-[20px] lg:gap-[28px]">
+            <div className="flex flex-col items-start gap-5 lg:gap-[27">
               {products.slice(0, 5).map((item, index) => (
                 <Link 
                   key={'footer-product'+index}
@@ -83,12 +83,12 @@ export default async function Footer({
             </div>
           </div>
 
-          <div className="flex flex-col gap-[20px] lg:gap-[28px] w-full">
+          <div className="flex flex-col gap-5 lg:gap-7 w-full">
             <p className="opacity-50">
               Contatti
             </p>
 
-            <div className="flex flex-col items-start gap-[20px] lg:gap-[28px]">
+            <div className="flex flex-col items-start gap-5 lg:gap-[27">
               <Link href="mailto:support@hevoluta.com" className="button-text"> support@hevoluta.com </Link>
               <p> 
                 <Balancer>

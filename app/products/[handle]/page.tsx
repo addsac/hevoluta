@@ -143,7 +143,7 @@ async function RelatedProducts({ id }: { id: string }) {
               Scopri altri prodotti:
             </p>
             <p className="opacity-70">
-              Acquista i nostri prodotti più amati
+              Prodotti correlati che ti poterbbero interessare
             </p>
           </div>
 
