@@ -1,6 +1,5 @@
 'use client';
 
-import { PlusIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import { addItem } from 'components/cart/actions';
 import LoadingDots from 'components/loading-dots';
@@ -49,7 +48,7 @@ function SubmitButton({
   return (
     <button
       onClick={(e: React.FormEvent<HTMLButtonElement>) => {
-        if(closeModalOnAddToCart) setTimeout(() => closeModalOnAddToCart(), 500) // closing moadal if addToCart is on ModalRapidAddToCart
+        if(closeModalOnAddToCart) setTimeout(() => closeModalOnAddToCart(), 800) // closing moadal if addToCart is on ModalRapidAddToCart
         if (pending) e.preventDefault();
       }}
       aria-label="Add to cart"
