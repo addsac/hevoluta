@@ -106,7 +106,7 @@ export default async function ProductPage({ params }: { params: { handle: string
         </Suspense>
 
         <Suspense>
-          <ProductDescription product={product} reviews={reviews.reviews} reviewsData={reviews}/>
+          <ProductDescription product={product} reviews={reviews.reviews} reviewsData={reviews} />
         </Suspense>
       </div>
 

@@ -4,6 +4,7 @@ import { createUrl } from 'lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
+import { useEffect } from 'react';
 
 export function Gallery({ images, modalAddToCart = false }: { images: { src: string; altText: string }[], modalAddToCart?: boolean }) {
   const pathname = usePathname();
@@ -21,12 +22,19 @@ export function Gallery({ images, modalAddToCart = false }: { images: { src: str
   previousSearchParams.set('image', previousImageIndex.toString());
   const previousUrl = createUrl(pathname, previousSearchParams);
 
+  useEffect(() => {
+    if (modalAddToCart) {
+      // reset when modalAddToCart changes
+      // ...
+    }
+  }, [modalAddToCart]);
+
   const buttonClassName =
     'h-full px-6 transition-all ease-in-out hover:scale-110 hover:text-black dark:hover:text-white flex items-center justify-center';
 
   return (
     <>
-      <div className={`w-full ${modalAddToCart ? '' : 'lg:w-1/2'}`}>
+      <div className="w-full">
         {/* main photo */}
         {images[imageIndex] && (
           <div className="flex items-center justify-center bg-gradient-gray p-10">

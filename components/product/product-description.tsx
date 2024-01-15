@@ -12,7 +12,7 @@ import ProductAccrodion from './product-accordion';
 import ProductStars from './product-stars';
 import { VariantSelector } from './variant-selector';
 
-export function ProductDescription({ product, showAccordion = true, reviews = [], reviewsData = null, closeModalOnAddToCart = null, modalAddToCart = false }: { product: Product, showAccordion?: boolean, reviews: Review[], reviewsData: any, closeModalOnAddToCart: any, modalAddToCart?: boolean }) {
+export function ProductDescription({ product, showAccordion = true, reviews = [], reviewsData = null, closeModalOnAddToCart = null, modalAddToCart = false }: { product: Product, showAccordion?: boolean, reviews: Review[], reviewsData: any, closeModalOnAddToCart?: any, modalAddToCart?: boolean }) {
   const averageScore = Number(reviewsData?.bottomline?.average_score).toFixed(1)
 
   const [rightPrice, setRightPrice] = useState({
@@ -63,7 +63,7 @@ export function ProductDescription({ product, showAccordion = true, reviews = []
   return (
     <>
       <div 
-        className={`w-full ${modalAddToCart ? '' : 'lg:w-1/2 lg:px-10'} flex flex-col gap-20`}
+        className={`w-full ${modalAddToCart ? '' : 'lg:px-10'} flex flex-col gap-20`}
       >
         {/* title and ctas */}
         <div className="flex flex-col items-start gap-8">

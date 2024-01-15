@@ -6,10 +6,15 @@ import { ProductDescription } from 'components/product/product-description'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Image } from 'lib/shopify/types'
 import Link from 'next/link'
-import { Suspense, useState } from 'react'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { Suspense, useEffect, useState } from 'react'
 import ModalCenter from '../modal-center'
 
 export default function ProductCard({ item = null } : { item: any }) {
+    const router = useRouter()
+    const pathname = usePathname()
+    const searchParams = useSearchParams()
+
     const [isHovered, setIsHovered] = useState(false)
     const [infoVisibleMobile, setInfoVisibleMobile] = useState(false)
 
@@ -25,6 +30,16 @@ export default function ProductCard({ item = null } : { item: any }) {
     // modal add to cart rapid - mobile
     const [modalRapidAddToCart, setModalRapidAddToCart] = useState(false)
 
+    useEffect(() => {
+        // remove image and size from url after modal rapid add to cart is closed
+        const nextSearchParams = new URLSearchParams(searchParams.toString())
+        nextSearchParams.delete('image')
+        nextSearchParams.delete('size')
+        router.push(`${pathname}${nextSearchParams}`, {
+            scroll: false,
+        })
+    }, [modalRapidAddToCart])
+
     return (
         <>
             {/* modal rapid add to cart - mobile */}
@@ -32,7 +47,7 @@ export default function ProductCard({ item = null } : { item: any }) {
                 {modalRapidAddToCart && (
                     <ModalCenter closeModal={setModalRapidAddToCart}>
                         <div className={`
-                            w-full flex flex-col ${item.images.length > 1 ? 'gap-20' : ''}
+                            w-full flex flex-col lg:flex-row gap-20 lg:gap-10
                         `}>
                             <Suspense>
                                 <Gallery

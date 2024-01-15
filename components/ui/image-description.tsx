@@ -18,6 +18,7 @@ export default function ImageDescription({ subtitle, title = '', description = '
                     alt=""
                     width={1440}
                     height={900}
+                    loading="lazy"
                     className="w-full h-full object-cover opacity-40 select-none"
                     draggable={false}
                 />

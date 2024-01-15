@@ -3,6 +3,7 @@ import Divider from 'components/ui/divider';
 import HeroSectionAnimated from 'components/ui/hero-section-animated';
 import ImageDescription from 'components/ui/image-description';
 import ProductRows from 'components/ui/product/product-rows';
+import ProductRowsSkeleton from 'components/ui/product/product-rows-skeleton';
 import { defaultSort } from 'lib/constants';
 import { getArticles, getProducts } from 'lib/shopify';
 import { divideArrayIntoGroups } from 'lib/utils';
@@ -47,6 +48,7 @@ export default async function HomePage() {
           alt=""
           width={1440}
           height={900}
+          priority={true}
           className="absolute h-full w-full object-cover opacity-50 select-none z-[0]"
           draggable="false"
           style={{ userSelect: 'none' }}
@@ -98,7 +100,7 @@ export default async function HomePage() {
           </div>
 
           {/* rows prodcucts */}
-          <Suspense>
+          <Suspense fallback={<ProductRowsSkeleton />}>
             <ProductRows items={collections.slice(0, 8)} />
           </Suspense>
 
@@ -198,21 +200,23 @@ export default async function HomePage() {
       <Divider />
 
       {/* Blog */}
-      <div className="flex flex-col gap-20 px-5 py-[120px]">
-        <div className="w-full flex flex-col items-center justify-center gap-20">
-          {/* title */}
-          <p className="text-title-4 text-center">
-            Ultime ricerche
-          </p>
+      <Suspense>
+        <div className="flex flex-col gap-20 px-5 py-[120px]">
+          <div className="w-full flex flex-col items-center justify-center gap-20">
+            {/* title */}
+            <p className="text-title-4 text-center">
+              Ultime ricerche
+            </p>
 
-          {/* 3 articles */}
-          <div className="w-full flex flex-col lg:flex-row gap-16 lg:gap-2.5">
-            <BlogCards 
-              arrayOfArticlesdividedBy3={arrayOfArticlesdividedBy3}
-            />
+            {/* 3 articles */}
+            <div className="w-full flex flex-col lg:flex-row gap-16 lg:gap-2.5">
+              <BlogCards 
+                arrayOfArticlesdividedBy3={arrayOfArticlesdividedBy3}
+                />
+            </div>
           </div>
         </div>
-      </div>
+      </Suspense>
 
       {/* divider */}
       <Divider />

@@ -20,11 +20,11 @@ const ModalCenter = ({ children = <></>, closeModal = null }: { children: React.
                 {/* left */}
                 <div className="w-5 lg:w-full" onClick={() => closeModal()} />
                 {/* center */}
-                <div className="w-full lg:min-w-[500px] h-auto bg-white border border-black p-10 flex flex-col gap-10">
+                <div className="w-full lg:min-w-[900px] h-auto bg-white border border-black p-10 flex flex-col gap-10">
                     {children}
                 </div>
                 {/* right */}
-                <div className="w-5 lg:w-full" onClick={() => closeModal()} />
+                <div className="w-5 lg:w-full lg:min-w-20" onClick={() => closeModal()} />
             </div>
             {/* bottom */}
             <div 
