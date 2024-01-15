@@ -31,7 +31,9 @@ export default function ProductCard({ item = null } : { item: any }) {
             <AnimatePresence>
                 {modalRapidAddToCart && (
                     <ModalCenter closeModal={setModalRapidAddToCart}>
-                        <div className="w-full flex flex-col gap-20">
+                        <div className={`
+                            w-full flex flex-col ${item.images.length > 1 ? 'gap-20' : ''}
+                        `}>
                             <Suspense>
                                 <Gallery
                                     images={item.images.map((image: Image) => ({
