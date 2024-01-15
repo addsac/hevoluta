@@ -10,10 +10,12 @@ import { useFormState, useFormStatus } from 'react-dom';
 
 function SubmitButton({
   availableForSale,
-  selectedVariantId
+  selectedVariantId,
+  closeModalOnAddToCart
 }: {
   availableForSale: boolean;
   selectedVariantId: string | undefined;
+  closeModalOnAddToCart?: () => void;
 }) {
   const { pending } = useFormStatus();
   const buttonClasses =
@@ -47,6 +49,7 @@ function SubmitButton({
   return (
     <button
       onClick={(e: React.FormEvent<HTMLButtonElement>) => {
+        if(closeModalOnAddToCart) setTimeout(() => closeModalOnAddToCart(), 500) // closing moadal if addToCart is on ModalRapidAddToCart
         if (pending) e.preventDefault();
       }}
       aria-label="Add to cart"
@@ -66,10 +69,12 @@ function SubmitButton({
 
 export function AddToCart({
   variants,
-  availableForSale
+  availableForSale,
+  closeModalOnAddToCart
 }: {
   variants: ProductVariant[];
   availableForSale: boolean;
+  closeModalOnAddToCart?: () => void;
 }) {
   const [message, formAction] = useFormState(addItem, null);
   const searchParams = useSearchParams();
@@ -84,7 +89,7 @@ export function AddToCart({
 
   return (
     <form action={actionWithVariant}>
-      <SubmitButton availableForSale={availableForSale} selectedVariantId={selectedVariantId} />
+      <SubmitButton availableForSale={availableForSale} selectedVariantId={selectedVariantId} closeModalOnAddToCart={closeModalOnAddToCart} />
       <p aria-live="polite" className="sr-only" role="status">
         {message}
       </p>

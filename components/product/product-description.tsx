@@ -12,7 +12,7 @@ import ProductAccrodion from './product-accordion';
 import ProductStars from './product-stars';
 import { VariantSelector } from './variant-selector';
 
-export function ProductDescription({ product, reviews = [], reviewsData = null }: { product: Product, reviews: Review[], reviewsData: any }) {
+export function ProductDescription({ product, showAccordion = true, reviews = [], reviewsData = null, closeModalOnAddToCart = null }: { product: Product, showAccordion?: boolean, reviews: Review[], reviewsData: any, closeModalOnAddToCart: any }) {
   const averageScore = Number(reviewsData?.bottomline?.average_score).toFixed(1)
 
   const [rightPrice, setRightPrice] = useState({
@@ -121,7 +121,7 @@ export function ProductDescription({ product, reviews = [], reviewsData = null }
 
           {/* cta and reviews */}
           <div className="w-full mt-3 flex flex-col gap-3">
-            <AddToCart variants={product.variants} availableForSale={product.availableForSale} />
+            <AddToCart variants={product.variants} availableForSale={product.availableForSale} closeModalOnAddToCart={closeModalOnAddToCart} />
             
             {reviews?.length > 0 && (
               <div className="flex items-center gap-2.5 p-2">
@@ -142,9 +142,11 @@ export function ProductDescription({ product, reviews = [], reviewsData = null }
         </div>
 
         {/* accordion - decirptions of the product */}
-        <Suspense>
-          <ProductAccrodion product={product} />
-        </Suspense>
+        {showAccordion && (
+          <Suspense>
+            <ProductAccrodion product={product} />
+          </Suspense>
+        )}
       </div>
     </>
   );

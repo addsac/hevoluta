@@ -28,7 +28,7 @@ const ModalCenter = ({ children = <></>, closeModal = null }: { children: React.
             </div>
             {/* bottom */}
             <div 
-                className="w-screen h-full min-h-[64px]" 
+                className="w-screen h-full min-h-[100px] lg:min-h-[64px]" 
                 onClick={() => closeModal()}
             />
         </motion.div>
