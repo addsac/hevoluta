@@ -96,7 +96,7 @@ export function ProductDescription({ product, showAccordion = true, reviews = []
           {/* klarna */}
           <div className="flex items-center gap-4 p-4 bg-gray-50 border border-gray-100">
             <img src="/img/icon/klarna.svg" alt="" className="h-8 w-auto shrink-0" />
-            <div className="text-body-1_2 flex items-start">
+            <div className="text-body-1_2 flex items-start flex-wrap">
               Paga in 3 rate da &nbsp;
               <Price
                 amount={(Number(rightPrice.amount) / 3).toFixed(2)}
