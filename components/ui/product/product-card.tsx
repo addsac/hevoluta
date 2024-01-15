@@ -37,14 +37,15 @@ export default function ProductCard({ item = null } : { item: any }) {
                             <Suspense>
                                 <Gallery
                                     images={item.images.map((image: Image) => ({
-                                    src: image.url,
-                                    altText: image.altText
+                                        src: image.url,
+                                        altText: image.altText
                                     }))}
+                                    modalAddToCart={true}
                                 />
                             </Suspense>
 
                             <Suspense>
-                                <ProductDescription product={item} reviews={[]} reviewsData={null} showAccordion={false} closeModalOnAddToCart={() => setModalRapidAddToCart(false)} />
+                                <ProductDescription product={item} reviews={[]} reviewsData={null} showAccordion={false} modalAddToCart={true} closeModalOnAddToCart={() => setModalRapidAddToCart(false)} />
                             </Suspense>
                         </div>
                     </ModalCenter>
@@ -132,7 +133,7 @@ export default function ProductCard({ item = null } : { item: any }) {
 
                     {/* button add to cart */}
                     <button
-                        className="absolute lg:hidden bottom-[60px] right-5 rounded-full hover:bg-gray-100 text-black h-10 w-10 flex items-center justify-center"
+                        className="absolute bottom-[60px] lg:bottom-5 right-5 rounded-full hover:bg-gray-100 text-black h-10 w-10 flex items-center justify-center"
                         onClick={(e) => {
                             e.preventDefault()
                             setModalRapidAddToCart(true)

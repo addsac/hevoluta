@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 
-export function Gallery({ images }: { images: { src: string; altText: string }[] }) {
+export function Gallery({ images, modalAddToCart = false }: { images: { src: string; altText: string }[], modalAddToCart?: boolean }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const imageSearchParam = searchParams.get('image');
@@ -26,7 +26,7 @@ export function Gallery({ images }: { images: { src: string; altText: string }[]
 
   return (
     <>
-      <div className="w-full lg:w-1/2">
+      <div className={`w-full ${modalAddToCart ? '' : 'lg:w-1/2'}`}>
         {/* main photo */}
         {images[imageIndex] && (
           <div className="flex items-center justify-center bg-gradient-gray p-10">
