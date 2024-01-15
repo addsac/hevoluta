@@ -129,7 +129,7 @@ export default function CartModal({ cart }: { cart: Cart | undefined }) {
                     new URLSearchParams(merchandiseSearchParams)
                   );
 
-                  console.log(item)
+                  // console.log(item)
 
                   const rightPrice = {
                     amount: item.cost.totalAmount.amount,
