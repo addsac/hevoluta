@@ -23,7 +23,7 @@ module.exports = {
         source: '/password',
         destination: '/',
         permanent: true
-      }
+      },
     ];
   }
 };
