@@ -10,7 +10,7 @@ async function CollectionList() {
 
 export default function Collections() {
   return (
-    <Suspense null>
+    <Suspense fallback={null}>
       <CollectionList />
     </Suspense>
   );

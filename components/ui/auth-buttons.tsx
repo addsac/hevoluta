@@ -57,7 +57,7 @@ export default function AuthButtons({ customer, theme = 'white', token = '' }: {
   };
 
   return (
-    <Suspense null>
+    <Suspense fallback={null}>
       {!customer?.customer ? (
         <Accedi
           flag="login"

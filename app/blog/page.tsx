@@ -41,7 +41,7 @@ export default async function BlogPage() {
         </div>
       </div>
 
-      <Suspense null>
+      <Suspense fallback={null}>
         <BlogArticles />
       </Suspense>
 

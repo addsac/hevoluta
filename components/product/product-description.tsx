@@ -145,7 +145,7 @@ export function ProductDescription({ product, showAccordion = true, reviews = []
 
         {/* accordion - decirptions of the product */}
         {showAccordion && (
-          <Suspense null>
+          <Suspense fallback={null}>
             <ProductAccrodion product={product} />
           </Suspense>
         )}

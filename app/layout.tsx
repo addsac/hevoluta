@@ -97,15 +97,15 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
       <body>
         <Navbar customer={customer} announcements={announcements} />
         
-        <Suspense null>
+        <Suspense fallback={null}>
           <main>{children}</main>
         </Suspense>
 
-        <Suspense null>
+        <Suspense fallback={null}>
           <LastLink register={register} login={login} />
         </Suspense>
         
-        <Suspense null>
+        <Suspense fallback={null}>
           <Footer products={products} />
         </Suspense>
       </body>

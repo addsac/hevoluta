@@ -2,10 +2,10 @@ import { Suspense } from 'react';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <Suspense null>
+    <Suspense fallback={null}>
       <div className="w-full">
         <div className="mx-8 max-w-2xl py-20 sm:mx-auto">
-          <Suspense null>{children}</Suspense>
+          <Suspense fallback={null}>{children}</Suspense>
         </div>
       </div>
       {/* <Footer /> */}

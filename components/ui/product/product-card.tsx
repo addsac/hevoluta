@@ -49,7 +49,7 @@ export default function ProductCard({ item = null } : { item: any }) {
                         <div className={`
                             w-full flex flex-col lg:flex-row gap-20 lg:gap-10
                         `}>
-                            <Suspense null>
+                            <Suspense fallback={null}>
                                 <Gallery
                                     images={item.images.map((image: Image) => ({
                                         src: image.url,
@@ -59,7 +59,7 @@ export default function ProductCard({ item = null } : { item: any }) {
                                 />
                             </Suspense>
 
-                            <Suspense null>
+                            <Suspense fallback={null}>
                                 <ProductDescription product={item} reviews={[]} reviewsData={null} showAccordion={false} modalAddToCart={true} closeModalOnAddToCart={() => setModalRapidAddToCart(false)} />
                             </Suspense>
                         </div>

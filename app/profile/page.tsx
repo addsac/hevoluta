@@ -117,7 +117,7 @@ const ErrorPage = () => {
         <p className="text-title-4">Autenticazione richiesta</p>
         <p>Sembra che tu non sia correttamente autenticato.</p>
       </div>
-      <Suspense null>
+      <Suspense fallback={null}>
         <div className="flex w-screen justify-center">
           <Accedi
             flag="login"

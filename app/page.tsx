@@ -200,7 +200,7 @@ export default async function HomePage() {
       <Divider />
 
       {/* Blog */}
-      <Suspense null>
+      <Suspense fallback={null}>
         <div className="flex flex-col gap-20 px-5 py-[120px]">
           <div className="w-full flex flex-col items-center justify-center gap-20">
             {/* title */}

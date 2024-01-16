@@ -96,7 +96,7 @@ export default async function ProductPage({ params }: { params: { handle: string
 
       <div className="w-screen flex flex-col lg:flex-row items-start gap-16 lg:gap-2.5 px-5 pt-20 pb-[120px]">
         {/* photos */}
-        <Suspense null>
+        <Suspense fallback={null}>
           <Gallery
             images={product.images.map((image: Image) => ({
               src: image.url,
@@ -105,16 +105,16 @@ export default async function ProductPage({ params }: { params: { handle: string
           />
         </Suspense>
 
-        <Suspense null>
+        <Suspense fallback={null}>
           <ProductDescription product={product} reviews={reviews.reviews} reviewsData={reviews} />
         </Suspense>
       </div>
 
-      <Suspense null>
+      <Suspense fallback={null}>
         <ProductDetails product={product} />
       </Suspense>
 
-      <Suspense null>
+      <Suspense fallback={null}>
         <ProductReviews product={product} reviews={reviews.reviews} />
       </Suspense>
 
@@ -148,7 +148,7 @@ async function RelatedProducts({ id }: { id: string }) {
           </div>
 
           {/* rows prodcucts */}
-          <Suspense null>
+          <Suspense fallback={null}>
             <ProductRows items={relatedProducts.slice(0, 4)} />
           </Suspense>
 
@@ -173,7 +173,7 @@ const ErrorPage = () => {
           Ritorna alla lista di prodotti per vedere quelli esistenti. 
         </p>
       </div>
-      <Suspense null>
+      <Suspense fallback={null}>
         <div className="flex w-screen justify-center">
           <Link href="/search">
             <button className="button-primary-base">

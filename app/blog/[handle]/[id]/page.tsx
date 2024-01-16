@@ -177,7 +177,7 @@ const ErrorPage = () => {
           Ritorna alla lista di articoli per vedere quelli esistenti.
         </p>
       </div>
-      <Suspense null>
+      <Suspense fallback={null}>
         <div className="flex w-screen justify-center">
           <Link href="/blog">
             <button className="button-primary-base">

@@ -71,7 +71,7 @@ export default async function SearchLayout({ children } : { children: React.Reac
           </div>
 
           {/* Rows prodcucts */}
-          <Suspense null>
+          <Suspense fallback={null}>
             {children}
           </Suspense>
         </div>
