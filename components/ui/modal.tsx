@@ -9,7 +9,7 @@ const Modal = ({ children = <></>, position = 'right', closeModal = null }: { ch
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ ease: 'easeOut', duration: 0.15 }}
+                transition={{ ease: 'easeOut', duration: 0.2 }}
                 className="fixed inset-0 w-screen h-screen bg-black/[0.26] backdrop-blur-md z-10"
                 onClick={() => closeModal()}
             />
@@ -19,7 +19,7 @@ const Modal = ({ children = <></>, position = 'right', closeModal = null }: { ch
                 initial={{ x: position === 'right' ? '100%' : '-100%' }}
                 animate={{ x: 0 }}
                 exit={{ x: position === 'right' ? '100%' : '-100%' }}
-                transition={{ ease: 'easeOut', duration: 0.15 }}
+                transition={{ ease: 'easeOut', duration: 0.2 }}
                 className={`
                     fixed top-0 bottom-0 bg-white 
                     w-[calc(100vw-20px)] lg:w-[400px] h-screen max-h-screen

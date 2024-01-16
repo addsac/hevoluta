@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import { Suspense } from 'react';
 
 import { getCollections } from 'lib/shopify';
@@ -11,7 +10,7 @@ async function CollectionList() {
 
 export default function Collections() {
   return (
-    <Suspense>
+    <Suspense null>
       <CollectionList />
     </Suspense>
   );

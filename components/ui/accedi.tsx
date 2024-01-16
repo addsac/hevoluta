@@ -44,7 +44,7 @@ export default function Accedi({
       <AnimatePresence>
         {isModalOpen && (
           <Modal position="right" closeModal={closeModal}>
-            <Suspense>
+            <Suspense null>
               <ModalContentRegister
                 flag={page}
                 closeModal={closeModal}

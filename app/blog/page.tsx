@@ -41,7 +41,7 @@ export default async function BlogPage() {
         </div>
       </div>
 
-      <Suspense>
+      <Suspense null>
         <BlogArticles />
       </Suspense>
 

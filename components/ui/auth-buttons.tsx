@@ -1,8 +1,8 @@
 import {
-  loginCustomer,
-  logoutCustomer,
-  registerCustomer,
-  sendResetPasswordEmail
+    loginCustomer,
+    logoutCustomer,
+    registerCustomer,
+    sendResetPasswordEmail
 } from 'lib/shopify';
 import { Customer } from 'lib/shopify/types';
 import { Suspense } from 'react';
@@ -57,7 +57,7 @@ export default function AuthButtons({ customer, theme = 'white', token = '' }: {
   };
 
   return (
-    <Suspense>
+    <Suspense null>
       {!customer?.customer ? (
         <Accedi
           flag="login"

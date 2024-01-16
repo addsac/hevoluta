@@ -18,12 +18,12 @@ export default async function Navbar({ customer, announcements }: { customer: Cu
   return (
     <>
       {/* modal */}
-      <Suspense>
+      <Suspense null>
         <Cookie />
       </Suspense>
 
       <div className="w-screen flex flex-col">
-        <Suspense>
+        <Suspense null>
           <BlackStripe announcements={announcements} />
         </Suspense>
 

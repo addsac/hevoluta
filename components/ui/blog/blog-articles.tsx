@@ -26,7 +26,7 @@ export default async function BlogArticles() {
         {/* <p className="text-title-4 text-center">Ultime ricerche:</p> */}
 
         {/* first blog article */}
-        <Suspense>
+        <Suspense null>
           <BlogCardMax article={firstArticle} />
         </Suspense>
 
@@ -37,7 +37,7 @@ export default async function BlogArticles() {
         />
 
         {/* {articlesFetched.pageInfo.hasNextPage && (
-          <Suspense>
+          <Suspense null>
             <LoadMoreButton fetchMoreArticles={fetchMoreArticles} />
           </Suspense>
         )} */}

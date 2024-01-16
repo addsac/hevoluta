@@ -24,7 +24,7 @@ export default async function ResetPasswordPage({ params }: { params: { handle: 
   return (
     <>
       <div className="w-screen flex flex-col lg:flex-row items-start gap-16 lg:gap-2.5 px-5 pt-20 pb-[120px]">
-        <Suspense>
+        <Suspense null>
           <ModalPasswordReset 
             flag="activate-account"
             activateAccount={registerConfirm}

@@ -49,7 +49,7 @@ export default function ProductCard({ item = null } : { item: any }) {
                         <div className={`
                             w-full flex flex-col lg:flex-row gap-20 lg:gap-10
                         `}>
-                            <Suspense>
+                            <Suspense null>
                                 <Gallery
                                     images={item.images.map((image: Image) => ({
                                         src: image.url,
@@ -59,7 +59,7 @@ export default function ProductCard({ item = null } : { item: any }) {
                                 />
                             </Suspense>
 
-                            <Suspense>
+                            <Suspense null>
                                 <ProductDescription product={item} reviews={[]} reviewsData={null} showAccordion={false} modalAddToCart={true} closeModalOnAddToCart={() => setModalRapidAddToCart(false)} />
                             </Suspense>
                         </div>
@@ -133,7 +133,7 @@ export default function ProductCard({ item = null } : { item: any }) {
 
                     {/* button product info mobile */}
                     <button 
-                        className="absolute lg:hidden bottom-5 right-5 rounded-full hover:bg-gray-100 text-black h-10 w-10 flex items-center justify-center"
+                        className="absolute lg:hidden bottom-5 right-5 rounded-full hover:bg-gray-100 text-black h-12 w-12 flex items-center justify-center"
                         onClick={(e) => {
                             e.preventDefault()
                             setInfoVisibleMobile(!infoVisibleMobile)
@@ -148,7 +148,7 @@ export default function ProductCard({ item = null } : { item: any }) {
 
                     {/* button add to cart */}
                     <button
-                        className="absolute bottom-[60px] lg:bottom-5 right-5 rounded-full hover:bg-gray-100 text-black h-10 w-10 flex items-center justify-center"
+                        className="absolute bottom-[68px] lg:bottom-5 right-5 rounded-full hover:bg-gray-100 text-black h-12 w-12 flex items-center justify-center"
                         onClick={(e) => {
                             e.preventDefault()
                             setModalRapidAddToCart(true)

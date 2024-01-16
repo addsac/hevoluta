@@ -53,7 +53,7 @@ export default async function OrderSuccessPage() {
             </p>
           </div>
 
-          <Suspense>
+          <Suspense null>
             {/* add this js code */}
             <ChatScript />
           </Suspense>
