@@ -31,7 +31,7 @@ export function Gallery({ images, modalAddToCart = false }: { images: { src: str
         {images[imageIndex] && (
           <div className="flex items-center justify-center bg-gradient-gray p-10">
             <Image
-              className="h-auto w-auto max-h-[500px] aspect-scquare bg-gradient-gray"
+              className="h-auto w-auto max-h-[500px] aspect-square"
               width={800}
               height={800}
               alt={images[imageIndex]?.altText as string}
