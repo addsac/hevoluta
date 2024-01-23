@@ -9,7 +9,10 @@ export default function NotFound() {
       <p className="text-body-2">
         Hmm. Non riusciamo a trovare la pagina che stai cercando.
       </p>
-      <Link href="/" className="mt-4">
+      <Link
+        href="/" 
+        className="mt-4"
+      >
         <button className="button-primary-base">
             Torna alla Home
         </button>

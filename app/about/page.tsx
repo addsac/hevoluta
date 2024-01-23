@@ -170,7 +170,7 @@ export default async function AbotuPage() {
                     </p>
                     <p className="text-body-1_190 mt-8 opacity-70">
                         <Balancer>
-                            anche se siamo costantemente e attentamente in ascolto dei problemi e delle esigenze di coloro che scelgono e si affidano a Hevoluta: vogliamo che siano cosmetici funzionali destinai a rimanere nel tempo, perché realizzati con sostanze attive ben studiate, conosciute e con solide fondamenta scientifiche. 
+                            anche se siamo costantemente e attentamente in ascolto dei problemi e delle esigenze di coloro che scelgono e si affidano a Hevoluta: vogliamo che siano cosmetici funzionali e destinati a rimanere nel tempo, perché realizzati con sostanze attive ben studiate, conosciute e con solide fondamenta scientifiche. 
                             Questo comporta essere sempre aggiornati e studiare continuamente i progressi cosmetologici in particolare e scientifici in generale, per poterli tradurre velocemente nei prodotti Hevoluta, per aggiornarli rendendoli sempre “top performance”. Questo è possibile per le piccole dimensioni di Hevoluta, che la rende fluida, arguta, e veloce nell’aggiornare le formulazioni secondo le ultime scoperte, a differenza di grandi aziende e multinazionali (che sono dinosauri in confronto)
                         </Balancer>
                     </p>
