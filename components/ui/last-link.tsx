@@ -49,7 +49,7 @@ export default function LastLink({ register, login }: { register: any, login: an
       setError(res?.customerUserErrors[0]?.message)
     } 
     else{
-      setSuccess('Stai per essere reindirizzato...')
+      setSuccess('Successo, lo sconto ti arriverà via mail.')
 
       const res = await login({
         email,
