@@ -101,9 +101,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
           <main>{children}</main>
         </Suspense>
 
-        <Suspense fallback={null}>
-          <LastLink register={register} login={login} />
-        </Suspense>
+        <LastLink register={register} login={login} />
         
         <Suspense fallback={null}>
           <Footer products={products} />
