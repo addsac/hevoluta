@@ -6,7 +6,6 @@ import { GeistSans } from 'geist/font/sans';
 import { getAnnouncements, getCustomer, getProducts, loginCustomer, registerCustomer } from 'lib/shopify';
 import { ensureStartsWith } from 'lib/utils';
 import localFont from 'next/font/local';
-import Head from 'next/head';
 import { cookies } from 'next/headers';
 import Script from 'next/script';
 import { ReactNode, Suspense } from 'react';
@@ -96,21 +95,23 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
       ${tiempos_normal.variable} ${tiempos_italic.variable}
       ${GeistSans.variable} ${GeistMono.variable} font-sans
     `}>
-      <Head>
-        {/* google analitycs */}
-        <Script 
-          src="https://www.googletagmanager.com/gtag/js?id=G-2P26D2PZB1"
-          strategy="afterInteractive"
-        />
-        <Script strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-2P26D2PZB1');
-          `}
-        </Script>
-      </Head>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-2P26D2PZB1"
+        strategy="afterInteractive"
+        async
+      />
+      <Script
+        id="google-analytics-script"
+        strategy="afterInteractive"
+      >
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-2P26D2PZB1');
+        `}
+      </Script>
+      
       <body>
         <Navbar customer={customer} announcements={announcements} />
         
