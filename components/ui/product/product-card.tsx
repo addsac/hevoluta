@@ -31,6 +31,8 @@ export default function ProductCard({ item = null } : { item: any }) {
     const [modalRapidAddToCart, setModalRapidAddToCart] = useState(false)
 
     useEffect(() => {
+        if(modalRapidAddToCart) return // do nothing if modal is open to save memory, i'm joking, just to avoid the code below to run
+
         // remove image and size from url after modal rapid add to cart is closed
         const nextSearchParams = new URLSearchParams(searchParams.toString())
         nextSearchParams.delete('image')
