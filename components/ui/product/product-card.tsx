@@ -35,7 +35,7 @@ export default function ProductCard({ item = null } : { item: any }) {
         const nextSearchParams = new URLSearchParams(searchParams.toString())
         nextSearchParams.delete('image')
         nextSearchParams.delete('size')
-        router.push(`${pathname}${nextSearchParams}`, {
+        router.push(`${pathname}?${nextSearchParams}`, {
             scroll: false,
         })
     }, [modalRapidAddToCart])

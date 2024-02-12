@@ -162,7 +162,7 @@ async function RelatedProducts({ id }: { id: string }) {
   );
 }
 
-const ErrorPage = () => {
+const ErrorPage = () => { 
   return (
     <>
       <div className="mb-10 mt-24 flex w-screen flex-col items-center justify-center gap-8 px-5 text-center">
