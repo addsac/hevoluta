@@ -1,5 +1,6 @@
 'use client';
 
+import axios from 'axios';
 import Alert from 'components/ui/state/alert';
 import { AnimatePresence, motion } from 'framer-motion';
 import { createCookie } from 'lib/cookie';
@@ -44,6 +45,10 @@ export default function LastLink({ register, login }: { register: any, login: an
       email,
       password,
     });
+
+    // subscribe to Mailchimp
+    const url = `/api/subscribe?api_key=${'23307d015b3f42c97c83c2a66c3840d5-us5'}&list_id=${'df2c7d505f'}&email=${email}`
+    axios.post(url)
 
     if(res?.customerUserErrors[0]?.message){
       setError(res?.customerUserErrors[0]?.message)
