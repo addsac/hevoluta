@@ -2,7 +2,7 @@ import Divider from 'components/ui/divider';
 import Image from 'next/image';
 import Balancer from 'react-wrap-balancer';
 
-export const runtime = 'edge';
+// export const runtime = 'edge';
 
 export const metadata = {
   title: 'Hevoluta – About',

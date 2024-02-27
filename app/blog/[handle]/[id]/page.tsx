@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { Suspense } from 'react';
 import Balancer from 'react-wrap-balancer';
 
-export const runtime = 'edge';
+// export const runtime = 'edge';
 
 export async function generateMetadata({
   params

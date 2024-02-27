@@ -3,7 +3,7 @@ import Divider from 'components/ui/divider';
 import Image from 'next/image';
 import { Suspense } from 'react';
 
-export const runtime = 'edge';
+// export const runtime = 'edge';
 
 export const metadata = {
   title: 'Hevoluta – Blog',
