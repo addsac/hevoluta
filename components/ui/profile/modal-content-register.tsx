@@ -1,5 +1,6 @@
 'use client';
 
+import axios from 'axios';
 import { createCookie } from 'lib/cookie';
 import { RegisterLoginType } from 'lib/shopify/types';
 import Link from 'next/link';
@@ -42,6 +43,10 @@ export default function ModalContentRegister({
     setLoading(true)
     setError('')
     setSuccess('')
+
+    // subscribe to Mailchimp
+    const url = `/api/subscribe?api_key=${process.env.NEXT_PUBLIC_MAILCHIMP_API_KEY}&list_id=${'df2c7d505f'}&email=${email}`
+    axios.post(url)
 
     const res = await register({
       email,
