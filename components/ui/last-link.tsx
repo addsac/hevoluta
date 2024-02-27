@@ -47,7 +47,7 @@ export default function LastLink({ register, login }: { register: any, login: an
     });
 
     // subscribe to Mailchimp
-    const url = `/api/subscribe?api_key=${'23307d015b3f42c97c83c2a66c3840d5-us5'}&list_id=${'df2c7d505f'}&email=${email}`
+    const url = `/api/subscribe?api_key=${process.env.NEXT_PUBLIC_MAILCHIMP_API_KEY}&list_id=${'df2c7d505f'}&email=${email}`
     axios.post(url)
 
     if(res?.customerUserErrors[0]?.message){
