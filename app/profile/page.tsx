@@ -6,7 +6,7 @@ import { InputAddress } from 'lib/shopify/types';
 import { cookies } from 'next/headers';
 import { Suspense } from 'react';
 
-export const runtime = 'edge';
+// export const runtime = 'edge';
 
 export const metadata = {
   title: 'Hevoluta – Profilo',
