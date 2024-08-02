@@ -1,5 +1,6 @@
 import Footer from 'components/layout/footer';
 import Navbar from 'components/layout/navbar';
+import ChatScript from 'components/ui/chat/chat-script';
 import LastLink from 'components/ui/last-link';
 import { GeistMono } from 'geist/font/mono';
 import { GeistSans } from 'geist/font/sans';
@@ -111,6 +112,11 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
           gtag('config', 'G-2P26D2PZB1');
         `}
       </Script>
+
+      <Suspense fallback={null}>
+        {/* add this js code */}
+        <ChatScript />
+      </Suspense>
       
       <body>
         <Navbar customer={customer} announcements={announcements} />

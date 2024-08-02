@@ -1,8 +1,6 @@
-import ChatScript from 'components/ui/chat/chat-script';
 import Divider from 'components/ui/divider';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Suspense } from 'react';
 
 // export const runtime = 'edge';
 
@@ -52,11 +50,6 @@ export default async function OrderSuccessPage() {
               Scrivici pure per qualsiasi informazione, siamo a tua disposizione per ogni chiarimento riguardo i nostri prodotti.
             </p>
           </div>
-
-          <Suspense fallback={null}>
-            {/* add this js code */}
-            <ChatScript />
-          </Suspense>
         </div>
       </div>
 
