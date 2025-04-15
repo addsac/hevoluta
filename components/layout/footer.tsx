@@ -89,7 +89,7 @@ export default async function Footer({
             </p>
 
             <div className="flex flex-col items-start gap-5 lg:gap-[27">
-              <Link href="mailto:support@hevoluta.com" className="button-text"> support@hevoluta.com </Link>
+              <Link href="mailto:moirabonaldo@gmail.com" className="button-text"> moirabonaldo@gmail.com </Link>
               <p> 
                 <Balancer>
                   Siamo a tua disposizione in chat dal lunedì al venerdi (CET), dalle 9:00 alle 12:00 e dalle 15:00 alle 18:00. 

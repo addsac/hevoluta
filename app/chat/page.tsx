@@ -36,8 +36,8 @@ export default async function OrderSuccessPage() {
             />
             <p className="text-body-1_170 opacity-70 mt-16">
               Se vuoi scriverci una mail invece, puoi farlo a 
-              <Link href="mailto:support@hevoluta.com" className="button-text ml-2 inline px-2 py-1 bg-gray-200">
-                support@hevoluta.com
+              <Link href="mailto:moirabonaldo@gmail.com" className="button-text ml-2 inline px-2 py-1 bg-gray-200">
+                moirabonaldo@gmail.com
               </Link>
             </p>
             <p className="text-body-1_170 opacity-70">
