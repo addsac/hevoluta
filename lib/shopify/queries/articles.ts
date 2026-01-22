@@ -2,13 +2,23 @@ import articleFragment from "../fragments/article";
 
 export const getArticlesQuery = /* GraphQL */ `
   query getArticles(
-    $first: Int!
+    $first: Int
+    $last: Int
     $query: String!
     $sortKey: ArticleSortKeys
     $reverse: Boolean
     $after: String
+    $before: String
   ) {
-    articles(first: $first, sortKey: $sortKey, reverse: $reverse, query: $query, after: $after) {
+    articles(
+      first: $first
+      last: $last
+      sortKey: $sortKey
+      reverse: $reverse
+      query: $query
+      after: $after
+      before: $before
+    ) {
       pageInfo {
         endCursor
         hasNextPage

@@ -34,14 +34,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // articles
   const articlesFetched = await getArticles({
-    first: 50,
+    first: 200,
     title: `title:${process.env.BLOG_TITLE}`,
     sortKey: 'PUBLISHED_AT',
-    reverse: true,
+    reverse: true
   });
 
   const articles = articlesFetched.edges.map((article) => ({
-    url: `${baseUrl}/blog/${article.handle}/${String(article.id).replace('gid://shopify/Article/', '')}`,
+    url: `${baseUrl}/blog/${article.handle}/${String(article.id).replace(
+      'gid://shopify/Article/',
+      ''
+    )}`,
     lastModified: article.updatedAt
   }));
 

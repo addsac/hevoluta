@@ -785,25 +785,31 @@ export async function getBlogs(): Promise<ShopifyBlog[]> {
 
 export async function getArticles({
   first,
+  last,
   title,
   sortKey,
   reverse,
   after,
+  before,
 } : {
-  first: number,
+  first?: number,
+  last?: number,
   title: string,
   sortKey: string,
   reverse: boolean,
   after?: string,
+  before?: string,
 }): Promise<ShopifyArticles> {
   const res = await shopifyFetch<ShopifyArticlesOperation>({
     query: getArticlesQuery,
     variables: {
       first: first,
+      last: last,
       query: title,
       reverse: reverse,
       sortKey: sortKey === 'CREATED_AT' ? 'CREATED' : sortKey,
-      after: after
+      after: after,
+      before: before
     },
     cache: 'no-store'
   });

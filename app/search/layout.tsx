@@ -1,5 +1,6 @@
 import Collections from 'components/layout/search/collections';
 import FilterItemDropdown from 'components/layout/search/filter/dropdown';
+import ProductCategories from 'components/layout/search/product-categories';
 import Divider from 'components/ui/divider';
 import { sorting } from 'lib/constants';
 import { getCollections } from 'lib/shopify';
@@ -38,7 +39,7 @@ export default async function SearchLayout({ children } : { children: React.Reac
       </div>
 
       {/* categories */}
-      {/* <ProductCategories collections={collections} /> */}
+      <ProductCategories collections={collections} />
 
       {/* Products */}
       <div id="products-container" className="flex flex-col gap-20 px-5 py-[120px]">
@@ -69,6 +70,9 @@ export default async function SearchLayout({ children } : { children: React.Reac
               <FilterItemDropdown list={sorting} />
             </div>
           </div>
+
+          {/* categories */}
+          {/* ... */}
 
           {/* Rows prodcucts */}
           <Suspense fallback={null}>

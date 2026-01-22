@@ -13,7 +13,11 @@ export const metadata = {
   }
 };
 
-export default async function BlogPage() {
+export default async function BlogPage({
+  searchParams
+}: {
+  searchParams?: { [key: string]: string | string[] | undefined };
+}) {
   // const blogs = await getBlogs();
 
   return (
@@ -42,7 +46,11 @@ export default async function BlogPage() {
       </div>
 
       <Suspense fallback={null}>
-        <BlogArticles />
+        <BlogArticles
+          after={searchParams?.after}
+          before={searchParams?.before}
+          page={searchParams?.page}
+        />
       </Suspense>
 
       {/* divider */}
