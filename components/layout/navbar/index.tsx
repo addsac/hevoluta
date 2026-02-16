@@ -43,6 +43,13 @@ export default async function Navbar({ customer, announcements }: { customer: Cu
               </Link>
             </div>
             <div className="hidden lg:block">
+              <Link href="/blog"> 
+                <button className="button-menu">
+                  Blog
+                </button>
+              </Link>
+            </div>
+            <div className="hidden lg:block">
               <Link href="/chat"> 
                 <button className="button-menu"> 
                   <div className="button-ball"></div>
