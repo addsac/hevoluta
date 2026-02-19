@@ -127,7 +127,7 @@ export default async function ArticlePage({ params }: { params: { handle: string
               {article.authorV2.name === 'Moira Bonaldo' && (
                 <div className="flex h-20 w-20 items-center justify-center overflow-clip rounded-full border border-gray-100">
                   <Image
-                    src="/img/blog/author.png"
+                    src="/img/blog/author.jpg"
                     alt=""
                     width={80}
                     height={80}
