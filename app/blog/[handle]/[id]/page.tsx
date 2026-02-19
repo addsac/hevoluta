@@ -12,9 +12,9 @@ import Balancer from 'react-wrap-balancer';
 export async function generateMetadata({
   params
 }: {
-  params: { 
-    handle: string,
-    id: string
+  params: {
+    handle: string;
+    id: string;
   };
 }): Promise<Metadata | JSX.Element> {
   const article = await getArticle(String('gid://shopify/Article/' + params.id));
@@ -45,7 +45,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function ArticlePage({ params }: { params: { handle: string, id: string } }) {
+export default async function ArticlePage({ params }: { params: { handle: string; id: string } }) {
   const article = await getArticle(String('gid://shopify/Article/' + params.id));
 
   if (!article) return ErrorPage();
@@ -86,82 +86,74 @@ export default async function ArticlePage({ params }: { params: { handle: string
           __html: JSON.stringify(articleJsonLd)
         }}
       />
-      
-      <div className="w-screen flex lg:gap-2.5 px-8 xl:px-32 pt-20 pb-[120px]">
-        <div className="hidden lg:block w-2/12"></div> {/* margin */}
-        <div className="w-full lg:w-8/12 flex flex-col gap-20">
-            {/* header text */}
-            <div className="flex flex-col gap-8">
-                <p className="text-body-1 opacity-50">
-                    {article.tags.map((tag: string, index: number) => (
-                      <span key={'blog-tag-'+index}>
-                        {tag}
-                        {(index < article.tags.length - 1) && <>&nbsp;&nbsp;-&nbsp;&nbsp;</>}
-                      </span>
-                    ))}
-                </p>
-                <h1 className="text-title-2">
-                  <Balancer>
-                    {article.title}
-                  </Balancer>
-                </h1>
-            </div>
 
-            {/* image */}
-            <div className="w-full h-[320px] lg:h-[600px] flex flex-col items-start bg-black">
-                <Image
-                    src={article.image ? article.image.url : '/img/background/background-1.jpg'}
-                    alt=""
-                    width={980}
-                    height={600}
-                    className="w-full h-full object-cover opacity-80 select-none"
-                    priority={true}
-                    draggable={false}
-                />
-            </div>
+      <div className="flex w-screen px-8 pb-[120px] pt-20 lg:gap-2.5 xl:px-32">
+        <div className="hidden w-2/12 lg:block"></div> {/* margin */}
+        <div className="flex w-full flex-col gap-20 lg:w-8/12">
+          {/* header text */}
+          <div className="flex flex-col gap-8">
+            <p className="text-body-1 opacity-50">
+              {article.tags.map((tag: string, index: number) => (
+                <span key={'blog-tag-' + index}>
+                  {tag}
+                  {index < article.tags.length - 1 && <>&nbsp;&nbsp;-&nbsp;&nbsp;</>}
+                </span>
+              ))}
+            </p>
+            <h1 className="text-title-2">
+              <Balancer>{article.title}</Balancer>
+            </h1>
+          </div>
 
-            {/* author */}
-            <div className="flex flex-col lg:flex-row justify-between items-center gap-8">
-                <p className="opacity-50">
-                    <PublishedDateFormatted 
-                        published={article.publishedAt}
-                    />
-                </p>
-                <div className="shrink-0 flex items-center gap-5">
-                    {article.authorV2.name === 'Moira Bonaldo' && (
-                      <div className="w-14 h-14 rounded-full border border-gray-100 flex items-center justify-center overflow-clip">
-                        <Image 
-                          src="/img/blog/author.jpg"
-                          alt=""
-                          width={80}
-                          height={80}
-                          className='w-full h-full object-cover'
-                        />
-                      </div>
-                    )}
-                    <p className="opacity-50">
-                        Scritto da: {article.authorV2.name}
-                    </p>
-                </div>
-            </div>
-
-            {/* divider */}
-            <Divider />
-
-            <div
-                className="blog-content-wrapper"
-                dangerouslySetInnerHTML={{ __html: article.contentHtml as any }}
+          {/* image */}
+          <div className="flex h-[320px] w-full flex-col items-start bg-black lg:h-[600px]">
+            <Image
+              src={article.image ? article.image.url : '/img/background/background-1.jpg'}
+              alt=""
+              width={980}
+              height={600}
+              className="h-full w-full select-none object-cover opacity-80"
+              priority={true}
+              draggable={false}
             />
+          </div>
 
-            <Link href="/blog">
-                <button className="button-primary-base">
-                    Torna a tutti gli articoli
-                </button>
-            </Link>
+          {/* author */}
+          <div className="flex flex-col items-center justify-between gap-8 lg:flex-row">
+            <p className="opacity-50">
+              <PublishedDateFormatted published={article.publishedAt} />
+            </p>
+            <div className="flex shrink-0 items-center gap-5">
+              {article.authorV2.name === 'Moira Bonaldo' && (
+                <div className="flex h-20 w-20 items-center justify-center overflow-clip rounded-full border border-gray-100">
+                  <Image
+                    src="/img/blog/author.png"
+                    alt=""
+                    width={80}
+                    height={80}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+              )}
+              <p className="opacity-50">Scritto da: {article.authorV2.name}</p>
+            </div>
+          </div>
+
+          {/* divider */}
+          <Divider />
+
+          <div
+            className="blog-content-wrapper"
+            dangerouslySetInnerHTML={{ __html: article.contentHtml as any }}
+          />
+
+          <Link href="/blog">
+            <button className="button-primary-base">Torna a tutti gli articoli</button>
+          </Link>
         </div>
-        <div className="hidden lg:block w-2/12"></div> {/* margin */}
+        <div className="hidden w-2/12 lg:block"></div> {/* margin */}
       </div>
-      
+
       {/* divider */}
       <Divider />
     </>
@@ -173,16 +165,12 @@ const ErrorPage = () => {
     <>
       <div className="mb-10 mt-24 flex w-screen flex-col items-center justify-center gap-8 px-5 text-center">
         <p className="text-title-4">Questo articolo non è più disponibile</p>
-        <p>
-          Ritorna alla lista di articoli per vedere quelli esistenti.
-        </p>
+        <p>Ritorna alla lista di articoli per vedere quelli esistenti.</p>
       </div>
       <Suspense fallback={null}>
         <div className="flex w-screen justify-center">
           <Link href="/blog">
-            <button className="button-primary-base">
-              Torna al blog
-            </button>
+            <button className="button-primary-base">Torna al blog</button>
           </Link>
         </div>
       </Suspense>
