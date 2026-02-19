@@ -220,7 +220,7 @@ input[type='search'] {
   @apply flex flex-col;
 }
 .blog-content-wrapper table {
-  @apply w-100;
+  @apply w-full;
 }
 .blog-content-wrapper img {
   @apply my-8 h-auto w-full lg:w-2/3;
