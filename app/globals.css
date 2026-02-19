@@ -20,192 +20,198 @@ button {
   @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-50 dark:focus-visible:ring-neutral-600 dark:focus-visible:ring-offset-neutral-900;
 } */
 
-html, body{
-  @apply overflow-x-hidden text-15 bg-white text-black selection:bg-sky-200;
+html,
+body {
+  @apply overflow-x-hidden bg-white text-15 text-black selection:bg-sky-200;
 }
 
-p{
+p {
   letter-spacing: 0.2px;
   line-height: 140%;
 }
 
 /* button */
-button{
-  @apply active:outline-none focus:outline-none active:scale-[0.97] disabled:opacity-50 disabled:cursor-not-allowed;
+button {
+  @apply focus:outline-none active:scale-[0.97] active:outline-none disabled:cursor-not-allowed disabled:opacity-50;
 }
 /* no scale */
-.button-no-scale{
+.button-no-scale {
   @apply active:scale-100;
 }
-.button-text{
-  @apply border-b border-transparent hover:border-black leading-['auto'] cursor-pointer;
+.button-text {
+  @apply cursor-pointer border-b border-transparent leading-['auto'] hover:border-black;
 }
-.button-text-blue{
-  @apply border-b border-transparent hover:border-blue-600 text-blue-600 leading-['auto'] cursor-pointer;
+.button-text-blue {
+  @apply cursor-pointer border-b border-transparent leading-['auto'] text-blue-600 hover:border-blue-600;
 }
-.button-text-visible-underline{
-  @apply border-b border-transparent border-black hover:opacity-50 leading-['auto'] cursor-pointer;
+.button-text-visible-underline {
+  @apply cursor-pointer border-b border-black border-transparent leading-['auto'] hover:opacity-50;
 }
-.button-icon{
-  @apply rounded-full bg-white text-black hover:bg-gray-100 px-2.5 py-2.5 flex items-center justify-center;
+.button-icon {
+  @apply flex items-center justify-center rounded-full bg-white px-2.5 py-2.5 text-black hover:bg-gray-100;
 }
-.button-primary-lg{
-  @apply bg-black text-white tracking-wide px-8 py-[18px];
+.button-primary-lg {
+  @apply bg-black px-8 py-[18px] tracking-wide text-white;
 }
-.button-primary-base{
-  @apply bg-black text-white px-4 py-[12px];
+.button-primary-base {
+  @apply bg-black px-4 py-[12px] text-white;
 }
-.button-secondary-lg{
-  @apply bg-white text-black px-8 py-[18px];
+.button-secondary-lg {
+  @apply bg-white px-8 py-[18px] text-black;
 }
-.button-secondary-base{
-  @apply bg-white text-black border border-black px-4 py-[12px];
+.button-secondary-base {
+  @apply border border-black bg-white px-4 py-[12px] text-black;
 }
-.button-cips-product-inactive{
-  @apply text-body-1 font-mono border-b border-transparent hover:border-white leading-['auto'] cursor-pointer text-white opacity-50;
+.button-cips-product-inactive {
+  @apply text-body-1 cursor-pointer border-b border-transparent font-mono leading-['auto'] text-white opacity-50 hover:border-white;
 }
-.button-cips-product-active{
-  @apply text-body-1 font-mono border-b border-white leading-['auto'] cursor-pointer text-white;
+.button-cips-product-active {
+  @apply text-body-1 cursor-pointer border-b border-white font-mono leading-['auto'] text-white;
 }
-.button-cips-menu-inactive{
-  @apply hover:bg-gray-100 rounded-full  px-4 py-[12px];
+.button-cips-menu-inactive {
+  @apply rounded-full px-4  py-[12px] hover:bg-gray-100;
 }
-.button-cips-menu-active{
-  @apply bg-gray-100 rounded-full px-4 py-[12px];
+.button-cips-menu-active {
+  @apply rounded-full bg-gray-100 px-4 py-[12px];
 }
-.button-menu-cart{
-  @apply rounded-full bg-gray-100 text-13 text-black hover:bg-gray-200 tracking-[0.2px] px-4 py-2.5 flex items-center justify-center gap-2;
+.button-menu-cart {
+  @apply flex items-center justify-center gap-2 rounded-full bg-gray-100 px-4 py-2.5 text-13 tracking-[0.2px] text-black hover:bg-gray-200;
 }
-.button-menu{
-  @apply rounded-full text-15 bg-white text-black hover:bg-gray-100 tracking-[0.2px] px-4 py-2.5 flex items-center justify-center gap-2;
+.button-menu {
+  @apply flex items-center justify-center gap-2 rounded-full bg-white px-4 py-2.5 text-15 tracking-[0.2px] text-black hover:bg-gray-100;
 }
-.button-menu-dark{
-  @apply text-15 bg-black text-white tracking-[0.2px] px-4 py-2.5 flex items-center justify-center gap-2;
+.button-menu-dark {
+  @apply flex items-center justify-center gap-2 bg-black px-4 py-2.5 text-15 tracking-[0.2px] text-white;
 }
-.button-ball{
-  @apply w-1.5 h-1.5 rounded-full bg-black;
+.button-ball {
+  @apply h-1.5 w-1.5 rounded-full bg-black;
 }
-.button-close-modal{
-  @apply flex items-center justify-center hover:bg-gray-100 h-10 w-10;
+.button-close-modal {
+  @apply flex h-10 w-10 items-center justify-center hover:bg-gray-100;
 }
-.button-quantity{
-  @apply h-7 w-7 flex items-center justify-center rounded-full border border-black hover:bg-gray-100;
+.button-quantity {
+  @apply flex h-7 w-7 items-center justify-center rounded-full border border-black hover:bg-gray-100;
 }
 
 /* font */
 .tiempos-font {
   @apply font-tiempos-normal;
   font-weight: 300;
-}  
+}
 .tiempos-font-italic {
   @apply font-tiempos-italic;
   font-weight: 300;
 }
 
 /* texts */
-.text-title-1{
-  @apply text-48 lg:text-70 tiempos-font;
+.text-title-1 {
+  @apply tiempos-font text-48 lg:text-70;
   letter-spacing: 0.8px;
   line-height: 120% !important;
 }
-.text-title-2{
-  @apply text-32 lg:text-48 tiempos-font;
+.text-title-2 {
+  @apply tiempos-font text-32 lg:text-48;
   letter-spacing: 0.8px;
 }
-.text-title-3{
-  @apply text-26 lg:text-32 font-light tiempos-font;
+.text-title-3 {
+  @apply tiempos-font text-26 font-light lg:text-32;
   letter-spacing: 0.8px;
   line-height: 150% !important;
 }
-.text-title-4{
-  @apply text-20 lg:text-26 font-light tiempos-font;
+.text-title-4 {
+  @apply tiempos-font text-20 font-light lg:text-26;
   line-height: 150% !important;
   letter-spacing: 0.8px;
 }
-.text-title-4_170{
-  @apply text-20 lg:text-26 font-light tiempos-font;
+.text-title-4_170 {
+  @apply tiempos-font text-20 font-light lg:text-26;
   line-height: 170% !important;
   letter-spacing: 0.8px;
 }
-.text-title-5{
-  @apply text-17 lg:text-20 font-light tiempos-font;
+.text-title-5 {
+  @apply tiempos-font text-17 font-light lg:text-20;
   line-height: 170% !important;
   letter-spacing: 0.6px;
 }
-.text-title-5_190{
-  @apply text-17 lg:text-20 font-light tiempos-font;
+.text-title-5_190 {
+  @apply tiempos-font text-17 font-light lg:text-20;
   line-height: 190% !important;
   letter-spacing: 0.6px;
 }
-.text-title-6{
-  @apply text-15 lg:text-17 font-light tiempos-font;
+.text-title-6 {
+  @apply tiempos-font text-15 font-light lg:text-17;
   line-height: 140% !important;
   letter-spacing: 0.5px;
 }
-.text-title-7{
-  @apply text-15 font-light tiempos-font;
+.text-title-7 {
+  @apply tiempos-font text-15 font-light;
   line-height: 140% !important;
   letter-spacing: 0.5px;
 }
-.text-body-1_3{
+.text-body-1_3 {
   @apply text-12 tracking-[-0.1px];
   line-height: 140% !important;
 }
-.text-body-1_2{
+.text-body-1_2 {
   @apply text-13 tracking-[-0.1px];
   line-height: 140% !important;
 }
-.text-body-1_2_170{
+.text-body-1_2_170 {
   @apply text-13 tracking-[-0.1px];
   line-height: 170% !important;
 }
-.text-body-1{
+.text-body-1 {
   @apply text-15 tracking-[-0.1px];
   line-height: 140% !important;
 }
-.text-body-1_170{
+.text-body-1_170 {
   @apply text-15 tracking-[-0.1px];
   line-height: 170% !important;
 }
-.text-body-1_190{
+.text-body-1_190 {
   @apply text-15 tracking-[-0.1px];
   line-height: 190% !important;
 }
-.text-body-2{
+.text-body-2 {
   @apply text-17 tracking-[-0.1px];
   line-height: 170% !important;
 }
-.text-body-2_190{
+.text-body-2_190 {
   @apply text-17 tracking-[-0.1px];
   line-height: 190% !important;
 }
-.text-body-3{
-  @apply text-17 lg:text-19 tracking-[-0.1px];
+.text-body-3 {
+  @apply text-17 tracking-[-0.1px] lg:text-19;
   line-height: 140% !important;
 }
 
 /* gradient */
-.bg-gradient-gray{
+.bg-gradient-gray {
   @apply bg-gradient-to-b from-gray-100 to-transparent;
 }
-.bg-citation{
-  background: linear-gradient(270deg, rgba(241, 241, 242, 0.00) 0%, rgba(241, 241, 242, 0.80) 48.71%, rgba(241, 241, 242, 0.00) 100%);
+.bg-citation {
+  background: linear-gradient(
+    270deg,
+    rgba(241, 241, 242, 0) 0%,
+    rgba(241, 241, 242, 0.8) 48.71%,
+    rgba(241, 241, 242, 0) 100%
+  );
 }
 
 /* input */
-.input-base{
-  @apply bg-gray-50 border border-black h-11 indent-5 placeholder:opacity-50 focus:outline-none;
+.input-base {
+  @apply h-11 border border-black bg-gray-50 indent-5 placeholder:opacity-50 focus:outline-none;
 }
-.textarea-base{
-  @apply bg-gray-50 border border-black p-5 min-h-[150px] placeholder:opacity-50 focus:outline-none;
+.textarea-base {
+  @apply min-h-[150px] border border-black bg-gray-50 p-5 placeholder:opacity-50 focus:outline-none;
 }
-.drop-base{
-  @apply border border-gray-200 hover:border-gray-300 cursor-pointer h-11 indent-2.5 placeholder:opacity-50 focus:outline-none;
+.drop-base {
+  @apply h-11 cursor-pointer border border-gray-200 indent-2.5 placeholder:opacity-50 hover:border-gray-300 focus:outline-none;
 }
-.checkbox-base{
-  @apply w-5 h-5;
+.checkbox-base {
+  @apply h-5 w-5;
 }
-input[type="search"] {
+input[type='search'] {
   -webkit-appearance: none;
 }
 
@@ -213,28 +219,35 @@ input[type="search"] {
 .blog-content-wrapper {
   @apply flex flex-col;
 }
-.blog-content-wrapper img{
-  @apply w-full lg:w-2/3 h-auto my-8;
+.blog-content-wrapper table {
+  @apply w-100;
 }
-.blog-content-wrapper button, .blog-content-wrapper a{
-  @apply active:outline-none focus:outline-none active:scale-[0.97] disabled:opacity-50 disabled:cursor-not-allowed button-text-blue;
+.blog-content-wrapper img {
+  @apply my-8 h-auto w-full lg:w-2/3;
 }
-.blog-content-wrapper h1{
+.blog-content-wrapper button,
+.blog-content-wrapper a {
+  @apply button-text-blue focus:outline-none active:scale-[0.97] active:outline-none disabled:cursor-not-allowed disabled:opacity-50;
+}
+.blog-content-wrapper h1 {
   @apply text-title-2 mb-10 mt-5;
 }
-.blog-content-wrapper h2{
+.blog-content-wrapper h2 {
   @apply text-title-3 mb-10 mt-5;
 }
-.blog-content-wrapper p, .blog-content-wrapper span, .blog-content-wrapper ul, .blog-content-wrapper li{
+.blog-content-wrapper p,
+.blog-content-wrapper span,
+.blog-content-wrapper ul,
+.blog-content-wrapper li {
   @apply text-17;
   line-height: 220% !important;
 }
-.blog-content-wrapper ul{
-  @apply list-disc list-inside mb-2;
+.blog-content-wrapper ul {
+  @apply mb-2 list-inside list-disc;
 }
-.blog-content-wrapper li{
+.blog-content-wrapper li {
   @apply mb-2;
 }
-.blog-content-wrapper b{
+.blog-content-wrapper b {
   @apply !font-semibold;
 }
