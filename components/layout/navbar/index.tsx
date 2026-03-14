@@ -11,9 +11,15 @@ import { Suspense } from 'react';
 
 const { SITE_NAME } = process.env;
 
-export default async function Navbar({ customer, announcements }: { customer: Customer, announcements: any }) {
+export default async function Navbar({
+  customer,
+  announcements
+}: {
+  customer: Customer;
+  announcements: any;
+}) {
   // const menu = await getMenu('next-js-frontend-header-menu');
-  const token = cookies().get('login-token')?.value
+  const token = cookies().get('login-token')?.value;
 
   return (
     <>
@@ -22,38 +28,39 @@ export default async function Navbar({ customer, announcements }: { customer: Cu
         <Cookie />
       </Suspense>
 
-      <div className="w-screen flex flex-col">
+      <div className="flex w-screen flex-col">
         <Suspense fallback={null}>
           <BlackStripe announcements={announcements} />
         </Suspense>
 
         {/* navigation menu */}
-        <nav className="w-full px-5 py-4 lg:py-5 flex items-center justify-between bg-white border-b border-gray-200">
+        <nav className="flex w-full items-center justify-between border-b border-gray-200 bg-white px-5 py-4 lg:py-5">
           {/* left buttons */}
-          <div className="flex items-center w-full">
+          <div className="flex w-full items-center">
             {/* button on the left of the header with a server component 
             as a child, because it's not possible to use server functions 
             inside a client component */}
             <Menu />
             <div className="hidden lg:block">
-              <Link href="/search"> 
-                <button className="button-menu">
-                  Prodotti
-                </button>
+              <Link href="/search">
+                <button className="button-menu">Prodotti</button>
               </Link>
             </div>
             <div className="hidden lg:block">
-              <Link href="/blog"> 
-                <button className="button-menu">
-                  Blog
-                </button>
+              <Link href="/blog">
+                <button className="button-menu">Blog</button>
               </Link>
             </div>
             <div className="hidden lg:block">
-              <Link href="/chat"> 
-                <button className="button-menu"> 
+              <Link href="/about">
+                <button className="button-menu">Chi siamo</button>
+              </Link>
+            </div>
+            <div className="hidden lg:block">
+              <Link href="/chat">
+                <button className="button-menu">
                   <div className="button-ball"></div>
-                  Chatta con noi 
+                  Chatta con noi
                 </button>
               </Link>
             </div>
@@ -61,21 +68,14 @@ export default async function Navbar({ customer, announcements }: { customer: Cu
 
           {/* logo */}
           <Link href="/" className="shrink-0">
-            <img
-              src="/img/logo.png"
-              alt="logo"
-              className="h-4 lg:h-5 w-auto"
-            />
+            <img src="/img/logo.png" alt="logo" className="h-4 w-auto lg:h-5" />
           </Link>
 
           {/* right buttons */}
-          <div className="flex items-center justify-end w-full">
-            <AuthButtons 
-              customer={customer}
-              token={token}
-            />
-            <Suspense 
-              // fallback={<OpenCart />}
+          <div className="flex w-full items-center justify-end">
+            <AuthButtons customer={customer} token={token} />
+            <Suspense
+            // fallback={<OpenCart />}
             >
               <Cart />
             </Suspense>
