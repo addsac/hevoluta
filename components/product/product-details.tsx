@@ -17,7 +17,7 @@ export default function ProductDetails({ product = null }: { product: any }) {
             }`}
             onClick={() => setOpenText(0)}
           >
-            Storia del prodotto
+            Domande frequenti
           </button>
           <button
             className={`${
@@ -44,7 +44,7 @@ export default function ProductDetails({ product = null }: { product: any }) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ ease: 'linear', duration: 0.2 }}
-              className="text-title-4_170 lg:text-body-2 text-white lg:pr-20 whitespace-pre-line"
+              className="text-title-6 lg:text-body-2 text-white lg:pr-20 whitespace-pre-line"
             >
               {product?.metafields.find((metafield: any) => metafield?.key == 'storia')?.value?.trim()}
             </motion.p>
@@ -58,7 +58,7 @@ export default function ProductDetails({ product = null }: { product: any }) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ ease: 'linear', duration: 0.2 }}
-              className="text-title-4_170 lg:text-body-2 text-white lg:pr-20 whitespace-pre-line"
+              className="text-title-6 lg:text-body-2 text-white lg:pr-20 whitespace-pre-line"
             >
               {product?.metafields.find((metafield: any) => metafield?.key == 'indicazioni_prodotto')?.value?.trim()}
             </motion.p>
@@ -72,7 +72,7 @@ export default function ProductDetails({ product = null }: { product: any }) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ ease: 'linear', duration: 0.2 }}
-              className="text-title-4_170 lg:text-body-2 text-white lg:pr-20 whitespace-pre-line"
+              className="text-title-6 lg:text-body-2 text-white lg:pr-20 whitespace-pre-line"
             >
               {product?.metafields.find((metafield: any) => metafield?.key == 'cura_e_mantenimento')?.value?.trim()}
             </motion.p>
