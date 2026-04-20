@@ -366,8 +366,7 @@ export async function getCollection(handle: string): Promise<Collection | undefi
     tags: [TAGS.collections],
     variables: {
       handle
-    },
-    cache: 'no-store'
+    }
   });
 
   return reshapeCollection(res.body.data.collection);
@@ -389,8 +388,7 @@ export async function getCollectionProducts({
       handle: collection,
       reverse,
       sortKey: sortKey === 'CREATED_AT' ? 'CREATED' : sortKey
-    },
-    cache: 'no-store'
+    }
   });
 
   if (!res.body.data.collection) {
@@ -404,8 +402,7 @@ export async function getCollectionProducts({
 export async function getCollections(): Promise<Collection[]> {
   const res = await shopifyFetch<ShopifyCollectionsOperation>({
     query: getCollectionsQuery,
-    tags: [TAGS.collections],
-    cache: 'no-store'
+    tags: [TAGS.collections]
   });
   const shopifyCollections = removeEdgesAndNodes(res.body?.data?.collections);
   const collections = [
@@ -476,8 +473,7 @@ export async function getProduct(handle: string): Promise<Product | undefined> {
     tags: [TAGS.products],
     variables: {
       handle
-    },
-    cache: 'no-store'
+    }
   });
 
   return reshapeProduct(res.body.data.product, false);
@@ -489,8 +485,7 @@ export async function getProductRecommendations(productId: string): Promise<Prod
     tags: [TAGS.products],
     variables: {
       productId
-    },
-    cache: 'no-store'
+    }
   });
 
   return reshapeProducts(res.body.data.productRecommendations);
@@ -512,8 +507,7 @@ export async function getProducts({
       query,
       reverse,
       sortKey
-    },
-    cache: 'no-store'
+    }
   });
 
   return reshapeProducts(removeEdgesAndNodes(res.body.data.products));
@@ -565,8 +559,7 @@ export async function getAnnouncements(type: string): Promise<ShopifyMetaobject[
     query: getAnnouncementsQuery,
     variables: {
       type: type
-    },
-    cache: 'no-store'
+    }
   });
 
   return reshapeMetaobjects(res.body.data.metaobjects)
@@ -810,8 +803,7 @@ export async function getArticles({
       sortKey: sortKey === 'CREATED_AT' ? 'CREATED' : sortKey,
       after: after,
       before: before
-    },
-    cache: 'no-store'
+    }
   });
 
   return reshapeArticles(res.body.data.articles);
@@ -822,8 +814,7 @@ export async function getArticle(id : string): Promise<ShopifyArticle | undefine
     query: getArticleQuery,
     variables: {
       id
-    },
-    cache: 'no-store'
+    }
   });
 
   return reshapeArticle(res.body.data.node);
