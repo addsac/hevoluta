@@ -3,8 +3,31 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
 
+function parseFaqContent(value: string) {
+  const normalized = value.replace(/\r\n/g, '\n').trim();
+  if (!normalized) return [];
+
+  const questionBlocks = normalized
+    .split(/\n(?=\d+\.\s)/)
+    .map((block) => block.trim())
+    .filter(Boolean);
+
+  return questionBlocks
+    .map((block) => {
+      const match = block.match(/^(\d+\.\s*[^\n]+)\n?([\s\S]*)$/);
+      if (!match) return null;
+
+      const question = match[1].trim();
+      const answer = match[2].trim();
+      return { question, answer };
+    })
+    .filter((item): item is { question: string; answer: string } => Boolean(item));
+}
+
 export default function ProductDetails({ product = null }: { product: any }) {
   const [openText, setOpenText] = useState(0);
+  const faqValue = product?.metafields.find((metafield: any) => metafield?.key == 'storia')?.value?.trim() ?? '';
+  const faqItems = parseFaqContent(faqValue);
 
   return (
     <div className="w-screen flex gap-2.5 bg-black px-5 py-[120px]">
@@ -39,15 +62,28 @@ export default function ProductDetails({ product = null }: { product: any }) {
 
         <AnimatePresence mode="popLayout">
           {openText == 0 && (
-            <motion.p
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ ease: 'linear', duration: 0.2 }}
-              className="text-title-6 lg:text-body-2 text-white lg:pr-20 whitespace-pre-line"
+              className="lg:pr-20"
             >
-              {product?.metafields.find((metafield: any) => metafield?.key == 'storia')?.value?.trim()}
-            </motion.p>
+              {faqItems.length > 0 ? (
+                <div className="flex flex-col gap-8">
+                  {faqItems.map((item, index) => (
+                    <div key={`${item.question}-${index}`} className="flex flex-col gap-2">
+                      <p className="text-title-6 lg:text-body-2 text-white">{item.question}</p>
+                      <p className="text-title-6 lg:text-body-2 text-white opacity-[0.6] whitespace-pre-line">
+                        {item.answer}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-title-6 lg:text-body-2 text-white whitespace-pre-line">{faqValue}</p>
+              )}
+            </motion.div>
           )}
         </AnimatePresence>
 
