@@ -10,7 +10,17 @@ import {
   editCartItemsMutation,
   removeFromCartMutation
 } from './mutations/cart';
-import { createCustomerQuery, customerAccessTokenDeleteQuery, customerActivateByUrlQuery, customerQuery, customerResetByUrlQuery, loginCustomerQuery, sendEmailPasswordRecoveryQuery, updateCustomerAddressQuery, updateCustomerQuery } from './mutations/customer';
+import {
+  createCustomerQuery,
+  customerAccessTokenDeleteQuery,
+  customerActivateByUrlQuery,
+  customerQuery,
+  customerResetByUrlQuery,
+  loginCustomerQuery,
+  sendEmailPasswordRecoveryQuery,
+  updateCustomerAddressQuery,
+  updateCustomerQuery
+} from './mutations/customer';
 import { getAnnouncementsQuery } from './queries/announcements';
 import { getArticleQuery, getArticlesQuery } from './queries/articles';
 import { getBlogQuery } from './queries/blog';
@@ -88,7 +98,7 @@ const key = process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN!;
 type ExtractVariables<T> = T extends { variables: object } ? T['variables'] : never;
 
 export async function shopifyFetch<T>({
-  cache = 'no-store',
+  cache = 'force-cache',
   headers,
   query,
   tags,
@@ -152,7 +162,7 @@ const removeEdgesAndNodesWithPagination = (array: Connection<any>) => {
     pageInfo: array.pageInfo,
     edges: array.edges.map((edge) => edge?.node)
   };
-}
+};
 
 /**
  * Reshapes
@@ -163,12 +173,12 @@ const reshapeCustomer = (customer: any): any => {
   }
 
   // reshape order if exists
-  if(customer.orders){
-    customer.orders = removeEdgesAndNodesWithPagination(customer.orders)
+  if (customer.orders) {
+    customer.orders = removeEdgesAndNodesWithPagination(customer.orders);
   }
 
   return customer;
-}
+};
 
 const reshapeMetaobjects = (metaobjects: any): any => {
   if (!metaobjects) {
@@ -176,7 +186,7 @@ const reshapeMetaobjects = (metaobjects: any): any => {
   }
 
   return removeEdgesAndNodes(metaobjects);
-}
+};
 
 const reshapeBlogs = (blogs: any): any => {
   if (!blogs) {
@@ -184,7 +194,7 @@ const reshapeBlogs = (blogs: any): any => {
   }
 
   return removeEdgesAndNodes(blogs);
-}
+};
 
 const reshapeArticles = (articles: any): any => {
   if (!articles) {
@@ -192,7 +202,7 @@ const reshapeArticles = (articles: any): any => {
   }
 
   return removeEdgesAndNodesWithPagination(articles);
-}
+};
 
 const reshapeArticle = (article: any): any => {
   if (!article) {
@@ -200,7 +210,7 @@ const reshapeArticle = (article: any): any => {
   }
 
   return article;
-}
+};
 
 const reshapeCart = (cart: ShopifyCart): Cart => {
   if (!cart.cost?.totalTaxAmount) {
@@ -286,8 +296,8 @@ const reshapeProducts = (products: ShopifyProduct[]) => {
 };
 
 /**
-  * Cart API
-  */
+ * Cart API
+ */
 export async function createCart(): Promise<Cart> {
   const res = await shopifyFetch<ShopifyCreateCartOperation>({
     query: createCartMutation,
@@ -531,7 +541,8 @@ export async function revalidate(req: NextRequest): Promise<NextResponse> {
     return NextResponse.json({ status: 200 });
   }
 
-  if (!isCollectionUpdate && !isProductUpdate) {  // && !isArticleUpdate
+  if (!isCollectionUpdate && !isProductUpdate) {
+    // && !isArticleUpdate
     // We don't need to revalidate anything for any other topics.
     return NextResponse.json({ status: 200 });
   }
@@ -562,7 +573,7 @@ export async function getAnnouncements(type: string): Promise<ShopifyMetaobject[
     }
   });
 
-  return reshapeMetaobjects(res.body.data.metaobjects)
+  return reshapeMetaobjects(res.body.data.metaobjects);
 }
 
 /**
@@ -583,8 +594,8 @@ export async function getAnnouncements(type: string): Promise<ShopifyMetaobject[
   return reshapeCustomer(res.body.data.customerCreate)
 } */
 
-export async function getCustomer(token: string): Promise<Customer>{
-  if(!token) return null
+export async function getCustomer(token: string): Promise<Customer> {
+  if (!token) return null;
 
   const res = await shopifyFetch<ShopifyCustomerOperation>({
     query: customerQuery,
@@ -594,7 +605,7 @@ export async function getCustomer(token: string): Promise<Customer>{
     cache: 'no-store'
   });
 
-  return reshapeCustomer(res.body.data)
+  return reshapeCustomer(res.body.data);
 }
 
 export async function registerCustomer({
@@ -604,17 +615,17 @@ export async function registerCustomer({
   lastName,
   phone,
   acceptsMarketing = true
-} : {
-  email: string,
-  password: string,
-  firstName?: string,
-  lastName?: string,
-  phone?: string,
-  acceptsMarketing?: boolean,
+}: {
+  email: string;
+  password: string;
+  firstName?: string;
+  lastName?: string;
+  phone?: string;
+  acceptsMarketing?: boolean;
 }): Promise<Customer> {
   const res = await shopifyFetch<ShopifyCustomerCreateOperation>({
     query: createCustomerQuery,
-    variables: { 
+    variables: {
       input: {
         email: email,
         password: password,
@@ -624,38 +635,38 @@ export async function registerCustomer({
     cache: 'no-store'
   });
 
-  return reshapeCustomer(res.body.data.customerCreate)
+  return reshapeCustomer(res.body.data.customerCreate);
 }
 
 export async function registerConfirmCustomer({
   activationUrl,
   password
-} : {
+}: {
   activationUrl: string;
   password: string;
-}): Promise<any>{
+}): Promise<any> {
   const res = await shopifyFetch<ShopifyCustomerConfirmByUrlOperation>({
     query: customerActivateByUrlQuery,
-    variables: { 
+    variables: {
       activationUrl,
       password
     },
     cache: 'no-store'
   });
 
-  return res.body.data.customerActivateByUrl
+  return res.body.data.customerActivateByUrl;
 }
 
 export async function loginCustomer({
   email,
   password
-} : {
+}: {
   email: string;
   password: string;
-}): Promise<any>{
+}): Promise<any> {
   const res = await shopifyFetch<ShopifyCustomerLoginOperation>({
     query: loginCustomerQuery,
-    variables: { 
+    variables: {
       input: {
         email: email,
         password: password
@@ -664,97 +675,96 @@ export async function loginCustomer({
     cache: 'no-store'
   });
 
-  return reshapeCustomer(res.body.data.customerAccessTokenCreate)
+  return reshapeCustomer(res.body.data.customerAccessTokenCreate);
 }
 
 export async function logoutCustomer({
   customerAccessToken
-} : {
+}: {
   customerAccessToken: string;
-}): Promise<CustomerAccessTokenDeletePayload>{
+}): Promise<CustomerAccessTokenDeletePayload> {
   const res = await shopifyFetch<ShopifyCustomerLogoutOperation>({
     query: customerAccessTokenDeleteQuery,
-    variables: { 
+    variables: {
       customerAccessToken: customerAccessToken
     },
     cache: 'no-store'
   });
 
-  return res.body.data
+  return res.body.data;
 }
 
 export async function sendResetPasswordEmail({
   email
-} : {
+}: {
   email: string;
-}): Promise<CustomerSendEmailPasswordRecoveryPayload>{
+}): Promise<CustomerSendEmailPasswordRecoveryPayload> {
   const res = await shopifyFetch<ShopifyCustomerSendEmailPasswordRecoveryOperation>({
     query: sendEmailPasswordRecoveryQuery,
-    variables: { 
+    variables: {
       email: email
     },
     cache: 'no-store'
   });
 
-  return res.body.data.customerRecover
+  return res.body.data.customerRecover;
 }
 
 export async function resetPassword({
   password,
-  resetUrl,
-} : {
+  resetUrl
+}: {
   password: string;
   resetUrl: string;
-}): Promise<CustomerResetByUrlPayload>{
-  try{
+}): Promise<CustomerResetByUrlPayload> {
+  try {
     const res = await shopifyFetch<ShopifyCustomerResetPasswordOperation>({
       query: customerResetByUrlQuery,
       tags: ['unauthenticated_read_customer_tags'],
-      variables: { 
+      variables: {
         password: password,
-        resetUrl: resetUrl,
+        resetUrl: resetUrl
       },
       cache: 'no-store'
     });
 
-    return res.body.data.customerResetByUrl
-  }
-  catch(e){
-    return e
+    return res.body.data.customerResetByUrl;
+  } catch (e) {
+    return e;
   }
 }
 
 export async function updateCustomer({
   customer,
   token
-} : {
+}: {
   customer: inputCustomer;
   token: string;
-}): Promise<any>{
+}): Promise<any> {
   const res = await shopifyFetch<ShopifyCustomerUpdateOperation>({
     query: updateCustomerQuery,
-    variables: { 
+    variables: {
       customer,
       customerAccessToken: token
     },
     cache: 'no-store'
   });
 
-  return res.body.data.customerUpdate
+  return res.body.data.customerUpdate;
 }
 
 export async function updateCustomerAddress({
   address,
   token,
   id
-} : {
+}: {
   address: InputAddress;
   token: string;
   id: string;
-}): Promise<CustomerAddressUpdatePayload>{
+}): Promise<CustomerAddressUpdatePayload> {
   const res = await shopifyFetch<CustomerAddressUpdateOperation>({
     query: updateCustomerAddressQuery,
-    variables: { 
+    variables: {
       address,
       customerAccessToken: token,
       id: id
@@ -762,7 +772,7 @@ export async function updateCustomerAddress({
     cache: 'no-store'
   });
 
-  return res.body.data.customerAddressUpdate
+  return res.body.data.customerAddressUpdate;
 }
 
 /**
@@ -783,15 +793,15 @@ export async function getArticles({
   sortKey,
   reverse,
   after,
-  before,
-} : {
-  first?: number,
-  last?: number,
-  title: string,
-  sortKey: string,
-  reverse: boolean,
-  after?: string,
-  before?: string,
+  before
+}: {
+  first?: number;
+  last?: number;
+  title: string;
+  sortKey: string;
+  reverse: boolean;
+  after?: string;
+  before?: string;
 }): Promise<ShopifyArticles> {
   const res = await shopifyFetch<ShopifyArticlesOperation>({
     query: getArticlesQuery,
@@ -809,7 +819,7 @@ export async function getArticles({
   return reshapeArticles(res.body.data.articles);
 }
 
-export async function getArticle(id : string): Promise<ShopifyArticle | undefined> {
+export async function getArticle(id: string): Promise<ShopifyArticle | undefined> {
   const res = await shopifyFetch<ShopifyArticleOperation>({
     query: getArticleQuery,
     variables: {
