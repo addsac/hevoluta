@@ -2,6 +2,8 @@ import { getArticles, getPages, getProducts } from 'lib/shopify';
 import { validateEnvironmentVariables } from 'lib/utils';
 import { MetadataRoute } from 'next';
 
+export const dynamic = 'force-dynamic';
+
 type Route = {
   url: string;
   lastModified: string;
