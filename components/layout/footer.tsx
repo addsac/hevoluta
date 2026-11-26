@@ -44,6 +44,7 @@ export default async function Footer({
               <Link href="/blog" className="button-text"> Blog </Link>
               <Link href="/chat" className="button-text"> Chatta con noi </Link>
               <Link href="/about" className="button-text"> Chi siamo </Link>
+              <Link href="/manifesto" className="button-text"> Manifesto Hevoluta </Link>
               <AuthButtons 
                 customer={customer}
                 theme="text"

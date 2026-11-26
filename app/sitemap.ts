@@ -16,8 +16,8 @@ const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   validateEnvironmentVariables();
 
-  // home
-  const routesMap = [''].map((route) => ({
+  // Static pages
+  const routesMap = ['', '/manifesto'].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString()
   }));
