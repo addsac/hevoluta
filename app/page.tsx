@@ -39,7 +39,7 @@ export default async function HomePage() {
   return (
     <>
       {/* Hero */}
-      <div className="relative w-screen h-[600px] bg-black text-center flex flex-col items-center justify-center gap-12 overflow-clip px-2.5">
+      <div className="relative w-screen min-h-[600px] py-12 bg-black text-center flex flex-col items-center justify-center gap-12 overflow-clip px-2.5">
         <HeroSectionAnimated />
 
         {/* background img */}

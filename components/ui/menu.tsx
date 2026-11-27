@@ -44,6 +44,7 @@ export default function Menu() {
               <div className="flex flex-col items-start gap-5">
                 <p className="opacity-50"> Pagine </p>
                 <Link href="/" onClick={() => closeMenu()} className="button-text"> Home </Link>
+                <Link href="/manifesto" onClick={closeMenu} className="button-text"> Manifesto </Link>
                 <Link href="/search" onClick={() => closeMenu()} className="button-text"> Prodotti </Link>
                 <Link href="/blog" onClick={() => closeMenu()} className="button-text"> Blog </Link>
                 <Link href="/chat" onClick={() => closeMenu()} className="button-text"> Chatta con noi </Link>

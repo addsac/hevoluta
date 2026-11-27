@@ -36,7 +36,7 @@ export default async function Navbar({
         {/* navigation menu */}
         <nav className="flex w-full items-center justify-between border-b border-gray-200 bg-white px-5 py-4 lg:py-5">
           {/* left buttons */}
-          <div className="flex w-full items-center">
+          <div className="flex w-full items-center lg:max-xl:[&_.button-menu]:px-2">
             {/* button on the left of the header with a server component 
             as a child, because it's not possible to use server functions 
             inside a client component */}
@@ -56,6 +56,7 @@ export default async function Navbar({
                 <button className="button-menu">Chi siamo</button>
               </Link>
             </div>
+            <Link href="/manifesto" className="button-menu hidden lg:flex">Manifesto</Link>
             <div className="hidden lg:block">
               <Link href="/chat">
                 <button className="button-menu">

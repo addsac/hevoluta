@@ -30,16 +30,15 @@ export default function HeroSectionAnimated() {
           più ampio, per un benessere completo e duraturo.
         </Balancer>
       </motion.p>
-      <Link href="/search" className="z-[1]">
-        <motion.button 
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, ease: 'easeOut', delay: 0.6 }}
-            className="button-secondary-lg"
+      <div className="z-[1] flex flex-col items-stretch justify-center gap-3 sm:flex-row">
+        <Link href="/search" className="button-secondary-lg">Scopri i prodotti</Link>
+        <Link
+          href="/manifesto"
+          className="border border-white bg-black/40 px-8 py-[17px] tracking-wide text-white hover:bg-black/60"
         >
-            Scopri i prodotti
-        </motion.button>
-      </Link>
+          Leggi il Manifesto
+        </Link>
+      </div>
     </>
   );
 };
